@@ -21,11 +21,14 @@ namespace com.baltamstudios.minebuddies
         public void OnPlayerJoin(PlayerInput p)
         {
             Debug.Log("Player Joined");
-            p.GetComponent<Dwarf>().SetColor(playerColors[playerInputManager.playerCount - 1]);
+            p.GetComponent<Dwarf>().SetColor(playerColors[p.playerIndex]);
             if (playerStartPositions.Length < 1)
                 throw new System.ArgumentOutOfRangeException("Not enough player start positions!");
-            p.name = $"Player {playerInputManager.playerCount}";
-            p.transform.position = playerStartPositions[playerInputManager.playerCount - 1].transform.position;
+            p.name = $"Player {p.playerIndex+1}";
+            Debug.Log($"{p.name} instantiated at {p.transform.position}");
+            p.gameObject.transform.position = playerStartPositions[p.playerIndex].transform.position;
+            Physics.SyncTransforms();
+
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using TMPro;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -10,12 +11,20 @@ namespace com.baltamstudios.minebuddies
     {
 
         public Vector2 inputVector = Vector2.zero;
+        private Vector3 verticalVelocity = Vector3.zero;
+        private float GRAVITY = 9.8f;
+        public float GravityScale = 1f;
+        public TextMeshPro debugLabel;
+        Vector3 movementVector = Vector3.zero;
+
         public bool toJump = false;
         private CharacterController characterController;
         float movementFactor = -1f;
         public float characterSpeed = 5.0f;
         private PlayerInput playerInput;
-        
+
+        public float JumpForce = 25f;
+
         public bool InsideCarriage {  get; set; }
         
         float MovementFactor
@@ -37,25 +46,30 @@ namespace com.baltamstudios.minebuddies
         // Update is called once per frame
         void Update()
         {
-            if (inputVector != Vector2.zero)
+            debugLabel.text = $"Grounded: {characterController.isGrounded}";
+            
+            if (characterController.isGrounded)
             {
-                Vector3 movementVector;
-                if (!InsideCarriage)
+                if (toJump)
                 {
-                    movementVector = ConvertToGameSpace(inputVector);
+                            toJump = false;
+                            verticalVelocity = Vector3.up * JumpForce;
                 }
-                else
-                    movementVector = (Vector3)inputVector;
-                
-                characterController.Move(movementVector * characterSpeed * Time.deltaTime);
+                else verticalVelocity = Vector3.zero;
             }
+            //Vertical movement
+            else 
+                verticalVelocity += Vector3.down * GRAVITY * GravityScale * Time.deltaTime;
 
-            if (toJump)
-            {
-                Debug.Log("Implement Jump");
-                toJump = false;
-                throw new System.NotImplementedException("Implement jump function");
-            }
+            //navigation inside and outside the carriage
+            if (!InsideCarriage)
+                { //outside - convert the vertical input to Z axis
+                movementVector = ConvertToGameSpace(inputVector);
+                }
+            else
+                movementVector = (Vector3)inputVector;
+            
+            characterController.Move((movementVector * characterSpeed + verticalVelocity) * Time.deltaTime);
         }
 
 
@@ -66,7 +80,8 @@ namespace com.baltamstudios.minebuddies
         
         public void OnJump(InputAction.CallbackContext context)
         {
-            toJump = context.performed;
+            if (characterController.isGrounded)
+                toJump = true;
         }
 
         private Vector3 ConvertToGameSpace(Vector2 inputVector)
