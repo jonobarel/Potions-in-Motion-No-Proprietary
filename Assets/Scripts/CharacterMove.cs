@@ -14,8 +14,10 @@ namespace com.baltamstudios.minebuddies
         private CharacterController characterController;
         float movementFactor = -1f;
         public float characterSpeed = 5.0f;
-
-
+        private PlayerInput playerInput;
+        
+        public bool InsideCarriage {  get; set; }
+        
         float MovementFactor
         {
             get
@@ -29,7 +31,7 @@ namespace com.baltamstudios.minebuddies
         void Start()
         {
             characterController = GetComponent<CharacterController>();
-            
+            playerInput = GetComponent<PlayerInput>();
 
         }
         // Update is called once per frame
@@ -37,15 +39,22 @@ namespace com.baltamstudios.minebuddies
         {
             if (inputVector != Vector2.zero)
             {
-                Vector3 movementVector = ConvertToGameSpace(inputVector);
+                Vector3 movementVector;
+                if (!InsideCarriage)
+                {
+                    movementVector = ConvertToGameSpace(inputVector);
+                }
+                else
+                    movementVector = (Vector3)inputVector;
+                
                 characterController.Move(movementVector * characterSpeed * Time.deltaTime);
             }
 
             if (toJump)
             {
-                throw new System.NotImplementedException("Implement jump function");
                 Debug.Log("Implement Jump");
                 toJump = false;
+                throw new System.NotImplementedException("Implement jump function");
             }
         }
 
@@ -65,5 +74,6 @@ namespace com.baltamstudios.minebuddies
             Vector3 v = new Vector3(inputVector.x, 0f, inputVector.y * MovementFactor);
             return v;
         }
+
     }
 }
