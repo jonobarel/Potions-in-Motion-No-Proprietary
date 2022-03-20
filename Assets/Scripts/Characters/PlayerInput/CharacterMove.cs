@@ -59,9 +59,10 @@ namespace com.baltamstudios.minebuddies
             {
                 //Debug.Log("Jump performed");
                 verticalVelocity = Vector3.up * JumpForce;
+                toJump = false;
             }
 
-            toJump = false;
+            
 
             //navigation inside and outside the carriage
             if (!InsideCarriage)
@@ -83,7 +84,7 @@ namespace com.baltamstudios.minebuddies
         public void OnJump(InputAction.CallbackContext context)
         {
             //Debug.Log("Jump pressed");
-            if (isGrounded)
+            if (context.performed && isGrounded)
                 toJump = true;
         }
 

@@ -32,12 +32,15 @@ namespace com.baltamstudios.minebuddies
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            Debug.Log($"{name} interacting");
-            var str = IsNearModule ? nearModule.name : "no";
-            Debug.Log($"Near module: {str}");
-            if (IsNearModule && nearModule != null)
+            if (context.performed)
             {
+                Debug.Log($"{name} interacting: {context.performed}");
+                var str = IsNearModule ? nearModule.name : "no";
+                Debug.Log($"Near module: {str}");
+                if (IsNearModule && nearModule != null)
+                {
                     nearModule.Interact();
+                }
             }
             
         }
