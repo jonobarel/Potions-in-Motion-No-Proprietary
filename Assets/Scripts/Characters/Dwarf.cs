@@ -24,8 +24,7 @@ namespace com.baltamstudios.minebuddies
         }
         public void SetColor(Color c)
         {
-            Renderer r = GetComponent<Renderer>();
-            r.material.color = c;
+            Debug.Log("Color not set");
         }
 
         private void OnTriggerEnter(Collider other)

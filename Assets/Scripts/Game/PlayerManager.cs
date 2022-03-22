@@ -26,7 +26,7 @@ namespace com.baltamstudios.minebuddies
                 throw new System.ArgumentOutOfRangeException("Not enough player start positions!");
             p.name = $"Player {p.playerIndex+1}";
             Debug.Log($"{p.name} instantiated at {p.transform.position}");
-            p.gameObject.transform.position = playerStartPositions[p.playerIndex].transform.position;
+            p.gameObject.GetComponent<Rigidbody2D>().MovePosition(playerStartPositions[p.playerIndex].transform.position);
             Physics.SyncTransforms();
 
         }
