@@ -16,7 +16,7 @@ namespace com.baltamstudios.minebuddies
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            module.Interact();
+            Debug.Log("Do nothing");
         }
     }
 }

@@ -12,37 +12,34 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         ModuleBase nearModule;
 
-        public void OnTriggerEnter(Collider other)
+        public void OnTriggerEnter2D(Collider2D collision)
         {
-            if (other.CompareTag("CarriageModule"))
+            if (collision.gameObject.CompareTag("CarriageModule"))
             {
                 IsNearModule = true;
-                nearModule = other.GetComponent<ModuleBase>();
+                nearModule = collision.gameObject.GetComponent<ModuleBase>();
             }
         }
 
-        public void OnTriggerExit(Collider other)
+        public void OnTriggerExit2D(Collider2D collision)
         {
-            if (other.CompareTag("CarriageModule"))
+            if (collision.gameObject.CompareTag("CarriageModule"))
             {
                 IsNearModule = false;
                 nearModule = null;
+                collision.gameObject.GetComponent<ModuleBase>().Interact(false, GetComponent<Dwarf>());
             }
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                Debug.Log($"{name} interacting: {context.performed}");
-                var str = IsNearModule ? nearModule.name : "no";
-                Debug.Log($"Near module: {str}");
                 if (IsNearModule && nearModule != null)
                 {
-                    nearModule.Interact();
+                    if (context.performed)
+                        nearModule.Interact(true, gameObject.GetComponent<Dwarf>());
+                    else if (context.canceled)
+                        nearModule.Interact(false, gameObject.GetComponent<Dwarf>());
                 }
-            }
-            
         }
     }
 }

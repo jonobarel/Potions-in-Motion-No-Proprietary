@@ -105,7 +105,6 @@ namespace com.baltamstudios.minebuddies
             hit = Physics2D.Raycast(feet.transform.position, Vector2.down,GroundDetection,mask);
             if (hit.collider != null)
             {
-                Debug.Log($"Detected {hit.collider.name}");
                 verticalVelocity = Vector2.zero;
                 isGrounded = true;
             }

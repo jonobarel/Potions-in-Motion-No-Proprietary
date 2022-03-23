@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace com.baltamstudios.minebuddies
 {
     public abstract class ModuleBase : MonoBehaviour
     {
 
-        public IconDisplay icon;
+        public Sprite icon;
 
         protected int upgradeLevel;
         public int UpgradeLevel { get { return upgradeLevel; } }
@@ -17,22 +18,21 @@ namespace com.baltamstudios.minebuddies
             Debug.Log($"{name}: upgraded");
         }
 
-        public abstract bool Interact(); //call this function to make the machine work and subtract its power.
+        public abstract void Interact(bool isStart, Dwarf player); //call this function to make the machine work and subtract its power.
 
-        public void OnTriggerEnter(Collider other)
+        public void OnTriggerEnter2D(Collider2D collision)
         {
-            if (other.CompareTag("Player"))
+            if (collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log($"{other.name} approached {name}");
-                icon.Show();
+                Debug.Log($"{collision.gameObject.name} approached {name}");
             }
         }
-        public void OnTriggerExit(Collider other)
+        public void OnTriggerExit2D(Collider2D collision)
         {
-            if (other.CompareTag("Player")) {
-                Debug.Log($"{other.name} moving away from {name}");
-                icon.Hide(); }
-
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                Debug.Log($"{collision.gameObject.name} moving away from {name}");
+            }
         }
     }
 }
