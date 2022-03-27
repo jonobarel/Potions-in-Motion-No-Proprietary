@@ -205,16 +205,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b968f98cde57149bee351ce3cdc46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputVector: {x: 0, y: 0}
-  verticalVelocity: {x: 0, y: 0}
-  feet: {fileID: 8024326528315349444}
   GroundDetection: 0.15
   GravityScale: 3
-  debugLabel: {fileID: 4814553803992541389}
   MaxVelocity: 5
   SmoothTime: 0.25
-  toJump: 0
   JumpForce: 10
+  ClimbSpeed: 2
+  inputVector: {x: 0, y: 0}
+  verticalVelocity: {x: 0, y: 0}
+  currentVelocity: {x: 0, y: 0}
+  isGrounded: 0
+  isNearLadder: 0
+  feet: {fileID: 8024326528315349444}
+  debugLabel: {fileID: 4814553803992541389}
 --- !u!114 &1477584394889871791
 MonoBehaviour:
   m_ObjectHideFlags: 0

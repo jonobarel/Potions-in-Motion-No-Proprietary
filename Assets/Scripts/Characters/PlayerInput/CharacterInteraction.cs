@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace com.baltamstudios.minebuddies
 {
-    public class CharacterModuleInteraction : MonoBehaviour
+    public class CharacterInteraction : MonoBehaviour
     {
         [SerializeField]
         bool IsNearModule = false;

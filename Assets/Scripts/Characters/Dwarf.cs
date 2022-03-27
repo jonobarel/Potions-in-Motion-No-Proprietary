@@ -27,22 +27,6 @@ namespace com.baltamstudios.minebuddies
             Debug.Log("Color not set");
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            //upon entering the carriage, switch the control scheme.
-            if (other.CompareTag("CarriageVolume")) {
-                characterMove.InsideCarriage = true;
-                Debug.Log($"{name} Entered carriage");
-            }
-        }
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("CarriageVolume"))
-            {
-                characterMove.InsideCarriage = false;
-                Debug.Log($"{name} exited carriage");
-            }
-        }
     }
 
     

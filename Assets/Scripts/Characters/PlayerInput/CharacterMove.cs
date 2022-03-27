@@ -9,41 +9,54 @@ namespace com.baltamstudios.minebuddies
 {
     public class CharacterMove : MonoBehaviour
     {
+        #region constants
+        [SerializeField]
+        float GroundDetection = 0.15f;
+        float GRAVITY = 9.8f;
+        public float GravityScale = 1f;
+        float MaxFallSpeed = 10f;
+        [Tooltip("Character's max horizontal velocity")]
+        public float MaxVelocity = 0f;
+        [SerializeField]
+        [Tooltip("Controls how quickly the character reaches top speed.")]
+        float SmoothTime = 1f;
+        public float JumpForce = 25f;
+        [SerializeField]
+        float ClimbSpeed = 25f;
+
+        float LadderWalkThresholdSqr = 0.85f;
+        float LadderClimbThresholdSqr = 0.2f;
+        #endregion constants
+
+
+        #region variables
         public Vector2 inputVector = Vector2.zero;
         [SerializeField]
         Vector2 verticalVelocity = Vector2.zero;
         Vector2 horizontalVelocity = Vector2.zero;
         [SerializeField]
-        GameObject feet;
-        [SerializeField]
-        float GroundDetection = 0.15f;
-
-        float GRAVITY = 9.8f;
-        public float GravityScale = 1f;
-        float MaxFallSpeed = 10f;
-        
-        public TextMeshPro debugLabel;
-        [Tooltip("Character's max horizontal velocity")]
-        public float MaxVelocity = 0f;
-
         Vector2 currentVelocity = Vector2.zero; //used by damping function
+
         [SerializeField]
-        [Tooltip("Controls how quickly the character reaches top speed.")]
-            float SmoothTime = 1f;
-
         bool isGrounded = false;
-        Rigidbody2D rb;
+        bool toJump = false;
 
-        public bool toJump = false;
-        private CharacterController characterController;
-        float movementFactor = -1f;
+        bool isClimbing = false;
+        GameObject ladder = null;
+        [SerializeField]
+        bool isNearLadder;
+        
+        #endregion variables
+
+        #region Components
+        [SerializeField]
+        GameObject feet;
+        public TextMeshPro debugLabel;
+        Rigidbody2D rb;
         private PlayerInput playerInput;
 
-        public float JumpForce = 25f;
+        #endregion
 
-        public bool InsideCarriage {  get; set; }
-        
-        
         // Start is called before the first frame update
         void Start()
         {
@@ -63,9 +76,25 @@ namespace com.baltamstudios.minebuddies
                 verticalVelocity = Vector2.up * JumpForce;
                 toJump = false;
             }
+
+            if (!isClimbing)
+            {
+                if (isNearLadder && (inputVector.y*inputVector.y >= LadderClimbThresholdSqr))
+                {
+                    isClimbing = true;
+                    rb.MovePosition(new Vector2(ladder.transform.position.x, transform.position.y));
+                }
+            }
+
+            if (isClimbing)
+            {
+                //rb.MovePosition(new Vector2(ladder.transform.position.x, transform.position.y)); //lock the X position to the ladder's
+                if (inputVector.x * inputVector.x < LadderWalkThresholdSqr) inputVector.x = 0f; //ignore horizontal input
+                verticalVelocity = inputVector * ClimbSpeed;
+            }
             else if (!isGrounded)
             {
-                verticalVelocity += GRAVITY * GravityScale * Vector2.down* Time.deltaTime;
+                verticalVelocity += GRAVITY * GravityScale * Vector2.down * Time.deltaTime;
                 verticalVelocity.y = Mathf.Clamp(verticalVelocity.y, -MaxFallSpeed, MaxFallSpeed);
             }
             if (inputVector.x * inputVector.x > 0)
@@ -110,6 +139,25 @@ namespace com.baltamstudios.minebuddies
             }
             else isGrounded = false;
 
+        }
+
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Ladder"))
+            {
+                ladder = other.gameObject;
+                isNearLadder = true;
+            }
+        }
+
+        public void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Ladder"))
+            {
+                ladder = null;
+                isNearLadder = false;
+                isClimbing = false;
+            }
         }
 
     }
