@@ -8,7 +8,10 @@ namespace com.baltamstudios.minebuddies
     {
 
         PowerModule engine;
+        float currentDamage = 0f;
 
+        public float CurrentDamage { get { return currentDamage; } }
+        
         public PowerModule Engine { get { return engine; } }
 
         private static Carriage instance;
