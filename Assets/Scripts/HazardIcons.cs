@@ -9,7 +9,7 @@ namespace com.baltamstudios.minebuddies
     {
         [SerializeField]
         List<Sprite> hazardIcons;
-        private Dictionary<GameManager.HazardTypes, Sprite> hazardIconsByType = new Dictionary<GameManager.HazardTypes, Sprite>();
+        private Dictionary<GameManager.HazardType, Sprite> hazardIconsByType = new Dictionary<GameManager.HazardType, Sprite>();
 
         public void Start()
         {
@@ -18,12 +18,12 @@ namespace com.baltamstudios.minebuddies
 
         private void MatchIconsToHazardEnums()
         {
-            if (hazardIcons.Count < System.Enum.GetValues(typeof(GameManager.HazardTypes)).Length)
+            if (hazardIcons.Count < System.Enum.GetValues(typeof(GameManager.HazardType)).Length)
             {
                 throw new System.ArgumentOutOfRangeException($"{name}: not enough icons for hazard types");
             }
             int i = 0;
-            foreach (GameManager.HazardTypes e in System.Enum.GetValues(typeof(GameManager.HazardTypes)))
+            foreach (GameManager.HazardType e in System.Enum.GetValues(typeof(GameManager.HazardType)))
             {
                 Debug.Log($"{e}");
                 hazardIconsByType.Add(e, hazardIcons[i++]);
@@ -31,7 +31,7 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
-        public Sprite GetIconForHazardType(GameManager.HazardTypes e)
+        public Sprite GetIconForHazardType(GameManager.HazardType e)
         {
             return hazardIconsByType[e];
         }

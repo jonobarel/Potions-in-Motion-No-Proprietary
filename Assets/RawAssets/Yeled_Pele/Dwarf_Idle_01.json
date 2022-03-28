@@ -1,0 +1,82 @@
+{ "frames": {
+   "2JzXjt 0.gif": {
+    "frame": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 1.gif": {
+    "frame": { "x": 106, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 2.gif": {
+    "frame": { "x": 212, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 3.gif": {
+    "frame": { "x": 318, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 4.gif": {
+    "frame": { "x": 424, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 5.gif": {
+    "frame": { "x": 530, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 6.gif": {
+    "frame": { "x": 636, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   },
+   "2JzXjt 7.gif": {
+    "frame": { "x": 742, "y": 0, "w": 106, "h": 72 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 106, "h": 72 },
+    "sourceSize": { "w": 106, "h": 72 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.30-x64",
+  "image": "Dwarf_Idle_01.png",
+  "format": "I8",
+  "size": { "w": 848, "h": 72 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

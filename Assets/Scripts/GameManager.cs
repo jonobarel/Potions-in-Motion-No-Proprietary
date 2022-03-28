@@ -6,45 +6,38 @@ namespace com.baltamstudios.minebuddies
 {
     public class GameManager : MonoBehaviour
     {
+
         public class Hazard
         {
-            public List<HazardTypes> types;
+            public List<HazardType> types;
             public float fixProgress;
             public float countdown;
         }
 
-        private static GameManager instance;
         public static GameManager Instance
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = FindObjectOfType<GameManager>();
-                }
-                return instance;
-            }
+            get { return Managers.Instance.gameManager; }
         }
         void Start()
         {
-            if (instance != null)
+            /*if (instance != null)
             {
                 DestroyImmediate(gameObject);
-            }
+            }*/
             ActionModule[] modules = FindObjectsOfType<ActionModule>();
             foreach (var m in modules)
             {
-                availableHazards.Add(m.hazard);
+                availableHazards.Add(m.hazardType);
             }
         }
 
         public List<Hazard> ActiveHazards = new List<Hazard>();
-        public enum HazardTypes
+        public enum HazardType
         {
             A, B, C, D
         }
 
-        List<HazardTypes> availableHazards = new List<HazardTypes>();
+        List<HazardType> availableHazards = new List<HazardType>();
 
 
         // Update is called once per frame

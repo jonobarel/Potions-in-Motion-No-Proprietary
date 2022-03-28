@@ -242,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4610055094943347473}
   m_Layer: 5
-  m_Name: Slider_IconType_00
+  m_Name: DoublieSliderWithIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

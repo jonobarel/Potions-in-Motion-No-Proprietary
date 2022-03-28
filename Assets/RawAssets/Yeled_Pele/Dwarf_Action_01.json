@@ -1,0 +1,82 @@
+{ "frames": {
+   "2JzXjt 0.gif": {
+    "frame": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 1.gif": {
+    "frame": { "x": 109, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 2.gif": {
+    "frame": { "x": 218, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 3.gif": {
+    "frame": { "x": 327, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 4.gif": {
+    "frame": { "x": 436, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 5.gif": {
+    "frame": { "x": 545, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 6.gif": {
+    "frame": { "x": 654, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   },
+   "2JzXjt 7.gif": {
+    "frame": { "x": 763, "y": 0, "w": 109, "h": 94 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 109, "h": 94 },
+    "sourceSize": { "w": 109, "h": 94 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.30-x64",
+  "image": "Dwarf_Action_01.png",
+  "format": "I8",
+  "size": { "w": 872, "h": 94 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

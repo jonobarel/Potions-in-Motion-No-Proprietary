@@ -7,6 +7,8 @@ namespace com.baltamstudios.minebuddies
 {
     public class PlayerManager : MonoBehaviour
     {
+        public static PlayerManager Instance { get { return Managers.Instance.playerManager; } }
+
         [SerializeField]
         GameObject[] playerStartPositions;
 

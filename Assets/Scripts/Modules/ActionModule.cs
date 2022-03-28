@@ -7,7 +7,7 @@ namespace com.baltamstudios.minebuddies
 {
     public class ActionModule : ModuleBase
     {
-        public GameManager.HazardTypes hazard;
+        public GameManager.HazardType hazardType;
 
         PowerModule Engine { get { return Carriage.Instance.Engine; } }
         bool hasPower = false;
