@@ -9,11 +9,11 @@ namespace com.baltamstudios.minebuddies
     {
         // Start is called before the first frame update
         [SerializeField]
-        Image fuelBarImage;
+        Slider fuelBarImage;
 
         void Update()
         {
-            fuelBarImage.fillAmount = Carriage.Instance.Engine.Fuel;
+            fuelBarImage.value = Carriage.Instance.Engine.Fuel;
         }
     }
 }
