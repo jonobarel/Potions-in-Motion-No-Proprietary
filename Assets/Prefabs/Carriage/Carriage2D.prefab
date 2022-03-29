@@ -419,6 +419,10 @@ PrefabInstance:
       propertyPath: hazard
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5783498695196025051, guid: 0820e574c6a973f4f924da4cba7389ba, type: 3}
+      propertyPath: hazardType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0820e574c6a973f4f924da4cba7389ba, type: 3}
 --- !u!4 &375485852429411627 stripped

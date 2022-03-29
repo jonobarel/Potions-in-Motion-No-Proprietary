@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a636cf4b198b8c342a430250f3d1bfa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  hazardManager: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!1 &237038715830066521
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079939f4c5fd70243bd9b2ccf41bedaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazardPrefab: {fileID: -6322995675262813494, guid: 1dc2383f139c6e44bbe7e636fe809c27, type: 3}
 --- !u!1 &237038715987146415
 GameObject:
   m_ObjectHideFlags: 0

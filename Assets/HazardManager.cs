@@ -9,6 +9,8 @@ namespace com.baltamstudios.minebuddies
     {
         public static HazardManager Instance { get { return Managers.Instance.hazardManager; } }
 
+        [SerializeField]
+        Hazard hazardPrefab;
         HazardIcons hazardIcons;
         // Start is called before the first frame update
         void Start()
@@ -25,6 +27,15 @@ namespace com.baltamstudios.minebuddies
         public Sprite GetIconForHazardType(GameManager.HazardType e)
         {
             return hazardIcons.GetIconForHazardType(e);
+        }
+
+        public void SpawnHazard()
+        {
+            Hazard h = Instantiate(hazardPrefab, transform);
+            
+            h.SetDuration(10f);
+            h.SetType(GameManager.Instance.availableHazards[Random.Range(0, GameManager.Instance.availableHazards.Count)]);
+            h.name = $"Hazard-{h.type}";
         }
     }
 }

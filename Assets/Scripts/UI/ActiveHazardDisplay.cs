@@ -7,10 +7,22 @@ namespace com.baltamstudios.minebuddies
     public class ActiveHazardDisplay : MonoBehaviour
     {
         //This class displays the ActiveHazard in the UI
+        [SerializeField]
         Hazard activeHazardObj;
+        public Hazard ActiveHazardObj { get { return activeHazardObj; }
+        set { 
+                activeHazardObj = value;
+                if (iconSprite == null)
+                {
+                    iconSprite = FindIconForHazard();
+                    iconDisplay.sprite = iconSprite;
+                }
+            }
+        }
 
         [SerializeField]
         Image iconDisplay;
+        Sprite iconSprite;
 
         [SerializeField]
         Slider countDownDisplay;
@@ -22,19 +34,34 @@ namespace com.baltamstudios.minebuddies
 
         void Start()
         {
-            if (activeHazardObj == null)
-            {
-                Destroy(gameObject, 1f);
-                throw new System.ArgumentNullException($"{name}: no Hazard object defined");
-            }
-            Sprite s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
+            //if (activeHazardObj != null )
+            //Sprite s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
         }
 
         // Update is called once per frame
         void Update()
         {
-            countDownDisplay.value = activeHazardObj.TimeRemaining / activeHazardObj.InitialDuration;
-            fixProgressDisplay.value = activeHazardObj.FixProgress;
+            if (activeHazardObj != null)
+
+            { 
+                countDownDisplay.value = activeHazardObj.TimeRemaining / activeHazardObj.InitialDuration;
+                fixProgressDisplay.value = activeHazardObj.FixProgress;
+            }
+            
+            
         }
+
+        Sprite FindIconForHazard()
+        {
+            Sprite s = null;
+
+            if (activeHazardObj != null)
+            {
+                s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
+                Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
+            }
+                return s;
+        }
+
     }
 }

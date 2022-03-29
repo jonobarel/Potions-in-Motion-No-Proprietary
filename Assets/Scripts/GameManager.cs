@@ -6,14 +6,13 @@ namespace com.baltamstudios.minebuddies
 {
     public class GameManager : MonoBehaviour
     {
-
-        public class Hazard
+        public List<Hazard> ActiveHazards = new List<Hazard>();
+        public enum HazardType
         {
-            public List<HazardType> types;
-            public float fixProgress;
-            public float countdown;
+            A, B, C, D
         }
 
+        public List<HazardType> availableHazards = new List<HazardType>();
         public static GameManager Instance
         {
             get { return Managers.Instance.gameManager; }
@@ -29,16 +28,16 @@ namespace com.baltamstudios.minebuddies
             {
                 availableHazards.Add(m.hazardType);
             }
-        }
 
-        public List<Hazard> ActiveHazards = new List<Hazard>();
-        public enum HazardType
+            Random.InitState(GetRandomSeed());
+
+            Debug.Log($"{name}: available hazard types in this session - {availableHazards}");
+        }
+      
+        int GetRandomSeed()
         {
-            A, B, C, D
+            return (int)(1000*Time.time);
         }
-
-        List<HazardType> availableHazards = new List<HazardType>();
-
 
         // Update is called once per frame
         void Update()
