@@ -6,7 +6,8 @@ namespace com.baltamstudios.minebuddies
 {
     public class GameManager : MonoBehaviour
     {
-        public List<Hazard> ActiveHazards = new List<Hazard>();
+        public List<Hazard> ActiveHazards { get { return GameSystem.Instance.hazardManager.ActiveHazards; } }
+        
         public enum HazardType
         {
             A, B, C, D
@@ -15,7 +16,7 @@ namespace com.baltamstudios.minebuddies
         public List<HazardType> availableHazards = new List<HazardType>();
         public static GameManager Instance
         {
-            get { return Managers.Instance.gameManager; }
+            get { return GameSystem.Instance.gameManager; }
         }
         void Start()
         {

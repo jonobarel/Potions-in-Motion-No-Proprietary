@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace com.baltamstudios.minebuddies
 {
-    public class Managers : MonoBehaviour
+    public class GameSystem : MonoBehaviour
     {
         public GameManager gameManager;
         public HazardManager hazardManager;
         public PlayerManager playerManager;
         
 
-        static Managers instance;
-        public static Managers Instance
+        static GameSystem instance;
+        public static GameSystem Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = FindObjectOfType<Managers>();
+                    instance = FindObjectOfType<GameSystem>();
                 }
                 return instance;
             }
