@@ -9,6 +9,8 @@ namespace com.baltamstudios.minebuddies
 
         PowerModule engine;
         float currentDamage = 0f;
+        CarriageMovement carriageMovement;
+        public CarriageMovement CarriageMovement { get { return carriageMovement; } }
 
         public float CurrentDamage { get { return currentDamage; } }
         
@@ -36,6 +38,7 @@ namespace com.baltamstudios.minebuddies
             }
             if (engine == null)
                 engine = FindObjectOfType<PowerModule>();
+            carriageMovement = GetComponent<CarriageMovement>();
         }
 
         // Update is called once per frame

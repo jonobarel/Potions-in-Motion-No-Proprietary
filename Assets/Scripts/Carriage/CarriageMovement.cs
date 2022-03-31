@@ -13,7 +13,7 @@ namespace com.baltamstudios.minebuddies
         float speedOverride;
         float currentSpeed;
         public float CurrentSpeed { get { return currentSpeed; } }
-        float MaxSpeed = 2f / 3.6f; // M/s = 1/3.6* KM/h
+        float MaxSpeed = 5f / 3.6f; // M/s = 1/3.6* KM/h
         [SerializeField]
         float HazardSlowdownFactor = 0.1f;
 

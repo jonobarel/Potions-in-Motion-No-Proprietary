@@ -11,7 +11,8 @@ namespace com.baltamstudios.minebuddies
         public List<Hazard> ActiveHazards = new List<Hazard>();
         public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
 
-        public float StartingDistance;
+        [SerializeField, Range(0f, 100f)]
+        public float StartingDistance = 20f;
 
         [SerializeField]
         Hazard hazardPrefab;
@@ -26,9 +27,13 @@ namespace com.baltamstudios.minebuddies
         // Update is called once per frame
         void Update()
         {
-            foreach (KeyValuePair<Hazard, float> kvp in hazardPositions)
+            foreach (Hazard h in new List<Hazard>(hazardPositions.Keys))
             {
-
+                float distance = hazardPositions[h];
+                //move the hazards closer to the carriage
+                float newDistance = Mathf.Max(distance - Carriage.Instance.CarriageMovement.CurrentSpeed * Time.deltaTime, 0f);
+                hazardPositions[h] = newDistance;
+                h.distanceSlider.value = newDistance/StartingDistance;
             }
         }
 

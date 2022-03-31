@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace com.baltamstudios.minebuddies
 {
     public class Hazard : MonoBehaviour
     {
         public GameManager.HazardType type;
+        public Slider distanceSlider;        
+
         [Header("Hazard countdown fields")]
         [SerializeField]
         float initialDuration = 10f;
