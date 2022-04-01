@@ -45,3 +45,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3849935707
+    locked: 0
+  - name: CarriageBackground
+    uniqueID: 3368188183
+    locked: 0
+  - name: CarriageInternalBack
+    uniqueID: 2520979483
+    locked: 0
+  - name: CarriageInternal
+    uniqueID: 2063457665
+    locked: 0
+  - name: CarriageInternalFront
+    uniqueID: 1985565833
+    locked: 0
+  - name: CarriageForeground
+    uniqueID: 2945105345
+    locked: 0
+  - name: Foreground
+    uniqueID: 2624057351
+    locked: 0
