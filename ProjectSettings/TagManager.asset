@@ -7,6 +7,7 @@ TagManager:
   - CarriageVolume
   - CarriageModule
   - Ladder
+  - Platform
   layers:
   - Default
   - TransparentFX
