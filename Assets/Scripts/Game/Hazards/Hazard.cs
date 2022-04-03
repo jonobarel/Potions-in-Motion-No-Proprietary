@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,16 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
+        internal void AnimateBecomesActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void AnimateReachedZero()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetDuration(float d)
         {
             if (d == 0f)
@@ -73,5 +84,6 @@ namespace com.baltamstudios.minebuddies
                 fixProgress = Mathf.Min(fixProgress, 1f);
             }
         }
+
     }
 }

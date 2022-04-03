@@ -8,8 +8,11 @@ namespace com.baltamstudios.minebuddies
     public class HazardManager : MonoBehaviour
     {
         public static HazardManager Instance { get { return GameSystem.Instance.hazardManager; } }
-        public List<Hazard> ActiveHazards = new List<Hazard>();
+        private ActiveHazards activeHazards;
         public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
+
+        public ActiveHazards ActiveHazards { get { return activeHazards; } }
+
 
         [SerializeField, Range(0f, 100f)]
         public float StartingDistance = 20f;
@@ -22,6 +25,7 @@ namespace com.baltamstudios.minebuddies
         void Start()
         {
             hazardIcons = GetComponent<HazardIcons>();
+            activeHazards = GetComponent<ActiveHazards>();
         }
 
         // Update is called once per frame
@@ -32,8 +36,18 @@ namespace com.baltamstudios.minebuddies
                 float distance = hazardPositions[h];
                 //move the hazards closer to the carriage
                 float newDistance = Mathf.Max(distance - Carriage.Instance.CarriageMovement.CurrentSpeed * Time.deltaTime, 0f);
-                hazardPositions[h] = newDistance;
-                h.distanceSlider.value = newDistance/StartingDistance;
+                if (newDistance <= 0f) // move this Hazard to the active set.
+                {
+                    activeHazards.Add(h);
+                    hazardPositions.Remove(h);
+                    h.AnimateReachedZero();
+                    h.AnimateBecomesActive();
+                }
+                else
+                {
+                    hazardPositions[h] = newDistance;
+                    h.distanceSlider.value = newDistance / StartingDistance;
+                }
             }
         }
 
@@ -47,7 +61,7 @@ namespace com.baltamstudios.minebuddies
             Hazard h = Instantiate(hazardPrefab, transform);
             
             h.SetDuration(10f);
-            h.SetType(GameManager.Instance.availableHazards[Random.Range(0, GameManager.Instance.availableHazards.Count)]);
+            h.SetType(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
             h.name = $"Hazard-{h.type}";
             hazardPositions.Add(h, StartingDistance);
         }

@@ -93,7 +93,7 @@ namespace com.baltamstudios.minebuddies
             {
                 if (inputVector.x * inputVector.x < LadderWalkThresholdSqr) inputVector.x = 0f; //ignore horizontal input
                 verticalVelocity = inputVector * ClimbSpeed;
-                rb.MovePosition(transform.position + (Vector3)verticalVelocity * Time.deltaTime);
+                rb.MovePosition((Vector3)(new Vector2(ladder.transform.position.x, transform.position.y) + verticalVelocity * Time.deltaTime));
             }
 
             else if (inputVector.x * inputVector.x > 0) // has horizontal input
@@ -151,7 +151,7 @@ namespace com.baltamstudios.minebuddies
 
         public void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.CompareTag("Ladder"))
+            if (collision.CompareTag("Ladder") && ladder != null && ladder == collision.gameObject)
             {
                 ladder = null;
                 isNearLadder = false;

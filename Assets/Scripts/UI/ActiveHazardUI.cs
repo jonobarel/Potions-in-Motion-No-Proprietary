@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace com.baltamstudios.minebuddies
 {
-    public class ActiveHazardDisplay : MonoBehaviour
+    public class ActiveHazardUI : MonoBehaviour
     {
         //This class displays the ActiveHazard in the UI
         [SerializeField]

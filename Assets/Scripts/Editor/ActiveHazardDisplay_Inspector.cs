@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 namespace com.baltamstudios.minebuddies
 {
-    [CustomEditor(typeof(ActiveHazardDisplay))]
+    [CustomEditor(typeof(ActiveHazardUI))]
     public class ActiveHazardDisplay_Editor : Editor
     {
         
