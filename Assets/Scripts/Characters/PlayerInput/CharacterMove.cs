@@ -45,7 +45,8 @@ namespace com.baltamstudios.minebuddies
         GameObject ladder = null;
         [SerializeField]
         bool isNearLadder;
-        
+
+        [SerializeField] LayerMask groundLayers;
         #endregion variables
 
         #region Components
@@ -68,46 +69,42 @@ namespace com.baltamstudios.minebuddies
         void FixedUpdate()
         {
             DetectGround();
-            debugLabel.text = $"Grounded: {isGrounded}";
+            //debugLabel.text = $"Grounded: {isGrounded}";
 
-            if (toJump)
+            if (toJump && isGrounded && !isClimbing)
             {
                 //Debug.Log("Jump performed");
-                verticalVelocity = Vector2.up * JumpForce;
+                rb.AddForce(Vector2.up*JumpForce, ForceMode2D.Impulse);
                 toJump = false;
             }
 
             if (!isClimbing)
             {
+                //if standing near a ladder and pressing up or down - start climbing.
                 if (isNearLadder && (inputVector.y*inputVector.y >= LadderClimbThresholdSqr))
                 {
+                    rb.bodyType = RigidbodyType2D.Kinematic;
                     isClimbing = true;
-                    rb.MovePosition(new Vector2(ladder.transform.position.x, transform.position.y));
+                    rb.MovePosition(new Vector2(ladder.transform.position.x, transform.position.y)); //snap the character to the ladder X position
                 }
             }
 
             if (isClimbing)
             {
-                //rb.MovePosition(new Vector2(ladder.transform.position.x, transform.position.y)); //lock the X position to the ladder's
                 if (inputVector.x * inputVector.x < LadderWalkThresholdSqr) inputVector.x = 0f; //ignore horizontal input
                 verticalVelocity = inputVector * ClimbSpeed;
+                rb.MovePosition(transform.position + (Vector3)verticalVelocity * Time.deltaTime);
             }
-            else if (!isGrounded)
+
+            else if (inputVector.x * inputVector.x > 0) // has horizontal input
             {
-                verticalVelocity += GRAVITY * GravityScale * Vector2.down * Time.deltaTime;
-                verticalVelocity.y = Mathf.Clamp(verticalVelocity.y, -MaxFallSpeed, MaxFallSpeed);
-            }
-            if (inputVector.x * inputVector.x > 0)
                 horizontalVelocity = Vector2.SmoothDamp(horizontalVelocity, new Vector2(inputVector.x * MaxVelocity, 0), ref currentVelocity, SmoothTime);
-            else
-            {
-                horizontalVelocity = Vector2.zero;
-                currentVelocity = Vector2.zero;
+                
             }
-            Vector2 velocity = horizontalVelocity + verticalVelocity;
-            //rb.MovePosition(transform.position + (Vector3)velocity*Time.deltaTime);
-            rb.velocity = velocity;
-            
+            else horizontalVelocity = Vector2.zero;
+
+            rb.velocity = new Vector2(horizontalVelocity.x, rb.velocity.y);
+
         }
 
 
@@ -118,7 +115,6 @@ namespace com.baltamstudios.minebuddies
         
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (context.performed) Debug.Log("Jump pressed");
             if (context.performed && isGrounded)
                 toJump = true;
         }
@@ -130,12 +126,15 @@ namespace com.baltamstudios.minebuddies
             //Debug.DrawRay(feet.transform.position, ray.direction*GroundDetection, Color.red);
             
 
-            LayerMask mask = ~LayerMask.GetMask("Player");
-            hit = Physics2D.Raycast(feet.transform.position, Vector2.down,GroundDetection,mask);
+            hit = Physics2D.Raycast(feet.transform.position, Vector2.down,GroundDetection,groundLayers);
             if (hit.collider != null)
             {
-                verticalVelocity = Vector2.zero;
+                //verticalVelocity = Vector2.zero;
                 isGrounded = true;
+
+                //also stop climbing.
+                isClimbing = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
             }
             else isGrounded = false;
 
@@ -157,6 +156,7 @@ namespace com.baltamstudios.minebuddies
                 ladder = null;
                 isNearLadder = false;
                 isClimbing = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
             }
         }
 
