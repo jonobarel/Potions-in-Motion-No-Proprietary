@@ -20,8 +20,7 @@ namespace com.baltamstudios.minebuddies
         void Update()
         {
             var dist = (int)(Carriage.Instance.GetComponent<CarriageMovement>().DistanceCovered);
-            if (dist % 10 == 0)
-                Debug.Log($"Distance covered: {dist}");
+            //if (dist % 10 == 0) Debug.Log($"Distance covered: {dist}");
             bodyText.text = $"{dist}m";
         }
     }

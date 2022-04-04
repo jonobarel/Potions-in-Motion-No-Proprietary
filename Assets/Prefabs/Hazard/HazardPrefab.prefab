@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   distanceSlider: {fileID: 8046400062822166748}
-  initialDuration: 10
+  initialDuration: 120
   timeRemaining: 0
   HazardProgessionRate: 1
   fixProgress: 0

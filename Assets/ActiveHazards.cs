@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,7 @@ namespace com.baltamstudios.minebuddies
 
         public void Update()
         {
+
             foreach (var h in activeHazardsList.ToArray())
             {
                 if (!h.IsActive) {
@@ -36,7 +38,15 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
-
+        public Hazard FindTop(GameManager.HazardType t)
+        {
+            return
+                (from hazard in activeHazardsList
+                 where hazard.type == t
+                 orderby hazard.gameObject.transform.GetSiblingIndex() ascending 
+                 select hazard).First<Hazard>();
+                
+        }
 
     }
 }

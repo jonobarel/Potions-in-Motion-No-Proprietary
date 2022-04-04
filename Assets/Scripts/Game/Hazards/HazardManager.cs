@@ -14,7 +14,7 @@ namespace com.baltamstudios.minebuddies
         public Dictionary<GameManager.HazardType, ActionModule> HazardModuleMap;
 
         public ActiveHazards ActiveHazards { get { return activeHazards; } }
-
+        ConfigManager configManager;
 
         [SerializeField, Range(0f, 100f)]
         public float StartingDistance = 20f;
@@ -26,11 +26,12 @@ namespace com.baltamstudios.minebuddies
 
         void Start()
         {
+            
             hazardIcons = GetComponent<HazardIcons>();
             activeHazards = GetComponent<ActiveHazards>();
 
             #region read configuration
-            ConfigManager configManager = FindObjectOfType<ConfigManager>();
+            configManager = FindObjectOfType<ConfigManager>();
             StartingDistance = configManager.config.HazardStartingDistance;
             
             HazardModuleMap = new Dictionary<GameManager.HazardType,ActionModule>();
@@ -74,7 +75,7 @@ namespace com.baltamstudios.minebuddies
         {
             Hazard h = Instantiate(hazardPrefab, transform);
             
-            h.SetDuration(10f);
+            h.SetDuration(configManager.config.InitialDuration);
             h.SetType(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
             h.name = $"Hazard-{h.type}";
             hazardPositions.Add(h, StartingDistance);

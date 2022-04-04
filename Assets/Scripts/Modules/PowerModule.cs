@@ -61,12 +61,15 @@ namespace com.baltamstudios.minebuddies
         public void Connect(ActionModule actionModule)
         {
             connectedModules.Add(actionModule);
+            actionModule.IsConnected = true;
 
         }
 
         public void Disconnect(ActionModule actionModule)
         {
             connectedModules.Remove(actionModule);
+            actionModule.IsConnected = false;
+            actionModule.HasPower = false;
         }
 
         void AddFuel(float units)

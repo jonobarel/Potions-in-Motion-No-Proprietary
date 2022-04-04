@@ -50,10 +50,6 @@ namespace com.baltamstudios.minebuddies
                     timeRemaining -= HazardProgessionRate * Time.deltaTime;
                     timeRemaining = Mathf.Max(timeRemaining, 0);
 
-                    if (module != null && module.IsWorking) {
-                        fixProgress += FixProgressionRate * Time.deltaTime;
-                        fixProgress = Mathf.Max(fixProgress, 1f);
-                    }
                 }
                 if (timeRemaining <=0f || fixProgress >= 1f) // timeremaining <=0
                 {
