@@ -29,7 +29,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         Slider fixProgressDisplay;
 
-        
+        bool isFading = false;
         GameObject hazard; //TODO: this should become a Hazard object 
 
         void Start()
@@ -46,9 +46,16 @@ namespace com.baltamstudios.minebuddies
             { 
                 countDownDisplay.value = activeHazardObj.TimeRemaining / activeHazardObj.InitialDuration;
                 fixProgressDisplay.value = activeHazardObj.FixProgress;
+                if (!isFading && activeHazardObj.TimeRemaining <= 0)
+                {
+                    isFading = true;
+                    GetComponent<Animate>().DoFadeAnimation();
+                    GetComponent<Animate>().DoShrinkAnimation();
+                }
+                    
             }
-            
-            
+
+
         }
 
         Sprite FindIconForHazard()
