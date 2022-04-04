@@ -25,6 +25,17 @@ namespace com.baltamstudios.minebuddies
             h.IsActive = true;
         }
 
+        public void Update()
+        {
+            foreach (var h in activeHazardsList.ToArray())
+            {
+                if (!h.IsActive) {
+                    GameObject.Destroy(h.gameObject, 1f);
+                    activeHazardsList.Remove(h);
+                }
+            }
+        }
+
 
 
     }

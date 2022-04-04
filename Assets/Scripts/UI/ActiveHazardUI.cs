@@ -46,11 +46,12 @@ namespace com.baltamstudios.minebuddies
             { 
                 countDownDisplay.value = activeHazardObj.TimeRemaining / activeHazardObj.InitialDuration;
                 fixProgressDisplay.value = activeHazardObj.FixProgress;
-                if (!isFading && activeHazardObj.TimeRemaining <= 0)
+                if (!isFading && !activeHazardObj.IsActive) //hazard has finished fixing or has timed out.
                 {
                     isFading = true;
                     GetComponent<Animate>().DoFadeAnimation();
                     GetComponent<Animate>().DoShrinkAnimation();
+                    GameObject.Destroy(gameObject, 1f);
                 }
                     
             }

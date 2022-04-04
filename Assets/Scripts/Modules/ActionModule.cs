@@ -17,7 +17,8 @@ namespace com.baltamstudios.minebuddies
 
         public bool HasPower { get { return hasPower; }  set { hasPower = value; } }
         public bool IsConnected { get { return connected; } }
-
+        
+        public bool IsWorking { get {  return HasPower && IsConnected; } }
 
         // Start is called before the first frame update
         void Start()

@@ -30,7 +30,12 @@ namespace com.baltamstudios.minebuddies
 
         void Start()
         {
+            ConfigManager configManager = FindObjectOfType<ConfigManager>();
             speedOverride = 0f;
+            #region config
+            MaxSpeed = configManager.config.MaxCarriageSpeed;
+            HazardSlowdownFactor = configManager.config.HazardSlowDownFactor;
+            #endregion
 
         }
 

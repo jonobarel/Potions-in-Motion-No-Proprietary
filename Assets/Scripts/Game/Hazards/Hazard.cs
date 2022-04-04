@@ -18,7 +18,7 @@ namespace com.baltamstudios.minebuddies
         float timeRemaining;
         [SerializeField]
         float HazardProgessionRate = 1f;
-        
+        ActionModule module;
         
         [Space]
         [Header("Hazard fixing progression")]
@@ -39,6 +39,7 @@ namespace com.baltamstudios.minebuddies
         bool isActive;
         public bool IsActive { get { return isActive; } set { isActive = value; } }
 
+
         public void Update()
         {
             if (isActive)
@@ -48,8 +49,18 @@ namespace com.baltamstudios.minebuddies
                     //proceed with the coundtdown  until reaches zero
                     timeRemaining -= HazardProgessionRate * Time.deltaTime;
                     timeRemaining = Mathf.Max(timeRemaining, 0);
+
+                    if (module != null && module.IsWorking) {
+                        fixProgress += FixProgressionRate * Time.deltaTime;
+                        fixProgress = Mathf.Max(fixProgress, 1f);
+                    }
+                }
+                if (timeRemaining <=0f || fixProgress >= 1f) // timeremaining <=0
+                {
+                    isActive = false;
                 }
             }
+
         }
 
         internal void AnimateBecomesActive()
@@ -74,6 +85,7 @@ namespace com.baltamstudios.minebuddies
         public void SetType(GameManager.HazardType t)
         {
             type = t;
+            module = GameSystem.Instance.hazardManager.HazardModuleMap[type];
         }
 
         public void ApplyFix(float fixTime)

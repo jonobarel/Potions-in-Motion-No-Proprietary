@@ -9,7 +9,7 @@ namespace com.baltamstudios.minebuddies
         public GameManager gameManager;
         public HazardManager hazardManager;
         public PlayerManager playerManager;
-        
+        public ConfigManager configManager;
 
         static GameSystem instance;
         public static GameSystem Instance
@@ -23,7 +23,12 @@ namespace com.baltamstudios.minebuddies
                 return instance;
             }
         }
-
+        /*
+        public MineBuddiesConfigFile Config
+        {
+            get { return configManager.config; }
+        }
+        */
         private void Start()
         {
             if (instance != null)
@@ -33,6 +38,7 @@ namespace com.baltamstudios.minebuddies
             gameManager = GetComponentInChildren<GameManager>();
             hazardManager = GetComponentInChildren<HazardManager>();
             playerManager = GetComponentInChildren<PlayerManager>();
+            configManager = GetComponentInChildren<ConfigManager>();
         }
     }
 }

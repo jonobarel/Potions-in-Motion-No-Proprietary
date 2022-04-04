@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95eec1d1e3a8c274d958637affc44b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableHazards: 
+  availableHazardTypes: 
 --- !u!1 &237038715924055316
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079939f4c5fd70243bd9b2ccf41bedaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveHazards: []
   StartingDistance: 100
   hazardPrefab: {fileID: -6322995675262813494, guid: 1dc2383f139c6e44bbe7e636fe809c27, type: 3}
 --- !u!114 &1750687354046695297
@@ -254,6 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d6d900d00c1514ca41207b0112090e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeHazardQueueUI: {fileID: 0}
+  activeHazardUIPrefab: {fileID: 0}
 --- !u!1 &237038715987146415
 GameObject:
   m_ObjectHideFlags: 0

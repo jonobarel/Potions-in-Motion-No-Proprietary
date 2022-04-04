@@ -11,6 +11,8 @@ namespace com.baltamstudios.minebuddies
         private ActiveHazards activeHazards;
         public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
 
+        public Dictionary<GameManager.HazardType, ActionModule> HazardModuleMap;
+
         public ActiveHazards ActiveHazards { get { return activeHazards; } }
 
 
@@ -26,6 +28,18 @@ namespace com.baltamstudios.minebuddies
         {
             hazardIcons = GetComponent<HazardIcons>();
             activeHazards = GetComponent<ActiveHazards>();
+
+            #region read configuration
+            ConfigManager configManager = FindObjectOfType<ConfigManager>();
+            StartingDistance = configManager.config.HazardStartingDistance;
+            
+            HazardModuleMap = new Dictionary<GameManager.HazardType,ActionModule>();
+            foreach (ActionModule m in FindObjectsOfType<ActionModule>())
+            {
+                HazardModuleMap[m.hazardType] = m;
+            }
+
+            #endregion
         }
 
         // Update is called once per frame
