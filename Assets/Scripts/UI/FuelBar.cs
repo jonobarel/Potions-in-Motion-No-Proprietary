@@ -13,7 +13,7 @@ namespace com.baltamstudios.minebuddies
 
         void Update()
         {
-            fuelBarImage.value = Carriage.Instance.Engine.Fuel;
+            fuelBarImage.value = Carriage.Instance.Engine.FuelLevel;
         }
     }
 }

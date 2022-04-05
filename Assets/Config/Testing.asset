@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseRandomSeed: 1
   RandomSeed: 230708
+  SliderUpdateDuration: 1
   MaxCarriageSpeed: 3.18
   HazardSlowDownFactor: 0.1
-  FuelBurnRateFactor: 2.77
+  FuelBurnRateFactor: 1.4
+  RefuelCooldownTime: 5
+  RefuelTime: 0.5
   HazardStartingDistance: 5.9
   InitialDuration: 900
   HazardProgressionRate: 1

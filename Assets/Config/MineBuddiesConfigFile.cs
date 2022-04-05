@@ -23,6 +23,11 @@ namespace com.baltamstudios.minebuddies
         public float FuelBurnRateFactor = 1f;
 
         #endregion
+
+        #region Modules
+        public float RefuelCooldownTime = 5f;
+        public float RefuelTime = 1f;
+        #endregion
         [Space]
 
         [Header("Hazard Parameters")]

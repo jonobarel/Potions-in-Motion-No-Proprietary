@@ -29,7 +29,7 @@ namespace com.baltamstudios.minebuddies
             if (speedOverride > 0f)
                 return speedOverride;
             //let's set the speed as MaxSpeed - A*activeHazards*(1-damage)
-            else if (Carriage.Instance.Engine.Fuel > 0)
+            else if (Carriage.Instance.Engine.FuelLevel > 0)
             {
                 var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - HazardSlowdownFactor * HazardManager.Instance.ActiveHazards.Count;
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
