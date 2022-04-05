@@ -9,11 +9,11 @@ namespace com.baltamstudios.minebuddies
     {
 
         [SerializeField]
-        float MaxFuel = 10f;
+        float MaxFuel { get { return GameSystem.Instance.configManager.config.FuelCapacity;  } }
         [SerializeField]
         float FuelBurnRate { get { return GameSystem.Instance.configManager.config.FuelBurnRateFactor; } }  //fuel consumption per second per power unit
         [SerializeField]
-        float FuelPerUnit = 10f; // the amount of fuel added to the engine for each Refueling resource.
+        float FuelPerUnit { get { return GameSystem.Instance.configManager.config.RefuelSize; } } // the amount of fuel added to the engine for each Refueling resource.
         [SerializeField]
         int MaxConnections = 4;
 

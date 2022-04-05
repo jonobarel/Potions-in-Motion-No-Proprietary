@@ -27,6 +27,10 @@ namespace com.baltamstudios.minebuddies
         #region Modules
         public float RefuelCooldownTime = 5f;
         public float RefuelTime = 1f;
+        [Range(1f, 10f)]
+        public float FuelCapacity = 10f;
+        [Range(1f, 20f)]
+        public float RefuelSize = 10f;
         #endregion
         [Space]
 
