@@ -18,6 +18,11 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         float HazardSlowdownFactor = 0.1f;
 
+        //for Lerping speed.
+        float startSpeed;
+        float targetSpeed;
+        float speedChangeProgress = 0f;
+
 
         float CalculateSpeed()
         {
@@ -47,7 +52,21 @@ namespace com.baltamstudios.minebuddies
         // Update is called once per frame
         void Update()
         {
-            currentSpeed = CalculateSpeed();
+            float newTargetSpeed = CalculateSpeed();
+            if (newTargetSpeed != targetSpeed) //need to restart the speed shifting process
+            {
+                speedChangeProgress = 0f;
+                targetSpeed = newTargetSpeed;
+                startSpeed = currentSpeed;
+            }
+
+            if (currentSpeed != targetSpeed)
+            {
+                currentSpeed = Mathf.Lerp(startSpeed, targetSpeed, speedChangeProgress);
+                speedChangeProgress += Time.deltaTime;
+                if (speedChangeProgress >= 1f) currentSpeed = targetSpeed;
+            }
+            
             distanceCovered += currentSpeed * Time.deltaTime;
         }
     }

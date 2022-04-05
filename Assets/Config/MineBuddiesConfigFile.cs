@@ -11,6 +11,7 @@ namespace com.baltamstudios.minebuddies
         #region System Config
         public bool UseRandomSeed;
         public int RandomSeed;
+        public float SliderUpdateDuration = 1f;
         #endregion
 
         #region Carriage parames

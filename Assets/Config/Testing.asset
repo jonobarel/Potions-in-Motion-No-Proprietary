@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseRandomSeed: 1
   RandomSeed: 230708
-  MaxCarriageSpeed: 3
+  MaxCarriageSpeed: 3.18
   HazardSlowDownFactor: 0.1
+  FuelBurnRateFactor: 2.77
   HazardStartingDistance: 5.9
   InitialDuration: 900
   HazardProgressionRate: 1
