@@ -11,7 +11,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         float MaxFuel = 10f;
         [SerializeField]
-        float PowerUnitBurnRate = 0.05f; //fuel consumption per second per power unit
+        float FuelBurnRate { get { return GameSystem.Instance.configManager.config.FuelBurnRateFactor; } }  //fuel consumption per second per power unit
         [SerializeField]
         float FuelPerUnit = 2.5f; // the amount of fuel added to the engine for each Refueling resource.
         [SerializeField]
@@ -28,8 +28,6 @@ namespace com.baltamstudios.minebuddies
 
         public float Fuel { get { return fuel/MaxFuel; } }
 
-        int powerUnitsCapacity = 5;
-
         void Start()
         {
             //TODO figure out a different way to set the starting fuel.
@@ -42,7 +40,7 @@ namespace com.baltamstudios.minebuddies
             
             if (fuel > 0)
             {
-                fuel -= PowerUnitBurnRate * connectedModules.Count * Time.deltaTime;
+                fuel -= FuelBurnRate * (1+connectedModules.Count) * Time.deltaTime;
                 foreach(ActionModule module in connectedModules)
                 {
                     module.HasPower = true;

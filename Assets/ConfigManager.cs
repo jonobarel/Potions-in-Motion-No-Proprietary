@@ -7,6 +7,5 @@ namespace com.baltamstudios.minebuddies
     public class ConfigManager : MonoBehaviour
     {
         public MineBuddiesConfigFile config;
-
     }
 }

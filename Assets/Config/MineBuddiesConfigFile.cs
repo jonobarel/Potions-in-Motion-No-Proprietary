@@ -8,11 +8,18 @@ namespace com.baltamstudios.minebuddies
     [CreateAssetMenu(fileName = "MineBuddiesConfig", menuName = "MineBuddies Config Asset", order = 0)]
     public class MineBuddiesConfigFile : ScriptableObject
     {
+        #region System Config
+        public bool UseRandomSeed;
+        public int RandomSeed;
+        #endregion
+
         #region Carriage parames
         [Header("Carriage parameters")]
+        [Range(1f, 100f)]
         public float MaxCarriageSpeed;
         public float HazardSlowDownFactor = 0.1f;
-        
+        [Range(0.1f, 10f)]
+        public float FuelBurnRateFactor = 1f;
 
         #endregion
         [Space]

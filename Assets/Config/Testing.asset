@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52119273ad38cdc45b9f1c6ae5dae59e, type: 3}
   m_Name: Testing
   m_EditorClassIdentifier: 
+  UseRandomSeed: 1
+  RandomSeed: 230708
   MaxCarriageSpeed: 3
   HazardSlowDownFactor: 0.1
-  HazardStartingDistance: 24.4
-  InitialDuration: 10
+  HazardStartingDistance: 5.9
+  InitialDuration: 900
   HazardProgressionRate: 1
   HazardFixProgressionRate: 0.1
   HazardDifficultyFactor: 1
