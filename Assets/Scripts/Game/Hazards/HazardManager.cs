@@ -19,6 +19,19 @@ namespace com.baltamstudios.minebuddies
         [SerializeField, Range(0f, 100f)]
         public float StartingDistance = 20f;
 
+
+        Stack<GameManager.HazardType> nextHazardGroup = new Stack<GameManager.HazardType>();
+        float nextHazardSpawn = 0f;
+
+        float MinDelay { get { return GameSystem.Instance.configManager.config.MinDelay; } }
+        float MaxDelay { get { return GameSystem.Instance.configManager.config.MaxDelay; } }
+        float diffA { get { return GameSystem.Instance.configManager.config.diffA; } }
+        float diffB { get { return GameSystem.Instance.configManager.config.diffB; } }
+        float HazardDist { get { return GameSystem.Instance.configManager.config.hazardDist; } }
+        float HazardDistOffset { get { return GameSystem.Instance.configManager.config.hazardDistOffset; } }
+
+        Coroutine hazardGeneratorCoroutine;
+
         [SerializeField]
         Hazard hazardPrefab;
         HazardIcons hazardIcons;
@@ -41,6 +54,49 @@ namespace com.baltamstudios.minebuddies
             }
 
             #endregion
+
+            CreateNextHazardGroup();
+        }
+
+        float HazardDifficultyFactor()
+        {
+            float x = Carriage.Instance.CarriageMovement.DistanceCovered;
+            return diffA*x+Mathf.Exp(diffB*x);
+        }
+        private void CreateNextHazardGroup()
+        {
+
+            //decide when the group will start arriving.
+            //size of group (factored by cart progress!)
+            //delay factor (actual delay will be randomized after each spawn, factored by cart progress)
+            //fill the array with random types.
+            //Wait until group starts arriving - start coroutine for spawning hazards.
+
+            float difficultyFactor = HazardDifficultyFactor();
+
+            float delay = (1f / difficultyFactor) * Random.Range(MinDelay, MaxDelay);
+            nextHazardSpawn = Carriage.Instance.CarriageMovement.DistanceCovered + delay;
+            
+            
+            int size = Random.Range(1, (int)difficultyFactor);
+            Debug.Log($"Next hazard group: {size} hazards starting at {nextHazardSpawn}");
+            for (int i = 0; i < size; i++)
+            {
+                nextHazardGroup.Push(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
+            }
+
+        }
+        void NextHazard()
+        {
+            if (nextHazardGroup.Count > 0)
+            {
+                Debug.Log($"Hazard {nextHazardGroup.Count} at {nextHazardSpawn}");
+                SpawnHazard(nextHazardGroup.Pop());
+                nextHazardSpawn+=HazardDist + Random.Range(-HazardDistOffset, HazardDistOffset);
+            }
+            if (nextHazardGroup.Count == 0)
+                CreateNextHazardGroup();
+
         }
 
         // Update is called once per frame
@@ -64,6 +120,11 @@ namespace com.baltamstudios.minebuddies
                     h.distanceSlider.value = newDistance / StartingDistance;
                 }
             }
+
+            if (Carriage.Instance.CarriageMovement.DistanceCovered > nextHazardSpawn)
+            {
+                NextHazard();
+            }
         }
 
         public Sprite GetIconForHazardType(GameManager.HazardType e)
@@ -73,12 +134,21 @@ namespace com.baltamstudios.minebuddies
 
         public void SpawnHazard()
         {
-            Hazard h = Instantiate(hazardPrefab, transform);
-            
-            h.SetDuration(configManager.config.InitialDuration);
-            h.SetType(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
-            h.name = $"Hazard-{h.type}";
-            hazardPositions.Add(h, StartingDistance);
+            SpawnHazard(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
         }
+
+        void SpawnHazard(GameManager.HazardType t, float duration = 0f, float startingDistance = 0f )
+        {
+            if (duration == 0f) duration = configManager.config.InitialDuration;
+            if (startingDistance == 0f) startingDistance = configManager.config.HazardStartingDistance;
+
+            Hazard h = Instantiate(hazardPrefab, transform);
+            h.SetDuration(duration);
+            h.SetType(t);
+            h.name = $"Hazard-{h.type}";
+            hazardPositions.Add(h, startingDistance);
+        }
+
+
     }
 }
