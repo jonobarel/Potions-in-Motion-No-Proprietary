@@ -9,11 +9,11 @@ namespace com.baltamstudios.minebuddies
     {
 
         [SerializeField]
-        float MaxFuel = 10f;
+        float MaxFuel { get { return GameSystem.Instance.configManager.config.FuelCapacity;  } }
         [SerializeField]
-        float PowerUnitBurnRate = 0.05f; //fuel consumption per second per power unit
+        float FuelBurnRate { get { return GameSystem.Instance.configManager.config.FuelBurnRateFactor; } }  //fuel consumption per second per power unit
         [SerializeField]
-        float FuelPerUnit = 2.5f; // the amount of fuel added to the engine for each Refueling resource.
+        float FuelPerUnit { get { return GameSystem.Instance.configManager.config.RefuelSize; } } // the amount of fuel added to the engine for each Refueling resource.
         [SerializeField]
         int MaxConnections = 4;
 
@@ -26,9 +26,12 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         float fuel;
 
-        public float Fuel { get { return fuel/MaxFuel; } }
+        bool isRefueling;
+        float refuelCooldownStatus;
 
-        int powerUnitsCapacity = 5;
+        Coroutine refuelRoutine;
+
+        public float FuelLevel { get { return fuel/MaxFuel; } }
 
         void Start()
         {
@@ -42,7 +45,7 @@ namespace com.baltamstudios.minebuddies
             
             if (fuel > 0)
             {
-                fuel -= PowerUnitBurnRate * connectedModules.Count * Time.deltaTime;
+                fuel -= FuelBurnRate * (1+connectedModules.Count) * Time.deltaTime;
                 foreach(ActionModule module in connectedModules)
                 {
                     module.HasPower = true;
@@ -54,6 +57,11 @@ namespace com.baltamstudios.minebuddies
                 {
                     module.HasPower = false ;
                 }
+            }
+            if (refuelCooldownStatus > 0)
+            {
+                refuelCooldownStatus -= Time.deltaTime;
+                refuelCooldownStatus = Mathf.Max(refuelCooldownStatus, 0);
             }
 
         }
@@ -80,7 +88,39 @@ namespace com.baltamstudios.minebuddies
 
         public override void Interact(bool isStart, Dwarf player)
         {
-            throw new System.NotImplementedException();
+            if (isStart)
+            {
+                if (!isRefueling && refuelCooldownStatus == 0)
+                {
+                    DoRefuel();
+                }
+                else Debug.Log($"{ player.name}: cannot refule. IsRefueling: {isRefueling}, cooldownTimer: {refuelCooldownStatus}s");
+
+            }
+        }
+
+        public void DoRefuel()
+        {
+            if (!isRefueling)
+            {
+                isRefueling = true;
+                float startFuelLevel = fuel;
+                float targetFuelLevel = Mathf.Min(fuel + FuelPerUnit, MaxFuel);
+                refuelRoutine = this.CreateAnimationRoutine(
+                    GameSystem.Instance.configManager.config.RefuelTime,
+                    delegate (float progress)
+                    {
+                        fuel = Mathf.Lerp(startFuelLevel, targetFuelLevel, progress);
+                    },
+                    delegate()
+                    {
+                        fuel = targetFuelLevel;
+                        isRefueling=false;
+                        refuelCooldownStatus = GameSystem.Instance.configManager.config.RefuelCooldownTime;
+                    }
+                    );
+
+            }
         }
     }
 }

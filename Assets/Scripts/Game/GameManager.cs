@@ -37,7 +37,12 @@ namespace com.baltamstudios.minebuddies
       
         int GetRandomSeed()
         {
-            return (int)(1000*Time.time);
+            ConfigManager configManager = FindObjectOfType<ConfigManager>();
+            if (configManager.config.UseRandomSeed)
+                return System.Guid.NewGuid().GetHashCode();
+            else if (configManager.config.RandomSeed != 0)
+                return configManager.config.RandomSeed;
+            else throw new System.ArgumentOutOfRangeException("Game set to use FIXED random seed but no random seed selected in config file");
         }
 
         // Update is called once per frame

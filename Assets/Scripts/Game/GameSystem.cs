@@ -29,7 +29,7 @@ namespace com.baltamstudios.minebuddies
             get { return configManager.config; }
         }
         */
-        private void Start()
+        private void Awake()
         {
             if (instance != null)
             {
