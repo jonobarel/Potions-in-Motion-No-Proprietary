@@ -70,5 +70,12 @@ namespace com.baltamstudios.minebuddies
         public float LadderWalkThreshold = 0.92f;
         public float LadderClimbThreshold = 0.45f;
         #endregion
+
+        #region Parallax background config
+        [Space]
+        [Range(0f, 1f)]
+        public float[] layersParallaxFactors;
+
+        #endregion
     }
 }

@@ -42,3 +42,8 @@ MonoBehaviour:
   ClimbSpeed: 3
   LadderWalkThreshold: 0.92
   LadderClimbThreshold: 0.45
+  layersParallaxFactors:
+  - 0
+  - 0.1
+  - 0.33
+  - 1
