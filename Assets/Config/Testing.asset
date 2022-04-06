@@ -20,6 +20,8 @@ MonoBehaviour:
   FuelBurnRateFactor: 1.4
   RefuelCooldownTime: 5
   RefuelTime: 0.5
+  FuelCapacity: 10
+  RefuelSize: 10
   HazardStartingDistance: 5.9
   InitialDuration: 900
   HazardProgressionRate: 1
@@ -34,3 +36,8 @@ MonoBehaviour:
   ClimbSpeed: 3
   LadderWalkThreshold: 0.92
   LadderClimbThreshold: 0.45
+  layersParallaxFactors:
+  - 0
+  - 0.1
+  - 0.33
+  - 1
