@@ -15,11 +15,19 @@ MonoBehaviour:
   UseRandomSeed: 1
   RandomSeed: 230708
   SliderUpdateDuration: 1
-  MaxCarriageSpeed: 3.18
-  HazardSlowDownFactor: 0.1
-  FuelBurnRateFactor: 1.4
+  MaxCarriageSpeed: 1.5
+  HazardSlowDownFactor: 0.25
+  FuelBurnRateFactor: 0.15
   RefuelCooldownTime: 5
   RefuelTime: 0.5
+  FuelCapacity: 10
+  RefuelSize: 11.8
+  MinDelay: 10
+  MaxDelay: 15
+  diffA: 0.05
+  diffB: 0.01
+  hazardDist: 5
+  hazardDistOffset: 2
   HazardStartingDistance: 5.9
   InitialDuration: 900
   HazardProgressionRate: 1

@@ -40,11 +40,13 @@ namespace com.baltamstudios.minebuddies
 
         public Hazard FindTop(GameManager.HazardType t)
         {
-            return
-                (from hazard in activeHazardsList
-                 where hazard.type == t
-                 orderby hazard.gameObject.transform.GetSiblingIndex() ascending 
-                 select hazard).First<Hazard>();
+            var h_list = (from hazard in activeHazardsList
+                     where hazard.type == t
+                     orderby hazard.gameObject.transform.GetSiblingIndex() ascending
+                     select hazard);
+            if (h_list.Count<Hazard>() == 0) return null;
+            else return h_list.First();
+            
                 
         }
 

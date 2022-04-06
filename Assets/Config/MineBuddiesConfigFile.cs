@@ -33,6 +33,14 @@ namespace com.baltamstudios.minebuddies
         public float RefuelSize = 10f;
         #endregion
         [Space]
+        [Header("Hazard spawning and difficulty parameters")]
+        public float MinDelay;
+        public float MaxDelay;
+        public float diffA = 0.3f;
+        public float diffB = 0.0075f;
+        public float hazardDist = 10f;
+        public float hazardDistOffset = 2f;
+        
 
         [Header("Hazard Parameters")]
         #region Hazard params
