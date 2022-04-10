@@ -12,9 +12,7 @@ namespace com.baltamstudios.minebuddies
         #region constants
         [SerializeField]
         float GroundDetection = 0.15f;
-        float GRAVITY = 9.8f;
         public float GravityScale = 1f;
-        float MaxFallSpeed = 10f;
         [Tooltip("Character's max horizontal velocity")]
         public float MaxVelocity = 0f;
         [SerializeField]

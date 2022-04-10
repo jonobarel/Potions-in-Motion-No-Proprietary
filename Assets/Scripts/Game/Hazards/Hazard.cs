@@ -25,7 +25,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField, Range(0,1f)]
         float fixProgress = 0f;
         [SerializeField]
-        float FixProgressionRate = 0.1f;
+        float FixProgressionRate { get { return GameSystem.Instance.configManager.config.HazardFixProgressionRate; } }
         
         float DifficultyFactor = 1f;
 

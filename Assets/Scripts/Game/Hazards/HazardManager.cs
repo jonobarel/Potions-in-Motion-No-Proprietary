@@ -55,7 +55,7 @@ namespace com.baltamstudios.minebuddies
 
             #endregion
 
-            CreateNextHazardGroup();
+            CreateNextHazardGroup(15f);
         }
 
         float HazardDifficultyFactor()
@@ -63,7 +63,7 @@ namespace com.baltamstudios.minebuddies
             float x = Carriage.Instance.CarriageMovement.DistanceCovered;
             return diffA*x+Mathf.Exp(diffB*x);
         }
-        private void CreateNextHazardGroup()
+        private void CreateNextHazardGroup(float requestedDelay = 0f)
         {
 
             //decide when the group will start arriving.
@@ -74,7 +74,10 @@ namespace com.baltamstudios.minebuddies
 
             float difficultyFactor = HazardDifficultyFactor();
 
-            float delay = (1f / difficultyFactor) * Random.Range(MinDelay, MaxDelay);
+            
+            float delay = (requestedDelay > 0f) ? requestedDelay : (1f / difficultyFactor) * Random.Range(MinDelay, MaxDelay);
+            
+            
             nextHazardSpawn = Carriage.Instance.CarriageMovement.DistanceCovered + delay;
             
             

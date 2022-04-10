@@ -49,7 +49,7 @@ namespace com.baltamstudios.minebuddies
         public float InitialDuration = 10f;
         public float HazardProgressionRate = 1f;
         [Space]
-        [Range(0f,2f)]
+        [Range(0f,10f)]
         public float HazardFixProgressionRate = 0.1f;
         public float HazardDifficultyFactor = 1f;
         #endregion
@@ -73,7 +73,7 @@ namespace com.baltamstudios.minebuddies
 
         #region Parallax background config
         [Space]
-        [Range(0f, 1f)]
+        [Range(0f, 5f)]
         public float[] layersParallaxFactors;
 
         #endregion

@@ -10,7 +10,7 @@ namespace com.baltamstudios.minebuddies
         
         public enum HazardType
         {
-            A, B, C, D
+            A, B, C, D, E, F
         }
 
         public List<HazardType> availableHazardTypes = new List<HazardType>();

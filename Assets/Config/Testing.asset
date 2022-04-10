@@ -17,21 +17,21 @@ MonoBehaviour:
   SliderUpdateDuration: 1
   MaxCarriageSpeed: 1.5
   HazardSlowDownFactor: 0.25
-  FuelBurnRateFactor: 0.15
+  FuelBurnRateFactor: 0.3
   RefuelCooldownTime: 5
   RefuelTime: 0.5
   FuelCapacity: 10
   RefuelSize: 11.8
-  MinDelay: 10
-  MaxDelay: 15
+  MinDelay: 50
+  MaxDelay: 75
   diffA: 0.05
   diffB: 0.01
   hazardDist: 5
   hazardDistOffset: 2
-  HazardStartingDistance: 5.9
-  InitialDuration: 900
+  HazardStartingDistance: 35
+  InitialDuration: 30
   HazardProgressionRate: 1
-  HazardFixProgressionRate: 0.1
+  HazardFixProgressionRate: 2
   HazardDifficultyFactor: 1
   GroundDetection: 0.15
   GravityScale: 3
@@ -47,3 +47,4 @@ MonoBehaviour:
   - 0.1
   - 0.33
   - 1
+  - 2
