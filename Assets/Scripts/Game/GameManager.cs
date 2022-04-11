@@ -6,8 +6,10 @@ namespace com.baltamstudios.minebuddies
 {
     public class GameManager : MonoBehaviour
     {
+
         //public List<Hazard> ActiveHazards { get { return GameSystem.Instance.hazardManager.ActiveHazards; } }
-        
+        public int RandomSeed;
+
         public enum HazardType
         {
             A, B, C, D, E, F
@@ -17,6 +19,11 @@ namespace com.baltamstudios.minebuddies
         public static GameManager Instance
         {
             get { return GameSystem.Instance.gameManager; }
+        }
+        private void Awake()
+        {
+            RandomSeed = GetRandomSeed();
+            Random.InitState(RandomSeed);
         }
         void Start()
         {
@@ -30,7 +37,7 @@ namespace com.baltamstudios.minebuddies
                 availableHazardTypes.Add(m.hazardType);
             }
 
-            Random.InitState(GetRandomSeed());
+            
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
         }
