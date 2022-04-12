@@ -11,6 +11,11 @@ namespace com.baltamstudios.minebuddies
         public PlayerManager playerManager;
         public ConfigManager configManager;
 
+        public static GameManager GameManager { get {return GameSystem.Instance.gameManager;} }
+        public static HazardManager HazardManager { get { return GameSystem.Instance.hazardManager;} }
+        public static PlayerManager PlayerManager { get { return GameSystem.Instance.playerManager;} }
+        public static ConfigManager ConfigManager { get { return GameSystem.Instance.configManager;} }
+
         static GameSystem instance;
         public static GameSystem Instance
         {

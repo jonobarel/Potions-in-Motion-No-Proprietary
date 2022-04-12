@@ -24,14 +24,14 @@ namespace com.baltamstudios.minebuddies
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log($"{collision.gameObject.name} approached {name}");
+                //Debug.Log($"{collision.gameObject.name} approached {name}");
             }
         }
         public void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                Debug.Log($"{collision.gameObject.name} moving away from {name}");
+                //Debug.Log($"{collision.gameObject.name} moving away from {name}");
             }
         }
     }

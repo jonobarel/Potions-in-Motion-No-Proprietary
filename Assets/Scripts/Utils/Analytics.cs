@@ -65,7 +65,7 @@ namespace com.baltamstudios
             cmnd.CommandText = $"INSERT INTO sessions (StartTime, RandomSeed) values (@time, @seed)";
             
             cmnd.Parameters.Add(new SqliteParameter("@time", TimeStamp));
-            cmnd.Parameters.Add(new SqliteParameter("@seed", minebuddies.GameManager.Instance.RandomSeed));
+            cmnd.Parameters.Add(new SqliteParameter("@seed", minebuddies.GameSystem.GameManager.RandomSeed));
             
             Debug.Log($"SQLite command: {cmnd.CommandText}, parameters: ");
             int written = cmnd.ExecuteNonQuery();

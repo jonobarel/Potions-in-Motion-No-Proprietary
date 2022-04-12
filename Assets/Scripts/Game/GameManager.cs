@@ -7,7 +7,7 @@ namespace com.baltamstudios.minebuddies
     public class GameManager : MonoBehaviour
     {
 
-        //public List<Hazard> ActiveHazards { get { return GameSystem.Instance.hazardManager.ActiveHazards; } }
+        
         public int RandomSeed;
 
         public enum HazardType
@@ -16,10 +16,6 @@ namespace com.baltamstudios.minebuddies
         }
 
         public List<HazardType> availableHazardTypes = new List<HazardType>();
-        public static GameManager Instance
-        {
-            get { return GameSystem.Instance.gameManager; }
-        }
         private void Awake()
         {
             RandomSeed = GetRandomSeed();

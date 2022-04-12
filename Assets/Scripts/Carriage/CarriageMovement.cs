@@ -31,7 +31,7 @@ namespace com.baltamstudios.minebuddies
             //let's set the speed as MaxSpeed - A*activeHazards*(1-damage)
             else if (Carriage.Instance.Engine.FuelLevel > 0)
             {
-                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - HazardSlowdownFactor * HazardManager.Instance.ActiveHazards.Count;
+                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - HazardSlowdownFactor * GameSystem.HazardManager.ActiveHazards.Count;
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
                 return speed;
             }

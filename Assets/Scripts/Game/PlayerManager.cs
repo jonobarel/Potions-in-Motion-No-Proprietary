@@ -7,7 +7,7 @@ namespace com.baltamstudios.minebuddies
 {
     public class PlayerManager : MonoBehaviour
     {
-        public static PlayerManager Instance { get { return GameSystem.Instance.playerManager; } }
+        //public static PlayerManager Instance { get { return GameSystem.Instance.playerManager; } }
 
         [SerializeField]
         GameObject[] playerStartPositions;

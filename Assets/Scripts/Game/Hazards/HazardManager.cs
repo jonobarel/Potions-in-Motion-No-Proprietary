@@ -7,7 +7,6 @@ namespace com.baltamstudios.minebuddies
     [RequireComponent(typeof(HazardIcons))]
     public class HazardManager : MonoBehaviour
     {
-        public static HazardManager Instance { get { return GameSystem.Instance.hazardManager; } }
         private ActiveHazards activeHazards;
         public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
 
@@ -85,7 +84,7 @@ namespace com.baltamstudios.minebuddies
             Debug.Log($"Next hazard group: {size} hazards starting at {nextHazardSpawn}");
             for (int i = 0; i < size; i++)
             {
-                nextHazardGroup.Push(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
+                nextHazardGroup.Push(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
             }
 
         }
@@ -137,7 +136,7 @@ namespace com.baltamstudios.minebuddies
 
         public void SpawnHazard()
         {
-            SpawnHazard(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
+            SpawnHazard(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
         }
 
         void SpawnHazard(GameManager.HazardType t, float duration = 0f, float startingDistance = 0f )
