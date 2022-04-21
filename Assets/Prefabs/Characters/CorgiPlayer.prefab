@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 198040215599500778}
   - component: {fileID: 6187941471528929753}
   - component: {fileID: 2745451928546350643}
+  - component: {fileID: 5713888851349271596}
   m_Layer: 9
   m_Name: CorgiPlayer
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241149926137111592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.000001}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -499,6 +500,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5713888851349271596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241149926137111592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  InitialWeapon: {fileID: 114000011754806948, guid: 5df1e0f9c42e4fb459672d848b9e44a6,
+    type: 3}
+  CanPickupWeapons: 0
+  WeaponAttachment: {fileID: 241149926137111604}
+  ForceWeaponScaleResetOnEquip: 0
+  ForceWeaponRotationResetOnEquip: 0
+  AutomaticallyBindAnimator: 1
+  AmmoDisplayID: 0
+  ContinuousPress: 0
+  GettingHitInterruptsAttack: 0
+  CanShootFromLadders: 0
+  FaceWeaponDirection: 0
+  InvertHorizontalAimWhenWallclinging: 0
+  BufferInput: 0
+  NewInputExtendsBuffer: 0
+  MaximumBufferDuration: 0.25
+  CurrentWeapon: {fileID: 0}
 --- !u!1 &4906903423459628154
 GameObject:
   m_ObjectHideFlags: 0
