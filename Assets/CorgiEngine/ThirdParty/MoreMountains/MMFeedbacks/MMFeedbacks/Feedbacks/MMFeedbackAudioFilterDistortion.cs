@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackHelp("This feedback lets you control a distortion audio filter over time. You'll need a MMAudioFilterDistortionShaker on the filter.")]
     public class MMFeedbackAudioFilterDistortion : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SoundsColor; } }
@@ -57,21 +59,23 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                float remapZero = 0f;
-                float remapOne = 0f;
-                
-                if (!Timing.ConstantIntensity)
-                {
-                    remapZero = RemapDistortionZero * intensityMultiplier;
-                    remapOne = RemapDistortionOne * intensityMultiplier;
-                }
-                
-                MMAudioFilterDistortionShakeEvent.Trigger(ShakeDistortion, FeedbackDuration, remapZero, remapOne, RelativeDistortion,
-                    intensityMultiplier, Channel, ResetShakerValuesAfterShake, ResetTargetValuesAfterShake, NormalPlayDirection, Timing.TimescaleMode);
+                return;
             }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            float remapZero = 0f;
+            float remapOne = 0f;
+            
+            if (!Timing.ConstantIntensity)
+            {
+                remapZero = RemapDistortionZero * intensityMultiplier;
+                remapOne = RemapDistortionOne * intensityMultiplier;
+            }
+            
+            MMAudioFilterDistortionShakeEvent.Trigger(ShakeDistortion, FeedbackDuration, remapZero, remapOne, RelativeDistortion,
+                intensityMultiplier, Channel, ResetShakerValuesAfterShake, ResetTargetValuesAfterShake, NormalPlayDirection, Timing.TimescaleMode);
         }
         
         /// <summary>
@@ -82,10 +86,12 @@ namespace MoreMountains.Feedbacks
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
             base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active)
+            
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                MMAudioFilterDistortionShakeEvent.Trigger(ShakeDistortion, FeedbackDuration, 0f,0f, stop:true);
+                return;
             }
+            MMAudioFilterDistortionShakeEvent.Trigger(ShakeDistortion, FeedbackDuration, 0f,0f, stop:true);
         }
     }
 }

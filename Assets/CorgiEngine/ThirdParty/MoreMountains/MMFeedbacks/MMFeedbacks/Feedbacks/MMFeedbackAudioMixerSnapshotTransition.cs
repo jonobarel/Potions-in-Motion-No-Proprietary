@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Audio/AudioMixer Snapshot Transition")]
     public class MMFeedbackAudioMixerSnapshotTransition : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.UIColor; } }
         #endif
@@ -35,7 +37,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (!Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }

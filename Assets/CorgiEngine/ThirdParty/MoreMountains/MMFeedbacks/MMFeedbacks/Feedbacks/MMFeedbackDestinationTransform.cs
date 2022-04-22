@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Transform/Destination")]
     public class MMFeedbackDestinationTransform : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the possible timescales this feedback can animate on
         public enum TimeScales { Scaled, Unscaled }
         /// sets the inspector color for this feedback
@@ -130,10 +132,11 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetTransform != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetTransform == null))
             {
-                _coroutine = StartCoroutine(AnimateToDestination());
+                return;
             }
+            _coroutine = StartCoroutine(AnimateToDestination());
         }
 
         /// <summary>
@@ -163,7 +166,8 @@ namespace MoreMountains.Feedbacks
             if (!AnimateScaleX) { _pointAScale.x = TargetTransform.localScale.x; _pointBScale.x = _pointAScale.x; }
             if (!AnimateScaleY) { _pointAScale.y = TargetTransform.localScale.y; _pointBScale.y = _pointAScale.y; }
             if (!AnimateScaleZ) { _pointAScale.z = TargetTransform.localScale.z; _pointBScale.z = _pointAScale.z; }
-            
+
+            IsPlaying = true;
             float journey = NormalPlayDirection ? 0f : Duration;
             while ((journey >= 0) && (journey <= Duration) && (Duration > 0))
             {
@@ -209,7 +213,7 @@ namespace MoreMountains.Feedbacks
                     TargetTransform.localScale = _pointAScale;
                 }    
             }
-            
+            IsPlaying = false;
             _coroutine = null;
             yield break;
         }
@@ -221,9 +225,15 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
+            
             base.CustomStopFeedback(position, feedbacksIntensity);
-
-            if (Active && (TargetTransform != null) && (_coroutine != null))
+            IsPlaying = false;
+            
+            if ((TargetTransform != null) && (_coroutine != null))
             {
                 StopCoroutine(_coroutine);
             }

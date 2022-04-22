@@ -16,6 +16,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackHelp("This feedback will let you trigger save, load, and reset on MMSoundManager settings. You will need a MMSoundManager in your scene for this to work.")]
     public class MMFeedbackMMSoundManagerSaveLoad : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
             public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SoundsColor; } }
@@ -36,20 +38,22 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                switch (Mode)
-                {
-                    case Modes.Save:
-                        MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.SaveSettings);
-                        break;
-                    case Modes.Load:
-                        MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.LoadSettings);
-                        break;
-                    case Modes.Reset:
-                        MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.ResetSettings);
-                        break;
-                }
+                return;
+            }
+            
+            switch (Mode)
+            {
+                case Modes.Save:
+                    MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.SaveSettings);
+                    break;
+                case Modes.Load:
+                    MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.LoadSettings);
+                    break;
+                case Modes.Reset:
+                    MMSoundManagerEvent.Trigger(MMSoundManagerEventTypes.ResetSettings);
+                    break;
             }
         }
     }

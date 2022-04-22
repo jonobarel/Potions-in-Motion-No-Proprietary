@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("UI/Image")]
     public class MMFeedbackImage : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
 #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.UIColor; } }
@@ -111,31 +113,33 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                Turn(true);
-                switch (Mode)
-                {
-                    case Modes.Instant:
-                        if (ModifyColor)
-                        {
-                            BoundImage.color = InstantColor;
-                        }
-                        break;
-                    case Modes.OverTime:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(ImageSequence());
-                        break;
-                    case Modes.ShakerEvent:
-                        /*MMImageShakeEvent.Trigger(Duration, ModifyColor, ColorOverTime, 
-                            feedbacksIntensity,
-                            Channel, ResetShakerValuesAfterShake, ResetTargetValuesAfterShake,
-                            UseRange, EventRange, EventOriginTransform.position);*/
-                        break;
-                }
+                return;
+            }
+        
+            Turn(true);
+            switch (Mode)
+            {
+                case Modes.Instant:
+                    if (ModifyColor)
+                    {
+                        BoundImage.color = InstantColor;
+                    }
+                    break;
+                case Modes.OverTime:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(ImageSequence());
+                    break;
+                case Modes.ShakerEvent:
+                    /*MMImageShakeEvent.Trigger(Duration, ModifyColor, ColorOverTime, 
+                        feedbacksIntensity,
+                        Channel, ResetShakerValuesAfterShake, ResetTargetValuesAfterShake,
+                        UseRange, EventRange, EventOriginTransform.position);*/
+                    break;
             }
         }
 
@@ -147,6 +151,7 @@ namespace MoreMountains.Feedbacks
         {
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
 
+            IsPlaying = true;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float remappedTime = MMFeedbacksHelpers.Remap(journey, 0f, FeedbackDuration, 0f, 1f);
@@ -161,6 +166,7 @@ namespace MoreMountains.Feedbacks
             {
                 Turn(false);
             }
+            IsPlaying = false;
             _coroutine = null;
             yield return null;
         }
@@ -184,11 +190,14 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
-            base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                Turn(false);
+                return;
             }
+            IsPlaying = false;
+            base.CustomStopFeedback(position, feedbacksIntensity);
+            Turn(false);
+            _coroutine = null;
         }
 
         /// <summary>

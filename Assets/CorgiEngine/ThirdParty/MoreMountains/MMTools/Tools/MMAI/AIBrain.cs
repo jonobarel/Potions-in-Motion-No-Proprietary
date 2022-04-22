@@ -10,10 +10,14 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/AI/AIBrain")]
     public class AIBrain : MonoBehaviour
     {
-        /// the collection of states
-        public List<AIState> States;
+        [Header("Debug")]
         /// whether or not this brain is active
         public bool BrainActive = true;
+        /// the owner of that AI Brain, usually the associated character
+        [MMReadOnly]
+        public GameObject Owner;
+        /// the collection of states
+        public List<AIState> States;
         /// this brain's current state
         public AIState CurrentState { get; protected set; }
         /// the time we've spent in the current state

@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/MMFeedbacks")]
     public class MMFeedbackFeedbacks : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the duration of this feedback is the duration of the light, or 0 if instant
         public override float FeedbackDuration { get { return 0f; } }
         /// sets the inspector color for this feedback
@@ -54,10 +56,11 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                MMFeedbacksShakeEvent.Trigger(Channel, UseRange, EventRange, EventOriginTransform.position);
+                return;
             }
+            MMFeedbacksShakeEvent.Trigger(Channel, UseRange, EventRange, EventOriginTransform.position);
         }
     }
 }

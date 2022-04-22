@@ -36,10 +36,12 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                StartCoroutine(PlayPause());
+                return;
             }
+            
+            StartCoroutine(PlayPause());
         }
 
     }

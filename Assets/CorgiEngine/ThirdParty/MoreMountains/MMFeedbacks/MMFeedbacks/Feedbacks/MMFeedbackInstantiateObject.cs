@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/Instantiate Object")]
     public class MMFeedbackInstantiateObject : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the different ways to position the instantiated object :
         /// - FeedbackPosition : object will be instantiated at the position of the feedback, plus an optional offset
         /// - Transform : the object will be instantiated at the specified Transform's position, plus an optional offset
@@ -68,7 +70,7 @@ namespace MoreMountains.Feedbacks
         [MMFCondition("CreateObjectPool", true)] 
         public bool MutualizePools = false;
 
-        protected MMMiniObjectPooler _objectPool; 
+        protected MMMiniObjectPooler _objectPooler; 
         protected GameObject _newGameObject;
         protected bool _poolCreatedOrFound = false;
 
@@ -82,30 +84,21 @@ namespace MoreMountains.Feedbacks
 
             if (Active && CreateObjectPool && !_poolCreatedOrFound)
             {
-                if (_objectPool != null)
+                if (_objectPooler != null)
                 {
-                    _objectPool.DestroyObjectPool();
-                    Destroy(_objectPool.gameObject);
-                }
-
-                if (MutualizePools)
-                {
-                    MMMiniObjectPooler pooler = MMMiniObjectPooler.ExistingPooler(GameObjectToInstantiate);
-                    if (pooler != null)
-                    {
-                        _objectPool = pooler;
-                        _poolCreatedOrFound = true;
-                        return;
-                    }
+                    _objectPooler.DestroyObjectPool();
+                    Destroy(_objectPooler.gameObject);
                 }
 
                 GameObject objectPoolGo = new GameObject();
                 objectPoolGo.name = this.name+"_ObjectPooler";
-                _objectPool = objectPoolGo.AddComponent<MMMiniObjectPooler>();
-                _objectPool.GameObjectToPool = GameObjectToInstantiate;
-                _objectPool.PoolSize = ObjectPoolSize;
-                _objectPool.FillObjectPool();
-                if (owner != null)
+                _objectPooler = objectPoolGo.AddComponent<MMMiniObjectPooler>();
+                _objectPooler.GameObjectToPool = GameObjectToInstantiate;
+                _objectPooler.PoolSize = ObjectPoolSize;
+                _objectPooler.transform.SetParent(this.transform);
+                _objectPooler.MutualizeWaitingPools = MutualizePools;
+                _objectPooler.FillObjectPool();
+                if ((owner != null) && (objectPoolGo.transform.parent == null))
                 {
                     SceneManager.MoveGameObjectToScene(objectPoolGo, owner.scene);    
                 }
@@ -120,25 +113,27 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (GameObjectToInstantiate != null))
+            if (!Active || !FeedbackTypeAuthorized || (GameObjectToInstantiate == null))
             {
-                if (_objectPool != null)
+                return;
+            }
+            
+            if (_objectPooler != null)
+            {
+                _newGameObject = _objectPooler.GetPooledGameObject();
+                if (_newGameObject != null)
                 {
-                    _newGameObject = _objectPool.GetPooledGameObject();
-                    if (_newGameObject != null)
-                    {
-                        PositionObject(position);
-                        _newGameObject.SetActive(true);
-                    }
+                    PositionObject(position);
+                    _newGameObject.SetActive(true);
                 }
-                else
+            }
+            else
+            {
+                _newGameObject = GameObject.Instantiate(GameObjectToInstantiate) as GameObject;
+                if (_newGameObject != null)
                 {
-                    _newGameObject = GameObject.Instantiate(GameObjectToInstantiate) as GameObject;
-                    if (_newGameObject != null)
-                    {
-                        SceneManager.MoveGameObjectToScene(_newGameObject, this.gameObject.scene);
-                        PositionObject(position);    
-                    }
+                    SceneManager.MoveGameObjectToScene(_newGameObject, this.gameObject.scene);
+                    PositionObject(position);    
                 }
             }
         }

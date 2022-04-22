@@ -19,7 +19,6 @@ namespace MoreMountains.Feedbacks
     /// You can either use it on its own, or bind it from another class and trigger it from there.
     /// </summary>
     [AddComponentMenu("More Mountains/Feedbacks/MMFeedbacks")]
-    [DisallowMultipleComponent]
     public class MMFeedbacks : MonoBehaviour
     {
         /// the possible directions MMFeedbacks can be played
@@ -57,6 +56,14 @@ namespace MoreMountains.Feedbacks
         /// whether or not to play this feedbacks automatically on Enable
         [Tooltip("whether or not to play this feedbacks automatically on Enable")]
         public bool AutoPlayOnEnable = false;
+
+        /// if this is true, all feedbacks within that player will work on the specified ForcedTimescaleMode, regardless of their individual settings 
+        [Tooltip("if this is true, all feedbacks within that player will work on the specified ForcedTimescaleMode, regardless of their individual settings")] 
+        public bool ForceTimescaleMode = false;
+        /// the time scale mode all feedbacks on this player should work on, if ForceTimescaleMode is true
+        [Tooltip("the time scale mode all feedbacks on this player should work on, if ForceTimescaleMode is true")] 
+        [MMFCondition("ForceTimescaleMode", true)]
+        public TimescaleModes ForcedTimescaleMode = TimescaleModes.Unscaled;
         /// a time multiplier that will be applied to all feedback durations (initial delay, duration, delay between repeats...)
         [Tooltip("a time multiplier that will be applied to all feedback durations (initial delay, duration, delay between repeats...)")]
         public float DurationMultiplier = 1f;
@@ -73,6 +80,10 @@ namespace MoreMountains.Feedbacks
         /// if this is true, you'll be able to trigger a new Play while this feedback is already playing, otherwise you won't be able to
         [Tooltip("if this is true, you'll be able to trigger a new Play while this feedback is already playing, otherwise you won't be able to")]
         public bool CanPlayWhileAlreadyPlaying = true;
+        /// the chance of this sequence happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)
+        [Tooltip("the chance of this sequence happening (in percent : 100 : happens all the time, 0 : never happens, 50 : happens once every two calls, etc)")]
+        [Range(0,100)]
+        public float ChanceToPlay = 100f;
         
         /// the intensity at which to play this feedback. That value will be used by most feedbacks to tune their amplitude. 1 is normal, 0.5 is half power, 0 is no effect.
         /// Note that what this value controls depends from feedback to feedback, don't hesitate to check the code to see what it does exactly.  
@@ -94,14 +105,18 @@ namespace MoreMountains.Feedbacks
         /// whether or not this MMFeedbacks is playing right now - meaning it hasn't been stopped yet.
         /// if you don't stop your MMFeedbacks it'll remain true of course
         public bool IsPlaying { get; protected set; }
+        /// if this MMFeedbacks is playing the time since it started playing
+        public float ElapsedTime => IsPlaying ? Time.unscaledTime - _lastStartAt : 0f;
+        /// the amount of times this MMFeedbacks has been played
+        public int TimesPlayed { get; protected set; }
         /// whether or not the execution of this MMFeedbacks' sequence is being prevented and waiting for a Resume() call
         public bool InScriptDrivenPause { get; set; }
         /// true if this MMFeedbacks contains at least one loop
         public bool ContainsLoop { get; set; }
+        /// true if this feedback should change play direction next time it's played
         public bool ShouldRevertOnNextPlay { get; set; }
-
         /// The total duration (in seconds) of all the active feedbacks in this MMFeedbacks
-        public float TotalDuration
+        public virtual float TotalDuration
         {
             get
             {
@@ -125,6 +140,7 @@ namespace MoreMountains.Feedbacks
         protected float _lastStartAt = -float.MaxValue;
         protected bool _pauseFound = false;
         protected float _totalDuration = 0f;
+        protected bool _shouldStop = false;
 
         #region INITIALIZATION
 
@@ -199,6 +215,7 @@ namespace MoreMountains.Feedbacks
             }
 
             IsPlaying = false;
+            TimesPlayed = 0;
             _lastStartAt = -float.MaxValue;
 
             for (int i = 0; i < Feedbacks.Count; i++)
@@ -333,6 +350,11 @@ namespace MoreMountains.Feedbacks
                 return;
             }
 
+            if (!EvaluateChance())
+            {
+                return;
+            }
+
             // if we have a cooldown we prevent execution if needed
             if (CooldownDuration > 0f)
             {
@@ -366,6 +388,7 @@ namespace MoreMountains.Feedbacks
             
             ResetFeedbacks();
             this.enabled = true;
+            TimesPlayed++;
             IsPlaying = true;
             _startTime = Time.unscaledTime;
             _lastStartAt = _startTime;
@@ -436,16 +459,25 @@ namespace MoreMountains.Feedbacks
         
         protected virtual void Update()
         {
+	        if (_shouldStop)
+            {
+                if (HasFeedbackStillPlaying())
+                {
+                    return;
+                }
+                IsPlaying = false;
+                Events.TriggerOnComplete(this);
+                ApplyAutoRevert();
+                this.enabled = false;
+                _shouldStop = false;
+            }
             if (IsPlaying)
             {
                 if (!_pauseFound)
                 {
-                    if (Time.unscaledTime - _startTime >= _totalDuration)
+                    if (Time.unscaledTime - _startTime > _totalDuration)
                     {
-                        IsPlaying = false;
-                        Events.TriggerOnComplete(this);
-                        ApplyAutoRevert();
-                        this.enabled = false;
+                        _shouldStop = true;
                     }    
                 }
             }
@@ -453,6 +485,23 @@ namespace MoreMountains.Feedbacks
             {
                 this.enabled = false;
             }
+        }
+
+        /// <summary>
+        /// Returns true if feedbacks are still playing
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool HasFeedbackStillPlaying()
+        {
+            int count = Feedbacks.Count;
+            for (int i = 0; i < count; i++)
+            {
+                if (Feedbacks[i].IsPlaying)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -605,6 +654,12 @@ namespace MoreMountains.Feedbacks
             {
                 yield return null;
             }
+            
+            while (HasFeedbackStillPlaying())
+            {
+                yield return null;
+            }
+            
             IsPlaying = false;
             Events.TriggerOnComplete(this);
             ApplyAutoRevert();
@@ -745,6 +800,29 @@ namespace MoreMountains.Feedbacks
         #endregion MODIFICATION
 
         #region HELPERS
+
+        /// <summary>
+        /// Evaluates the chance of this feedback to play, and returns true if this feedback can play, false otherwise
+        /// </summary>
+        /// <returns></returns>
+        protected virtual bool EvaluateChance()
+        {
+            if (ChanceToPlay == 0f)
+            {
+                return false;
+            }
+            if (ChanceToPlay != 100f)
+            {
+                // determine the odds
+                float random = Random.Range(0f, 100f);
+                if (random > ChanceToPlay)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
         
         /// <summary>
         /// Checks whether or not this MMFeedbacks contains one or more looper feedbacks

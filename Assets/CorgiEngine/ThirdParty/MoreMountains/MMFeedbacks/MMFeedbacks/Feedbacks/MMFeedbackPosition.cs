@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Transform/Position")]
     public class MMFeedbackPosition : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TransformColor; } }
@@ -42,7 +44,7 @@ namespace MoreMountains.Feedbacks
         /// the acceleration of the movement
         [Tooltip("the acceleration of the movement")]
         [MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.ToDestination)]
-        public AnimationCurve AnimatePositionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.1f, 0.05f), new Keyframe(0.9f, 0.95f), new Keyframe(1, 1));
+        public AnimationCurve AnimatePositionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
         /// the value to remap the curve's 0 value to
         [MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
         [Tooltip("the value to remap the curve's 0 value to")]
@@ -174,43 +176,45 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (AnimatePositionTarget != null))
+            if (!Active || !FeedbackTypeAuthorized || (AnimatePositionTarget == null))
             {
-                if (isActiveAndEnabled || _hostMMFeedbacks.AutoPlayOnEnable)
+                return;
+            }
+            
+            if (isActiveAndEnabled || _hostMMFeedbacks.AutoPlayOnEnable)
+            {
+                if (DeterminePositionsOnPlay && NormalPlayDirection)
                 {
-                    if (DeterminePositionsOnPlay && NormalPlayDirection)
-                    {
-                        DeterminePositions();
-                    }
-                    
-                    switch (Mode)
-                    {
-                        case Modes.ToDestination:
-                            _initialPosition = GetPosition(AnimatePositionTarget.transform);
-                            _destinationPosition = RelativePosition ? _initialPosition + DestinationPosition : DestinationPosition;
-                            if (DestinationPositionTransform != null)
-                            {
-                                _destinationPosition = GetPosition(DestinationPositionTransform);
-                            }
-                            _coroutine = StartCoroutine(MoveFromTo(AnimatePositionTarget, _initialPosition, _destinationPosition, FeedbackDuration, AnimatePositionCurve));
-                            break;
-                        case Modes.AtoB:
-                            if (!AllowAdditivePlays && (_coroutine != null))
-                            {
-                                return;
-                            }
-                            _coroutine = StartCoroutine(MoveFromTo(AnimatePositionTarget, InitialPosition, DestinationPosition, FeedbackDuration, AnimatePositionCurve));
-                            break;
-                        case Modes.AlongCurve:
-                            if (!AllowAdditivePlays && (_coroutine != null))
-                            {
-                                return;
-                            }
-                            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                            _coroutine = StartCoroutine(MoveAlongCurve(AnimatePositionTarget, InitialPosition, FeedbackDuration, intensityMultiplier));
-                            break;
-                    }                    
+                    DeterminePositions();
                 }
+                
+                switch (Mode)
+                {
+                    case Modes.ToDestination:
+                        _initialPosition = GetPosition(AnimatePositionTarget.transform);
+                        _destinationPosition = RelativePosition ? _initialPosition + DestinationPosition : DestinationPosition;
+                        if (DestinationPositionTransform != null)
+                        {
+                            _destinationPosition = GetPosition(DestinationPositionTransform);
+                        }
+                        _coroutine = StartCoroutine(MoveFromTo(AnimatePositionTarget, _initialPosition, _destinationPosition, FeedbackDuration, AnimatePositionCurve));
+                        break;
+                    case Modes.AtoB:
+                        if (!AllowAdditivePlays && (_coroutine != null))
+                        {
+                            return;
+                        }
+                        _coroutine = StartCoroutine(MoveFromTo(AnimatePositionTarget, InitialPosition, DestinationPosition, FeedbackDuration, AnimatePositionCurve));
+                        break;
+                    case Modes.AlongCurve:
+                        if (!AllowAdditivePlays && (_coroutine != null))
+                        {
+                            return;
+                        }
+                        float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+                        _coroutine = StartCoroutine(MoveAlongCurve(AnimatePositionTarget, InitialPosition, FeedbackDuration, intensityMultiplier));
+                        break;
+                }                    
             }
         }
 
@@ -225,6 +229,7 @@ namespace MoreMountains.Feedbacks
         /// <returns></returns>
         protected virtual IEnumerator MoveAlongCurve(GameObject movingObject, Vector3 initialPosition, float duration, float intensityMultiplier)
         {
+            IsPlaying = true;
             float journey = NormalPlayDirection ? 0f : duration;
             while ((journey >= 0) && (journey <= duration) && (duration > 0))
             {
@@ -244,6 +249,7 @@ namespace MoreMountains.Feedbacks
             }
             ComputeNewCurvePosition(movingObject, initialPosition, FinalNormalizedTime, intensityMultiplier);
             _coroutine = null;
+            IsPlaying = false;
             yield break;
         }
 
@@ -291,6 +297,7 @@ namespace MoreMountains.Feedbacks
 		/// <param name="duration">Time.</param>
 		protected virtual IEnumerator MoveFromTo(GameObject movingObject, Vector3 pointA, Vector3 pointB, float duration, AnimationCurve curve = null)
         {
+            IsPlaying = true;
             float journey = NormalPlayDirection ? 0f : duration;
             while ((journey >= 0) && (journey <= duration) && (duration > 0))
             {
@@ -321,6 +328,7 @@ namespace MoreMountains.Feedbacks
                 SetPosition(movingObject.transform, pointA);
             }
             _coroutine = null;
+            IsPlaying = false;
              yield break;
         }
 
@@ -371,11 +379,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (_coroutine != null))
+            if (!Active || !FeedbackTypeAuthorized || (_coroutine == null))
             {
-                StopCoroutine(_coroutine);
-                _coroutine = null;
+                return;
             }
+            IsPlaying = false;
+            StopCoroutine(_coroutine);
+            _coroutine = null;
         }
 
         /// <summary>

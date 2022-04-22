@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/Set Active")]
     public class MMFeedbackSetActive : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.GameObjectColor; } }
@@ -78,12 +80,14 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetGameObject != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetGameObject == null))
             {
-                if (SetStateOnPlay)
-                {
-                    SetStatus(StateOnPlay);
-                }
+                return;
+            }
+            
+            if (SetStateOnPlay)
+            {
+                SetStatus(StateOnPlay);
             }
         }
 
@@ -96,7 +100,7 @@ namespace MoreMountains.Feedbacks
         {
             base.CustomStopFeedback(position, feedbacksIntensity);
 
-            if (Active && (TargetGameObject != null))
+            if (Active && FeedbackTypeAuthorized && (TargetGameObject != null))
             {
                 if (SetStateOnStop)
                 {
@@ -117,7 +121,7 @@ namespace MoreMountains.Feedbacks
                 return;
             }
 
-            if (Active && (TargetGameObject != null))
+            if (Active && FeedbackTypeAuthorized && (TargetGameObject != null))
             {
                 if (SetStateOnReset)
                 {

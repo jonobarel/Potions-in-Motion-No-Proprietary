@@ -169,23 +169,37 @@ namespace MoreMountains.Tools
         
         [Header("Identification")]
         /// the ID for this fader (0 is default), set more IDs if you need more than one fader
+        [Tooltip("the ID for this fader (0 is default), set more IDs if you need more than one fader")]
         public int ID;
+        
         [Header("Opacity")]
         /// the opacity the fader should be at when inactive
+        [Tooltip("the opacity the fader should be at when inactive")]
         public float InactiveAlpha = 0f;
         /// the opacity the fader should be at when active
+        [Tooltip("the opacity the fader should be at when active")]
         public float ActiveAlpha = 1f;
         /// determines whether a state should be forced on init
+        [Tooltip("determines whether a state should be forced on init")]
         public ForcedInitStates ForcedInitState = ForcedInitStates.Inactive;
+        
         [Header("Timing")]
         /// the default duration of the fade in/out
+        [Tooltip("the default duration of the fade in/out")]
         public float DefaultDuration = 0.2f;
         /// the default curve to use for this fader
+        [Tooltip("the default curve to use for this fader")]
         public MMTweenType DefaultTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
-        /// whether or not the fade should happen in unscaled time 
+        /// whether or not the fade should happen in unscaled time
+        [Tooltip("whether or not the fade should happen in unscaled time")] 
         public bool IgnoreTimescale = true;
+        /// whether or not this fader can cause a fade if the requested final alpha is the same as the current one
+        [Tooltip("whether or not this fader can cause a fade if the requested final alpha is the same as the current one")] 
+        public bool CanFadeToCurrentAlpha = true;
+
         [Header("Interaction")]
         /// whether or not the fader should block raycasts when visible
+        [Tooltip("whether or not the fader should block raycasts when visible")]
         public bool ShouldBlockRaycasts = false;
 
         [Header("Debug")]
@@ -366,6 +380,12 @@ namespace MoreMountains.Tools
             {
                 return;
             }
+
+            if ((!CanFadeToCurrentAlpha) && (_canvasGroup.alpha == endAlpha))
+            {
+                return;
+            }
+            
             IgnoreTimescale = ignoreTimeScale;
             EnableFader();
             _fading = true;

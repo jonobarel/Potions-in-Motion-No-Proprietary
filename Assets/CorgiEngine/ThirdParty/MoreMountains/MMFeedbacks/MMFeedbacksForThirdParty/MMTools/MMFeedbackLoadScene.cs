@@ -14,6 +14,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Scene/Load Scene")]
     public class MMFeedbackLoadScene : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
             public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SceneColor; } }
@@ -90,6 +92,10 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
             switch (LoadingMode)
             {
                 case LoadingModes.Direct:

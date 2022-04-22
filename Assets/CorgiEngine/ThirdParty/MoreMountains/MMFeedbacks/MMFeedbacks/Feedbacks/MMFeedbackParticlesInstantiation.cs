@@ -14,6 +14,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Particles/Particles Instantiation")]
     public class MMFeedbackParticlesInstantiation : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.ParticlesColor; } }
@@ -82,12 +84,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="owner"></param>
         protected override void CustomInitialization(GameObject owner)
         {
-            if (Active)
+            if (!Active)
             {
-                if (Mode == Modes.Cached)
-                {
-                    InstantiateParticleSystem();
-                }
+                return;
+            }
+            if (Mode == Modes.Cached)
+            {
+                InstantiateParticleSystem();
             }
         }
 
@@ -270,7 +273,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (!Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }
@@ -315,7 +318,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (!Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }
@@ -338,8 +341,8 @@ namespace MoreMountains.Feedbacks
         protected override void CustomReset()
         {
             base.CustomReset();
-
-            if (!Active)
+            
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }

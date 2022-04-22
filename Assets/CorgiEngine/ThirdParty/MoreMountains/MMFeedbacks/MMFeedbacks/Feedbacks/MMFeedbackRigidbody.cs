@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/Rigidbody")]
     public class MMFeedbackRigidbody : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.GameObjectColor; } }
@@ -44,32 +46,34 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetRigidbody != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetRigidbody == null))
             {
-                _force.x = Random.Range(MinForce.x, MaxForce.x);
-                _force.y = Random.Range(MinForce.y, MaxForce.y);
-                _force.z = Random.Range(MinForce.z, MaxForce.z);
+                return;
+            }
 
-                if (!Timing.ConstantIntensity)
-                {
-                    _force *= feedbacksIntensity;
-                }
-                
-                switch (Mode)
-                {
-                    case Modes.AddForce:
-                        TargetRigidbody.AddForce(_force, AppliedForceMode);
-                        break;
-                    case Modes.AddRelativeForce:
-                        TargetRigidbody.AddRelativeForce(_force, AppliedForceMode);
-                        break;
-                    case Modes.AddTorque:
-                        TargetRigidbody.AddTorque(_force, AppliedForceMode);
-                        break;
-                    case Modes.AddRelativeTorque:
-                        TargetRigidbody.AddRelativeTorque(_force, AppliedForceMode);
-                        break;
-                }
+            _force.x = Random.Range(MinForce.x, MaxForce.x);
+            _force.y = Random.Range(MinForce.y, MaxForce.y);
+            _force.z = Random.Range(MinForce.z, MaxForce.z);
+
+            if (!Timing.ConstantIntensity)
+            {
+                _force *= feedbacksIntensity;
+            }
+            
+            switch (Mode)
+            {
+                case Modes.AddForce:
+                    TargetRigidbody.AddForce(_force, AppliedForceMode);
+                    break;
+                case Modes.AddRelativeForce:
+                    TargetRigidbody.AddRelativeForce(_force, AppliedForceMode);
+                    break;
+                case Modes.AddTorque:
+                    TargetRigidbody.AddTorque(_force, AppliedForceMode);
+                    break;
+                case Modes.AddRelativeTorque:
+                    TargetRigidbody.AddRelativeTorque(_force, AppliedForceMode);
+                    break;
             }
         }
     }

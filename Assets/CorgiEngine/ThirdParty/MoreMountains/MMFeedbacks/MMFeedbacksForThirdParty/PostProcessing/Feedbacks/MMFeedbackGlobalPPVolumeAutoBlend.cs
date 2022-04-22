@@ -14,6 +14,8 @@ namespace MoreMountains.FeedbacksForThirdParty
     [FeedbackPath("PostProcess/Global PP Volume Auto Blend")]
     public class MMFeedbackGlobalPPVolumeAutoBlend : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the possible modes for this feedback :
         /// - default : will let you trigger Blend() and BlendBack() on the blender
         /// - override : lets you specify new initial, final, duration and curve values on the blender, and triggers a Blend()
@@ -87,60 +89,63 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                if (TargetAutoBlend == null)
+                return;
+            }
+            
+            if (TargetAutoBlend == null)
+            {
+                Debug.LogWarning(this.name + " : this MMFeedbackGlobalPPVolumeAutoBlend needs a TargetAutoBlend, please set one in its inspector.");
+                return;
+            }
+            if (Mode == Modes.Default)
+            {
+                if (!NormalPlayDirection)
                 {
-                    Debug.LogWarning(this.name + " : this MMFeedbackGlobalPPVolumeAutoBlend needs a TargetAutoBlend, please set one in its inspector.");
-                    return;
-                }
-                if (Mode == Modes.Default)
-                {
-                    if (!NormalPlayDirection)
+                    if (BlendAction == Actions.Blend)
                     {
-                        if (BlendAction == Actions.Blend)
-                        {
-                            TargetAutoBlend.BlendBack();
-                            return;
-                        }
-                        if (BlendAction == Actions.BlendBack)
-                        {
-                            TargetAutoBlend.Blend();
-                            return;
-                        }
+                        TargetAutoBlend.BlendBack();
+                        return;
                     }
-                    else
+                    if (BlendAction == Actions.BlendBack)
                     {
-                        if (BlendAction == Actions.Blend)
-                        {
-                            TargetAutoBlend.Blend();
-                            return;
-                        }
-                        if (BlendAction == Actions.BlendBack)
-                        {
-                            TargetAutoBlend.BlendBack();
-                            return;
-                        }    
+                        TargetAutoBlend.Blend();
+                        return;
                     }
                 }
                 else
                 {
-                    TargetAutoBlend.BlendDuration = BlendDuration;
-                    TargetAutoBlend.Curve = BlendCurve;
-                    if (!NormalPlayDirection)
+                    if (BlendAction == Actions.Blend)
                     {
-                        TargetAutoBlend.InitialWeight = FinalWeight;
-                        TargetAutoBlend.FinalWeight = InitialWeight;   
+                        TargetAutoBlend.Blend();
+                        return;
                     }
-                    else
+                    if (BlendAction == Actions.BlendBack)
                     {
-                        TargetAutoBlend.InitialWeight = InitialWeight;
-                        TargetAutoBlend.FinalWeight = FinalWeight;    
-                    }
-                    TargetAutoBlend.ResetToInitialValueOnEnd = ResetToInitialValueOnEnd;
-                    TargetAutoBlend.Blend();
+                        TargetAutoBlend.BlendBack();
+                        return;
+                    }    
                 }
             }
+            else
+            {
+                TargetAutoBlend.BlendDuration = BlendDuration;
+                TargetAutoBlend.Curve = BlendCurve;
+                if (!NormalPlayDirection)
+                {
+                    TargetAutoBlend.InitialWeight = FinalWeight;
+                    TargetAutoBlend.FinalWeight = InitialWeight;   
+                }
+                else
+                {
+                    TargetAutoBlend.InitialWeight = InitialWeight;
+                    TargetAutoBlend.FinalWeight = FinalWeight;    
+                }
+                TargetAutoBlend.ResetToInitialValueOnEnd = ResetToInitialValueOnEnd;
+                TargetAutoBlend.Blend();
+            }
+            
         }
 
         /// <summary>
@@ -150,9 +155,14 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
+            
             base.CustomStopFeedback(position, feedbacksIntensity);
             
-            if (Active && (TargetAutoBlend != null))
+            if (TargetAutoBlend != null)
             {
                 TargetAutoBlend.StopBlending();
             }

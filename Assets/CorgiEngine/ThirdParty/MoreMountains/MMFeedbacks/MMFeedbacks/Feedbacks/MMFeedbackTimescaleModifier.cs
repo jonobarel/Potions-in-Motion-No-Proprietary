@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Time/Timescale Modifier")]
     public class MMFeedbackTimescaleModifier : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// <summary>
         /// The possible modes for this feedback :
         /// - shake : changes the timescale for a certain duration
@@ -42,11 +44,11 @@ namespace MoreMountains.Feedbacks
         public float TimeScaleDuration = 1f;
         /// whether or not we should lerp the timescale
         [Tooltip("whether or not we should lerp the timescale")]
-        [MMFEnumCondition("Mode", (int)Modes.Shake)]
+        [MMFEnumCondition("Mode", (int)Modes.Shake, (int)Modes.Change)]
         public bool TimeScaleLerp = false;
         /// the speed at which to lerp the timescale
         [Tooltip("the speed at which to lerp the timescale")]
-        [MMFEnumCondition("Mode", (int)Modes.Shake)]
+        [MMFEnumCondition("Mode", (int)Modes.Shake, (int)Modes.Change)]
         public float TimeScaleLerpSpeed = 1f;
         /// whether to reset the timescale on Stop or not
         [Tooltip("whether to reset the timescale on Stop or not")]
@@ -63,21 +65,22 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                switch (Mode)
-                {
-                    case Modes.Shake:
-                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, FeedbackDuration, TimeScaleLerp, TimeScaleLerpSpeed, false);
-                        break;
-                    case Modes.Change:
-                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, 0f, false, 0f, true);
-                        break;
-                    case Modes.Reset:
-                        MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, false, 0f, true);
-                        break;
-                }                
+                return;
             }
+            switch (Mode)
+            {
+                case Modes.Shake:
+                    MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, FeedbackDuration, TimeScaleLerp, TimeScaleLerpSpeed, false);
+                    break;
+                case Modes.Change:
+                    MMTimeScaleEvent.Trigger(MMTimeScaleMethods.For, TimeScale, 0f, TimeScaleLerp, TimeScaleLerpSpeed, true);
+                    break;
+                case Modes.Reset:
+                    MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, false, 0f, true);
+                    break;
+            }     
         }
 
         /// <summary>
@@ -87,10 +90,11 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && ResetTimescaleOnStop)
+            if (!Active || !FeedbackTypeAuthorized || !ResetTimescaleOnStop)
             {
-                MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, false, 0f, true);
+                return;
             }
+            MMTimeScaleEvent.Trigger(MMTimeScaleMethods.Reset, TimeScale, 0f, false, 0f, true);
         }
     }
 }

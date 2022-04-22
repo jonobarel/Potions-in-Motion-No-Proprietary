@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("TextMesh Pro/TMP Color")]
     public class MMFeedbackTMPColor : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         public enum ColorModes { Instant, Gradient, Interpolate }
 
         /// the duration of this feedback is the duration of the color transition, or 0 if instant
@@ -89,33 +91,35 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
+            
             if (TargetTMPText == null)
             {
                 return;
             }
 
-            if (Active)
+            switch (ColorMode)
             {
-                switch (ColorMode)
-                {
-                    case ColorModes.Instant:
-                        TargetTMPText.color = InstantColor;
-                        break;
-                    case ColorModes.Gradient:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(ChangeColor());
-                        break;
-                    case ColorModes.Interpolate:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(ChangeColor());
-                        break;
-                }
+                case ColorModes.Instant:
+                    TargetTMPText.color = InstantColor;
+                    break;
+                case ColorModes.Gradient:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(ChangeColor());
+                    break;
+                case ColorModes.Interpolate:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(ChangeColor());
+                    break;
             }
         }
 
@@ -126,7 +130,7 @@ namespace MoreMountains.Feedbacks
         protected virtual IEnumerator ChangeColor()
         {
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
-            
+            IsPlaying = true;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float remappedTime = MMFeedbacksHelpers.Remap(journey, 0f, FeedbackDuration, 0f, 1f);
@@ -138,6 +142,7 @@ namespace MoreMountains.Feedbacks
             }
             SetColor(FinalNormalizedTime);
             _coroutine = null;
+            IsPlaying = false;
             yield break;
         }
 
@@ -148,8 +153,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
             base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active && (_coroutine != null))
+            IsPlaying = false;
+            if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
                 _coroutine = null;

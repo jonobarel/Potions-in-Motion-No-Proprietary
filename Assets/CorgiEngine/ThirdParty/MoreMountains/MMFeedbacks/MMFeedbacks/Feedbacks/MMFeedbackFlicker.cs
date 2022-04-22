@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Renderer/Flicker")]
     public class MMFeedbackFlicker : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.RendererColor; } }
@@ -139,12 +141,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (BoundRenderer != null))
+            if (!Active || !FeedbackTypeAuthorized || (BoundRenderer == null))
             {
-                for (int i = 0; i < MaterialIndexes.Length; i++)
-                {
-                    _coroutines[i] = StartCoroutine(Flicker(BoundRenderer, i, _initialFlickerColors[i], FlickerColor, FlickerOctave, FeedbackDuration));
-                }
+                return;
+            }
+            for (int i = 0; i < MaterialIndexes.Length; i++)
+            {
+                _coroutines[i] = StartCoroutine(Flicker(BoundRenderer, i, _initialFlickerColors[i], FlickerColor, FlickerOctave, FeedbackDuration));
             }
         }
 
@@ -160,7 +163,7 @@ namespace MoreMountains.Feedbacks
                 return;
             }
 
-            if (Active && (BoundRenderer != null))
+            if (Active && FeedbackTypeAuthorized && (BoundRenderer != null))
             {
                 for (int i = 0; i < MaterialIndexes.Length; i++)
                 {
@@ -187,7 +190,8 @@ namespace MoreMountains.Feedbacks
             }
 
             float flickerStop = FeedbackTime + flickerDuration;
-
+            IsPlaying = true;
+            
             while (FeedbackTime < flickerStop)
             {
                 SetColor(materialIndex, flickerColor);
@@ -211,6 +215,7 @@ namespace MoreMountains.Feedbacks
             }
 
             SetColor(materialIndex, initialColor);
+            IsPlaying = false;
         }
 
         protected virtual void SetColor(int materialIndex, Color color)
@@ -255,17 +260,20 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
-            base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                for (int i = 0; i < _coroutines.Length; i++)
+                return;
+            }
+            base.CustomStopFeedback(position, feedbacksIntensity);
+            
+            IsPlaying = false;
+            for (int i = 0; i < _coroutines.Length; i++)
+            {
+                if (_coroutines[i] != null)
                 {
-                    if (_coroutines[i] != null)
-                    {
-                        StopCoroutine(_coroutines[i]);    
-                    }
-                    _coroutines[i] = null;    
+                    StopCoroutine(_coroutines[i]);    
                 }
+                _coroutines[i] = null;    
             }
         }
     }

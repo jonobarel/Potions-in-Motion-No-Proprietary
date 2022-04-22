@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/Rigidbody2D")]
     public class MMFeedbackRigidbody2D : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.GameObjectColor; } }
@@ -56,28 +58,30 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetRigidbody2D != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetRigidbody2D == null))
             {
-                switch (Mode)
-                {
-                    case Modes.AddForce:
-                        _force.x = Random.Range(MinForce.x, MaxForce.x);
-                        _force.y = Random.Range(MinForce.y, MaxForce.y);
-                        if (!Timing.ConstantIntensity) { _force *= feedbacksIntensity; }
-                        TargetRigidbody2D.AddForce(_force, AppliedForceMode);
-                        break;
-                    case Modes.AddRelativeForce:
-                        _force.x = Random.Range(MinForce.x, MaxForce.x);
-                        _force.y = Random.Range(MinForce.y, MaxForce.y);
-                        if (!Timing.ConstantIntensity) { _force *= feedbacksIntensity; }
-                        TargetRigidbody2D.AddRelativeForce(_force, AppliedForceMode);
-                        break;
-                    case Modes.AddTorque:
-                        _torque = Random.Range(MinTorque, MaxTorque);
-                        if (!Timing.ConstantIntensity) { _torque *= feedbacksIntensity; }
-                        TargetRigidbody2D.AddTorque(_torque, AppliedForceMode);
-                        break;
-                }
+                return;
+            }
+            
+            switch (Mode)
+            {
+                case Modes.AddForce:
+                    _force.x = Random.Range(MinForce.x, MaxForce.x);
+                    _force.y = Random.Range(MinForce.y, MaxForce.y);
+                    if (!Timing.ConstantIntensity) { _force *= feedbacksIntensity; }
+                    TargetRigidbody2D.AddForce(_force, AppliedForceMode);
+                    break;
+                case Modes.AddRelativeForce:
+                    _force.x = Random.Range(MinForce.x, MaxForce.x);
+                    _force.y = Random.Range(MinForce.y, MaxForce.y);
+                    if (!Timing.ConstantIntensity) { _force *= feedbacksIntensity; }
+                    TargetRigidbody2D.AddRelativeForce(_force, AppliedForceMode);
+                    break;
+                case Modes.AddTorque:
+                    _torque = Random.Range(MinTorque, MaxTorque);
+                    if (!Timing.ConstantIntensity) { _torque *= feedbacksIntensity; }
+                    TargetRigidbody2D.AddTorque(_torque, AppliedForceMode);
+                    break;
             }
         }
     }

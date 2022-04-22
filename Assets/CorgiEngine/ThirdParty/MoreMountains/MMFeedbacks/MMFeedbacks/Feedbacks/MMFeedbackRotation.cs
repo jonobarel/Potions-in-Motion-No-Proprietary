@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Transform/Rotation")]
     public class MMFeedbackRotation : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the possible modes for this feedback (Absolute : always follow the curve from start to finish, Additive : add to the values found when this feedback gets played)
         public enum Modes { Absolute, Additive, ToDestination }
         /// the timescale modes this feedback can operate on
@@ -131,32 +133,34 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (AnimateRotationTarget != null))
+            if (!Active || !FeedbackTypeAuthorized || (AnimateRotationTarget == null))
             {
-                if (DetermineRotationOnPlay && NormalPlayDirection)
+                return;
+            }
+
+            if (DetermineRotationOnPlay && NormalPlayDirection)
+            {
+                GetInitialRotation();
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            if (isActiveAndEnabled || _hostMMFeedbacks.AutoPlayOnEnable)
+            {
+                if ((Mode == Modes.Absolute) || (Mode == Modes.Additive))
                 {
-                    GetInitialRotation();
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(AnimateRotation(AnimateRotationTarget, Vector3.zero, FeedbackDuration, AnimateRotationX, AnimateRotationY, AnimateRotationZ, RemapCurveZero * intensityMultiplier, RemapCurveOne * intensityMultiplier));
                 }
-                
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                if (isActiveAndEnabled || _hostMMFeedbacks.AutoPlayOnEnable)
+                else if (Mode == Modes.ToDestination)
                 {
-                    if ((Mode == Modes.Absolute) || (Mode == Modes.Additive))
+                    if (!AllowAdditivePlays && (_coroutine != null))
                     {
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(AnimateRotation(AnimateRotationTarget, Vector3.zero, FeedbackDuration, AnimateRotationX, AnimateRotationY, AnimateRotationZ, RemapCurveZero * intensityMultiplier, RemapCurveOne * intensityMultiplier));
+                        return;
                     }
-                    else if (Mode == Modes.ToDestination)
-                    {
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(RotateToDestination());
-                    }
+                    _coroutine = StartCoroutine(RotateToDestination());
                 }
             }
         }
@@ -197,7 +201,8 @@ namespace MoreMountains.Feedbacks
             
             _destinationRotation = AnimateRotationTarget.transform.rotation;
             AnimateRotationTarget.transform.rotation = _initialRotation;
-
+            IsPlaying = true;
+            
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float percent = Mathf.Clamp01(journey / FeedbackDuration);
@@ -225,7 +230,7 @@ namespace MoreMountains.Feedbacks
             {
                 AnimateRotationTarget.transform.rotation = Quaternion.Euler(destinationAngles);
             }
-
+            IsPlaying = false;
             _coroutine = null;
             yield break;
         }
@@ -272,6 +277,8 @@ namespace MoreMountains.Feedbacks
                 _initialRotation = (RotationSpace == Space.World) ? targetTransform.rotation : targetTransform.localRotation;
             }
 
+            IsPlaying = true;
+            
             while ((journey >= 0) && (journey <= duration) && (duration > 0))
             {
                 float percent = Mathf.Clamp01(journey / duration);
@@ -291,6 +298,8 @@ namespace MoreMountains.Feedbacks
 
             ApplyRotation(targetTransform, remapZero, remapOne, curveX, curveY, curveZ, FinalNormalizedTime);
             _coroutine = null;
+            IsPlaying = false;
+            
             yield break;
         }
 
@@ -341,10 +350,11 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (_coroutine != null))
+            if (Active && FeedbackTypeAuthorized && (_coroutine != null))
             {
                 StopCoroutine(_coroutine);
                 _coroutine = null;
+                IsPlaying = false;
             }
         }
 

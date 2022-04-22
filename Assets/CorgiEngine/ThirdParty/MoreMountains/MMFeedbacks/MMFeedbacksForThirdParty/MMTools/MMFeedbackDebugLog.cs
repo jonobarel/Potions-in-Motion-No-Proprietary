@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Debug/Log")]
     public class MMFeedbackDebugLog : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the duration of this feedback is the duration of the light, or 0 if instant
         public override float FeedbackDuration { get { return 0f; } }
 
@@ -49,27 +51,29 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                switch (DebugLogMode)
-                {
-                    case DebugLogModes.Assertion:
-                        Debug.LogAssertion(DebugMessage);
-                        break;
-                    case DebugLogModes.Log:
-                        Debug.Log(DebugMessage);
-                        break;
-                    case DebugLogModes.Error:
-                        Debug.LogError(DebugMessage);
-                        break;
-                    case DebugLogModes.Warning:
-                        Debug.LogWarning(DebugMessage);
-                        break;
-                    case DebugLogModes.DebugLogTime:
-                        string color = "#" + ColorUtility.ToHtmlStringRGB(DebugColor);
-                        MMDebug.DebugLogTime(DebugMessage, color, 3, DisplayFrameCount);
-                        break;
-                }
+                return;
+            }
+            
+            switch (DebugLogMode)
+            {
+                case DebugLogModes.Assertion:
+                    Debug.LogAssertion(DebugMessage);
+                    break;
+                case DebugLogModes.Log:
+                    Debug.Log(DebugMessage);
+                    break;
+                case DebugLogModes.Error:
+                    Debug.LogError(DebugMessage);
+                    break;
+                case DebugLogModes.Warning:
+                    Debug.LogWarning(DebugMessage);
+                    break;
+                case DebugLogModes.DebugLogTime:
+                    string color = "#" + ColorUtility.ToHtmlStringRGB(DebugColor);
+                    MMDebug.DebugLogTime(DebugMessage, color, 3, DisplayFrameCount);
+                    break;
             }
         }
     }

@@ -114,6 +114,7 @@ namespace MoreMountains.Feedbacks
         protected virtual IEnumerator ApplyValueOverTime()
         {
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
+            IsPlaying = true;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float remappedTime = MMFeedbacksHelpers.Remap(journey, 0f, FeedbackDuration, 0f, 1f);
@@ -125,6 +126,7 @@ namespace MoreMountains.Feedbacks
             }
             SetValue(FinalNormalizedTime);
             _coroutine = null;
+            IsPlaying = false;
             yield return null;
         }
 

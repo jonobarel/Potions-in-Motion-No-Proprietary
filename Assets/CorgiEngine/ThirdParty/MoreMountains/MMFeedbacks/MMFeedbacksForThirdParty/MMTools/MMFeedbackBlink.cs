@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Renderer/MMBlink")]
     public class MMFeedbackBlink : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.RendererColor; } }
@@ -36,21 +38,22 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active &&  (TargetBlink != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetBlink == null))
             {
-                TargetBlink.TimescaleMode = Timing.TimescaleMode;
-                switch (BlinkMode)
-                {
-                    case BlinkModes.Toggle:
-                        TargetBlink.ToggleBlinking();
-                        break;
-                    case BlinkModes.Start:
-                        TargetBlink.StartBlinking();
-                        break;
-                    case BlinkModes.Stop:
-                        TargetBlink.StopBlinking();
-                        break;
-                }
+                return;
+            }
+            TargetBlink.TimescaleMode = Timing.TimescaleMode;
+            switch (BlinkMode)
+            {
+                case BlinkModes.Toggle:
+                    TargetBlink.ToggleBlinking();
+                    break;
+                case BlinkModes.Start:
+                    TargetBlink.StartBlinking();
+                    break;
+                case BlinkModes.Stop:
+                    TargetBlink.StopBlinking();
+                    break;
             }
         }
     }

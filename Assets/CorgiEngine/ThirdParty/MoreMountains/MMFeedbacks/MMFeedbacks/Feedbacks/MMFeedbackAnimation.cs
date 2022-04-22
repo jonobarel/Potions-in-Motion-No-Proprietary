@@ -12,6 +12,9 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/Animation")]
     public class MMFeedbackAnimation : MMFeedback 
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
+        
         /// the possible modes that pilot triggers        
         public enum TriggerModes { SetTrigger, ResetTrigger }
         
@@ -167,84 +170,87 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                if (BoundAnimator == null)
-                {
-                    Debug.LogWarning("No animator was set for " + this.name);
-                    return;
-                }
+                return;
+            }
 
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            if (BoundAnimator == null)
+            {
+                Debug.LogWarning("No animator was set for " + this.name);
+                return;
+            }
 
-                if (UpdateTrigger)
-                {
-                    if (TriggerMode == TriggerModes.SetTrigger)
-                    {
-                        BoundAnimator.SetTrigger(_triggerParameter);
-                    }
-                    if (TriggerMode == TriggerModes.ResetTrigger)
-                    {
-                        BoundAnimator.ResetTrigger(_triggerParameter);
-                    }
-                }
-                
-                if (UpdateRandomTrigger)
-                {
-                    int randomParameter = _randomTriggerParameters[Random.Range(0, _randomTriggerParameters.Count)];
-                    
-                    if (RandomTriggerMode == TriggerModes.SetTrigger)
-                    {
-                        BoundAnimator.SetTrigger(randomParameter);
-                    }
-                    if (RandomTriggerMode == TriggerModes.ResetTrigger)
-                    {
-                        BoundAnimator.ResetTrigger(randomParameter);
-                    }
-                }
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
 
-                if (UpdateBool)
+            if (UpdateTrigger)
+            {
+                if (TriggerMode == TriggerModes.SetTrigger)
                 {
-                    BoundAnimator.SetBool(_boolParameter, BoolParameterValue);
+                    BoundAnimator.SetTrigger(_triggerParameter);
                 }
-
-                if (UpdateRandomBool)
+                if (TriggerMode == TriggerModes.ResetTrigger)
                 {
-                    int randomParameter = _randomBoolParameters[Random.Range(0, _randomBoolParameters.Count)];
-                    
-                    BoundAnimator.SetBool(randomParameter, RandomBoolParameterValue);
-                }
-
-                switch (IntValueMode)
-                {
-                    case ValueModes.Constant:
-                        BoundAnimator.SetInteger(_intParameter, IntValue);
-                        break;
-                    case ValueModes.Incremental:
-                        int newValue = BoundAnimator.GetInteger(_intParameter) + IntIncrement;
-                        BoundAnimator.SetInteger(_intParameter, newValue);
-                        break;
-                    case ValueModes.Random:
-                        int randomValue = Random.Range(IntValueMin, IntValueMax);
-                        BoundAnimator.SetInteger(_intParameter, randomValue);
-                        break;
-                }
-
-                switch (FloatValueMode)
-                {
-                    case ValueModes.Constant:
-                        BoundAnimator.SetFloat(_floatParameter, FloatValue * intensityMultiplier);
-                        break;
-                    case ValueModes.Incremental:
-                        float newValue = BoundAnimator.GetFloat(_floatParameter) + FloatIncrement * intensityMultiplier;
-                        BoundAnimator.SetFloat(_floatParameter, newValue);
-                        break;
-                    case ValueModes.Random:
-                        float randomValue = Random.Range(FloatValueMin, FloatValueMax) * intensityMultiplier;
-                        BoundAnimator.SetFloat(_floatParameter, randomValue);
-                        break;
+                    BoundAnimator.ResetTrigger(_triggerParameter);
                 }
             }
+            
+            if (UpdateRandomTrigger)
+            {
+                int randomParameter = _randomTriggerParameters[Random.Range(0, _randomTriggerParameters.Count)];
+                
+                if (RandomTriggerMode == TriggerModes.SetTrigger)
+                {
+                    BoundAnimator.SetTrigger(randomParameter);
+                }
+                if (RandomTriggerMode == TriggerModes.ResetTrigger)
+                {
+                    BoundAnimator.ResetTrigger(randomParameter);
+                }
+            }
+
+            if (UpdateBool)
+            {
+                BoundAnimator.SetBool(_boolParameter, BoolParameterValue);
+            }
+
+            if (UpdateRandomBool)
+            {
+                int randomParameter = _randomBoolParameters[Random.Range(0, _randomBoolParameters.Count)];
+                
+                BoundAnimator.SetBool(randomParameter, RandomBoolParameterValue);
+            }
+
+            switch (IntValueMode)
+            {
+                case ValueModes.Constant:
+                    BoundAnimator.SetInteger(_intParameter, IntValue);
+                    break;
+                case ValueModes.Incremental:
+                    int newValue = BoundAnimator.GetInteger(_intParameter) + IntIncrement;
+                    BoundAnimator.SetInteger(_intParameter, newValue);
+                    break;
+                case ValueModes.Random:
+                    int randomValue = Random.Range(IntValueMin, IntValueMax);
+                    BoundAnimator.SetInteger(_intParameter, randomValue);
+                    break;
+            }
+
+            switch (FloatValueMode)
+            {
+                case ValueModes.Constant:
+                    BoundAnimator.SetFloat(_floatParameter, FloatValue * intensityMultiplier);
+                    break;
+                case ValueModes.Incremental:
+                    float newValue = BoundAnimator.GetFloat(_floatParameter) + FloatIncrement * intensityMultiplier;
+                    BoundAnimator.SetFloat(_floatParameter, newValue);
+                    break;
+                case ValueModes.Random:
+                    float randomValue = Random.Range(FloatValueMin, FloatValueMax) * intensityMultiplier;
+                    BoundAnimator.SetFloat(_floatParameter, randomValue);
+                    break;
+            }
+            
         }
         
         /// <summary>
@@ -254,10 +260,12 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && UpdateBool)
+            if (!Active || !UpdateBool || !FeedbackTypeAuthorized)
             {
-                BoundAnimator.SetBool(_boolParameter, false);
+                return;
             }
+            
+            BoundAnimator.SetBool(_boolParameter, false);
         }
     }
 }

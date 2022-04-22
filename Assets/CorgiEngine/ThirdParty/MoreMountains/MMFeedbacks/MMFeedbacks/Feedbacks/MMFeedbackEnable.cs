@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/Enable Behaviour")]
     public class MMFeedbackEnable : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.GameObjectColor; } }
@@ -78,12 +80,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetBehaviour != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetBehaviour == null))
             {
-                if (SetStateOnPlay)
-                {
-                    SetStatus(StateOnPlay);
-                }
+                return;
+            }
+            if (SetStateOnPlay)
+            {
+                SetStatus(StateOnPlay);
             }
         }
 
@@ -94,14 +97,15 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized || (TargetBehaviour == null))
+            {
+                return;
+            }
             base.CustomStopFeedback(position, feedbacksIntensity);
 
-            if (Active && (TargetBehaviour != null))
+            if (SetStateOnStop)
             {
-                if (SetStateOnStop)
-                {
-                    SetStatus(StateOnStop);
-                }
+                SetStatus(StateOnStop);
             }
         }
 
@@ -116,13 +120,15 @@ namespace MoreMountains.Feedbacks
             {
                 return;
             }
-
-            if (Active && (TargetBehaviour != null))
+            
+            if (!Active || !FeedbackTypeAuthorized || (TargetBehaviour == null))
             {
-                if (SetStateOnReset)
-                {
-                    SetStatus(StateOnReset);
-                }
+                return;
+            }
+            
+            if (SetStateOnReset)
+            {
+                SetStatus(StateOnReset);
             }
         }
 

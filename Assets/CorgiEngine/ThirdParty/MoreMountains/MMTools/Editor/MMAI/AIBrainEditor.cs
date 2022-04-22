@@ -9,10 +9,11 @@ namespace MoreMountains.Tools
     [CustomEditor(typeof(AIBrain))]
     public class AIBrainEditor : Editor
     {
-        protected ReorderableList _list;
+        protected MMReorderableList _list;
         protected SerializedProperty _brainActive;
         protected SerializedProperty _timeInThisState;
         protected SerializedProperty _target;
+        protected SerializedProperty _owner;
         protected SerializedProperty _actionsFrequency;
         protected SerializedProperty _decisionFrequency;
         protected SerializedProperty _randomizeFrequencies;
@@ -21,13 +22,14 @@ namespace MoreMountains.Tools
 
         protected virtual void OnEnable()
         {
-            _list = new ReorderableList(serializedObject.FindProperty("States"));
+            _list = new MMReorderableList(serializedObject.FindProperty("States"));
             _list.elementNameProperty = "States";
-            _list.elementDisplayType = ReorderableList.ElementDisplayType.Expandable;
+            _list.elementDisplayType = MMReorderableList.ElementDisplayType.Expandable;
 
             _brainActive = serializedObject.FindProperty("BrainActive");
             _timeInThisState = serializedObject.FindProperty("TimeInThisState");
             _target = serializedObject.FindProperty("Target");
+            _owner = serializedObject.FindProperty("Owner");
             _actionsFrequency = serializedObject.FindProperty("ActionsFrequency");
             _decisionFrequency = serializedObject.FindProperty("DecisionFrequency");
             
@@ -43,6 +45,7 @@ namespace MoreMountains.Tools
             _list.DoLayoutList();
             EditorGUILayout.PropertyField(_brainActive);
             EditorGUILayout.PropertyField(_timeInThisState);
+            EditorGUILayout.PropertyField(_owner);
             EditorGUILayout.PropertyField(_target);
             EditorGUILayout.PropertyField(_actionsFrequency);
             EditorGUILayout.PropertyField(_decisionFrequency);

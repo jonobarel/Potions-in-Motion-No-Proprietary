@@ -45,6 +45,8 @@ namespace MoreMountains.Feedbacks
         public Vector3 AmplitudeMax = Vector3.one;
         /// if this is true, amplitude will be relative, otherwise world space
         public bool RelativeAmplitude = true;
+        /// if this is true, all amplitude values will match the x amplitude value
+        public bool UniformValues = false;
 
         [Header("Curve")]
         /// a curve to animate this property on
@@ -74,7 +76,7 @@ namespace MoreMountains.Feedbacks
         /// the maximum time left
         public float LimitedTimeTotal;
         /// the animation curve to use to decrease the effect of the wiggle as time goes
-        public AnimationCurve LimitedTimeFalloff = AnimationCurve.Linear(0f, 1f, 1f, 1f);
+        public AnimationCurve LimitedTimeFalloff = AnimationCurve.Linear(0f, 1f, 1f, 0f);
         /// if this is true, original position will be restored when time left reaches zero
         public bool LimitedTimeResetValue = true;
         /// the actual time left
@@ -210,7 +212,7 @@ namespace MoreMountains.Feedbacks
         /// <summary>
         /// On init we get the start values and trigger our coroutines for each property
         /// </summary>
-        protected virtual void Initialization()
+        public virtual void Initialization()
         {
             _positionInternalProperties.initialValue = transform.localPosition;
             _positionInternalProperties.startValue = this.transform.localPosition;
@@ -297,19 +299,19 @@ namespace MoreMountains.Feedbacks
             _positionInternalProperties.returnVector = transform.localPosition;
             if (UpdateValue(PositionActive, PositionWiggleProperties, ref _positionInternalProperties))
             {
-                transform.localPosition = ApplyFalloff(_positionInternalProperties.returnVector, PositionWiggleProperties);
+                transform.localPosition = _positionInternalProperties.returnVector;
             }
 
             _rotationInternalProperties.returnVector = transform.localEulerAngles;
             if (UpdateValue(RotationActive, RotationWiggleProperties, ref _rotationInternalProperties))
             {
-                transform.localEulerAngles = ApplyFalloff(_rotationInternalProperties.returnVector, RotationWiggleProperties);
+                transform.localEulerAngles = _rotationInternalProperties.returnVector;
             }
 
             _scaleInternalProperties.returnVector = transform.localScale;
             if (UpdateValue(ScaleActive, ScaleWiggleProperties, ref _scaleInternalProperties))
             {
-                transform.localScale = ApplyFalloff(_scaleInternalProperties.returnVector, ScaleWiggleProperties);
+                transform.localScale = _scaleInternalProperties.returnVector;
             }
         }
 
@@ -380,13 +382,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="newValue"></param>
         /// <param name="properties"></param>
         /// <returns></returns>
-        protected Vector3 ApplyFalloff(Vector3 newValue, WiggleProperties properties)
+        protected float ApplyFalloff(WiggleProperties properties)
         {
+	        float newValue = 1f;
             if ((properties.LimitedTime) && (properties.LimitedTimeTotal > 0f))
             {
                 float curveProgress = (properties.LimitedTimeTotal - properties.LimitedTimeLeft) / properties.LimitedTimeTotal;
-                float curvePercent = properties.LimitedTimeFalloff.Evaluate(curveProgress);
-                newValue = newValue * curvePercent; //Vector3.LerpUnclamped(startValue, destinationValue, curvePercent);
+                newValue = properties.LimitedTimeFalloff.Evaluate(curveProgress);
             }
             return newValue;
         }
@@ -405,9 +407,17 @@ namespace MoreMountains.Feedbacks
             internalProperties.newValue.y = (Mathf.PerlinNoise(internalProperties.randomNoiseFrequency.y * internalProperties.noiseElapsedTime, internalProperties.randomNoiseShift.y) * 2.0f - 1.0f) * internalProperties.randomAmplitude.y;
             internalProperties.newValue.z = (Mathf.PerlinNoise(internalProperties.randomNoiseFrequency.z * internalProperties.noiseElapsedTime, internalProperties.randomNoiseShift.z) * 2.0f - 1.0f) * internalProperties.randomAmplitude.z;
 
+            internalProperties.newValue *= ApplyFalloff(properties);
+            
             if (properties.RelativeAmplitude)
             {
                 internalProperties.newValue += internalProperties.initialValue;
+            }
+
+            if (properties.UniformValues)
+            {
+	            internalProperties.newValue.y = internalProperties.newValue.x;
+	            internalProperties.newValue.z = internalProperties.newValue.x;
             }
 
             return internalProperties.newValue;
@@ -465,7 +475,7 @@ namespace MoreMountains.Feedbacks
                     RandomizeFloat(ref internalProperties.randomFrequency, properties.FrequencyMin, properties.FrequencyMax);
                 }
             }
-
+            
             if (properties.RelativeCurveAmplitude)
             {
                 internalProperties.newValue = internalProperties.initialValue + internalProperties.newValue;
@@ -584,6 +594,13 @@ namespace MoreMountains.Feedbacks
                     }                    
                     RandomizeFloat(ref randomFrequency, properties.FrequencyMin, properties.FrequencyMax);
                     RandomizeFloat(ref pauseDuration, properties.PauseMin, properties.PauseMax);
+
+                    if (properties.UniformValues)
+                    {
+	                    newValue.y = newValue.x;
+	                    newValue.z = newValue.x;
+                    }
+                    
                     return newValue;
 
                 case WiggleTypes.Random:
@@ -592,10 +609,19 @@ namespace MoreMountains.Feedbacks
                     RandomizeVector3(ref randomAmplitude, properties.AmplitudeMin, properties.AmplitudeMax);
                     RandomizeFloat(ref pauseDuration, properties.PauseMin, properties.PauseMax);
                     newValue = randomAmplitude;
+                    
+                    if (properties.UniformValues)
+                    {
+	                    newValue.y = newValue.x;
+	                    newValue.z = newValue.x;
+                    }
+                    
+                    newValue *= ApplyFalloff(properties);
                     if (properties.RelativeAmplitude)
                     {
                         newValue += initialValue;
                     }
+                    
                     return newValue;
             }
             return Vector3.zero;            

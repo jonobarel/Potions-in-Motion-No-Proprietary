@@ -10,6 +10,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Renderer/Material")]
     public class MMFeedbackMaterial : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the duration of this feedback is the duration of the shake
         public override float FeedbackDuration { get { return (InterpolateTransition) ? TransitionDuration : 0f; } set { if (InterpolateTransition) { TransitionDuration = value; } } }
 
@@ -74,6 +76,10 @@ namespace MoreMountains.Feedbacks
             base.CustomInitialization(owner);
             _currentIndex = InitialIndex;
             _tempMaterials = new Material[TargetRenderer.materials.Length];
+            if (RendererMaterialIndexes == null)
+            {
+                RendererMaterialIndexes = new int[1];
+            }
             if (RendererMaterialIndexes.Length == 0)
             {
                 RendererMaterialIndexes = new int[1];
@@ -89,6 +95,11 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
+            
             if (Materials.Count == 0)
             {
                 Debug.LogError("[MMFeedbackMaterial on " + this.name + "] The Materials array is empty.");
@@ -155,6 +166,7 @@ namespace MoreMountains.Feedbacks
         /// <returns></returns>
         protected virtual IEnumerator TransitionMaterial(Material originalMaterial, Material newMaterial, int materialIndex)
         {
+            IsPlaying = true;
             _startedAt = GetTime();
             while (GetTime() - _startedAt < TransitionDuration)
             {
@@ -166,6 +178,7 @@ namespace MoreMountains.Feedbacks
             }
             float finalt = TransitionCurve.Evaluate(1f);
             LerpMaterial(originalMaterial, newMaterial, finalt, materialIndex);
+            IsPlaying = false;
         }
 
         /// <summary>
@@ -207,8 +220,9 @@ namespace MoreMountains.Feedbacks
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
             base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active && (_coroutines != null))
+            if (Active && FeedbackTypeAuthorized && (_coroutines != null))
             {
+                IsPlaying = false;
                 for (int i = 0; i < RendererMaterialIndexes.Length; i++)
                 {
                     if (_coroutines[i] != null)

@@ -54,12 +54,19 @@ namespace MoreMountains.Tools
         /// <param name="duration"></param>
         /// <param name="targetObject"></param>
         /// <returns></returns>
-        public virtual IEnumerator AutoDisableAudioSource(float duration, AudioSource source, AudioClip clip)
+        public virtual IEnumerator AutoDisableAudioSource(float duration, AudioSource source, AudioClip clip, bool doNotAutoRecycleIfNotDonePlaying)
         {
             yield return MMCoroutine.WaitFor(duration);
             if (source.clip != clip)
             {
                 yield break;
+            }
+            if (doNotAutoRecycleIfNotDonePlaying)
+            {
+                while (source.time < source.clip.length)
+                {
+                    yield return null;
+                }
             }
             source.gameObject.SetActive(false);
         }

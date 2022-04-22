@@ -16,6 +16,8 @@ namespace MoreMountains.FeedbacksForThirdParty
     [FeedbackPath("PostProcess/Panini Projection HDRP")]
     public class MMFeedbackPaniniProjection_HDRP : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.PostProcessColor; } }
@@ -61,12 +63,13 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// <param name="attenuation"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+                return;
+            }
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
                 MMPaniniProjectionShakeEvent_HDRP.Trigger(ShakeDistance, FeedbackDuration, RemapDistanceZero, RemapDistanceOne, RelativeDistance, intensityMultiplier, Channel, 
                     ResetShakerValuesAfterShake, ResetTargetValuesAfterShake, NormalPlayDirection, Timing.TimescaleMode);
-            }
         }
         
         /// <summary>
@@ -76,11 +79,13 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
-            base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                MMPaniniProjectionShakeEvent_HDRP.Trigger(ShakeDistance, FeedbackDuration, RemapDistanceZero, RemapDistanceOne, RelativeDistance, channel:Channel, stop:true);
+                return;
             }
+            base.CustomStopFeedback(position, feedbacksIntensity);
+            MMPaniniProjectionShakeEvent_HDRP.Trigger(ShakeDistance, FeedbackDuration, RemapDistanceZero, RemapDistanceOne, RelativeDistance, channel:Channel, stop:true);
+            
         }
     }
 }

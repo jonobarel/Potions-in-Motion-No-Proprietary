@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Light")]
     public class MMFeedbackLight : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.LightColor; } }
@@ -176,37 +178,39 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                Turn(true);
-                switch (Mode)
-                {
-                    case Modes.Instant:
-                        BoundLight.intensity = InstantIntensity * intensityMultiplier;
-                        BoundLight.shadowStrength = InstantShadowStrength;
-                        BoundLight.range = InstantRange;
-                        if (ModifyColor)
-                        {
-                            BoundLight.color = InstantColor;
-                        }                        
-                        break;
-                    case Modes.OverTime:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(LightSequence(intensityMultiplier));
+                return;
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            Turn(true);
+            switch (Mode)
+            {
+                case Modes.Instant:
+                    BoundLight.intensity = InstantIntensity * intensityMultiplier;
+                    BoundLight.shadowStrength = InstantShadowStrength;
+                    BoundLight.range = InstantRange;
+                    if (ModifyColor)
+                    {
+                        BoundLight.color = InstantColor;
+                    }                        
+                    break;
+                case Modes.OverTime:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(LightSequence(intensityMultiplier));
 
-                        break;
-                    case Modes.ShakerEvent:
-                        MMLightShakeEvent.Trigger(FeedbackDuration, RelativeValues, ModifyColor, ColorOverTime, IntensityCurve,
-                            RemapIntensityZero, RemapIntensityOne, RangeCurve, RemapRangeZero * intensityMultiplier, RemapRangeOne * intensityMultiplier,
-                            ShadowStrengthCurve, RemapShadowStrengthZero, RemapShadowStrengthOne, feedbacksIntensity,
-                            Channel, ResetShakerValuesAfterShake, ResetTargetValuesAfterShake,
-                            UseRange, EventRange, EventOriginTransform.position);
-                        break;
-                }
+                    break;
+                case Modes.ShakerEvent:
+                    MMLightShakeEvent.Trigger(FeedbackDuration, RelativeValues, ModifyColor, ColorOverTime, IntensityCurve,
+                        RemapIntensityZero, RemapIntensityOne, RangeCurve, RemapRangeZero * intensityMultiplier, RemapRangeOne * intensityMultiplier,
+                        ShadowStrengthCurve, RemapShadowStrengthZero, RemapShadowStrengthOne, feedbacksIntensity,
+                        Channel, ResetShakerValuesAfterShake, ResetTargetValuesAfterShake,
+                        UseRange, EventRange, EventOriginTransform.position);
+                    break;
             }
         }
 
@@ -216,6 +220,7 @@ namespace MoreMountains.Feedbacks
         /// <returns></returns>
         protected virtual IEnumerator LightSequence(float intensityMultiplier)
         {
+            IsPlaying = true;
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
@@ -231,6 +236,7 @@ namespace MoreMountains.Feedbacks
             {
                 Turn(false);
             }            
+            IsPlaying = false;
             _coroutine = null;
             yield return null;
         }
@@ -268,7 +274,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!FeedbackTypeAuthorized)
+            {
+                return;
+            }
+            
             base.CustomStopFeedback(position, feedbacksIntensity);
+            IsPlaying = false;
             if (Active && (_coroutine != null))
             {
                 StopCoroutine(_coroutine);

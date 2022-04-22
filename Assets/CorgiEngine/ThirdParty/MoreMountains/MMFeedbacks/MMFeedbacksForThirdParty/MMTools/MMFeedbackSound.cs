@@ -15,6 +15,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackHelp("This feedback lets you play the specified AudioClip, either via event (you'll need something in your scene to catch a MMSfxEvent, for example a MMSoundManager), or cached (AudioSource gets created on init, and is then ready to be played), or on demand (instantiated on Play). For all these methods you can define a random volume between min/max boundaries (just set the same value in both fields if you don't want randomness), random pitch, and an optional AudioMixerGroup.")]
     public class MMFeedbackSound : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SoundsColor; } }
@@ -127,27 +129,30 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                if (Sfx != null)
-                {
-                    _duration = Sfx.length;
-                    PlaySound(Sfx, position, intensityMultiplier);
-                    return;
-                }
+                return;
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            
+            if (Sfx != null)
+            {
+                _duration = Sfx.length;
+                PlaySound(Sfx, position, intensityMultiplier);
+                return;
+            }
 
-                if (RandomSfx.Length > 0)
-                {
-                    _randomClip = RandomSfx[Random.Range(0, RandomSfx.Length)];
+            if (RandomSfx.Length > 0)
+            {
+                _randomClip = RandomSfx[Random.Range(0, RandomSfx.Length)];
 
-                    if (_randomClip != null)
-                    {
-                        _duration = _randomClip.length;
-                        PlaySound(_randomClip, position, intensityMultiplier);
-                    }
-                    
+                if (_randomClip != null)
+                {
+                    _duration = _randomClip.length;
+                    PlaySound(_randomClip, position, intensityMultiplier);
                 }
+                
             }
         }
 

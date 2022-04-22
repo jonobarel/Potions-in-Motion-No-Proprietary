@@ -23,6 +23,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("UI/Floating Text")]
     public class MMFeedbackFloatingText : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
             public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.UIColor; } }
@@ -91,24 +93,27 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                switch (PositionMode)
-                {
-                    case PositionModes.FeedbackPosition:
-                        _playPosition = this.transform.position;
-                        break;
-                    case PositionModes.PlayPosition:
-                        _playPosition = position;
-                        break;
-                    case PositionModes.TargetTransform:
-                        _playPosition = TargetTransform.position;
-                        break;
-                }
-                _value = UseIntensityAsValue ? feedbacksIntensity.ToString() : Value;
-                MMFloatingTextSpawnEvent.Trigger(Channel, _playPosition, _value, Direction, Intensity * intensityMultiplier, ForceLifetime, Lifetime, ForceColor, AnimateColorGradient, Timing.TimescaleMode == TimescaleModes.Unscaled);
+                return;
             }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            switch (PositionMode)
+            {
+                case PositionModes.FeedbackPosition:
+                    _playPosition = this.transform.position;
+                    break;
+                case PositionModes.PlayPosition:
+                    _playPosition = position;
+                    break;
+                case PositionModes.TargetTransform:
+                    _playPosition = TargetTransform.position;
+                    break;
+            }
+            _value = UseIntensityAsValue ? feedbacksIntensity.ToString() : Value;
+            MMFloatingTextSpawnEvent.Trigger(Channel, _playPosition, _value, Direction, Intensity * intensityMultiplier, ForceLifetime, Lifetime, ForceColor, AnimateColorGradient, Timing.TimescaleMode == TimescaleModes.Unscaled);
+            
         }
     }
 }

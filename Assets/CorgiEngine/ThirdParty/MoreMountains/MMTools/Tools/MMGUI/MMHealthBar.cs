@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using MoreMountains.Tools;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -132,7 +133,20 @@ namespace MoreMountains.Tools
             Initialization();
 		}
 
-        public virtual void Initialization()
+		/// <summary>
+		/// On enable, initializes the bar again
+		/// </summary>
+		protected void OnEnable()
+		{
+			_finalHideStarted = false;
+
+			if (!AlwaysVisible && (_progressBar != null))
+			{
+				_progressBar.gameObject.SetActive(false);
+			}
+		}
+
+		public virtual void Initialization()
         {
             _finalHideStarted = false;
 

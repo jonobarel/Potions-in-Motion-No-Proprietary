@@ -14,6 +14,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("UI/Video Player")]
     public class MMFeedbackVideoPlayer : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         public enum VideoActions { Play, Pause, Toggle, Stop, Prepare, StepForward, StepBackward, SetPlaybackSpeed, SetDirectAudioVolume, SetDirectAudioMute, GoToFrame, ToggleLoop  }
 
         /// sets the inspector color for this feedback
@@ -60,7 +62,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (!Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }

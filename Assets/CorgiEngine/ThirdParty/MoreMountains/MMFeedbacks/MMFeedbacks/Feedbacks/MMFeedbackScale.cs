@@ -14,6 +14,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackHelp("This feedback will animate the target's scale on the 3 specified animation curves, for the specified duration (in seconds). You can apply a multiplier, that will multiply each animation curve value.")]
     public class MMFeedbackScale : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the possible modes this feedback can operate on
         public enum Modes { Absolute, Additive, ToDestination }
         /// the possible timescales for the animation of the scale
@@ -121,33 +123,35 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (AnimateScaleTarget != null))
+            if (!Active || !FeedbackTypeAuthorized || (AnimateScaleTarget == null))
             {
-                if (DetermineScaleOnPlay && NormalPlayDirection)
+                return;
+            }
+            
+            if (DetermineScaleOnPlay && NormalPlayDirection)
+            {
+                GetInitialScale();
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            if (isActiveAndEnabled || _hostMMFeedbacks.AutoPlayOnEnable)
+            {
+                if ((Mode == Modes.Absolute) || (Mode == Modes.Additive))
                 {
-                    GetInitialScale();
-                }
-                
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                if (isActiveAndEnabled || _hostMMFeedbacks.AutoPlayOnEnable)
-                {
-                    if ((Mode == Modes.Absolute) || (Mode == Modes.Additive))
+                    if (!AllowAdditivePlays && (_coroutine != null))
                     {
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(AnimateScale(AnimateScaleTarget, Vector3.zero, FeedbackDuration, AnimateScaleX, AnimateScaleY, AnimateScaleZ, RemapCurveZero * intensityMultiplier, RemapCurveOne * intensityMultiplier));
+                        return;
                     }
-                    if (Mode == Modes.ToDestination)
-                    {
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(ScaleToDestination());
-                    }                   
+                    _coroutine = StartCoroutine(AnimateScale(AnimateScaleTarget, Vector3.zero, FeedbackDuration, AnimateScaleX, AnimateScaleY, AnimateScaleZ, RemapCurveZero * intensityMultiplier, RemapCurveOne * intensityMultiplier));
                 }
+                if (Mode == Modes.ToDestination)
+                {
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(ScaleToDestination());
+                }                   
             }
         }
 
@@ -176,6 +180,7 @@ namespace MoreMountains.Feedbacks
 
             _initialScale = AnimateScaleTarget.localScale;
             _newScale = _initialScale;
+            IsPlaying = true;
 
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
@@ -214,6 +219,7 @@ namespace MoreMountains.Feedbacks
 
             AnimateScaleTarget.localScale = NormalPlayDirection ? DestinationScale : _initialScale;
             _coroutine = null;
+            IsPlaying = false;
             yield return null;
         }
 
@@ -248,6 +254,7 @@ namespace MoreMountains.Feedbacks
             float journey = NormalPlayDirection ? 0f : duration;
             
             _initialScale = targetTransform.localScale;
+            IsPlaying = true;
             
             while ((journey >= 0) && (journey <= duration) && (duration > 0))
             {
@@ -354,6 +361,7 @@ namespace MoreMountains.Feedbacks
             
             targetTransform.localScale = vector;
             _coroutine = null;
+            IsPlaying = false;
             yield return null;
         }
 
@@ -364,11 +372,14 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (_coroutine != null))
+            if (!Active || !FeedbackTypeAuthorized || (_coroutine == null)) 
             {
-                StopCoroutine(_coroutine);
-                _coroutine = null;
+                return;
             }
+            
+            StopCoroutine(_coroutine);
+            IsPlaying = false;
+            _coroutine = null;
         }
 
         /// <summary>

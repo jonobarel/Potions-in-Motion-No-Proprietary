@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("GameObject/FloatController")]
     public class MMFeedbackFloatController : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the different possible modes 
         public enum Modes { OneTime, ToDestination }
         /// sets the inspector color for this feedback
@@ -107,35 +109,37 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetFloatController != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetFloatController == null))
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                TargetFloatController.RevertToInitialValueAfterEnd = RevertToInitialValueAfterEnd;
+                return;
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            TargetFloatController.RevertToInitialValueAfterEnd = RevertToInitialValueAfterEnd;
 
-                if (Mode == Modes.OneTime)
+            if (Mode == Modes.OneTime)
+            {
+                TargetFloatController.OneTimeDuration = FeedbackDuration;
+                TargetFloatController.OneTimeAmplitude = OneTimeAmplitude;
+                TargetFloatController.OneTimeCurve = OneTimeCurve;
+                if (NormalPlayDirection)
                 {
-                    TargetFloatController.OneTimeDuration = FeedbackDuration;
-                    TargetFloatController.OneTimeAmplitude = OneTimeAmplitude;
-                    TargetFloatController.OneTimeCurve = OneTimeCurve;
-                    if (NormalPlayDirection)
-                    {
-                        TargetFloatController.OneTimeRemapMin = OneTimeRemapMin * intensityMultiplier;
-                        TargetFloatController.OneTimeRemapMax = OneTimeRemapMax * intensityMultiplier;
-                    }
-                    else
-                    {
-                        TargetFloatController.OneTimeRemapMin = OneTimeRemapMax * intensityMultiplier;
-                        TargetFloatController.OneTimeRemapMax = OneTimeRemapMin * intensityMultiplier;   
-                    }
-                    TargetFloatController.OneTime();
+                    TargetFloatController.OneTimeRemapMin = OneTimeRemapMin * intensityMultiplier;
+                    TargetFloatController.OneTimeRemapMax = OneTimeRemapMax * intensityMultiplier;
                 }
-                if (Mode == Modes.ToDestination)
+                else
                 {
-                    TargetFloatController.ToDestinationCurve = ToDestinationCurve;
-                    TargetFloatController.ToDestinationDuration = FeedbackDuration;
-                    TargetFloatController.ToDestinationValue = ToDestinationValue;
-                    TargetFloatController.ToDestination();
+                    TargetFloatController.OneTimeRemapMin = OneTimeRemapMax * intensityMultiplier;
+                    TargetFloatController.OneTimeRemapMax = OneTimeRemapMin * intensityMultiplier;   
                 }
+                TargetFloatController.OneTime();
+            }
+            if (Mode == Modes.ToDestination)
+            {
+                TargetFloatController.ToDestinationCurve = ToDestinationCurve;
+                TargetFloatController.ToDestinationDuration = FeedbackDuration;
+                TargetFloatController.ToDestinationValue = ToDestinationValue;
+                TargetFloatController.ToDestination();
             }
         }
 
@@ -145,7 +149,7 @@ namespace MoreMountains.Feedbacks
         protected override void CustomReset()
         {
             base.CustomReset();
-            if (Active && (TargetFloatController != null))
+            if (Active && FeedbackTypeAuthorized && (TargetFloatController != null))
             {
                 TargetFloatController.OneTimeDuration = _oneTimeDurationStorage;
                 TargetFloatController.OneTimeAmplitude = _oneTimeAmplitudeStorage;
@@ -167,12 +171,14 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                if (TargetFloatController != null)
-                {
-                    TargetFloatController.Stop();
-                }
+                return;
+            }
+            
+            if (TargetFloatController != null)
+            {
+                TargetFloatController.Stop();
             }
         }
     }

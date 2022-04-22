@@ -53,6 +53,8 @@ namespace MoreMountains.Feedbacks
         #endif
         /// returns true if this feedback is in cooldown at this time (and thus can't play), false otherwise
         public virtual bool InCooldown { get { return (Timing.CooldownDuration > 0f) && (FeedbackTime - _lastPlayTimestamp < Timing.CooldownDuration); } }
+        /// if this is true, this feedback is currently playing
+        public virtual bool IsPlaying { get; set; }
         
         /// the time (or unscaled time) based on the selected Timing settings
         public float FeedbackTime 
@@ -95,6 +97,11 @@ namespace MoreMountains.Feedbacks
         {
             get
             {
+                if ((Timing != null) && (!Timing.ContributeToTotalDuration))
+                {
+                    return 0f;
+                }
+                
                 float totalTime = 0f;
 
                 if (Timing == null)
@@ -109,11 +116,11 @@ namespace MoreMountains.Feedbacks
             
                 totalTime += FeedbackDuration;
 
-                if (Timing.NumberOfRepeats != 0)
+                if (Timing.NumberOfRepeats > 0)
                 {
                     float delayBetweenRepeats = ApplyTimeMultiplier(Timing.DelayBetweenRepeats); 
                     
-                    totalTime += Timing.NumberOfRepeats * (delayBetweenRepeats);
+                    totalTime += (Timing.NumberOfRepeats * FeedbackDuration) + (Timing.NumberOfRepeats  * delayBetweenRepeats);
                 }
 
                 return totalTime;

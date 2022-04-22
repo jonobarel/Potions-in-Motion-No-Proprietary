@@ -26,10 +26,16 @@ namespace MoreMountains.Tools
 	    /// </summary>
 	    public override void FillObjectPool()
 	    {
-            if (GameObjectToPool == null)
+		    if (GameObjectToPool == null)
             {
                 return;
             }
+
+		    // if we've already created a pool, we exit
+		    if ((_objectPool != null) && (_objectPool.PooledGameObjects.Count > PoolSize))
+		    {
+			    return;
+		    }
 
 			CreateWaitingPool ();
 
@@ -57,7 +63,7 @@ namespace MoreMountains.Tools
 		/// <returns>The object pool name.</returns>
 		protected override string DetermineObjectPoolName()
 		{
-			return ("[SimpleObjectPooler] " + this.name);	
+			return ("[SimpleObjectPooler] " + GameObjectToPool.name);	
 		}
 	    	
 	    /// <summary>

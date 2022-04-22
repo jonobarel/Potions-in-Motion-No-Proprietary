@@ -30,6 +30,9 @@ namespace MoreMountains.Tools
         /// the group on which to play all UI sounds
         [Tooltip("the group on which to play all UI sounds")]
         public AudioMixerGroup UIAudioMixerGroup;
+        /// the multiplier to apply when converting normalized volume values to audio mixer values
+        [Tooltip("the multiplier to apply when converting normalized volume values to audio mixer values")]
+        public float MixerValuesMultiplier = 20;
         
         [Header("Settings Unfold")]
         /// the full settings for this MMSoundManager
@@ -178,7 +181,7 @@ namespace MoreMountains.Tools
                 }
             }
         }
-
+        
         /// <summary>
         /// Converts a normalized volume to the mixer group db scale
         /// </summary>
@@ -186,7 +189,7 @@ namespace MoreMountains.Tools
         /// <returns></returns>
         public virtual float NormalizedToMixerVolume(float normalizedVolume)
         {
-            return Mathf.Log10(normalizedVolume) * 20;
+            return Mathf.Log10(normalizedVolume) * MixerValuesMultiplier;
         }
 
         /// <summary>
@@ -196,7 +199,7 @@ namespace MoreMountains.Tools
         /// <returns></returns>
         public virtual float MixerVolumeToNormalized(float mixerVolume)
         {
-            return (float)Math.Pow(10, (mixerVolume / 20));
+            return (float)Math.Pow(10, (mixerVolume / MixerValuesMultiplier));
         }
         
         #endregion Volume

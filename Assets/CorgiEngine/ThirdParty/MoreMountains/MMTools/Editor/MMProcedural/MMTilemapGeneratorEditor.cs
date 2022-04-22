@@ -13,13 +13,13 @@ namespace MoreMountains.Tools
     public class MMTilemapGeneratorEditor : Editor
     {
     
-        protected ReorderableList _list;
+        protected MMReorderableList _list;
 
         protected virtual void OnEnable()
         {
-            _list = new ReorderableList(serializedObject.FindProperty("Layers"));
+            _list = new MMReorderableList(serializedObject.FindProperty("Layers"));
             _list.elementNameProperty = "Layer";
-            _list.elementDisplayType = ReorderableList.ElementDisplayType.Expandable;
+            _list.elementDisplayType = MMReorderableList.ElementDisplayType.Expandable;
         }
         
         public override void OnInspectorGUI()

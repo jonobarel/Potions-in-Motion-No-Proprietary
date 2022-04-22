@@ -16,6 +16,7 @@ namespace MoreMountains.Feedbacks
             public SerializedProperty WiggleType;
             public SerializedProperty UseUnscaledTime;
             public SerializedProperty RelativeAmplitude;
+            public SerializedProperty UniformValues;
             public SerializedProperty StartWigglingAutomatically;
 
             public SerializedProperty SmoothPingPong;
@@ -97,6 +98,7 @@ namespace MoreMountains.Feedbacks
             editorProperties.WiggleType = targetProperty.FindPropertyRelative("WiggleType");
             editorProperties.UseUnscaledTime = targetProperty.FindPropertyRelative("UseUnscaledTime");
             editorProperties.RelativeAmplitude = targetProperty.FindPropertyRelative("RelativeAmplitude");
+            editorProperties.UniformValues = targetProperty.FindPropertyRelative("UniformValues");
             editorProperties.StartWigglingAutomatically = targetProperty.FindPropertyRelative("StartWigglingAutomatically");
             editorProperties.SmoothPingPong = targetProperty.FindPropertyRelative("SmoothPingPong");
             editorProperties.UseSpeedCurve = targetProperty.FindPropertyRelative("UseSpeedCurve");
@@ -198,6 +200,7 @@ namespace MoreMountains.Feedbacks
                     EditorGUILayout.PropertyField(editorProperties.AmplitudeMin);
                     EditorGUILayout.PropertyField(editorProperties.AmplitudeMax);
                     EditorGUILayout.PropertyField(editorProperties.RelativeAmplitude);
+                    EditorGUILayout.PropertyField(editorProperties.UniformValues);
                     EditorGUILayout.PropertyField(editorProperties.FrequencyMin);
                     EditorGUILayout.PropertyField(editorProperties.FrequencyMax);
                     EditorGUILayout.PropertyField(editorProperties.PauseMin);
@@ -209,6 +212,7 @@ namespace MoreMountains.Feedbacks
                     EditorGUILayout.PropertyField(editorProperties.AmplitudeMin);
                     EditorGUILayout.PropertyField(editorProperties.AmplitudeMax);
                     EditorGUILayout.PropertyField(editorProperties.RelativeAmplitude);
+                    EditorGUILayout.PropertyField(editorProperties.UniformValues);
                     EditorGUILayout.PropertyField(editorProperties.NoiseFrequencyMin);
                     EditorGUILayout.PropertyField(editorProperties.NoiseFrequencyMax);
                     EditorGUILayout.PropertyField(editorProperties.NoiseShiftMin);
@@ -223,6 +227,7 @@ namespace MoreMountains.Feedbacks
                     EditorGUILayout.PropertyField(editorProperties.RemapCurveOneMin);
                     EditorGUILayout.PropertyField(editorProperties.RemapCurveOneMax);
                     EditorGUILayout.PropertyField(editorProperties.RelativeCurveAmplitude);
+                    EditorGUILayout.PropertyField(editorProperties.UniformValues);
                     EditorGUILayout.PropertyField(editorProperties.CurvePingPong);
                     EditorGUILayout.PropertyField(editorProperties.FrequencyMin);
                     EditorGUILayout.PropertyField(editorProperties.FrequencyMax);

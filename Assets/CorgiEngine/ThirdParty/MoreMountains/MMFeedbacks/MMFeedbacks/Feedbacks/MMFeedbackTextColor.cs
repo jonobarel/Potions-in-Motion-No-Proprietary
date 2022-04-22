@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("UI/Text Color")]
     public class MMFeedbackTextColor : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         public enum ColorModes { Instant, Gradient, Interpolate }
 
         /// the duration of this feedback is the duration of the color transition, or 0 if instant
@@ -88,33 +90,30 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (TargetText == null)
+            if (!Active || !FeedbackTypeAuthorized || (TargetText == null))
             {
                 return;
             }
 
-            if (Active)
+            switch (ColorMode)
             {
-                switch (ColorMode)
-                {
-                    case ColorModes.Instant:
-                        TargetText.color = InstantColor;
-                        break;
-                    case ColorModes.Gradient:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(ChangeColor());
-                        break;
-                    case ColorModes.Interpolate:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(ChangeColor());
-                        break;
-                }
+                case ColorModes.Instant:
+                    TargetText.color = InstantColor;
+                    break;
+                case ColorModes.Gradient:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(ChangeColor());
+                    break;
+                case ColorModes.Interpolate:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(ChangeColor());
+                    break;
             }
         }
 
@@ -126,6 +125,7 @@ namespace MoreMountains.Feedbacks
         {
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
             
+            IsPlaying = true;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float remappedTime = MMFeedbacksHelpers.Remap(journey, 0f, FeedbackDuration, 0f, 1f);
@@ -137,6 +137,7 @@ namespace MoreMountains.Feedbacks
             }
             SetColor(FinalNormalizedTime);
             _coroutine = null;
+            IsPlaying = false;
             yield break;
         }
 

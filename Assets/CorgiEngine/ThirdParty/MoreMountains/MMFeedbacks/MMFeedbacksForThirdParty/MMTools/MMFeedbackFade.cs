@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Camera/Fade")]
     public class MMFeedbackFade : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.CameraColor; } }
@@ -77,33 +79,35 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                _position = GetPosition(position);
-                _fadeType = FadeType;
-                if (!NormalPlayDirection)
+                return;
+            }
+            
+            _position = GetPosition(position);
+            _fadeType = FadeType;
+            if (!NormalPlayDirection)
+            {
+                if (FadeType == FadeTypes.FadeIn)
                 {
-                    if (FadeType == FadeTypes.FadeIn)
-                    {
-                        _fadeType = FadeTypes.FadeOut;
-                    }
-                    else if (FadeType == FadeTypes.FadeOut)
-                    {
-                        _fadeType = FadeTypes.FadeIn;
-                    }
+                    _fadeType = FadeTypes.FadeOut;
                 }
-                switch (_fadeType)
+                else if (FadeType == FadeTypes.FadeOut)
                 {
-                    case FadeTypes.Custom:
-                        MMFadeEvent.Trigger(FeedbackDuration, TargetAlpha, Curve, ID, IgnoreTimeScale, _position);
-                        break;
-                    case FadeTypes.FadeIn:
-                        MMFadeInEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
-                        break;
-                    case FadeTypes.FadeOut:
-                        MMFadeOutEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
-                        break;
+                    _fadeType = FadeTypes.FadeIn;
                 }
+            }
+            switch (_fadeType)
+            {
+                case FadeTypes.Custom:
+                    MMFadeEvent.Trigger(FeedbackDuration, TargetAlpha, Curve, ID, IgnoreTimeScale, _position);
+                    break;
+                case FadeTypes.FadeIn:
+                    MMFadeInEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
+                    break;
+                case FadeTypes.FadeOut:
+                    MMFadeOutEvent.Trigger(FeedbackDuration, Curve, ID, IgnoreTimeScale, _position);
+                    break;
             }
         }
 
@@ -114,6 +118,10 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
             base.CustomStopFeedback(position, feedbacksIntensity);
             MMFadeStopEvent.Trigger(ID);
         }

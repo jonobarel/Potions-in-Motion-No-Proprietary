@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Renderer/ShaderController")]
     public class MMFeedbackShaderController : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// the different possible modes 
         public enum Modes { OneTime, ToDestination }
         /// sets the inspector color for this feedback
@@ -27,6 +29,9 @@ namespace MoreMountains.Feedbacks
         /// the float controller to trigger a one time play on
         [Tooltip("the float controller to trigger a one time play on")]
         public ShaderController TargetShaderController;
+        /// an optional list of float controllers to trigger a one time play on
+        [Tooltip("an optional list of float controllers to trigger a one time play on")]
+        public List<ShaderController> TargetShaderControllerList;
         /// whether this should revert to original at the end
         [Tooltip("whether this should revert to original at the end")]
         public bool RevertToInitialValueAfterEnd = false;
@@ -112,37 +117,49 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active && (TargetShaderController != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetShaderController == null))
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                
-                TargetShaderController.RevertToInitialValueAfterEnd = RevertToInitialValueAfterEnd;
-                if (Mode == Modes.OneTime)
-                {
-                    TargetShaderController.OneTimeDuration = FeedbackDuration;
-                    TargetShaderController.OneTimeAmplitude = OneTimeAmplitude;
-                    TargetShaderController.OneTimeCurve = OneTimeCurve;
-                    if (NormalPlayDirection)
-                    {
-                        TargetShaderController.OneTimeRemapMin = OneTimeRemapMin * intensityMultiplier;
-                        TargetShaderController.OneTimeRemapMax = OneTimeRemapMax * intensityMultiplier;    
-                    }
-                    else
-                    {
-                        TargetShaderController.OneTimeRemapMin = OneTimeRemapMax * intensityMultiplier;
-                        TargetShaderController.OneTimeRemapMax = OneTimeRemapMin * intensityMultiplier;
-                    }
-                    TargetShaderController.OneTime();
-                }
-                if (Mode == Modes.ToDestination)
-                {
-                    TargetShaderController.ToColor = ToDestinationColor;
-                    TargetShaderController.ToDestinationCurve = ToDestinationCurve;
-                    TargetShaderController.ToDestinationDuration = FeedbackDuration;
-                    TargetShaderController.ToDestinationValue = ToDestinationValue;
-                    TargetShaderController.ToDestination();
-                }                
+                return;
             }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            
+            PerformPlay(TargetShaderController, intensityMultiplier);     
+
+            foreach (ShaderController shaderController in TargetShaderControllerList)
+            {
+                PerformPlay(shaderController, intensityMultiplier);     
+            }    
+        }
+
+        protected virtual void PerformPlay(ShaderController shaderController, float intensityMultiplier)
+        {
+            shaderController.RevertToInitialValueAfterEnd = RevertToInitialValueAfterEnd;
+            if (Mode == Modes.OneTime)
+            {
+                shaderController.OneTimeDuration = FeedbackDuration;
+                shaderController.OneTimeAmplitude = OneTimeAmplitude;
+                shaderController.OneTimeCurve = OneTimeCurve;
+                if (NormalPlayDirection)
+                {
+                    shaderController.OneTimeRemapMin = OneTimeRemapMin * intensityMultiplier;
+                    shaderController.OneTimeRemapMax = OneTimeRemapMax * intensityMultiplier;    
+                }
+                else
+                {
+                    shaderController.OneTimeRemapMin = OneTimeRemapMax * intensityMultiplier;
+                    shaderController.OneTimeRemapMax = OneTimeRemapMin * intensityMultiplier;
+                }
+                shaderController.OneTime();
+            }
+            if (Mode == Modes.ToDestination)
+            {
+                shaderController.ToColor = ToDestinationColor;
+                shaderController.ToDestinationCurve = ToDestinationCurve;
+                shaderController.ToDestinationDuration = FeedbackDuration;
+                shaderController.ToDestinationValue = ToDestinationValue;
+                shaderController.ToDestination();
+            }   
         }
         
         /// <summary>
@@ -152,13 +169,20 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
-            base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                if (TargetShaderController != null)
-                {
-                    TargetShaderController.Stop();
-                }
+                return;
+            }
+            base.CustomStopFeedback(position, feedbacksIntensity);
+            
+            if (TargetShaderController != null)
+            {
+                TargetShaderController.Stop();
+            }
+
+            foreach (ShaderController shaderController in TargetShaderControllerList)
+            {
+                shaderController.Stop();
             }
         }
 
@@ -168,18 +192,28 @@ namespace MoreMountains.Feedbacks
         protected override void CustomReset()
         {
             base.CustomReset();
-            if (Active && (TargetShaderController != null))
+            if (Active && FeedbackTypeAuthorized && (TargetShaderController != null))
             {
-                TargetShaderController.OneTimeDuration = _oneTimeDurationStorage;
-                TargetShaderController.OneTimeAmplitude = _oneTimeAmplitudeStorage;
-                TargetShaderController.OneTimeCurve = _oneTimeCurveStorage;
-                TargetShaderController.OneTimeRemapMin = _oneTimeRemapMinStorage;
-                TargetShaderController.OneTimeRemapMax = _oneTimeRemapMaxStorage;
-                TargetShaderController.ToDestinationCurve = _toDestinationCurveStorage;
-                TargetShaderController.ToDestinationDuration = _toDestinationDurationStorage;
-                TargetShaderController.ToDestinationValue = _toDestinationValueStorage;
-                TargetShaderController.RevertToInitialValueAfterEnd = _revertToInitialValueAfterEndStorage;
+                PerformReset(TargetShaderController);
             }
+
+            foreach (ShaderController shaderController in TargetShaderControllerList)
+            {
+                PerformReset(shaderController);
+            }
+        }
+
+        protected virtual void PerformReset(ShaderController shaderController)
+        {
+            shaderController.OneTimeDuration = _oneTimeDurationStorage;
+            shaderController.OneTimeAmplitude = _oneTimeAmplitudeStorage;
+            shaderController.OneTimeCurve = _oneTimeCurveStorage;
+            shaderController.OneTimeRemapMin = _oneTimeRemapMinStorage;
+            shaderController.OneTimeRemapMax = _oneTimeRemapMaxStorage;
+            shaderController.ToDestinationCurve = _toDestinationCurveStorage;
+            shaderController.ToDestinationDuration = _toDestinationDurationStorage;
+            shaderController.ToDestinationValue = _toDestinationValueStorage;
+            shaderController.RevertToInitialValueAfterEnd = _revertToInitialValueAfterEndStorage;
         }
 
     }

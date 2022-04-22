@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -31,7 +33,7 @@ namespace MoreMountains.Feedbacks
             static public System.Type Type { get; private set; }
             static List<SerializedProperty> Properties = new List<SerializedProperty>();
             
-            static string[] IgnoreList = new string[]
+            public static string[] IgnoreList = new string[]
             {
             "m_ObjectHideFlags",
             "m_CorrespondingSourceObject",
@@ -124,6 +126,8 @@ namespace MoreMountains.Feedbacks
         protected SerializedProperty _mmfeedbacksInitialDelay;
         protected SerializedProperty _mmfeedbacksCanPlayWhileAlreadyPlaying;
         protected SerializedProperty _mmfeedbacksEvents;
+        protected SerializedProperty _mmfeedbacksChanceToPlay;
+        protected bool _canDisplayInspector = true;
         
         protected Dictionary<MMFeedback, Editor> _editors;
         protected List<FeedbackTypePair> _typesAndNames = new List<FeedbackTypePair>();
@@ -162,6 +166,7 @@ namespace MoreMountains.Feedbacks
             _mmfeedbacksInitialDelay = serializedObject.FindProperty("InitialDelay");
             _mmfeedbacksCanPlayWhileAlreadyPlaying = serializedObject.FindProperty("CanPlayWhileAlreadyPlaying");
             _mmfeedbacksFeedbacksIntensity = serializedObject.FindProperty("FeedbacksIntensity");
+            _mmfeedbacksChanceToPlay = serializedObject.FindProperty("ChanceToPlay");
 
             _mmfeedbacksEvents = serializedObject.FindProperty("Events");
             
@@ -237,9 +242,14 @@ namespace MoreMountains.Feedbacks
         /// </summary>
         public override void OnInspectorGUI()
         {
+            if (!_canDisplayInspector)
+            {
+                return;
+            }
+            
             var e = Event.current;
             serializedObject.Update();
-            Undo.RecordObject(target, "Modified Feedback Manager");
+            EditorGUI.BeginChangeCheck();
 
             EditorGUILayout.Space();
 
@@ -254,12 +264,17 @@ namespace MoreMountains.Feedbacks
 
             if (MMFeedbacksConfiguration.Instance.ShowInspectorTips)
             {
-                EditorGUILayout.HelpBox("Select feedbacks from the 'add a feedback' dropdown and customize them. Remember, if you don't use auto initialization (Awake or Start), " +
-                                        "you'll need to initialize them via script.", MessageType.None);    
+                EditorGUILayout.HelpBox("The MMFeedbacks component is getting replaced by the new and improved MMF_Player, which will improve performance, let you keep runtime changes, and much more! The MMF_Player works just like MMFeedbacks. " +
+                                        "Consider using it instead, and don't hesitate to check the documentation to learn all about it.", MessageType.Warning);    
             }
 
             Rect helpBoxRect = GUILayoutUtility.GetLastRect();
 
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(target, "Modified Feedback Manager");
+            }
+            
             // Settings dropdown -------------------------------------------------------------------------------------
 
             _settingsMenuDropdown = EditorGUILayout.Foldout(_settingsMenuDropdown, "Settings", true, EditorStyles.foldout);
@@ -287,6 +302,7 @@ namespace MoreMountains.Feedbacks
                 EditorGUILayout.PropertyField(_mmfeedbacksDisplayFullDurationDetails);
                 EditorGUILayout.PropertyField(_mmfeedbacksCooldownDuration);
                 EditorGUILayout.PropertyField(_mmfeedbacksInitialDelay);
+                EditorGUILayout.PropertyField(_mmfeedbacksChanceToPlay);
                 
                 EditorGUILayout.Space(10);
                 EditorGUILayout.LabelField("Play Conditions", EditorStyles.boldLabel);
@@ -295,6 +311,21 @@ namespace MoreMountains.Feedbacks
                 EditorGUILayout.Space(10);
                 EditorGUILayout.LabelField("Events", EditorStyles.boldLabel);
                 EditorGUILayout.PropertyField(_mmfeedbacksEvents);
+
+                if (!Application.isPlaying)
+                {
+                    EditorGUILayout.Space(10);
+                    EditorGUILayout.BeginHorizontal();
+                    if (GUILayout.Button("Generate MMF_Player"))
+                    {
+                        this.ConvertToMMF_Player(true);
+                    }
+                    if (GUILayout.Button("Convert to MMF_Player"))
+                    {
+                        this.ConvertToMMF_Player(false);
+                    }
+                    EditorGUILayout.EndHorizontal();    
+                }
             }
 
             // Duration ----------------------------------------------------------------------------------------------
@@ -348,8 +379,18 @@ namespace MoreMountains.Feedbacks
 
             MMFeedbackStyling.DrawSection("Feedbacks");
 
+            if (!_canDisplayInspector)
+            {
+                return;
+            }
+            
             for (int i = 0; i < _mmfeedbacks.arraySize; i++)
             {
+                if (!_canDisplayInspector)
+                {
+                    return;
+                }
+                
                 MMFeedbackStyling.DrawSplitter();
 
                 SerializedProperty property = _mmfeedbacks.GetArrayElementAtIndex(i);
@@ -893,6 +934,194 @@ namespace MoreMountains.Feedbacks
             Undo.RecordObject(target, "Paste all MMFeedbacks");
             FeedbackCopy.PasteAll(this);
             serializedObject.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// Converts a MMFeedbacks and all its contents into the new and improved MMF_Player
+        /// To convert from MMFeedbacks to MMF_Player you have a few options :
+        /// - on a MMFeedbacks Settings panel, press the Generate MMF_Player button, this will create a new MMF_Player component on the same object, and copy feedbacks to it, ready to use.
+        ///     The old MMFeedbacks won't be touched.
+        /// - press the Convert feedback, and this will try to replace the current MMFeedbacks with a new MMF_Player with the same settings.
+        /// - if you're inside a prefab instance, regular replace won't work, and you'll want to add, at the prefab level, an empty MMF_Player that will be the recipient of the conversion
+        /// 
+        /// </summary>
+        public virtual void ConvertToMMF_Player(bool generateOnly)
+        {
+            GameObject targetObject = _targetMMFeedbacks.gameObject;
+            MMF_Player oldMMFPlayer = targetObject.GetComponent<MMF_Player>();
+            
+            // we remove any MMF_Player that may already be on that object
+            if ((oldMMFPlayer != null) && (oldMMFPlayer.FeedbacksList.Count > 0)) 
+            {
+                DestroyImmediate(oldMMFPlayer);
+            }
+            
+            // if we don't have an old player to work with and are inside a prefab, we give up to not break stuff
+            if (!generateOnly && (oldMMFPlayer == null))
+            {
+                // conversion can't happen on a prefab instance unfortunately 
+                if (PrefabUtility.IsPartOfPrefabAsset(targetObject)
+                || PrefabUtility.IsPartOfPrefabInstance(targetObject)
+                || PrefabUtility.IsPartOfNonAssetPrefabInstance(targetObject))
+                {
+                    Debug.LogWarning("Unfortunately, you can't use conversion on a prefab instance.");
+                    return;
+                }
+            }
+
+            _canDisplayInspector = false;
+            serializedObject.Update();
+            Undo.RegisterCompleteObjectUndo(target, "Convert to MMF_Player");
+            Debug.Log("Starting conversion to MMF_Player --------");
+
+            if (generateOnly)
+            {
+                // we create a new player
+                if (oldMMFPlayer == null)
+                {
+                    MMF_Player newPlayer = targetObject.AddComponent<MMF_Player>();
+                    CopyFromMMFeedbacksToMMF_Player(newPlayer);
+                }
+                else
+                {
+                    CopyFromMMFeedbacksToMMF_Player(oldMMFPlayer);
+                }
+                serializedObject.ApplyModifiedProperties();
+                return;
+            }
+
+            GameObject temporaryHost = null;
+            // we create a new player
+            if (oldMMFPlayer == null)
+            {
+                temporaryHost = new GameObject("TemporaryHost");   
+                MMF_Player newPlayer = temporaryHost.AddComponent<MMF_Player>();
+                CopyFromMMFeedbacksToMMF_Player(newPlayer);
+                
+                MonoScript yourReplacementScript = MonoScript.FromMonoBehaviour(newPlayer);
+                SerializedProperty scriptProperty = serializedObject.FindProperty("m_Script");
+                serializedObject.Update();
+                scriptProperty.objectReferenceValue = yourReplacementScript;
+                serializedObject.ApplyModifiedProperties();
+                
+                // we copy back from our temp object
+                MMF_Player finalPlayer = targetObject.GetComponent<MMF_Player>();
+                finalPlayer.InitializationMode = newPlayer.InitializationMode;
+                finalPlayer.SafeMode = newPlayer.SafeMode;
+                finalPlayer.Direction = newPlayer.Direction;
+                finalPlayer.AutoChangeDirectionOnEnd = newPlayer.AutoChangeDirectionOnEnd;
+                finalPlayer.AutoPlayOnStart = newPlayer.AutoPlayOnStart;
+                finalPlayer.AutoPlayOnEnable = newPlayer.AutoPlayOnEnable;
+                finalPlayer.DurationMultiplier = newPlayer.DurationMultiplier;
+                finalPlayer.DisplayFullDurationDetails = newPlayer.DisplayFullDurationDetails;
+                finalPlayer.CooldownDuration = newPlayer.CooldownDuration;
+                finalPlayer.InitialDelay = newPlayer.InitialDelay;
+                finalPlayer.CanPlayWhileAlreadyPlaying = newPlayer.CanPlayWhileAlreadyPlaying;
+                finalPlayer.FeedbacksIntensity = newPlayer.FeedbacksIntensity;
+                finalPlayer.Events = newPlayer.Events;
+                finalPlayer.FeedbacksList = newPlayer.FeedbacksList;
+                if (finalPlayer.FeedbacksList != null && finalPlayer.FeedbacksList.Count > 0)
+                {
+                    foreach (MMF_Feedback feedback in finalPlayer.FeedbacksList)
+                    {
+                        feedback.Owner = finalPlayer;
+                        feedback.UniqueID = Guid.NewGuid().GetHashCode();
+                    }
+                }
+            }
+            else
+            {
+                CopyFromMMFeedbacksToMMF_Player(oldMMFPlayer);
+                PrefabUtility.RecordPrefabInstancePropertyModifications(oldMMFPlayer);
+                serializedObject.Update();
+                serializedObject.ApplyModifiedProperties();
+                DestroyImmediate(_targetMMFeedbacks);
+            }
+
+            // we remove all remaining feedbacks
+            Component[] feedbackArray = targetObject.GetComponents(typeof(MMFeedback));
+            foreach (Component comp in feedbackArray)
+            {
+                DestroyImmediate(comp);    
+            }
+
+            if (temporaryHost != null)
+            {
+                DestroyImmediate(temporaryHost);    
+            }
+
+            Debug.Log("Conversion complete --------");
+        }
+
+        protected virtual void CopyFromMMFeedbacksToMMF_Player(MMF_Player newPlayer)
+        {
+            // we copy all its settings
+            newPlayer.InitializationMode = _targetMMFeedbacks.InitializationMode;
+            newPlayer.SafeMode = _targetMMFeedbacks.SafeMode;
+            newPlayer.Direction = _targetMMFeedbacks.Direction;
+            newPlayer.AutoChangeDirectionOnEnd = _targetMMFeedbacks.AutoChangeDirectionOnEnd;
+            newPlayer.AutoPlayOnStart = _targetMMFeedbacks.AutoPlayOnStart;
+            newPlayer.AutoPlayOnEnable = _targetMMFeedbacks.AutoPlayOnEnable;
+            newPlayer.DurationMultiplier = _targetMMFeedbacks.DurationMultiplier;
+            newPlayer.DisplayFullDurationDetails = _targetMMFeedbacks.DisplayFullDurationDetails;
+            newPlayer.CooldownDuration = _targetMMFeedbacks.CooldownDuration;
+            newPlayer.InitialDelay = _targetMMFeedbacks.InitialDelay;
+            newPlayer.CanPlayWhileAlreadyPlaying = _targetMMFeedbacks.CanPlayWhileAlreadyPlaying;
+            newPlayer.FeedbacksIntensity = _targetMMFeedbacks.FeedbacksIntensity;
+            newPlayer.Events = _targetMMFeedbacks.Events;
+            
+            // we copy all its feedbacks
+            SerializedProperty feedbacks = serializedObject.FindProperty("Feedbacks");
+            for (int i = 0; i < feedbacks.arraySize; i++)
+            {
+                MMFeedback oldFeedback = (feedbacks.GetArrayElementAtIndex(i).objectReferenceValue as MMFeedback);
+                
+                // we look for a match in the new classes
+                Type oldType = oldFeedback.GetType();
+                string oldTypeName = oldType.Name.ToString();
+                string newTypeName = oldTypeName.Replace("MMFeedback", "MMF_");
+                Type newType = MMFeedbackStaticMethods.MMFGetTypeByName(newTypeName);
+                
+                if (newType == null)
+                {
+                    Debug.Log("<color=red>Couldn't find any MMF_Feedback matching "+oldTypeName+"</color>");
+                }
+                else
+                {
+                    MMF_Feedback newFeedback = newPlayer.AddFeedback(newType);
+                    
+                    List<FieldInfo> oldFieldsList;
+                    int oldFieldsListLength = MMF_FieldInfo.GetFieldInfo(oldFeedback, out oldFieldsList);
+
+                    for (int j = 0; j < oldFieldsListLength; j++)
+                    {
+                        string searchedField = oldFieldsList[j].Name;
+
+                        if (!FeedbackCopy.IgnoreList.Contains(searchedField))
+                        {
+                            FieldInfo newField = newType.GetField(searchedField);
+                            FieldInfo oldField = oldType.GetField(searchedField);
+                            
+                            if (newField != null)
+                            {
+                                if (newField.FieldType == oldField.FieldType)
+                                {
+                                    newField.SetValue(newFeedback, oldField.GetValue(oldFeedback));    
+                                }
+                                else
+                                {
+                                    if (oldField.FieldType.IsEnum)
+                                    {
+                                        newField.SetValue(newFeedback, (int)oldField.GetValue(oldFeedback));    
+                                    }
+                                }
+                            }    
+                        }
+                    }
+                    Debug.Log("Added new feedback of type "+newTypeName);
+                }
+            }
+            newPlayer.RefreshCache();
         }
     }
 }

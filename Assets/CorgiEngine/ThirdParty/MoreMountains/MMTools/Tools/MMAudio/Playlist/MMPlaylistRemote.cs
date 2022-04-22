@@ -10,6 +10,7 @@ namespace MoreMountains.Tools
     [AddComponentMenu("More Mountains/Tools/Audio/MMPlaylistRemote")]
     public class MMPlaylistRemote : MonoBehaviour
     {
+	    public int Channel = 0;
         /// The track to play when calling PlaySelectedTrack
         public int TrackNumber = 0;
 
@@ -43,7 +44,7 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void Play()
         {
-            MMPlaylistPlayEvent.Trigger();
+            MMPlaylistPlayEvent.Trigger(Channel);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void Pause()
         {
-            MMPlaylistPauseEvent.Trigger();
+            MMPlaylistPauseEvent.Trigger(Channel);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void Stop()
         {
-            MMPlaylistStopEvent.Trigger();
+            MMPlaylistStopEvent.Trigger(Channel);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void PlayNextTrack()
         {
-            MMPlaylistPlayNextEvent.Trigger();
+            MMPlaylistPlayNextEvent.Trigger(Channel);
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void PlaySelectedTrack()
         {
-            MMPlaylistPlayIndexEvent.Trigger(TrackNumber);
+            MMPlaylistPlayIndexEvent.Trigger(Channel, TrackNumber);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void PlayTrack(int trackIndex)
         {
-            MMPlaylistPlayIndexEvent.Trigger(trackIndex);
+            MMPlaylistPlayIndexEvent.Trigger(Channel, trackIndex);
         }
 
         /// <summary>

@@ -163,7 +163,7 @@ namespace MoreMountains.Feedbacks
         protected virtual IEnumerator UpdateValueSequence(float feedbacksIntensity)
         {
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
-
+            IsPlaying = true;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float remappedTime = MMFeedbacksHelpers.Remap(journey, 0f, FeedbackDuration, 0f, 1f);
@@ -177,7 +177,7 @@ namespace MoreMountains.Feedbacks
             {
                 Turn(false);
             }
-
+            IsPlaying = false;
             _coroutine = null;
             yield return null;
         }
@@ -223,7 +223,7 @@ namespace MoreMountains.Feedbacks
                     StopCoroutine(_coroutine);
                     _coroutine = null;
                 }
-
+                IsPlaying = false;
                 if (DisableOnStop)
                 {
                     Turn(false);    

@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("TextMesh Pro/TMP Text")]
     public class MMFeedbackTMPText : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         #if UNITY_EDITOR
             public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TMPColor; } }
         #endif
@@ -33,7 +35,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (!Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }

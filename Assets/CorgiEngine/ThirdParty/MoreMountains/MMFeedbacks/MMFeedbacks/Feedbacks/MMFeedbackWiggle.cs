@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Transform/Wiggle")]
     public class MMFeedbackWiggle : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TransformColor; } }
@@ -64,24 +66,26 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            TargetWiggle.enabled = true;
-            if (Active && (TargetWiggle != null))
+            if (!Active || !FeedbackTypeAuthorized || (TargetWiggle == null))
             {
-                if (WigglePosition)
-                {
-                    TargetWiggle.PositionWiggleProperties.UseUnscaledTime = Timing.TimescaleMode == TimescaleModes.Unscaled;
-                    TargetWiggle.WigglePosition(ApplyTimeMultiplier(WigglePositionDuration));
-                }
-                if (WiggleRotation)
-                {
-                    TargetWiggle.RotationWiggleProperties.UseUnscaledTime = Timing.TimescaleMode == TimescaleModes.Unscaled;
-                    TargetWiggle.WiggleRotation(ApplyTimeMultiplier(WiggleRotationDuration));
-                }
-                if (WiggleScale)
-                {
-                    TargetWiggle.ScaleWiggleProperties.UseUnscaledTime = Timing.TimescaleMode == TimescaleModes.Unscaled;
-                    TargetWiggle.WiggleScale(ApplyTimeMultiplier(WiggleScaleDuration));
-                }
+                return;
+            }
+            
+            TargetWiggle.enabled = true;
+            if (WigglePosition)
+            {
+                TargetWiggle.PositionWiggleProperties.UseUnscaledTime = Timing.TimescaleMode == TimescaleModes.Unscaled;
+                TargetWiggle.WigglePosition(ApplyTimeMultiplier(WigglePositionDuration));
+            }
+            if (WiggleRotation)
+            {
+                TargetWiggle.RotationWiggleProperties.UseUnscaledTime = Timing.TimescaleMode == TimescaleModes.Unscaled;
+                TargetWiggle.WiggleRotation(ApplyTimeMultiplier(WiggleRotationDuration));
+            }
+            if (WiggleScale)
+            {
+                TargetWiggle.ScaleWiggleProperties.UseUnscaledTime = Timing.TimescaleMode == TimescaleModes.Unscaled;
+                TargetWiggle.WiggleScale(ApplyTimeMultiplier(WiggleScaleDuration));
             }
         }
 
@@ -92,12 +96,13 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized || (TargetWiggle == null))
+            {
+                return;
+            }
             base.CustomStopFeedback(position, feedbacksIntensity);
 
-            if (Active && (TargetWiggle != null))
-            {
-                TargetWiggle.enabled = false;
-            }
+            TargetWiggle.enabled = false;
         }
     }
 }

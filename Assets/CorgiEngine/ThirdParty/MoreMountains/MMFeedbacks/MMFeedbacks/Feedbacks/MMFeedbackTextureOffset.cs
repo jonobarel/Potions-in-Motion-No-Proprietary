@@ -12,6 +12,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("Renderer/Texture Offset")]
     public class MMFeedbackTextureOffset : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.RendererColor; } }
@@ -104,23 +106,25 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                
-                switch (Mode)
-                {
-                    case Modes.Instant:
-                        ApplyValue(InstantOffset * intensityMultiplier);
-                        break;
-                    case Modes.OverTime:
-                        if (!AllowAdditivePlays && (_coroutine != null))
-                        {
-                            return;
-                        }
-                        _coroutine = StartCoroutine(TransitionCo(intensityMultiplier));
-                        break;
-                }
+                return;
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            
+            switch (Mode)
+            {
+                case Modes.Instant:
+                    ApplyValue(InstantOffset * intensityMultiplier);
+                    break;
+                case Modes.OverTime:
+                    if (!AllowAdditivePlays && (_coroutine != null))
+                    {
+                        return;
+                    }
+                    _coroutine = StartCoroutine(TransitionCo(intensityMultiplier));
+                    break;
             }
         }
 
@@ -131,6 +135,7 @@ namespace MoreMountains.Feedbacks
         protected virtual IEnumerator TransitionCo(float intensityMultiplier)
         {
             float journey = NormalPlayDirection ? 0f : FeedbackDuration;
+            IsPlaying = true;
             while ((journey >= 0) && (journey <= FeedbackDuration) && (FeedbackDuration > 0))
             {
                 float remappedTime = MMFeedbacksHelpers.Remap(journey, 0f, FeedbackDuration, 0f, 1f);
@@ -141,7 +146,7 @@ namespace MoreMountains.Feedbacks
                 yield return null;
             }
             SetMaterialValues(FinalNormalizedTime, intensityMultiplier);
-            
+            IsPlaying = false;
             _coroutine = null;
             yield return null;
         }
@@ -190,12 +195,14 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
-            base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active && (_coroutine != null))
+            if (!Active || !FeedbackTypeAuthorized || (_coroutine == null))
             {
-                StopCoroutine(_coroutine);
-                _coroutine = null;
+                return;
             }
+            base.CustomStopFeedback(position, feedbacksIntensity);
+            IsPlaying = false;
+            StopCoroutine(_coroutine);
+            _coroutine = null;
         }
     }
 }

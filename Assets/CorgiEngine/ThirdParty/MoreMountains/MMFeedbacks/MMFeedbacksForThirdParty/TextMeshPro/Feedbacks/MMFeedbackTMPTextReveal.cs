@@ -13,6 +13,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackPath("TextMesh Pro/TMP Text Reveal")]
     public class MMFeedbackTMPTextReveal : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
 #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.TMPColor; } }
 #endif
@@ -35,7 +37,7 @@ namespace MoreMountains.Feedbacks
                     switch (RevealMode)
                     {
                         case RevealModes.Character:
-                            return TargetTMPText.text.Length * IntervalBetweenReveals;
+                            return RichTextLength(TargetTMPText.text) * IntervalBetweenReveals;
                         case RevealModes.Lines:
                             return TargetTMPText.textInfo.lineCount * IntervalBetweenReveals;
                         case RevealModes.Words:
@@ -57,7 +59,7 @@ namespace MoreMountains.Feedbacks
                         switch (RevealMode)
                         {
                             case RevealModes.Character:
-                                IntervalBetweenReveals = value / TargetTMPText.text.Length;
+                                IntervalBetweenReveals = value / RichTextLength(TargetTMPText.text);
                                 break;
                             case RevealModes.Lines:
                                 IntervalBetweenReveals = value / TargetTMPText.textInfo.lineCount;
@@ -111,6 +113,7 @@ namespace MoreMountains.Feedbacks
 
         protected float _delay;
         protected Coroutine _coroutine;
+        protected int _richTextLength;
         
         /// <summary>
         /// On play we change the text of our target TMPText
@@ -119,7 +122,7 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (!Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
                 return;
             }
@@ -135,10 +138,12 @@ namespace MoreMountains.Feedbacks
                 TargetTMPText.ForceMeshUpdate();
             }
 
+            _richTextLength = RichTextLength(TargetTMPText.text);
+
             switch (RevealMode)
             {
                 case RevealModes.Character:
-                    _delay = (DurationMode == DurationModes.Interval) ? IntervalBetweenReveals : RevealDuration / TargetTMPText.text.Length;
+                    _delay = (DurationMode == DurationModes.Interval) ? IntervalBetweenReveals : RevealDuration / _richTextLength;
                     TargetTMPText.maxVisibleCharacters = 0;
                     _coroutine = StartCoroutine(RevealCharacters());
                     break;
@@ -161,23 +166,57 @@ namespace MoreMountains.Feedbacks
         /// <returns></returns>
         protected virtual IEnumerator RevealCharacters()
         {
-            int totalCharacters = TargetTMPText.text.Length;
+	        float startTime = (Timing.TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime;
+            int totalCharacters = _richTextLength;
             int visibleCharacters = 0;
-
+            float lastCharAt = 0f;
+            
+            IsPlaying = true;
             while (visibleCharacters <= totalCharacters)
             {
-                TargetTMPText.maxVisibleCharacters = visibleCharacters;
-                visibleCharacters++;
+	            float deltaTime = (Timing.TimescaleMode == TimescaleModes.Scaled) ? Time.deltaTime : Time.unscaledDeltaTime;
+	            float time = (Timing.TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime;
 
-                if (Timing.TimescaleMode == TimescaleModes.Scaled)
+	            if (time - lastCharAt < IntervalBetweenReveals)
+	            {
+		            yield return null;
+	            }
+	            
+	            TargetTMPText.maxVisibleCharacters = visibleCharacters;
+                visibleCharacters++;                
+                lastCharAt = time;
+
+                // we adjust our delay
+                
+                float delay = 0f;
+                
+                if (DurationMode == DurationModes.Interval)
                 {
-                    yield return MMFeedbacksCoroutine.WaitFor(_delay);    
+	                _delay = Mathf.Max(IntervalBetweenReveals, deltaTime);
+	                delay = _delay - deltaTime;
                 }
                 else
                 {
-                    yield return MMFeedbacksCoroutine.WaitForUnscaled(_delay);
+	                int remainingCharacters = totalCharacters - visibleCharacters;
+	                float elapsedTime = time - startTime;
+	                if (remainingCharacters != 0)
+	                {
+		                _delay = (RevealDuration - elapsedTime) / remainingCharacters;   
+	                }
+	                delay = _delay - deltaTime;
+                }
+                
+                if (Timing.TimescaleMode == TimescaleModes.Scaled)
+                {
+                    yield return MMFeedbacksCoroutine.WaitFor(delay);    
+                }
+                else
+                {
+                    yield return MMFeedbacksCoroutine.WaitForUnscaled(delay);
                 }
             }
+            TargetTMPText.maxVisibleCharacters = _richTextLength;
+            IsPlaying = false;
         }
 
         /// <summary>
@@ -189,6 +228,7 @@ namespace MoreMountains.Feedbacks
             int totalLines = TargetTMPText.textInfo.lineCount;
             int visibleLines = 0;
 
+            IsPlaying = true;
             while (visibleLines <= totalLines)
             {
                 TargetTMPText.maxVisibleLines = visibleLines;
@@ -203,6 +243,7 @@ namespace MoreMountains.Feedbacks
                     yield return MMFeedbacksCoroutine.WaitForUnscaled(_delay);
                 }
             }
+            IsPlaying = false;
         }
 
         /// <summary>
@@ -214,6 +255,7 @@ namespace MoreMountains.Feedbacks
             int totalWords = TargetTMPText.textInfo.wordCount;
             int visibleWords = 0;
 
+            IsPlaying = true;
             while (visibleWords <= totalWords)
             {
                 TargetTMPText.maxVisibleWords = visibleWords;
@@ -228,6 +270,7 @@ namespace MoreMountains.Feedbacks
                     yield return MMFeedbacksCoroutine.WaitForUnscaled(_delay);
                 }
             }
+            IsPlaying = false;
         }
 
         /// <summary>
@@ -237,12 +280,49 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomStopFeedback(Vector3 position, float feedbacksIntensity = 1)
         {
+            if (!Active || !FeedbackTypeAuthorized)
+            {
+                return;
+            }
             base.CustomStopFeedback(position, feedbacksIntensity);
-            if (Active && (_coroutine != null))
+            IsPlaying = false;
+            if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
                 _coroutine = null;
             }
+        }
+        
+        /// <summary>
+        /// Returns the length of a rich text, excluding its tags
+        /// </summary>
+        /// <param name="richText"></param>
+        /// <returns></returns>
+        protected int RichTextLength(string richText)
+        {
+	        int richTextLength = 0;
+	        bool insideTag = false;
+
+	        richText = richText.Replace("<br>", "-");
+	        
+	        foreach (char character in richText)
+	        {
+		        if (character == '<')
+		        {
+			        insideTag = true;
+			        continue;
+		        }
+		        else if (character == '>')
+		        {
+			        insideTag = false;
+		        }
+		        else if (!insideTag)
+		        {
+			        richTextLength++;
+		        }
+	        }
+ 
+	        return richTextLength;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace MoreMountains.Feedbacks
     [FeedbackHelp("This feedback lets you play a target audio source, with some elements at random.")]
     public class MMFeedbackAudioSource : MMFeedback
     {
+        /// a static bool used to disable all feedbacks of this type at once
+        public static bool FeedbackTypeAuthorized = true;
         /// sets the inspector color for this feedback
         #if UNITY_EDITOR
         public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.SoundsColor; } }
@@ -74,38 +76,40 @@ namespace MoreMountains.Feedbacks
         /// <param name="feedbacksIntensity"></param>
         protected override void CustomPlayFeedback(Vector3 position, float feedbacksIntensity = 1.0f)
         {
-            if (Active)
+            if (!Active || !FeedbackTypeAuthorized)
             {
-                float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
-                switch(Mode)
-                {
-                    case Modes.Play:
-                        if (RandomSfx.Length > 0)
-                        {
-                            _randomClip = RandomSfx[Random.Range(0, RandomSfx.Length)];
-                            TargetAudioSource.clip = _randomClip;
-                        }
-                        float volume = Random.Range(MinVolume, MaxVolume) * intensityMultiplier;
-                        float pitch = Random.Range(MinPitch, MaxPitch);
-                        _duration = TargetAudioSource.clip.length;
-                        PlayAudioSource(TargetAudioSource, volume, pitch);
-                        break;
+                return;
+            }
+            
+            float intensityMultiplier = Timing.ConstantIntensity ? 1f : feedbacksIntensity;
+            switch(Mode)
+            {
+                case Modes.Play:
+                    if (RandomSfx.Length > 0)
+                    {
+                        _randomClip = RandomSfx[Random.Range(0, RandomSfx.Length)];
+                        TargetAudioSource.clip = _randomClip;
+                    }
+                    float volume = Random.Range(MinVolume, MaxVolume) * intensityMultiplier;
+                    float pitch = Random.Range(MinPitch, MaxPitch);
+                    _duration = TargetAudioSource.clip.length;
+                    PlayAudioSource(TargetAudioSource, volume, pitch);
+                    break;
 
-                    case Modes.Pause:
-                        _duration = 0.1f;
-                        TargetAudioSource.Pause();
-                        break;
+                case Modes.Pause:
+                    _duration = 0.1f;
+                    TargetAudioSource.Pause();
+                    break;
 
-                    case Modes.UnPause:
-                        _duration = 0.1f;
-                        TargetAudioSource.UnPause();
-                        break;
+                case Modes.UnPause:
+                    _duration = 0.1f;
+                    TargetAudioSource.UnPause();
+                    break;
 
-                    case Modes.Stop:
-                        _duration = 0.1f;
-                        TargetAudioSource.Stop();
-                        break;
-                }
+                case Modes.Stop:
+                    _duration = 0.1f;
+                    TargetAudioSource.Stop();
+                    break;
             }
         }
         

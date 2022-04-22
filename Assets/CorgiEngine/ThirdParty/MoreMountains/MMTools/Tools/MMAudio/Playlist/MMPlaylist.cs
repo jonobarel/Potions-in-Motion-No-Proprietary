@@ -10,7 +10,7 @@ namespace MoreMountains.Tools
 
     public struct MMPlaylistPlayEvent
     {
-        public delegate void Delegate();
+        public delegate void Delegate(int channel);
         static private event Delegate OnEvent;
 
         static public void Register(Delegate callback)
@@ -23,14 +23,14 @@ namespace MoreMountains.Tools
             OnEvent -= callback;
         }
 
-        static public void Trigger()
+        static public void Trigger(int channel)
         {
-            OnEvent?.Invoke();
+            OnEvent?.Invoke(channel);
         }
     }
     public struct MMPlaylistStopEvent
     {
-        public delegate void Delegate();
+        public delegate void Delegate(int channel);
         static private event Delegate OnEvent;
 
         static public void Register(Delegate callback)
@@ -43,14 +43,14 @@ namespace MoreMountains.Tools
             OnEvent -= callback;
         }
 
-        static public void Trigger()
+        static public void Trigger(int channel)
         {
-            OnEvent?.Invoke();
+            OnEvent?.Invoke(channel);
         }
     }
     public struct MMPlaylistPauseEvent
     {
-        public delegate void Delegate();
+        public delegate void Delegate(int channel);
         static private event Delegate OnEvent;
 
         static public void Register(Delegate callback)
@@ -63,35 +63,55 @@ namespace MoreMountains.Tools
             OnEvent -= callback;
         }
 
-        static public void Trigger()
+        static public void Trigger(int channel)
         {
-            OnEvent?.Invoke();
+            OnEvent?.Invoke(channel);
         }
     }
     public struct MMPlaylistPlayNextEvent
     {
-        public delegate void Delegate();
-        static private event Delegate OnEvent;
+	    public delegate void Delegate(int channel);
+	    static private event Delegate OnEvent;
 
-        static public void Register(Delegate callback)
-        {
-            OnEvent += callback;
-        }
+	    static public void Register(Delegate callback)
+	    {
+		    OnEvent += callback;
+	    }
 
-        static public void Unregister(Delegate callback)
-        {
-            OnEvent -= callback;
-        }
+	    static public void Unregister(Delegate callback)
+	    {
+		    OnEvent -= callback;
+	    }
 
-        static public void Trigger()
-        {
-            OnEvent?.Invoke();
-        }
+	    static public void Trigger(int channel)
+	    {
+		    OnEvent?.Invoke(channel);
+	    }
+    }
+    public struct MMPlaylistPlayPreviousEvent
+    {
+	    public delegate void Delegate(int channel);
+	    static private event Delegate OnEvent;
+
+	    static public void Register(Delegate callback)
+	    {
+		    OnEvent += callback;
+	    }
+
+	    static public void Unregister(Delegate callback)
+	    {
+		    OnEvent -= callback;
+	    }
+
+	    static public void Trigger(int channel)
+	    {
+		    OnEvent?.Invoke(channel);
+	    }
     }
 
     public struct MMPlaylistPlayIndexEvent
     {
-        public delegate void Delegate(int index);
+        public delegate void Delegate(int channel, int index);
         static private event Delegate OnEvent;
 
         static public void Register(Delegate callback)
@@ -104,9 +124,9 @@ namespace MoreMountains.Tools
             OnEvent -= callback;
         }
 
-        static public void Trigger(int index)
+        static public void Trigger(int channel, int index)
         {
-            OnEvent?.Invoke(index);
+            OnEvent?.Invoke(channel, index);
         }
     }
 
@@ -146,7 +166,7 @@ namespace MoreMountains.Tools
         {
             this.Volume = new Vector2(0f, 1f);
             this.InitialDelay = Vector2.zero;
-            this.CrossFadeDuration = Vector2.one;
+            this.CrossFadeDuration = new Vector2(2f, 2f);
             this.Pitch = Vector2.one;
             this.StereoPan = 0f;
             this.SpatialBlend = 0f;
@@ -155,7 +175,7 @@ namespace MoreMountains.Tools
     }
 
     /// <summary>
-    /// Use this class to play audiosources (usually background music but feel free to use that for anything) in sequence, with optional crossfade between tracks
+    /// Use this class to play audiosources (usually background music but feel free to use that for anything) in sequence, with optional crossfade between songs
     /// </summary>
     [AddComponentMenu("More Mountains/Tools/Audio/MMPlaylist")]
     public class MMPlaylist : MonoBehaviour
@@ -168,28 +188,45 @@ namespace MoreMountains.Tools
             Paused
         }
 
-        [Header("Playlist Songs")]
+        [Header("Playlist Songs")] 
+        
+        /// the channel on which to broadcast orders for this playlist
+        [Tooltip("the channel on which to broadcast orders for this playlist")]
+        public int Channel = 0;
         /// the songs that this playlist will play
+        [Tooltip("the songs that this playlist will play")]
         public List<MMPlaylistSong> Songs;
 
         [Header("Settings")]
         /// whether this should play in random order or not
+        [Tooltip("whether this should play in random order or not")]
         public bool RandomOrder = false;
+        /// if this is true, random seed will be randomized by the system clock
+        [Tooltip("if this is true, random seed will be randomized by the system clock")]
+        [MMCondition("RandomOrder", true)]
+        public bool RandomizeOrderSeed = true;
         /// whether this playlist should play and loop as a whole forever or not
+        [Tooltip("whether this playlist should play and loop as a whole forever or not")]
         public bool Endless = true;
         /// whether this playlist should auto play on start or not
+        [Tooltip("whether this playlist should auto play on start or not")]
         public bool PlayOnStart = true;
+        /// a global volume multiplier to apply when playing a song
+        [Tooltip("a global volume multiplier to apply when playing a song")]
+        public float VolumeMultiplier = 1f;
 
         [Header("Status")]
+        /// the index we're currently playing
+        [Tooltip("the index we're currently playing")]
+        [MMReadOnly]
+        public int CurrentlyPlayingIndex = -1;
+        /// the name of the song that is currently playing
+        [Tooltip("the name of the song that is currently playing")]
+        [MMReadOnly]
+        public string CurrentSongName;
         /// the current state of this playlist
         [MMReadOnly]
         public MMStateMachine<MMPlaylist.PlaylistStates> PlaylistState;
-        /// the index we're currently playing
-        [MMReadOnly]
-        public int CurrentlyPlayingIndex = -1;
-        /// the name of the track that is currently playing
-        [MMReadOnly]
-        public string CurrentTrackName;
 
         [Header("Test")]
         /// a play test button
@@ -201,12 +238,20 @@ namespace MoreMountains.Tools
         /// a stop test button
         [MMInspectorButton("Stop")]
         public bool StopButton;
-        /// a next track test button
-        [MMInspectorButton("PlayNextTrack")]
+        /// a next song test button
+        [MMInspectorButton("PlayNextSong")]
         public bool NextButton;
+		/// the index of the song to play when pressing the PlayTargetSong button
+		[Tooltip("the index of the song to play when pressing the PlayTargetSong button")]
+        public int TargetSongIndex = 0;
+        /// a next song test button
+        [MMInspectorButton("PlayTargetSong")]
+        public bool TargetSongButton;
+        
 
         protected int _songsPlayedSoFar = 0;
         protected int _songsPlayedThisCycle = 0;
+        protected Coroutine _coroutine;
         
         /// <summary>
         /// On Start we initialize our playlist
@@ -221,6 +266,10 @@ namespace MoreMountains.Tools
         /// </summary>
         protected virtual void Initialization()
         {
+            if (RandomOrder && RandomizeOrderSeed)
+            {
+                Random.InitState(System.Environment.TickCount);
+            }
             _songsPlayedSoFar = 0;
             PlaylistState = new MMStateMachine<MMPlaylist.PlaylistStates>(this.gameObject, true);
             PlaylistState.ChangeState(PlaylistStates.Idle);
@@ -242,17 +291,17 @@ namespace MoreMountains.Tools
             _songsPlayedThisCycle = 0;
             CurrentlyPlayingIndex = -1;
             int newIndex = PickNextIndex();
-            StartCoroutine(PlayTrack(newIndex));
+            _coroutine = StartCoroutine(PlaySong(newIndex));
         }
 
         /// <summary>
-        /// Plays a new track in the playlist, and stops / fades the previous one
+        /// Plays a new song in the playlist, and stops / fades the previous one
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        protected virtual IEnumerator PlayTrack(int index)
+        protected virtual IEnumerator PlaySong(int index)
         {
-            // if we don't have a song, we stop
+	        // if we don't have a song, we stop
             if (Songs.Count == 0)
             {
                 yield break;
@@ -263,19 +312,24 @@ namespace MoreMountains.Tools
             {
                 yield break;
             }
+
+            if (_coroutine != null)
+            {
+	            StopCoroutine(_coroutine);
+            }
             
-            // we stop our current track                        
-            if (PlaylistState.CurrentState == PlaylistStates.Playing)
+            // we stop our current song                        
+            if ((PlaylistState.CurrentState == PlaylistStates.Playing) && (index >= 0 && index < Songs.Count))
             {
                 StartCoroutine(Fade(CurrentlyPlayingIndex,
                      Random.Range(Songs[index].CrossFadeDuration.x, Songs[index].CrossFadeDuration.y),
-                     Songs[CurrentlyPlayingIndex].Volume.y,
-                     Songs[CurrentlyPlayingIndex].Volume.x,
+                     Songs[CurrentlyPlayingIndex].Volume.y * VolumeMultiplier,
+                     Songs[CurrentlyPlayingIndex].Volume.x * VolumeMultiplier,
                      true));
             }
 
             // we stop all other coroutines
-            if (CurrentlyPlayingIndex >= 0)
+            if ((CurrentlyPlayingIndex >= 0) && (Songs.Count > CurrentlyPlayingIndex))
             {
                 foreach (MMPlaylistSong song in Songs)
                 {
@@ -284,8 +338,13 @@ namespace MoreMountains.Tools
                         song.Fading = false;
                     }
                 }
-            }            
+            }     
             
+            if (index < 0 || index >= Songs.Count)
+            {
+	            yield break;
+            }
+
             // initial delay
             yield return MMCoroutine.WaitFor(Random.Range(Songs[index].InitialDelay.x, Songs[index].InitialDelay.y));
 
@@ -299,24 +358,50 @@ namespace MoreMountains.Tools
             Songs[index].TargetAudioSource.panStereo = Songs[index].StereoPan;
             Songs[index].TargetAudioSource.spatialBlend = Songs[index].SpatialBlend;
             Songs[index].TargetAudioSource.loop = Songs[index].Loop;
-
-            // fades the new track's volume
+            
+            // fades the new song's volume
             StartCoroutine(Fade(index,
                      Random.Range(Songs[index].CrossFadeDuration.x, Songs[index].CrossFadeDuration.y),
-                     Songs[index].Volume.x,
-                     Songs[index].Volume.y,
+                     Songs[index].Volume.x * VolumeMultiplier,
+                     Songs[index].Volume.y * VolumeMultiplier,
                      false));
 
-            // starts the new track
+            // starts the new song
             Songs[index].TargetAudioSource.Play();
 
             // updates our state
-            CurrentTrackName = Songs[index].TargetAudioSource.clip.name;
+            CurrentSongName = Songs[index].TargetAudioSource.clip.name;
             PlaylistState.ChangeState(PlaylistStates.Playing);
             Songs[index].Playing = true;
             CurrentlyPlayingIndex = index;
             _songsPlayedSoFar++;
             _songsPlayedThisCycle++;
+
+            while (Songs[index].TargetAudioSource.isPlaying)
+            {
+                yield return null;
+            }
+
+            if (PlaylistState.CurrentState != PlaylistStates.Playing)
+            {
+                yield break;
+            }
+            
+            if (_songsPlayedSoFar < Songs.Count)
+            {
+                _coroutine = StartCoroutine(PlaySong(PickNextIndex()));
+            }
+            else
+            {
+                if (Endless)
+                {
+	                _coroutine = StartCoroutine(PlaySong(PickNextIndex()));
+                }
+                else
+                {
+                    PlaylistState.ChangeState(PlaylistStates.Idle);
+                }
+            }
         }
 
         /// <summary>
@@ -330,6 +415,11 @@ namespace MoreMountains.Tools
         /// <returns></returns>
         protected virtual IEnumerator Fade(int index, float duration, float initialVolume, float endVolume, bool stopAtTheEnd)
         {
+	        if (index < 0 || index >= Songs.Count)
+	        {
+		        yield break;
+	        }
+
             float startTimestamp = Time.time;
             float progress = 0f;
             Songs[index].Fading = true;
@@ -357,25 +447,55 @@ namespace MoreMountains.Tools
         /// <returns></returns>
         protected virtual int PickNextIndex()
         {
-            if (Songs.Count == 0)
-            {
-                return -1;
-            }
+	        if (Songs.Count == 0)
+	        {
+		        return -1;
+	        }
 
-            int newIndex = CurrentlyPlayingIndex;
-            if (RandomOrder)
-            {
-                while (newIndex == CurrentlyPlayingIndex)
-                {
-                    newIndex = Random.Range(0, Songs.Count);
-                }                
-            }
-            else
-            {
-                newIndex = (CurrentlyPlayingIndex + 1) % Songs.Count;
-            }
+	        int newIndex = CurrentlyPlayingIndex;
+	        if (RandomOrder)
+	        {
+		        while (newIndex == CurrentlyPlayingIndex)
+		        {
+			        newIndex = Random.Range(0, Songs.Count);
+		        }                
+	        }
+	        else
+	        {
+		        newIndex = (CurrentlyPlayingIndex + 1) % Songs.Count;
+	        }
 
-            return newIndex;
+	        return newIndex;
+        }
+        /// <summary>
+        /// Picks the previous song to play
+        /// </summary>
+        /// <returns></returns>
+        protected virtual int PickPreviousIndex()
+        {
+	        if (Songs.Count == 0)
+	        {
+		        return -1;
+	        }
+
+	        int newIndex = CurrentlyPlayingIndex;
+	        if (RandomOrder)
+	        {
+		        while (newIndex == CurrentlyPlayingIndex)
+		        {
+			        newIndex = Random.Range(0, Songs.Count);
+		        }                
+	        }
+	        else
+	        {
+		        newIndex = (CurrentlyPlayingIndex - 1);
+		        if (newIndex < 0)
+		        {
+			        newIndex = Songs.Count - 1;
+		        }
+	        }
+
+	        return newIndex;
         }
 
         /// <summary>
@@ -400,11 +520,21 @@ namespace MoreMountains.Tools
             }
         }
 
+        public virtual void PlayAtIndex(int songIndex)
+        {
+	        _coroutine = StartCoroutine(PlaySong(songIndex));
+        }
+        
         /// <summary>
-        /// Pauses the current track
+        /// Pauses the current song
         /// </summary>
         public virtual void Pause()
         {
+	        if (PlaylistState.CurrentState != PlaylistStates.Playing)
+	        {
+		        return;
+	        }
+	        
             Songs[CurrentlyPlayingIndex].TargetAudioSource.Pause();
             PlaylistState.ChangeState(PlaylistStates.Paused);
         }
@@ -414,6 +544,11 @@ namespace MoreMountains.Tools
         /// </summary>
         public virtual void Stop()
         {
+	        if (PlaylistState.CurrentState != PlaylistStates.Playing)
+	        {
+		        return;
+	        } 
+	        
             Songs[CurrentlyPlayingIndex].TargetAudioSource.Stop();
             Songs[CurrentlyPlayingIndex].Playing = false;
             Songs[CurrentlyPlayingIndex].Fading = false;
@@ -422,37 +557,63 @@ namespace MoreMountains.Tools
         }
 
         /// <summary>
-        /// Plays the next track in the playlist
+        /// Plays the next song in the playlist
         /// </summary>
-        public virtual void PlayNextTrack()
+        public virtual void PlayNextSong()
         {
-            int newIndex = PickNextIndex();
-            StartCoroutine(PlayTrack(newIndex));
+	        int newIndex = PickNextIndex();
+	        _coroutine = StartCoroutine(PlaySong(newIndex));
         }
 
-        protected virtual void OnPlayEvent()
+        /// <summary>
+        /// Plays the previous song in the playlist
+        /// </summary>
+        public virtual void PlayPreviousSong()
         {
+	        int newIndex = PickPreviousIndex();
+	        _coroutine = StartCoroutine(PlaySong(newIndex));
+        }
+
+        protected virtual void PlayTargetSong()
+        {
+	        int newIndex = Mathf.Clamp(TargetSongIndex, 0, Songs.Count - 1);
+	        PlayAtIndex(newIndex);
+        }
+
+        protected virtual void OnPlayEvent(int channel)
+        {
+	        if (channel != Channel) { return; }
             Play();
         }
 
-        protected virtual void OnPauseEvent()
+        protected virtual void OnPauseEvent(int channel)
         {
+	        if (channel != Channel) { return; }
             Pause();
         }
 
-        protected virtual void OnStopEvent()
+        protected virtual void OnStopEvent(int channel)
         {
+	        if (channel != Channel) { return; }
             Stop();
         }
 
-        protected virtual void OnPlayNextEvent()
+        protected virtual void OnPlayNextEvent(int channel)
         {
-            PlayNextTrack();
+	        if (channel != Channel) { return; }
+	        PlayNextSong();
         }
 
-        protected virtual void OnPlayIndexEvent(int index)
+        protected virtual void OnPlayPreviousEvent(int channel)
         {
-            StartCoroutine(PlayTrack(index));
+	        if (channel != Channel) { return; }
+	        PlayPreviousSong();
+        }
+
+        protected virtual void OnPlayIndexEvent(int channel, int index)
+        {
+	        if (channel != Channel) { return; }
+	        _coroutine = StartCoroutine(PlaySong(index));
         }
 
         /// <summary>
@@ -463,6 +624,7 @@ namespace MoreMountains.Tools
             MMPlaylistPauseEvent.Register(OnPauseEvent);
             MMPlaylistPlayEvent.Register(OnPlayEvent);
             MMPlaylistPlayNextEvent.Register(OnPlayNextEvent);
+            MMPlaylistPlayPreviousEvent.Register(OnPlayPreviousEvent);
             MMPlaylistStopEvent.Register(OnStopEvent);
             MMPlaylistPlayIndexEvent.Register(OnPlayIndexEvent);
         }
@@ -475,6 +637,7 @@ namespace MoreMountains.Tools
             MMPlaylistPauseEvent.Unregister(OnPauseEvent);
             MMPlaylistPlayEvent.Unregister(OnPlayEvent);
             MMPlaylistPlayNextEvent.Unregister(OnPlayNextEvent);
+            MMPlaylistPlayPreviousEvent.Unregister(OnPlayPreviousEvent);
             MMPlaylistStopEvent.Unregister(OnStopEvent);
             MMPlaylistPlayIndexEvent.Unregister(OnPlayIndexEvent);
         }
