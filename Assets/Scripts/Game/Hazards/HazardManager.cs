@@ -113,13 +113,13 @@ namespace com.baltamstudios.minebuddies
                 {
                     activeHazards.Add(h);
                     hazardPositions.Remove(h);
-                    h.AnimateReachedZero();
-                    h.AnimateBecomesActive();
+                    //h.AnimateReachedZero();
+                    //h.AnimateBecomesActive();
                 }
                 else
                 {
                     hazardPositions[h] = newDistance;
-                    h.distanceSlider.value = newDistance / StartingDistance;
+                    //h.distanceSlider.value = newDistance / StartingDistance;
                 }
             }
 
@@ -145,7 +145,7 @@ namespace com.baltamstudios.minebuddies
             if (startingDistance == 0f) startingDistance = configManager.config.HazardStartingDistance;
 
             Hazard h = Instantiate(hazardPrefab, transform);
-            h.SetDuration(duration);
+            //h.SetDuration(duration);
             h.SetType(t);
             h.name = $"Hazard-{h.type}";
             hazardPositions.Add(h, startingDistance);

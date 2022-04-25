@@ -23,10 +23,7 @@ namespace com.baltamstudios.minebuddies
         }
         void Start()
         {
-            /*if (instance != null)
-            {
-                DestroyImmediate(gameObject);
-            }*/
+
             ActionModule[] modules = FindObjectsOfType<ActionModule>();
             foreach (var m in modules)
             {

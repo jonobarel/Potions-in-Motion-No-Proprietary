@@ -39,25 +39,6 @@ namespace com.baltamstudios.minebuddies
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            if (activeHazardObj != null)
-
-            { 
-                countDownDisplay.value = activeHazardObj.TimeRemaining / activeHazardObj.InitialDuration;
-                fixProgressDisplay.value = activeHazardObj.FixProgress;
-                if (!isFading && !activeHazardObj.IsActive) //hazard has finished fixing or has timed out.
-                {
-                    isFading = true;
-                    GetComponent<Animate>().DoFadeAnimation();
-                    GetComponent<Animate>().DoShrinkAnimation();
-                    GameObject.Destroy(gameObject, 1f);
-                }
-                    
-            }
-
-
-        }
 
         Sprite FindIconForHazard()
         {

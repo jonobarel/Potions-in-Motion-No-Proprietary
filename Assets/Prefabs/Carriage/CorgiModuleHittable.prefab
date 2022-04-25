@@ -543,6 +543,7 @@ MonoBehaviour:
   hasPower: 0
   connected: 0
   particles: {fileID: 0}
+  DamageToHazard: 20
 --- !u!50 &5614744962815043573
 Rigidbody2D:
   serializedVersion: 4
@@ -644,6 +645,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7696266622894942278}
         m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMFeedbacks, MoreMountains.Feedbacks
         m_MethodName: PlayFeedbacks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5383403383194942899}
+        m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.ActionModule, Assembly-CSharp
+        m_MethodName: DamageHazard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

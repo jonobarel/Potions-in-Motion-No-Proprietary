@@ -46,39 +46,9 @@ namespace com.baltamstudios.minebuddies
             if (fuel > 0)
             {
                 fuel -= FuelBurnRate * (1+connectedModules.Count) * Time.deltaTime;
-                foreach(ActionModule module in connectedModules)
-                {
-                    module.HasPower = true;
-                }
             }
-            else
-            {
-                foreach (ActionModule module in connectedModules)
-                {
-                    module.HasPower = false ;
-                }
-            }
-            if (refuelCooldownStatus > 0)
-            {
-                refuelCooldownStatus -= Time.deltaTime;
-                refuelCooldownStatus = Mathf.Max(refuelCooldownStatus, 0);
-            }
-
         }
 
-        public void Connect(ActionModule actionModule)
-        {
-            connectedModules.Add(actionModule);
-            actionModule.IsConnected = true;
-
-        }
-
-        public void Disconnect(ActionModule actionModule)
-        {
-            connectedModules.Remove(actionModule);
-            actionModule.IsConnected = false;
-            actionModule.HasPower = false;
-        }
 
         void AddFuel(float units)
         {
