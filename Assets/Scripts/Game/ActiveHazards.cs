@@ -23,14 +23,8 @@ namespace com.baltamstudios.minebuddies
             ActiveHazardUI uiDisplay = Instantiate(activeHazardUIPrefab, activeHazardQueueUI.transform);
             uiDisplay.transform.SetAsLastSibling();
             uiDisplay.ActiveHazardObj = h;
-            //h.IsActive = true;
         }
 
-        public void Update()
-        {
-
-            
-        }
 
         public Hazard FindTop(GameManager.HazardType t)
         {

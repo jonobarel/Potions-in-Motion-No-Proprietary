@@ -10,6 +10,9 @@ namespace com.baltamstudios.minebuddies
         PowerModule engine;
         float currentDamage = 0f;
         CarriageMovement carriageMovement;
+        public MoreMountains.Tools.MMProgressBar healthBar;
+
+        MoreMountains.CorgiEngine.Health health;
         public CarriageMovement CarriageMovement { get { return carriageMovement; } }
 
         public float CurrentDamage { get { return currentDamage; } }
@@ -39,6 +42,8 @@ namespace com.baltamstudios.minebuddies
             if (engine == null)
                 engine = FindObjectOfType<PowerModule>();
             carriageMovement = GetComponent<CarriageMovement>();
+            health = GetComponent<MoreMountains.CorgiEngine.Health>();
+            healthBar.SetBar(health.MaximumHealth, 0, health.MaximumHealth);
         }
 
         // Update is called once per frame
@@ -47,6 +52,10 @@ namespace com.baltamstudios.minebuddies
         
         }
 
+        public void UpdateHealthBar()
+        {
+            healthBar.UpdateBar(health.CurrentHealth, 0, health.MaximumHealth);
+        }
       
     }
 }

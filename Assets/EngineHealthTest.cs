@@ -5,11 +5,8 @@ using UnityEngine;
 public class EngineHealthTest : MonoBehaviour
 {
     // Start is called before the first frame update
-    MoreMountains.CorgiEngine.Health health;
-    void Start()
-    {
-        health = GetComponent<MoreMountains.CorgiEngine.Health>();
-    }
+    public MoreMountains.CorgiEngine.Health health;
+    
 
     // Update is called once per frame
     void Update()

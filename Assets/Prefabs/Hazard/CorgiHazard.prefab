@@ -88,7 +88,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  MMHealth: {fileID: 0}
+  isActive: 0
+  activeUI: {fileID: 0}
+  MMHealth: {fileID: 6434111660757241227}
 --- !u!114 &6434111660757241227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2259826e984028144bb46fc8fb30adbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Active: 1
+  Active: 0
   Label: Hazard destroyed
   Chance: 100
   Timing:

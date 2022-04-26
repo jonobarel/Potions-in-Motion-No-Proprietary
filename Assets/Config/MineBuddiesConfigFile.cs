@@ -54,7 +54,7 @@ namespace com.baltamstudios.minebuddies
         public float HazardDifficultyFactor = 1f;
 
         [Space]
-        public float DistanceThresholdToShowUI = 10f;
+        public float DistanceToActivate = 10f;
         #endregion
 
         [Space]

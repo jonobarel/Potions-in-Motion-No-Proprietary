@@ -13,13 +13,12 @@ GameObject:
   - component: {fileID: 7188668530597834669}
   - component: {fileID: 2069817434948299899}
   - component: {fileID: 7696266622894942278}
-  - component: {fileID: 435320881}
   - component: {fileID: 5383403383194942899}
   - component: {fileID: 5614744962815043573}
-  - component: {fileID: 431763181}
-  - component: {fileID: 3611158858823203423}
   - component: {fileID: 6299766909234668375}
   - component: {fileID: 5424586082105777807}
+  - component: {fileID: 1220561513503669081}
+  - component: {fileID: 7627640564066893177}
   m_Layer: 29
   m_Name: CorgiModuleHittable
   m_TagString: Untagged
@@ -170,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks:
-  - {fileID: 431763181}
   - {fileID: 5424586082105777807}
+  - {fileID: 7627640564066893177}
   InitializationMode: 2
   SafeMode: 3
   Direction: 0
@@ -206,326 +205,6 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   DebugActive: 0
---- !u!114 &435320881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347013242dca7c44fb5001793033ea59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpdateMode: 0
-  PositionActive: 0
-  RotationActive: 1
-  ScaleActive: 0
-  PositionWiggleProperties:
-    WigglePermitted: 1
-    WiggleType: 1
-    UseUnscaledTime: 0
-    StartWigglingAutomatically: 1
-    SmoothPingPong: 1
-    UseSpeedCurve: 0
-    SpeedCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    FrequencyMin: 0
-    FrequencyMax: 1
-    AmplitudeMin: {x: 0, y: 0, z: 0}
-    AmplitudeMax: {x: 1, y: 1, z: 1}
-    RelativeAmplitude: 1
-    UniformValues: 0
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    RemapCurveZeroMin: {x: 0, y: 0, z: 0}
-    RemapCurveZeroMax: {x: 0, y: 0, z: 0}
-    RemapCurveOneMin: {x: 1, y: 1, z: 1}
-    RemapCurveOneMax: {x: 1, y: 1, z: 1}
-    RelativeCurveAmplitude: 1
-    CurvePingPong: 0
-    PauseMin: 0
-    PauseMax: 0
-    LimitedTime: 1
-    LimitedTimeTotal: 2
-    LimitedTimeFalloff:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    LimitedTimeResetValue: 1
-    LimitedTimeLeft: 2
-    NoiseFrequencyMin: {x: 0, y: 0, z: 0}
-    NoiseFrequencyMax: {x: 1, y: 1, z: 1}
-    NoiseShiftMin: {x: 0, y: 0, z: 0}
-    NoiseShiftMax: {x: 0, y: 0, z: 0}
-  RotationWiggleProperties:
-    WigglePermitted: 1
-    WiggleType: 1
-    UseUnscaledTime: 0
-    StartWigglingAutomatically: 1
-    SmoothPingPong: 1
-    UseSpeedCurve: 0
-    SpeedCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    FrequencyMin: 0
-    FrequencyMax: 1
-    AmplitudeMin: {x: 0, y: 0, z: 0}
-    AmplitudeMax: {x: 1, y: 1, z: 1}
-    RelativeAmplitude: 1
-    UniformValues: 0
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    RemapCurveZeroMin: {x: 0, y: 0, z: 0}
-    RemapCurveZeroMax: {x: 0, y: 0, z: 0}
-    RemapCurveOneMin: {x: 1, y: 1, z: 1}
-    RemapCurveOneMax: {x: 1, y: 1, z: 1}
-    RelativeCurveAmplitude: 1
-    CurvePingPong: 0
-    PauseMin: 0
-    PauseMax: 0
-    LimitedTime: 1
-    LimitedTimeTotal: 2
-    LimitedTimeFalloff:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    LimitedTimeResetValue: 1
-    LimitedTimeLeft: 2
-    NoiseFrequencyMin: {x: 0, y: 0, z: 0}
-    NoiseFrequencyMax: {x: 1, y: 1, z: 1}
-    NoiseShiftMin: {x: 0, y: 0, z: 0}
-    NoiseShiftMax: {x: 0, y: 0, z: 0}
-  ScaleWiggleProperties:
-    WigglePermitted: 1
-    WiggleType: 1
-    UseUnscaledTime: 0
-    StartWigglingAutomatically: 1
-    SmoothPingPong: 1
-    UseSpeedCurve: 0
-    SpeedCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    FrequencyMin: 0
-    FrequencyMax: 1
-    AmplitudeMin: {x: 0, y: 0, z: 0}
-    AmplitudeMax: {x: 1, y: 1, z: 1}
-    RelativeAmplitude: 1
-    UniformValues: 0
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    RemapCurveZeroMin: {x: 0, y: 0, z: 0}
-    RemapCurveZeroMax: {x: 0, y: 0, z: 0}
-    RemapCurveOneMin: {x: 1, y: 1, z: 1}
-    RemapCurveOneMax: {x: 1, y: 1, z: 1}
-    RelativeCurveAmplitude: 1
-    CurvePingPong: 0
-    PauseMin: 0
-    PauseMax: 0
-    LimitedTime: 0
-    LimitedTimeTotal: 0
-    LimitedTimeFalloff:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    LimitedTimeResetValue: 1
-    LimitedTimeLeft: 0
-    NoiseFrequencyMin: {x: 0, y: 0, z: 0}
-    NoiseFrequencyMax: {x: 1, y: 1, z: 1}
-    NoiseShiftMin: {x: 0, y: 0, z: 0}
-    NoiseShiftMax: {x: 0, y: 0, z: 0}
-  DebugWiggleDuration: 2
 --- !u!114 &5383403383194942899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +222,7 @@ MonoBehaviour:
   hasPower: 0
   connected: 0
   particles: {fileID: 0}
-  DamageToHazard: 20
+  DamageToHazard: 1
 --- !u!50 &5614744962815043573
 Rigidbody2D:
   serializedVersion: 4
@@ -565,107 +244,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &431763181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2ce51367856bd49b72678cc4263225, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 1
-  Label: Sound
-  Chance: 100
-  Timing:
-    TimescaleMode: 0
-    ExcludeFromHoldingPauses: 0
-    ContributeToTotalDuration: 1
-    InitialDelay: 0
-    CooldownDuration: 0
-    InterruptsOnStop: 1
-    NumberOfRepeats: 0
-    RepeatForever: 0
-    DelayBetweenRepeats: 1
-    MMFeedbacksDirectionCondition: 0
-    PlayDirection: 0
-    ConstantIntensity: 0
-    UseIntensityInterval: 0
-    IntensityIntervalMin: 0
-    IntensityIntervalMax: 0
-    Sequence: {fileID: 0}
-    TrackID: 0
-    Quantized: 0
-    TargetBPM: 120
-  DebugActive: 0
-  Sfx: {fileID: 8300000, guid: fc6a8ed8f767ee7449dc2f51593060a7, type: 3}
-  RandomSfx: []
-  TestButton: 0
-  TestStopButton: 0
-  PlayMethod: 2
-  PoolSize: 10
-  MinVolume: 1
-  MaxVolume: 1
-  MinPitch: 1
-  MaxPitch: 1
-  SfxAudioMixerGroup: {fileID: 0}
---- !u!114 &3611158858823203423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af69e5b9978ebb4a8ffb643a072d41e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ActionOnHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMFeedbacks, MoreMountains.Feedbacks
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  ActionOnHitZero:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7696266622894942278}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMFeedbacks, MoreMountains.Feedbacks
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5383403383194942899}
-        m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.ActionModule, Assembly-CSharp
-        m_MethodName: DamageHazard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &6299766909234668375
 Animator:
   serializedVersion: 4
@@ -710,7 +288,7 @@ MonoBehaviour:
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
-    DelayBetweenRepeats: 1
+    DelayBetweenRepeats: 0
     MMFeedbacksDirectionCondition: 0
     PlayDirection: 0
     ConstantIntensity: 0
@@ -747,3 +325,109 @@ MonoBehaviour:
   FloatValueMin: 0
   FloatValueMax: 5
   FloatIncrement: 1
+--- !u!114 &1220561513503669081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188668530597834665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bc48148c07a804a85950d44daf8b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonActivatedRequirement: 2
+  RequiresPlayerType: 1
+  RequiresButtonActivationAbility: 0
+  PreventJumpsWhileInThisZone: 0
+  Activable: 1
+  AutoActivation: 0
+  AutoActivationAndButtonInteraction: 0
+  CanOnlyActivateIfGrounded: 0
+  ShouldUpdateState: 1
+  OnlyOneActivationAtOnce: 1
+  AlsoPerformChecksOnStay: 0
+  UnlimitedActivations: 1
+  MaxNumberOfActivations: 0
+  DelayBetweenUses: 0
+  DisableAfterUse: 0
+  InputType: 1
+  InputButton: Interact
+  InputKey: 32
+  AnimationTriggerParameterName: 
+  UseVisualPrompt: 1
+  ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
+    type: 3}
+  ButtonPromptText: X
+  ButtonPromptColor: {r: 0, g: 0.08222163, b: 0.9882353, a: 1}
+  ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
+  AlwaysShowPrompt: 0
+  ShowPromptWhenColliding: 1
+  HidePromptAfterUse: 1
+  PromptRelativePosition: {x: 0, y: 1, z: 0}
+  ActivationFeedback: {fileID: 7696266622894942278}
+  DeniedFeedback: {fileID: 0}
+  EnterFeedback: {fileID: 0}
+  ExitFeedback: {fileID: 0}
+  OnActivation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5383403383194942899}
+        m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.ActionModule, Assembly-CSharp
+        m_MethodName: DamageHazard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7627640564066893177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188668530597834665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2259826e984028144bb46fc8fb30adbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Log
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  DebugLogMode: 1
+  DebugMessage: Module Activated
+  DebugColor: {r: 0, g: 1, b: 1, a: 1}
+  DisplayFrameCount: 1
