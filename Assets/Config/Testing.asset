@@ -20,8 +20,9 @@ MonoBehaviour:
   FuelBurnRateFactor: 0.3
   RefuelCooldownTime: 5
   RefuelTime: 0.5
-  FuelCapacity: 10
+  FuelCapacity: 50
   RefuelSize: 11.8
+  ModuleFuelConsumption: 10
   MinDelay: 50
   MaxDelay: 75
   diffA: 0.05
@@ -33,15 +34,7 @@ MonoBehaviour:
   HazardProgressionRate: 1
   HazardFixProgressionRate: 2
   HazardDifficultyFactor: 1
-  GroundDetection: 0.15
-  GravityScale: 3
-  MaxFallSpeed: 10
-  MaxHorizontalVelocity: 5
-  SmoothTime: 0.25
-  JumpForce: 3.5
-  ClimbSpeed: 3
-  LadderWalkThreshold: 0.92
-  LadderClimbThreshold: 0.45
+  DistanceToActivate: 10
   layersParallaxFactors:
   - 0
   - 0.1

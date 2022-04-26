@@ -54,7 +54,7 @@ namespace com.baltamstudios.minebuddies
 
             #endregion
 
-            //CreateNextHazardGroup(15f);
+           // CreateNextHazardGroup(15f);
         }
 
         float HazardDifficultyFactor()
@@ -88,15 +88,21 @@ namespace com.baltamstudios.minebuddies
             }
 
         }
-
-        public void HazardActivated(Hazard h)
+        void NextHazard()
         {
-            activeHazards.Add(h);
+            if (nextHazardGroup.Count > 0)
+            {
+                Debug.Log($"Hazard {nextHazardGroup.Count} at {nextHazardSpawn}");
+                SpawnHazard(nextHazardGroup.Pop());
+                nextHazardSpawn+=HazardDist + Random.Range(-HazardDistOffset, HazardDistOffset);
+            }
+            if (nextHazardGroup.Count == 0)
+                CreateNextHazardGroup();
 
         }
 
         // Update is called once per frame
-        void Update()
+        /*void Update()
         {
             foreach (Hazard h in new List<Hazard>(hazardPositions.Keys))
             {
@@ -121,14 +127,29 @@ namespace com.baltamstudios.minebuddies
             {
                 //NextHazard();
             }
-        }
+        }*/
 
         public Sprite GetIconForHazardType(GameManager.HazardType e)
         {
             return hazardIcons.GetIconForHazardType(e);
         }
 
-        
+        public void SpawnHazard()
+        {
+            SpawnHazard(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
+        }
+
+        void SpawnHazard(GameManager.HazardType t, float duration = 0f, float startingDistance = 0f )
+        {
+            if (duration == 0f) duration = configManager.config.InitialDuration;
+            if (startingDistance == 0f) startingDistance = configManager.config.HazardStartingDistance;
+
+            Hazard h = Instantiate(hazardPrefab, transform);
+            //h.SetDuration(duration);
+            h.SetType(t);
+            h.name = $"Hazard-{h.type}";
+            hazardPositions.Add(h, startingDistance);
+        }
 
 
     }

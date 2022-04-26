@@ -27,10 +27,12 @@ namespace com.baltamstudios.minebuddies
         #region Modules
         public float RefuelCooldownTime = 5f;
         public float RefuelTime = 1f;
-        [Range(1f, 10f)]
+        [Range(1f, 100f)]
         public float FuelCapacity = 10f;
         [Range(1f, 20f)]
         public float RefuelSize = 10f;
+        [Range(1f, 50f)]
+        public float ModuleFuelConsumption = 5f;
         #endregion
         [Space]
         [Header("Hazard spawning and difficulty parameters")]

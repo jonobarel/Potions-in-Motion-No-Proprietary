@@ -47,7 +47,8 @@ namespace com.baltamstudios.minebuddies
 
         public void Activate()
         {
-            Debug.Log($"{name}: activated");
+            isActive = true;
+            //Debug.Log($"{name}: activated");
         }
     }
 }

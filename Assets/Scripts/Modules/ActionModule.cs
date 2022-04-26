@@ -20,6 +20,8 @@ namespace com.baltamstudios.minebuddies
         [Range(1, 100)]
         int DamageToHazard;
 
+        MoreMountains.CorgiEngine.ButtonActivated moduleActivator;
+
         public bool HasPower { get { return hasPower; }  set { hasPower = value; } }
         public bool IsConnected { get { return connected; } set { connected = value; } }
         
@@ -28,7 +30,7 @@ namespace com.baltamstudios.minebuddies
         // Start is called before the first frame update
         void Start()
         {
-            
+            moduleActivator = GetComponent<MoreMountains.CorgiEngine.ButtonActivated>();
         }
 
         // Update is called once per frame
@@ -48,13 +50,21 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
+        public void Update()
+        {
+            if (Carriage.Instance.Engine.CurrentFuel < Helpers.Config.ModuleFuelConsumption)
+            {
+                moduleActivator.Activable = false;
+            }
+            else moduleActivator.Activable = true;
+        }
+
         public void DamageHazard()
         {
             Hazard hazard = GetTargetHazard();
             if (hazard == null) return;
-            hazard.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
-            
-
+            if (Carriage.Instance.Engine.ModuleFuel())
+                hazard.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
         }
 
         Hazard GetTargetHazard()
@@ -74,7 +84,12 @@ namespace com.baltamstudios.minebuddies
                           where h.type == hazardType
                           orderby h.SqrDistanceToCarriage() ascending
                           select h;
-            if (hazard.Count() > 0 && hazard.First().isActiveAndEnabled) return hazard.First();
+            if (hazard.Count() > 0 && hazard.First().isActiveAndEnabled)
+            {
+                Debug.DrawLine(transform.position, hazard.First().transform.position);
+                return hazard.First();
+                
+            }
             return null;
 
         }
