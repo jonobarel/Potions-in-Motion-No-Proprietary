@@ -18,25 +18,17 @@ namespace com.baltamstudios.minebuddies
 
         public void Add(Hazard h)
         {
-            activeHazardsList.Add(h);
-            //Instantiate the UI for the new Hazard.
-            ActiveHazardUI uiDisplay = Instantiate(activeHazardUIPrefab, activeHazardQueueUI.transform);
-            uiDisplay.transform.SetAsLastSibling();
-            uiDisplay.ActiveHazardObj = h;
-            h.IsActive = true;
-        }
-
-        public void Update()
-        {
-
-            foreach (var h in activeHazardsList.ToArray())
+            if (!activeHazardsList.Contains(h))
             {
-                if (!h.IsActive) {
-                    GameObject.Destroy(h.gameObject, 1f);
-                    activeHazardsList.Remove(h);
-                }
+                activeHazardsList.Add(h);
+                //Instantiate the UI for the new Hazard.
+                ActiveHazardUI uiDisplay = Instantiate(activeHazardUIPrefab, activeHazardQueueUI.transform);
+                uiDisplay.transform.SetAsLastSibling();
+                uiDisplay.ActiveHazardObj = h;
+                h.activeUI = uiDisplay;
             }
         }
+
 
         public Hazard FindTop(GameManager.HazardType t)
         {

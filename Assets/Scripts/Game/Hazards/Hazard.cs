@@ -1,97 +1,75 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 namespace com.baltamstudios.minebuddies
 {
     public class Hazard : MonoBehaviour
     {
         public GameManager.HazardType type;
-        public Slider distanceSlider;        
+        public bool isActive = false;
+        public ActiveHazardUI activeUI;
+        public MoreMountains.CorgiEngine.Health MMHealth;
 
-        [Header("Hazard countdown fields")]
-        [SerializeField]
-        float initialDuration = 10f;
-        [SerializeField]
-        float timeRemaining;
-        [SerializeField]
-        float HazardProgessionRate = 1f;
-        ActionModule module;
-        
-        [Space]
-        [Header("Hazard fixing progression")]
-        [SerializeField, Range(0,1f)]
-        float fixProgress = 0f;
-        [SerializeField]
-        float FixProgressionRate { get { return GameSystem.Instance.configManager.config.HazardFixProgressionRate; } }
-        
-        float DifficultyFactor = 1f;
-
-        #region properties
-        public float InitialDuration { get { return initialDuration; } }
-        public float TimeRemaining { get { return timeRemaining; } }
-        public float FixProgress { get { return fixProgress; } }
-        #endregion
-
-        [SerializeField]
-        bool isActive;
-        public bool IsActive { get { return isActive; } set { isActive = value; } }
-
+        MoreMountains.CorgiEngine.CharacterHorizontalMovement horizontalMovement;
 
         public void Update()
         {
-            if (isActive)
+           if (activeUI != null)
             {
-                if (timeRemaining > 0)
-                {
-                    //proceed with the coundtdown  until reaches zero
-                    timeRemaining -= HazardProgessionRate * Time.deltaTime;
-                    timeRemaining = Mathf.Max(timeRemaining, 0);
-
-                }
-                if (timeRemaining <=0f || fixProgress >= 1f) // timeremaining <=0
-                {
-                    isActive = false;
-                }
+                activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
             }
-
-        }
-
-        internal void AnimateBecomesActive()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void AnimateReachedZero()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetDuration(float d)
-        {
-            if (d == 0f)
+            
+           /*if (isActive && horizontalMovement != null)
             {
-                throw new System.IndexOutOfRangeException($"{name}: Hazard duration cannot be 0 to avoid divide by 0 error");
-            }
-            initialDuration = d;
-            timeRemaining = d;
+                horizontalMovement.WalkSpeed = Carriage.Instance.CarriageMovement.CurrentSpeed, Helpers.Config.HazardProgressAfterActivation);
+            }*/
+
         }
+
+        public void Start()
+        {
+            horizontalMovement = GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>();
+            MMHealth = GetComponent<MoreMountains.CorgiEngine.Health>();
+            SetType(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
+            name = $"Hazard-{type}";
+            //Debug.Log($"{name}: type {type}");
+
+        }
+
+
         public void SetType(GameManager.HazardType t)
         {
             type = t;
-            module = GameSystem.Instance.hazardManager.HazardModuleMap[type];
         }
 
-        public void ApplyFix(float fixTime)
+        public float SqrDistanceToCarriage()
         {
-            if (fixProgress < 1f)
+            if (isActiveAndEnabled)
             {
-                fixProgress += fixTime * FixProgressionRate * DifficultyFactor;
-                fixProgress = Mathf.Min(fixProgress, 1f);
+                return (transform.position - Carriage.Instance.transform.position).sqrMagnitude;
+                
             }
+            else return float.MaxValue;
         }
 
+        public void UpdateUIHealth()
+        {
+            activeUI.healthBar.UpdateBar01(1f-(float)MMHealth.CurrentHealth/MMHealth.MaximumHealth);
+        }
+        public void Activate()
+        {
+            isActive = true;
+            GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().WalkSpeed = Helpers.Config.HazardProgressAfterActivation;
+            //Debug.Log($"{name}: activated");
+        }
+
+        public void Deactivate()
+        {
+            activeUI.GetComponent<Animate>().DoFadeAnimation();
+            GameObject.Destroy(activeUI.gameObject, 1f);
+        }
     }
 }

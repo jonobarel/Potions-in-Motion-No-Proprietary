@@ -27,10 +27,12 @@ namespace com.baltamstudios.minebuddies
         #region Modules
         public float RefuelCooldownTime = 5f;
         public float RefuelTime = 1f;
-        [Range(1f, 10f)]
+        [Range(1f, 100f)]
         public float FuelCapacity = 10f;
-        [Range(1f, 20f)]
+        [Range(1f, 50f)]
         public float RefuelSize = 10f;
+        [Range(1f, 50f)]
+        public float ModuleFuelConsumption = 5f;
         #endregion
         [Space]
         [Header("Hazard spawning and difficulty parameters")]
@@ -52,10 +54,15 @@ namespace com.baltamstudios.minebuddies
         [Range(0f,10f)]
         public float HazardFixProgressionRate = 0.1f;
         public float HazardDifficultyFactor = 1f;
+        [Space]
+        public float HazardProgressAfterActivation = 2f;
+
+        [Space]
+        public float DistanceToActivate = 10f;
         #endregion
 
         [Space]
-
+        /*
         #region Player Config
         [Header("Player")]
         public float GroundDetection = 0.15f;
@@ -70,7 +77,7 @@ namespace com.baltamstudios.minebuddies
         public float LadderWalkThreshold = 0.92f;
         public float LadderClimbThreshold = 0.45f;
         #endregion
-
+        */
         #region Parallax background config
         [Space]
         [Range(0f, 5f)]

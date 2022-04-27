@@ -25,39 +25,24 @@ namespace com.baltamstudios.minebuddies
         Sprite iconSprite;
 
         [SerializeField]
-        Slider countDownDisplay;
+        public MoreMountains.Tools.MMProgressBar distanceBar;
         [SerializeField]
-        Slider fixProgressDisplay;
+        public MoreMountains.Tools.MMProgressBar healthBar;
 
-        bool isFading = false;
+        //bool isFading = false;
         GameObject hazard; //TODO: this should become a Hazard object 
 
         void Start()
         {
             //if (activeHazardObj != null )
             //Sprite s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
+            if (healthBar != null)
+            {
+                //healthBar.SetBar01(0);
+            }
         }
 
         // Update is called once per frame
-        void Update()
-        {
-            if (activeHazardObj != null)
-
-            { 
-                countDownDisplay.value = activeHazardObj.TimeRemaining / activeHazardObj.InitialDuration;
-                fixProgressDisplay.value = activeHazardObj.FixProgress;
-                if (!isFading && !activeHazardObj.IsActive) //hazard has finished fixing or has timed out.
-                {
-                    isFading = true;
-                    GetComponent<Animate>().DoFadeAnimation();
-                    GetComponent<Animate>().DoShrinkAnimation();
-                    GameObject.Destroy(gameObject, 1f);
-                }
-                    
-            }
-
-
-        }
 
         Sprite FindIconForHazard()
         {
@@ -65,7 +50,7 @@ namespace com.baltamstudios.minebuddies
 
             if (activeHazardObj != null)
             {
-                s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
+                s = GameSystem.HazardManager.GetIconForHazardType(activeHazardObj.type);
                 Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
             }
                 return s;
