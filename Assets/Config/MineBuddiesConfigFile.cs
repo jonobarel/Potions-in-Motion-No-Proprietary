@@ -29,7 +29,7 @@ namespace com.baltamstudios.minebuddies
         public float RefuelTime = 1f;
         [Range(1f, 100f)]
         public float FuelCapacity = 10f;
-        [Range(1f, 20f)]
+        [Range(1f, 50f)]
         public float RefuelSize = 10f;
         [Range(1f, 50f)]
         public float ModuleFuelConsumption = 5f;

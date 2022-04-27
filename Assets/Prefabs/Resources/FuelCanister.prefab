@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1791704962919696050}
   - component: {fileID: 7140424877826219856}
   - component: {fileID: 323484865}
+  - component: {fileID: 1153819625442502915}
   m_Layer: 27
   m_Name: FuelCanister
   m_TagString: Untagged
@@ -256,3 +257,15 @@ MonoBehaviour:
   StickToSlopesOffsetY: 0.2
   TimeAirborne: 0
   AutomaticGravitySettings: 1
+--- !u!114 &1153819625442502915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273923128057797712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a32dfeadc26ce47ad7fe9831808e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -33,20 +33,33 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
-        
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Debug.LogError($"{name}: duplicate instance - destroy object by singleton");
+                DestroyImmediate(this.gameObject);
+            }
+        }
 
         // Start is called before the first frame update
         void Start()
         {
-            if (instance != null)
-            {
-                DestroyImmediate(this.gameObject);
-            }
+            Debug.Log($"{name}: begin Start()");
+     
             if (engine == null)
                 engine = FindObjectOfType<PowerModule>();
+            Debug.Log($"{name}: engine found");
             carriageMovement = GetComponent<CarriageMovement>();
+            Debug.Log($"{name}: carriageMovement: {carriageMovement.name}");
             health = GetComponent<MoreMountains.CorgiEngine.Health>();
-            healthBar.SetBar(health.MaximumHealth, 0, health.MaximumHealth);
+            Debug.Log($"{name}: Health component: {health.name}");
+            if (health == null) Debug.LogError($"{name}: could not find Corgi Health component in Carriage");
+            else
+            {
+                Debug.Log($"{name}: HealthBar component: {healthBar.name}");
+                healthBar.SetBar(health.MaximumHealth, 0, health.MaximumHealth);
+            }
         }
 
         // Update is called once per frame

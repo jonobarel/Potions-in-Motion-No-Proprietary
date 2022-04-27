@@ -92,26 +92,10 @@ namespace com.baltamstudios.minebuddies
 
         public void DoRefuel()
         {
-            if (!isRefueling)
-            {
-                isRefueling = true;
-                float startFuelLevel = fuel;
-                float targetFuelLevel = Mathf.Min(fuel + FuelPerUnit, MaxFuel);
-                refuelRoutine = this.CreateAnimationRoutine(
-                    GameSystem.Instance.configManager.config.RefuelTime,
-                    delegate (float progress)
-                    {
-                        fuel = Mathf.Lerp(startFuelLevel, targetFuelLevel, progress);
-                    },
-                    delegate()
-                    {
-                        fuel = targetFuelLevel;
-                        isRefueling=false;
-                        refuelCooldownStatus = GameSystem.Instance.configManager.config.RefuelCooldownTime;
-                    }
-                    );
+            fuel += Helpers.Config.RefuelSize;
+            fuel = Mathf.Min(fuel, MaxFuel);
+            fuelGuage.UpdateBar01(fuel / MaxFuel);
 
-            }
         }
     }
 }
