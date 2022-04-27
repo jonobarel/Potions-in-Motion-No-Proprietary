@@ -54,7 +54,7 @@ namespace com.baltamstudios.minebuddies
 
             #endregion
 
-            CreateNextHazardGroup(15f);
+           // CreateNextHazardGroup(15f);
         }
 
         float HazardDifficultyFactor()
@@ -102,7 +102,7 @@ namespace com.baltamstudios.minebuddies
         }
 
         // Update is called once per frame
-        void Update()
+        /*void Update()
         {
             foreach (Hazard h in new List<Hazard>(hazardPositions.Keys))
             {
@@ -113,21 +113,21 @@ namespace com.baltamstudios.minebuddies
                 {
                     activeHazards.Add(h);
                     hazardPositions.Remove(h);
-                    h.AnimateReachedZero();
-                    h.AnimateBecomesActive();
+                    //h.AnimateReachedZero();
+                    //h.AnimateBecomesActive();
                 }
                 else
                 {
                     hazardPositions[h] = newDistance;
-                    h.distanceSlider.value = newDistance / StartingDistance;
+                    //h.distanceSlider.value = newDistance / StartingDistance;
                 }
             }
 
             if (Carriage.Instance.CarriageMovement.DistanceCovered > nextHazardSpawn)
             {
-                NextHazard();
+                //NextHazard();
             }
-        }
+        }*/
 
         public Sprite GetIconForHazardType(GameManager.HazardType e)
         {
@@ -145,7 +145,7 @@ namespace com.baltamstudios.minebuddies
             if (startingDistance == 0f) startingDistance = configManager.config.HazardStartingDistance;
 
             Hazard h = Instantiate(hazardPrefab, transform);
-            h.SetDuration(duration);
+            //h.SetDuration(duration);
             h.SetType(t);
             h.name = $"Hazard-{h.type}";
             hazardPositions.Add(h, startingDistance);
