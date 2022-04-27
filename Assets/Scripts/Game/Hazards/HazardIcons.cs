@@ -25,7 +25,7 @@ namespace com.baltamstudios.minebuddies
             int i = 0;
             foreach (GameManager.HazardType e in System.Enum.GetValues(typeof(GameManager.HazardType)))
             {
-                Debug.Log($"Type: {e}, image: {hazardIcons[i].name}");
+                //Debug.Log($"Type: {e}, image: {hazardIcons[i].name}");
                 hazardIconsByType.Add(e, hazardIcons[i++]);
                 
             }

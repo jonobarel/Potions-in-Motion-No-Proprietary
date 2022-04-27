@@ -7,7 +7,9 @@ namespace com.baltamstudios.minebuddies
     public class GameManager : MonoBehaviour
     {
 
-        
+        float hazardActivatorDistance = -1;
+
+
         public int RandomSeed;
 
         public enum HazardType
@@ -43,6 +45,16 @@ namespace com.baltamstudios.minebuddies
             else if (configManager.config.RandomSeed != 0)
                 return configManager.config.RandomSeed;
             else throw new System.ArgumentOutOfRangeException("Game set to use FIXED random seed but no random seed selected in config file");
+        }
+
+        public float HazardMaxDistance { 
+            get { 
+                if (hazardActivatorDistance < 0)
+                {
+                    hazardActivatorDistance = (Carriage.Instance.HazardActivator.transform.position - Carriage.Instance.transform.position).magnitude;
+                }    
+                return hazardActivatorDistance;
+            } 
         }
 
         // Update is called once per frame

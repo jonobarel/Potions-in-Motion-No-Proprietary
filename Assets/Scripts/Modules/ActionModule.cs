@@ -64,7 +64,10 @@ namespace com.baltamstudios.minebuddies
             Hazard hazard = GetTargetHazard();
             if (hazard == null) return;
             if (Carriage.Instance.Engine.ModuleFuel())
+            {
                 hazard.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
+                hazard.UpdateUIHealth();
+            }
         }
 
         Hazard GetTargetHazard()

@@ -14,6 +14,9 @@ namespace com.baltamstudios.minebuddies
 
         MoreMountains.CorgiEngine.Health health;
         public CarriageMovement CarriageMovement { get { return carriageMovement; } }
+        
+        public GameObject HazardSpawner;
+        public Transform HazardActivator;
 
         public float CurrentDamage { get { return currentDamage; } }
         

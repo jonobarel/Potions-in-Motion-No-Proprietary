@@ -22,7 +22,7 @@ MonoBehaviour:
   RefuelTime: 0.5
   FuelCapacity: 50
   RefuelSize: 11.8
-  ModuleFuelConsumption: 10
+  ModuleFuelConsumption: 2
   MinDelay: 50
   MaxDelay: 75
   diffA: 0.05

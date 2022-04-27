@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -13,6 +14,10 @@ namespace com.baltamstudios.minebuddies
         [Range(0f, 10f)]
         float speedOverride;
         float currentSpeed;
+        public TextMeshProUGUI Odometer;
+        public TextMeshProUGUI Speedometer;
+
+
         public float CurrentSpeed { get { return currentSpeed; } }
         float MaxSpeed { get { return configManager.config.MaxCarriageSpeed; } }
         [SerializeField]
@@ -66,8 +71,18 @@ namespace com.baltamstudios.minebuddies
                 speedChangeProgress += Time.deltaTime;
                 if (speedChangeProgress >= 1f) currentSpeed = targetSpeed;
             }
-            
+
             distanceCovered += currentSpeed * Time.deltaTime;
+            
+            //transform.position += new Vector3(currentSpeed * Time.deltaTime,0,0);
+            if (Odometer != null)
+            {
+                Odometer.SetText($"{(int)distanceCovered}m");
+            }
+            if (Speedometer != null)
+            {
+                Speedometer.SetText($"{currentSpeed:F} m/s");
+            }
         }
     }
 }

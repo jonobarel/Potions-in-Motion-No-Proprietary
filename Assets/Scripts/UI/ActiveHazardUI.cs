@@ -25,17 +25,21 @@ namespace com.baltamstudios.minebuddies
         Sprite iconSprite;
 
         [SerializeField]
-        Slider countDownDisplay;
+        public MoreMountains.Tools.MMProgressBar distanceBar;
         [SerializeField]
-        Slider fixProgressDisplay;
+        public MoreMountains.Tools.MMProgressBar healthBar;
 
-        bool isFading = false;
+        //bool isFading = false;
         GameObject hazard; //TODO: this should become a Hazard object 
 
         void Start()
         {
             //if (activeHazardObj != null )
             //Sprite s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
+            if (healthBar != null)
+            {
+                //healthBar.SetBar01(0);
+            }
         }
 
         // Update is called once per frame

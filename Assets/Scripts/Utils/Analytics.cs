@@ -15,7 +15,7 @@ namespace com.baltamstudios
 
         int sessionID;
 
-        int eventID = 0;
+        //int eventID = 0;
 
         IDbConnection dbcon;
         void Start()

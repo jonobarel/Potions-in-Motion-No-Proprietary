@@ -54,6 +54,8 @@ namespace com.baltamstudios.minebuddies
         [Range(0f,10f)]
         public float HazardFixProgressionRate = 0.1f;
         public float HazardDifficultyFactor = 1f;
+        [Space]
+        public float HazardProgressAfterActivation = 2f;
 
         [Space]
         public float DistanceToActivate = 10f;

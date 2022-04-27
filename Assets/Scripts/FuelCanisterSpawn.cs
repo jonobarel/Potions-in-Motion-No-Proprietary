@@ -12,7 +12,7 @@ namespace com.baltamstudios.minebuddies
 
         public void SpawnCanister()
         {
-                GameObject fuelCanister = Instantiate(FuelCanisterPrefab);
+                GameObject fuelCanister = Instantiate(FuelCanisterPrefab, SpawnPoint);
                 fuelCanister.GetComponent<Rigidbody2D>().MovePosition(SpawnPoint.position);
 
         }

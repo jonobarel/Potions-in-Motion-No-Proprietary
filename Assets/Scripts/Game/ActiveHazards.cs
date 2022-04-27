@@ -18,11 +18,15 @@ namespace com.baltamstudios.minebuddies
 
         public void Add(Hazard h)
         {
-            activeHazardsList.Add(h);
-            //Instantiate the UI for the new Hazard.
-            ActiveHazardUI uiDisplay = Instantiate(activeHazardUIPrefab, activeHazardQueueUI.transform);
-            uiDisplay.transform.SetAsLastSibling();
-            uiDisplay.ActiveHazardObj = h;
+            if (!activeHazardsList.Contains(h))
+            {
+                activeHazardsList.Add(h);
+                //Instantiate the UI for the new Hazard.
+                ActiveHazardUI uiDisplay = Instantiate(activeHazardUIPrefab, activeHazardQueueUI.transform);
+                uiDisplay.transform.SetAsLastSibling();
+                uiDisplay.ActiveHazardObj = h;
+                h.activeUI = uiDisplay;
+            }
         }
 
 
