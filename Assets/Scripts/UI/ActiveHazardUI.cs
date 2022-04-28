@@ -38,7 +38,7 @@ namespace com.baltamstudios.minebuddies
             //Sprite s = HazardManager.Instance.GetIconForHazardType(activeHazardObj.type);
             if (healthBar != null)
             {
-                //healthBar.SetBar01(0);
+                healthBar.SetBar01(0);
             }
         }
 
