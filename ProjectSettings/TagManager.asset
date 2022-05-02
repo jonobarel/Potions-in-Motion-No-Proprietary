@@ -4,65 +4,69 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CarriageVolume
+  - LevelBounds
+  - Music
+  - Background
+  - NoMask
+  - Platform
   - CarriageModule
   - Ladder
-  - Platform
+  - PowerModule
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
+  - 
+  - 
+  - Platforms
+  - Player
+  - Volumes
+  - OneWayPlatforms
+  - Projectiles
+  - Enemies
+  - 
+  - Ladders
+  - PlayerProjectiles
+  - MovingObjects
+  - MovingPlatforms
+  - Foreground
+  - MovingOneWayPlatforms
+  - NoCollision
+  - Background
+  - Friendlies
+  - Invulnerable
+  - PlatformsPlayerOnly
+  - MidHeightOneWayPlatforms
+  - Pushables
+  - Stairs
+  - Interactables
   - Carriage
-  - Modules
-  - Resources
-  - Walkable
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2674791413
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 3849935707
+  - name: Between
+    uniqueID: 606350985
     locked: 0
-  - name: CarriageBackground
-    uniqueID: 3368188183
+  - name: Player
+    uniqueID: 2666359821
     locked: 0
-  - name: CarriageInternalBack
-    uniqueID: 2520979483
-    locked: 0
-  - name: CarriageInternal
-    uniqueID: 2063457665
-    locked: 0
-  - name: CarriageInternalFront
-    uniqueID: 1985565833
-    locked: 0
-  - name: CarriageForeground
-    uniqueID: 2945105345
+  - name: Platforms
+    uniqueID: 600026165
     locked: 0
   - name: Foreground
-    uniqueID: 2624057351
+    uniqueID: 1795597123
+    locked: 0
+  - name: VisibleParticles
+    uniqueID: 940224915
+    locked: 0
+  - name: UI
+    uniqueID: 3241408355
     locked: 0

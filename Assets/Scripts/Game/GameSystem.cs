@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -8,8 +9,13 @@ namespace com.baltamstudios.minebuddies
     {
         public GameManager gameManager;
         public HazardManager hazardManager;
-        public PlayerManager playerManager;
+        
         public ConfigManager configManager;
+
+        public static GameManager GameManager { get {return GameSystem.Instance.gameManager;} }
+        public static HazardManager HazardManager { get { return GameSystem.Instance.hazardManager;} }
+        
+        public static ConfigManager ConfigManager { get { return GameSystem.Instance.configManager;} }
 
         static GameSystem instance;
         public static GameSystem Instance
@@ -37,8 +43,13 @@ namespace com.baltamstudios.minebuddies
             }
             gameManager = GetComponentInChildren<GameManager>();
             hazardManager = GetComponentInChildren<HazardManager>();
-            playerManager = GetComponentInChildren<PlayerManager>();
+            
             configManager = GetComponentInChildren<ConfigManager>();
+        }
+
+        private void Start()
+        {
+            
         }
     }
 }

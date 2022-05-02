@@ -17,6 +17,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         int MaxConnections = 4;
 
+        MoreMountains.Tools.MMProgressBar fuelGuage;
         public float PowerDemand
         {
             get { return (float)connectedModules.Count/MaxConnections; }
@@ -25,6 +26,7 @@ namespace com.baltamstudios.minebuddies
         List<ActionModule> connectedModules = new List<ActionModule>();
         [SerializeField]
         float fuel;
+        public float CurrentFuel { get { return fuel; } }
 
         bool isRefueling;
         float refuelCooldownStatus;
@@ -37,6 +39,8 @@ namespace com.baltamstudios.minebuddies
         {
             //TODO figure out a different way to set the starting fuel.
             fuel = MaxFuel;
+            fuelGuage = GetComponentInChildren<MoreMountains.Tools.MMProgressBar>();
+            fuelGuage.SetBar01(FuelLevel);
         }
 
         // Update is called once per frame
@@ -45,45 +49,32 @@ namespace com.baltamstudios.minebuddies
             
             if (fuel > 0)
             {
-                fuel -= FuelBurnRate * (1+connectedModules.Count) * Time.deltaTime;
-                foreach(ActionModule module in connectedModules)
-                {
-                    module.HasPower = true;
-                }
-            }
-            else
-            {
-                foreach (ActionModule module in connectedModules)
-                {
-                    module.HasPower = false ;
-                }
-            }
-            if (refuelCooldownStatus > 0)
-            {
-                refuelCooldownStatus -= Time.deltaTime;
-                refuelCooldownStatus = Mathf.Max(refuelCooldownStatus, 0);
+                fuel -= FuelBurnRate * Time.deltaTime;
+                fuelGuage.SetBar01(FuelLevel);
             }
 
         }
 
-        public void Connect(ActionModule actionModule)
+        public bool ModuleFuel()
         {
-            connectedModules.Add(actionModule);
-            actionModule.IsConnected = true;
-
+            if (fuel > Helpers.Config.ModuleFuelConsumption)
+            {
+                fuel-=Helpers.Config.ModuleFuelConsumption;
+                UpdateFuelGuage();
+                return true;
+            }
+            return false;
         }
 
-        public void Disconnect(ActionModule actionModule)
+        void UpdateFuelGuage()
         {
-            connectedModules.Remove(actionModule);
-            actionModule.IsConnected = false;
-            actionModule.HasPower = false;
+            fuelGuage.UpdateBar01(FuelLevel);
         }
-
-        void AddFuel(float units)
+        public void AddFuel(float units)
         {
             fuel += units * FuelPerUnit;
             fuel = Mathf.Clamp(fuel, 0, MaxFuel);
+            fuelGuage.UpdateBar01(FuelLevel);
         }
 
         public override void Interact(bool isStart, Dwarf player)
@@ -101,26 +92,10 @@ namespace com.baltamstudios.minebuddies
 
         public void DoRefuel()
         {
-            if (!isRefueling)
-            {
-                isRefueling = true;
-                float startFuelLevel = fuel;
-                float targetFuelLevel = Mathf.Min(fuel + FuelPerUnit, MaxFuel);
-                refuelRoutine = this.CreateAnimationRoutine(
-                    GameSystem.Instance.configManager.config.RefuelTime,
-                    delegate (float progress)
-                    {
-                        fuel = Mathf.Lerp(startFuelLevel, targetFuelLevel, progress);
-                    },
-                    delegate()
-                    {
-                        fuel = targetFuelLevel;
-                        isRefueling=false;
-                        refuelCooldownStatus = GameSystem.Instance.configManager.config.RefuelCooldownTime;
-                    }
-                    );
+            fuel += Helpers.Config.RefuelSize;
+            fuel = Mathf.Min(fuel, MaxFuel);
+            fuelGuage.UpdateBar01(fuel / MaxFuel);
 
-            }
         }
     }
 }

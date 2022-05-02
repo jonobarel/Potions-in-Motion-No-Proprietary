@@ -12,15 +12,12 @@ namespace com.baltamstudios.minebuddies
         
         // Start is called before the first frame update
         public Color[] CharacterColours = { Color.red, Color.green, Color.blue, Color.yellow };
-        private CharacterMove characterMove;
+        
 
         // Update is called once per frame
 
 
-        public void Start()
-        {
-            characterMove = GetComponent<CharacterMove>();
-        }
+        
         public void SetColor(Color c)
         {
             Debug.Log("Color not set");

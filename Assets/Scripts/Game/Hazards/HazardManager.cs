@@ -7,7 +7,6 @@ namespace com.baltamstudios.minebuddies
     [RequireComponent(typeof(HazardIcons))]
     public class HazardManager : MonoBehaviour
     {
-        public static HazardManager Instance { get { return GameSystem.Instance.hazardManager; } }
         private ActiveHazards activeHazards;
         public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
 
@@ -55,7 +54,7 @@ namespace com.baltamstudios.minebuddies
 
             #endregion
 
-            CreateNextHazardGroup(15f);
+           // CreateNextHazardGroup(15f);
         }
 
         float HazardDifficultyFactor()
@@ -85,7 +84,7 @@ namespace com.baltamstudios.minebuddies
             Debug.Log($"Next hazard group: {size} hazards starting at {nextHazardSpawn}");
             for (int i = 0; i < size; i++)
             {
-                nextHazardGroup.Push(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
+                nextHazardGroup.Push(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
             }
 
         }
@@ -103,7 +102,7 @@ namespace com.baltamstudios.minebuddies
         }
 
         // Update is called once per frame
-        void Update()
+        /*void Update()
         {
             foreach (Hazard h in new List<Hazard>(hazardPositions.Keys))
             {
@@ -114,21 +113,21 @@ namespace com.baltamstudios.minebuddies
                 {
                     activeHazards.Add(h);
                     hazardPositions.Remove(h);
-                    h.AnimateReachedZero();
-                    h.AnimateBecomesActive();
+                    //h.AnimateReachedZero();
+                    //h.AnimateBecomesActive();
                 }
                 else
                 {
                     hazardPositions[h] = newDistance;
-                    h.distanceSlider.value = newDistance / StartingDistance;
+                    //h.distanceSlider.value = newDistance / StartingDistance;
                 }
             }
 
             if (Carriage.Instance.CarriageMovement.DistanceCovered > nextHazardSpawn)
             {
-                NextHazard();
+                //NextHazard();
             }
-        }
+        }*/
 
         public Sprite GetIconForHazardType(GameManager.HazardType e)
         {
@@ -137,7 +136,7 @@ namespace com.baltamstudios.minebuddies
 
         public void SpawnHazard()
         {
-            SpawnHazard(GameManager.Instance.availableHazardTypes[Random.Range(0, GameManager.Instance.availableHazardTypes.Count)]);
+            SpawnHazard(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
         }
 
         void SpawnHazard(GameManager.HazardType t, float duration = 0f, float startingDistance = 0f )
@@ -146,7 +145,7 @@ namespace com.baltamstudios.minebuddies
             if (startingDistance == 0f) startingDistance = configManager.config.HazardStartingDistance;
 
             Hazard h = Instantiate(hazardPrefab, transform);
-            h.SetDuration(duration);
+            //h.SetDuration(duration);
             h.SetType(t);
             h.name = $"Hazard-{h.type}";
             hazardPositions.Add(h, startingDistance);
