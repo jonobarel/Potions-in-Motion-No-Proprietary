@@ -19,7 +19,7 @@ namespace com.baltamstudios.minebuddies
         {
            if (activeUI != null)
             {
-                activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
+                //activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
             }
             
            /*if (isActive && horizontalMovement != null)
