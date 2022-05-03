@@ -1,3 +1,4 @@
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,8 @@ public class TitleScreen : MonoBehaviour
             Input.GetButtonDown("Player3_Jump") ||
             Input.GetButtonDown("Player4_Jump")
             )
-        { Debug.Log("Joystick Button A pressed");
+        {
+            MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
         }
     }
 }
