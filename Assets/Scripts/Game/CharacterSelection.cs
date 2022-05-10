@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.CorgiEngine;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -10,7 +11,8 @@ namespace com.baltamstudios.minebuddies
 
         public GameObject[] PlayerPrefabs;
         public Transform[] SpawnPoints;
-        public GameObject[] PlayerObjs;
+        public bool[] Participating;
+        public Dictionary<string, int> Participants;
 
 
         public static CharacterSelection Instance
@@ -27,7 +29,9 @@ namespace com.baltamstudios.minebuddies
 
         private void Start()
         {
-            PlayerObjs = new GameObject[PlayerPrefabs.Length];
+            GameObject.DontDestroyOnLoad(gameObject);
+            Participating = new bool[PlayerPrefabs.Length];
+            Participants = new Dictionary<string, int>();
         }
         public void Update()
         {
@@ -48,19 +52,27 @@ namespace com.baltamstudios.minebuddies
                 InstantiatePlayer(3);
             }
 
+            if (Input.GetButtonDown("Player1_Pause") || 
+                Input.GetButtonDown("Player2_Pause") ||
+                Input.GetButtonDown("Player3_Pause") ||
+                Input.GetButtonDown("Player4_Pause") )
+            {
+                MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");
+            }
+
 
         }
 
         void InstantiatePlayer(int i)
         {
-            if (PlayerObjs[i] == null)
+            if (!Participants.ContainsKey(PlayerPrefabs[i].GetComponent<Character>().PlayerID))
             {
-                GameObject player = Instantiate(PlayerPrefabs[i]);
+                GameObject player = Instantiate(PlayerPrefabs[i], null);
                 player.transform.position = SpawnPoints[i].position;
-                player.name = $"Player{i + 1}";
-                player.GetComponent<MoreMountains.CorgiEngine.Character>().SetPlayerID($"Player{i+1}");
+                player.name = player.GetComponent<Character>().PlayerID;
+                //player.GetComponent<MoreMountains.CorgiEngine.Character>().SetPlayerID($"Player{i+1}");
                 //player.GetComponent<MoreMountains.CorgiEngine.InputManager>().enabled = false;
-                PlayerObjs[i] = player;
+                Participants.Add(player.GetComponent<Character>().PlayerID, 0);
             }
 
             

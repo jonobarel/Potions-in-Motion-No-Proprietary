@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.CorgiEngine;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -9,9 +10,10 @@ namespace com.baltamstudios.minebuddies
 
         float hazardActivatorDistance = -1;
 
+        public Character[]  playerPrefabs;
 
         public int RandomSeed;
-
+        public Transform[] SpawnPoints;
         public enum HazardType
         {
             A, B, C, D, E, F
@@ -25,14 +27,34 @@ namespace com.baltamstudios.minebuddies
         }
         void Start()
         {
-
             ActionModule[] modules = FindObjectsOfType<ActionModule>();
             foreach (var m in modules)
             {
                 availableHazardTypes.Add(m.hazardType);
             }
 
-            
+            CharacterSelection players = CharacterSelection.Instance;
+            if (players == null)
+            {
+                Debug.Log("Error finding participating players");
+                //InstantiateDefaultPlayers();
+                Application.Quit(-100);
+            }
+            /*
+            MoreMountains.CorgiEngine.MultiplayerLevelManager levelManager = FindObjectOfType<MoreMountains.CorgiEngine.MultiplayerLevelManager>();
+            if (levelManager != null)
+            {
+                for (int i = 0; i < players.Participating.Length; i++)
+                {
+                    Debug.Log($"{name}: checking to add player {i}.");
+                    if (players.Participating[i])
+                    {
+                        Character p = (Character)Instantiate(playerPrefabs[i],SpawnPoints[i].position, Quaternion.identity, null);
+                        
+                    }
+                }
+            }*/
+
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
         }
@@ -62,5 +84,7 @@ namespace com.baltamstudios.minebuddies
         {
 
         }
+
+       
     }
 }
