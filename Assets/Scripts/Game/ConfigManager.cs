@@ -9,7 +9,7 @@ namespace com.baltamstudios.minebuddies
         public MineBuddiesConfigFile config;
         public void Start()
         {
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
     }
 }
