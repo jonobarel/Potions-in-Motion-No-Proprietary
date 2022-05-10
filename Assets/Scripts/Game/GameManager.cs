@@ -57,6 +57,8 @@ namespace com.baltamstudios.minebuddies
 
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
+
+
         }
       
         int GetRandomSeed()
