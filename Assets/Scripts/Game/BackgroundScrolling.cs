@@ -13,7 +13,7 @@ namespace com.baltamstudios.minebuddies
 
         void Start()
         {
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             layers = (from t in GetComponentsInChildren<Transform>()
                       where t != transform
                       orderby t.GetSiblingIndex() ascending
