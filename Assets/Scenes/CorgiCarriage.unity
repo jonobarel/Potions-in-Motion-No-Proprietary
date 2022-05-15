@@ -819,6 +819,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.307
       objectReference: {fileID: 0}
+    - target: {fileID: 3227893250676635430, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdc22fcf7eda6f14d941e58e77e2c0cd,
+        type: 3}
     - target: {fileID: 3275042615066131350, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -902,6 +908,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5355544322359057734, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3b0e3e97ef24984384279860d5f905c,
+        type: 3}
+    - target: {fileID: 5355544322359057734, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
@@ -935,6 +947,12 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6005036070275159263, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b4b6b6bc8e1b0fd49b876a5093b6b640,
+        type: 3}
     - target: {fileID: 6010545686867065689, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1065,6 +1083,12 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 5.791717
       objectReference: {fileID: 0}
+    - target: {fileID: 9053909221526948115, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e66af0eadd97bd4ca3df339da371c1c,
+        type: 3}
     - target: {fileID: 9053909221526948118, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1142,7 +1166,7 @@ MonoBehaviour:
     Quantized: 0
     TargetBPM: 120
   DebugActive: 0
-  LoadingSceneName: MMAdditiveLoadingScreen
+  LoadingSceneName: LoadingScreen
   DestinationSceneName: Endgame
   LoadingMode: 2
   Priority: 4
