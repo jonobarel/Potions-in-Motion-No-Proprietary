@@ -51,7 +51,7 @@ namespace com.baltamstudios.minebuddies
             if (activeHazardObj != null)
             {
                 s = GameSystem.HazardManager.GetIconForHazardType(activeHazardObj.type);
-                Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
+                //Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
             }
                 return s;
         }

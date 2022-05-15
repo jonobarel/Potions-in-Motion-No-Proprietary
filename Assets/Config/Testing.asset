@@ -36,6 +36,8 @@ MonoBehaviour:
   HazardDifficultyFactor: 1
   HazardProgressAfterActivation: 2
   DistanceToActivate: 10
+  DistanceToShakeUI1: 50
+  DistanceToShakeUI2: 30
   layersParallaxFactors:
   - 0
   - 0.1

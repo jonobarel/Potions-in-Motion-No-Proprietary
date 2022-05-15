@@ -11,6 +11,7 @@ namespace com.baltamstudios.minebuddies
         List<Hazard> activeHazardsList = new List<Hazard>();
         [SerializeField] 
         VerticalLayoutGroup activeHazardQueueUI;
+        
 
         [SerializeField]
         ActiveHazardUI activeHazardUIPrefab;

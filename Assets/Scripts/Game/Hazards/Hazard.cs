@@ -13,6 +13,7 @@ namespace com.baltamstudios.minebuddies
         public ActiveHazardUI activeUI;
         public MoreMountains.CorgiEngine.Health MMHealth;
 
+
         MoreMountains.CorgiEngine.CharacterHorizontalMovement horizontalMovement;
 
         public void Update()
@@ -22,10 +23,6 @@ namespace com.baltamstudios.minebuddies
                 //activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
             }
             
-           /*if (isActive && horizontalMovement != null)
-            {
-                horizontalMovement.WalkSpeed = Carriage.Instance.CarriageMovement.CurrentSpeed, Helpers.Config.HazardProgressAfterActivation);
-            }*/
 
         }
 

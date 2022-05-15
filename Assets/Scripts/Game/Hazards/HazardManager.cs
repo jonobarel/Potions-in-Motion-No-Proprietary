@@ -18,6 +18,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField, Range(0f, 100f)]
         public float StartingDistance = 20f;
 
+        public GameObject hazardEffectTriggers;
 
         Stack<GameManager.HazardType> nextHazardGroup = new Stack<GameManager.HazardType>();
         float nextHazardSpawn = 0f;
@@ -38,7 +39,10 @@ namespace com.baltamstudios.minebuddies
 
         void Start()
         {
+            // Adjust position of Hazard UI Effect Triggers
+
             
+
             hazardIcons = GetComponent<HazardIcons>();
             activeHazards = GetComponent<ActiveHazards>();
 
@@ -53,6 +57,14 @@ namespace com.baltamstudios.minebuddies
             }
 
             #endregion
+
+            Transform[] effectTriggers = hazardEffectTriggers.GetComponentsInChildren<Transform>();
+            if (effectTriggers.Length != 3) Application.Quit();
+
+            effectTriggers[1].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI1, effectTriggers[1].position.y);
+            effectTriggers[2].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI2, effectTriggers[2].position.y);
+
+
 
            // CreateNextHazardGroup(15f);
         }

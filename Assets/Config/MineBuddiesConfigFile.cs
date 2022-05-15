@@ -59,6 +59,9 @@ namespace com.baltamstudios.minebuddies
 
         [Space]
         public float DistanceToActivate = 10f;
+
+        public float DistanceToShakeUI1;
+        public float DistanceToShakeUI2;
         #endregion
 
         [Space]
