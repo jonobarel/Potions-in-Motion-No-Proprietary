@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1767805118975604099}
   m_Layer: 13
   m_Name: CorgiHazard
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

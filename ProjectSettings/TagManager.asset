@@ -12,6 +12,7 @@ TagManager:
   - CarriageModule
   - Ladder
   - PowerModule
+  - Hazard
   layers:
   - Default
   - TransparentFX

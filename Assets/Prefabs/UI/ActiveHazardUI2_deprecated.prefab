@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 518323894208815279}
   - component: {fileID: 4354376276326605388}
   m_Layer: 5
-  m_Name: ActiveHazardUI2
+  m_Name: ActiveHazardUI2_deprecated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

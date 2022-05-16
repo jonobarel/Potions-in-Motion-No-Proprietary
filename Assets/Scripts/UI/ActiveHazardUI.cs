@@ -24,6 +24,8 @@ namespace com.baltamstudios.minebuddies
         Image iconDisplay;
         Sprite iconSprite;
 
+        public MoreMountains.Feedbacks.MMFeedback[] feedbacks;
+
         [SerializeField]
         public MoreMountains.Tools.MMProgressBar distanceBar;
         [SerializeField]
