@@ -19,7 +19,7 @@ namespace com.baltamstudios.minebuddies
         float startingDistanceSqr;
 
         MoreMountains.CorgiEngine.CharacterHorizontalMovement horizontalMovement;
-
+        MoreMountains.CorgiEngine.DamageOnTouch MMdamageOnTouch;
         
 
         public void Update()
@@ -47,6 +47,9 @@ namespace com.baltamstudios.minebuddies
         {
             horizontalMovement = GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>();
             MMHealth = GetComponent<MoreMountains.CorgiEngine.Health>();
+            MMdamageOnTouch = GetComponent<MoreMountains.CorgiEngine.DamageOnTouch>();
+            MMdamageOnTouch.DamageCaused = GameSystem.Instance.configManager.config.HazardDamageRating;
+
             SetType(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
             name = $"Hazard-{type}";
             //Debug.Log($"{name}: type {type}");
@@ -75,7 +78,11 @@ namespace com.baltamstudios.minebuddies
 
         public void UpdateUIHealth()
         {
-            activeUI.healthBar.UpdateBar01(1f-(float)MMHealth.CurrentHealth/MMHealth.MaximumHealth);
+            var healthRatio = (float)MMHealth.CurrentHealth / MMHealth.MaximumHealth;
+            activeUI.healthBar.UpdateBar01(1f-healthRatio);
+            MMdamageOnTouch.DamageCaused = (int)(healthRatio * GameSystem.Instance.configManager.config.HazardDamageRating);
+
+
         }
         public void Activate()
         {

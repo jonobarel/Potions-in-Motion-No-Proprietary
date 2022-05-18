@@ -14,6 +14,7 @@ namespace com.baltamstudios.minebuddies
 
         public int RandomSeed;
         public Transform[] SpawnPoints;
+
         public enum HazardType
         {
             A, B, C, D, E, F

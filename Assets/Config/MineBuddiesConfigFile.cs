@@ -50,6 +50,8 @@ namespace com.baltamstudios.minebuddies
         public float HazardStartingDistance = 100f;
         public float InitialDuration = 10f;
         public float HazardProgressionRate = 1f;
+
+        public int HazardDamageRating = 10;
         [Space]
         [Range(0f,10f)]
         public float HazardFixProgressionRate = 0.1f;

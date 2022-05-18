@@ -32,12 +32,13 @@ MonoBehaviour:
   HazardStartingDistance: 35
   InitialDuration: 30
   HazardProgressionRate: 1
+  HazardDamageRating: 10
   HazardFixProgressionRate: 2
   HazardDifficultyFactor: 1
   HazardProgressAfterActivation: 2
   DistanceToActivate: 10
-  DistanceToShakeUI1: 50
-  DistanceToShakeUI2: 30
+  DistanceToShakeUI1: 35
+  DistanceToShakeUI2: 20
   layersParallaxFactors:
   - 0
   - 0.1

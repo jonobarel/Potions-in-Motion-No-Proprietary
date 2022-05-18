@@ -39,7 +39,7 @@ namespace com.baltamstudios.minebuddies
         {
             //TODO figure out a different way to set the starting fuel.
             fuel = MaxFuel;
-            fuelGuage = GetComponentInChildren<MoreMountains.Tools.MMProgressBar>();
+            fuelGuage = FindObjectOfType<FuelBar>().GetComponent<MoreMountains.Tools.MMProgressBar>();
             fuelGuage.SetBar01(FuelLevel);
         }
 
