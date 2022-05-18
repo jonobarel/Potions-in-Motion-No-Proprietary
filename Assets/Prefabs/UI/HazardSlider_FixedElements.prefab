@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0010070801, y: 0}
+  m_AnchoredPosition: {x: -0.0009765625, y: 0}
   m_SizeDelta: {x: -0.0020142, y: 44.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4711964450389723549
@@ -160,7 +160,8 @@ MonoBehaviour:
   m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
-  m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
+  m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -259,10 +260,10 @@ RectTransform:
   m_Father: {fileID: 4711964450389723548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.004, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.1400146, y: 0.15001297}
-  m_SizeDelta: {x: 22.980011, y: -23}
+  m_AnchoredPosition: {x: -4.2854, y: -0.022378922}
+  m_SizeDelta: {x: 8.5718, y: -11.695}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4711964450517895386
 CanvasRenderer:
@@ -338,7 +339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 7.029907, y: 0.15003967}
+  m_AnchoredPosition: {x: 7.0302734, y: 0.15003967}
   m_SizeDelta: {x: 58, y: 61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4711964450568639206
@@ -415,7 +416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -16.970093, y: 0.15003967}
+  m_AnchoredPosition: {x: 0, y: 0.15004}
   m_SizeDelta: {x: 58, y: 61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4711964450857434293
@@ -525,7 +526,8 @@ MonoBehaviour:
   m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
-  m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c, type: 2}
+  m_sharedMaterial: {fileID: 5416806443266638455, guid: d70f485aa27dc43f79a8fd168f58435c,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

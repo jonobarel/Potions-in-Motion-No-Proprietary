@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -19,6 +20,10 @@ namespace com.baltamstudios.minebuddies
         public float StartingDistance = 20f;
 
         public GameObject hazardEffectTriggers;
+        public Transform HazardDistanceSliderContainer;
+        public Slider PositionSliderPrefab;
+
+        public HazardActivator hazardActivator;
 
         Stack<GameManager.HazardType> nextHazardGroup = new Stack<GameManager.HazardType>();
         float nextHazardSpawn = 0f;
@@ -60,7 +65,11 @@ namespace com.baltamstudios.minebuddies
 
             Transform[] effectTriggers = hazardEffectTriggers.GetComponentsInChildren<Transform>();
             if (effectTriggers.Length != 3) Application.Quit();
-
+            if (HazardDistanceSliderContainer == null)
+            {
+                Debug.LogError($"{name}: HazardDistanceSliderContainer not initialized");
+                Application.Quit();
+            }
             effectTriggers[1].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI1, effectTriggers[1].position.y);
             effectTriggers[2].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI2, effectTriggers[2].position.y);
 
@@ -100,6 +109,7 @@ namespace com.baltamstudios.minebuddies
             }
 
         }
+        /*
         void NextHazard()
         {
             if (nextHazardGroup.Count > 0)
@@ -111,7 +121,7 @@ namespace com.baltamstudios.minebuddies
             if (nextHazardGroup.Count == 0)
                 CreateNextHazardGroup();
 
-        }
+        }*/
 
         // Update is called once per frame
         /*void Update()
@@ -145,7 +155,7 @@ namespace com.baltamstudios.minebuddies
         {
             return hazardIcons.GetIconForHazardType(e);
         }
-
+        /*
         public void SpawnHazard()
         {
             SpawnHazard(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
@@ -163,6 +173,6 @@ namespace com.baltamstudios.minebuddies
             hazardPositions.Add(h, startingDistance);
         }
 
-
+        */
     }
 }

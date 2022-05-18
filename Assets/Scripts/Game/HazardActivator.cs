@@ -19,6 +19,7 @@ namespace com.baltamstudios.minebuddies
             {
                 h.Activate();
                 GameSystem.Instance.hazardManager.ActiveHazards.Add(h);
+                
             }
         }
 

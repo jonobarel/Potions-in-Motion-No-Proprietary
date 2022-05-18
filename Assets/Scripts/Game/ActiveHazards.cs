@@ -11,6 +11,8 @@ namespace com.baltamstudios.minebuddies
         List<Hazard> activeHazardsList = new List<Hazard>();
         [SerializeField] 
         VerticalLayoutGroup activeHazardQueueUI;
+
+        
         
 
         [SerializeField]
@@ -29,6 +31,7 @@ namespace com.baltamstudios.minebuddies
                 h.activeUI = uiDisplay;
             }
         }
+
 
 
         public Hazard FindTop(GameManager.HazardType t)

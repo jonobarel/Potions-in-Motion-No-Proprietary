@@ -13,8 +13,14 @@ namespace com.baltamstudios.minebuddies
         public ActiveHazardUI activeUI;
         public MoreMountains.CorgiEngine.Health MMHealth;
 
+        [SerializeField]
+        Slider positionSlider;
+
+        float startingDistanceSqr;
 
         MoreMountains.CorgiEngine.CharacterHorizontalMovement horizontalMovement;
+
+        
 
         public void Update()
         {
@@ -22,7 +28,18 @@ namespace com.baltamstudios.minebuddies
             {
                 //activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
             }
+
+           if (positionSlider != null)
+            {
+                var distanceToActivatorSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
+                positionSlider.value = Mathf.Sqrt(distanceToActivatorSqr / startingDistanceSqr);
+                if (isActive)
+                    GameObject.Destroy(positionSlider.gameObject);
+            }
+
             
+            
+           
 
         }
 
@@ -33,7 +50,11 @@ namespace com.baltamstudios.minebuddies
             SetType(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
             name = $"Hazard-{type}";
             //Debug.Log($"{name}: type {type}");
+            //Spawn the timeline indicator
+            var hazardManager = GameSystem.Instance.hazardManager.GetComponent<HazardManager>();
 
+            positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
+            startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
         }
 
 
