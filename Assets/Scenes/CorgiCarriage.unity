@@ -603,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1770941903}
+      objectReference: {fileID: 1815145187}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2898,9 +2898,9 @@ Transform:
   m_Father: {fileID: 933005081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1770941903 stripped
+--- !u!114 &1815145187 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7006449002733407928, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+  m_CorrespondingSourceObject: {fileID: 6730504208252074079, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
     type: 3}
   m_PrefabInstance: {fileID: 2935101838915944760}
   m_PrefabAsset: {fileID: 0}
@@ -3568,6 +3568,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730504208252074079, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+        type: 3}
+      propertyPath: FillMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730504208252074079, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+        type: 3}
+      propertyPath: DebugNewTargetValue
+      value: 0.439
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91dbd5b2ad3188e4ca475c42a5618b90, type: 3}
