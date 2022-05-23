@@ -77,7 +77,7 @@ namespace com.baltamstudios.minebuddies
             //transform.position += new Vector3(currentSpeed * Time.deltaTime,0,0);
             if (Odometer != null)
             {
-                Odometer.SetText($"{(int)distanceCovered}m");
+                Odometer.SetText($"{(int)distanceCovered}");
             }
             if (Speedometer != null)
             {
