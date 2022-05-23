@@ -57,6 +57,7 @@ namespace com.baltamstudios.minebuddies
             var hazardManager = GameSystem.Instance.hazardManager.GetComponent<HazardManager>();
 
             positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
+            positionSlider.GetComponent<HazardSliderDisplay>().Hazard = this;
             startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
         }
 
