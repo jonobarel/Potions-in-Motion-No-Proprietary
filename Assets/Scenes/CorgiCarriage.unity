@@ -858,12 +858,12 @@ PrefabInstance:
     - target: {fileID: 2303727481916910895, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.03
+      value: 9.54
       objectReference: {fileID: 0}
     - target: {fileID: 2303727481916910895, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2408611691519433218, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -2811,6 +2811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079939f4c5fd70243bd9b2ccf41bedaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazardSpawner: {fileID: 548829278}
   StartingDistance: 20
   hazardEffectTriggers: {fileID: 1228329879}
   HazardDistanceSliderContainer: {fileID: 1836619558}
@@ -3617,7 +3618,7 @@ PrefabInstance:
     - target: {fileID: 2935101839551110034, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -201.6
+      value: -201.60004
       objectReference: {fileID: 0}
     - target: {fileID: 2935101839551110034, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
         type: 3}

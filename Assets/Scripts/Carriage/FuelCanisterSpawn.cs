@@ -15,10 +15,16 @@ namespace com.baltamstudios.minebuddies
             var canisters = FindObjectOfType<FuelCanister>();
             if (canisters == null)
             {
+                Debug.Log($"Spawning fuel canister at {SpawnPoint.position}");
                 GameObject fuelCanister = Instantiate(FuelCanisterPrefab);
                 fuelCanister.GetComponent<Rigidbody2D>().MovePosition(SpawnPoint.position);
             }
         }
 
+
+        public void Update()
+        {
+            Debug.DrawLine(transform.position, SpawnPoint.position);
+        }
     }
 }
