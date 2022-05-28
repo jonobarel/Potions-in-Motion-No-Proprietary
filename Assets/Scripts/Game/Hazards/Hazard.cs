@@ -61,6 +61,15 @@ namespace com.baltamstudios.minebuddies
             startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
         }
 
+        internal void ResumeHazardsAdvancement()
+        {
+            GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().MovementSpeed = 2;
+        }
+
+        internal void PauseHazardsAdvancement()
+        {
+            GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().MovementSpeed = 0;
+        }
 
         public void SetType(GameManager.HazardType t)
         {
@@ -88,14 +97,18 @@ namespace com.baltamstudios.minebuddies
         public void Activate()
         {
             isActive = true;
+            GameSystem.Instance.hazardManager.ActiveHazards.Add(this);
             GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().WalkSpeed = Helpers.Config.HazardProgressAfterActivation;
             //Debug.Log($"{name}: activated");
         }
 
         public void Deactivate()
         {
+            isActive = false;
+            GameSystem.Instance.hazardManager.ActiveHazards.Remove(this);
             activeUI.GetComponent<Animate>().DoFadeAnimation();
             GameObject.Destroy(activeUI.gameObject, 1f);
+            
         }
     }
 }

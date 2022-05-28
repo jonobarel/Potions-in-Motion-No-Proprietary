@@ -4,15 +4,26 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 namespace com.baltamstudios.minebuddies
 {
+    [RequireComponent(typeof(HazardManager))]
     public class ActiveHazards : MonoBehaviour
     {
         List<Hazard> activeHazardsList = new List<Hazard>();
         [SerializeField] 
         VerticalLayoutGroup activeHazardQueueUI;
 
-        
+        public HazardManager HazardManager {
+            get {
+                if (hazardManager == null) hazardManager = GetComponent<HazardManager>();
+                if (hazardManager != null) return hazardManager;
+                else Debug.LogError($"{name}: could not find HazardManager object");
+                throw new System.Exception("HazardManager not found");
+            } 
+        }
+
+        private HazardManager hazardManager;
         
 
         [SerializeField]
@@ -30,9 +41,45 @@ namespace com.baltamstudios.minebuddies
                 uiDisplay.ActiveHazardObj = h;
                 h.activeUI = uiDisplay;
             }
+
+            if (activeHazardsList.Count >= GameSystem.Instance.configManager.config.MaxActiveHazards)
+            {
+                HazardManager.hazardSpawner.enabled = false;
+
+                Carriage.Instance.Stalled = true;
+                var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
+                                            where hazard.isActive == false
+                                            select hazard);
+                foreach (Hazard iah in inActiveHazards)
+                {
+                    iah.PauseHazardsAdvancement();
+                }
+            }
+            
         }
 
+        public void Remove(Hazard h)
+        {
+            if (activeHazardsList.Contains(h))
+            {
+                activeHazardsList.Remove(h);
+                if (activeHazardsList.Count < GameSystem.Instance.configManager.config.MaxActiveHazards)
+                {
+                    HazardManager.hazardSpawner.enabled = true;
 
+                    Carriage.Instance.Stalled = false;
+                    var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
+                                           where hazard.isActive == false
+                                           select hazard);
+                    foreach (Hazard iah in inActiveHazards)
+                    {
+                        iah.ResumeHazardsAdvancement();
+                    }
+
+                }
+
+            }
+        }
 
         public Hazard FindTop(GameManager.HazardType t)
         {

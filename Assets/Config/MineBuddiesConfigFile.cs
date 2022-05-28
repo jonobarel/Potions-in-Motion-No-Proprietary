@@ -59,6 +59,7 @@ namespace com.baltamstudios.minebuddies
         [Space]
         public float HazardProgressAfterActivation = 2f;
 
+        public int MaxActiveHazards = 7;
         [Space]
         public float DistanceToActivate = 10f;
 

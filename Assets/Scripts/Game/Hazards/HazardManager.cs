@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MoreMountains.CorgiEngine;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -12,6 +13,9 @@ namespace com.baltamstudios.minebuddies
         public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
 
         public Dictionary<GameManager.HazardType, ActionModule> HazardModuleMap;
+
+        public TimedSpawner hazardSpawner; //MMCorgiEngine object
+        public bool PauseHazards = false;
 
         public ActiveHazards ActiveHazards { get { return activeHazards; } }
         ConfigManager configManager;

@@ -33,6 +33,8 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
+        public bool Stalled { get; internal set; }
+
         private void Awake()
         {
             if (instance != null)
