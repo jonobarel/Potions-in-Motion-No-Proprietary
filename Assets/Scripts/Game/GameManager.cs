@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
+using GameAnalyticsSDK;
+using UnityEngine.SceneManagement;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -15,6 +17,9 @@ namespace com.baltamstudios.minebuddies
         public int RandomSeed;
         public Transform[] SpawnPoints;
 
+        public int SessionID;
+        
+
         public enum HazardType
         {
             A, B, C, D, E, F
@@ -25,14 +30,19 @@ namespace com.baltamstudios.minebuddies
         {
             RandomSeed = GetRandomSeed();
             Random.InitState(RandomSeed);
+
         }
-        void Start()
+        private void OnEnable()
         {
-            ActionModule[] modules = FindObjectsOfType<ActionModule>();
-            foreach (var m in modules)
-            {
-                availableHazardTypes.Add(m.hazardType);
-            }
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+        }
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("Carriage scene reloaded");
+
+            SessionID = System.DateTime.Now.GetHashCode();
+            Debug.Log($"SessionID: {SessionID}");
 
             CharacterSelection players = CharacterSelection.Instance;
             if (players == null)
@@ -41,24 +51,21 @@ namespace com.baltamstudios.minebuddies
                 //InstantiateDefaultPlayers();
                 Application.Quit(-100);
             }
-            /*
-            MoreMountains.CorgiEngine.MultiplayerLevelManager levelManager = FindObjectOfType<MoreMountains.CorgiEngine.MultiplayerLevelManager>();
-            if (levelManager != null)
+
+        }
+        void Start()
+        {
+
+            ActionModule[] modules = FindObjectsOfType<ActionModule>();
+            foreach (var m in modules)
             {
-                for (int i = 0; i < players.Participating.Length; i++)
-                {
-                    Debug.Log($"{name}: checking to add player {i}.");
-                    if (players.Participating[i])
-                    {
-                        Character p = (Character)Instantiate(playerPrefabs[i],SpawnPoints[i].position, Quaternion.identity, null);
-                        
-                    }
-                }
-            }*/
+                availableHazardTypes.Add(m.hazardType);
+            }
 
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
 
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "MineCart");
 
         }
       

@@ -37,10 +37,6 @@ namespace com.baltamstudios.minebuddies
                     GameObject.Destroy(positionSlider.gameObject);
             }
 
-            
-            
-           
-
         }
 
         public void Start()

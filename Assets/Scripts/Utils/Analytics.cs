@@ -1,98 +1,120 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mono.Data.Sqlite;
 using System.IO;
 using System.Data;
-
-
-namespace com.baltamstudios
+using GameAnalyticsSDK;
+using System;
+using System.Linq;
+namespace com.baltamstudios.minebuddies
 {
-    public class Analytics : MonoBehaviour
+    public class Analytics //: MonoBehaviour
     {
-        // Start is called before the first frame update
-        string TimeStamp { get { return System.DateTime.UtcNow.ToString(); } }
+        string FileName = "MineBuddiesLog.csv";
 
         int sessionID;
 
-        //int eventID = 0;
-
-        IDbConnection dbcon;
-        void Start()
-        {
-            string connection = "URI=file:" + Application.persistentDataPath + "/AnalyticsDB.sqlite";
-            Debug.Log($"Connection string: {connection}");
-            dbcon = new SqliteConnection(connection);
-            dbcon.Open();
-            InitDatabase();
-            sessionID = LogSessionID();
-            Debug.Log($"sessionID: {sessionID}");
-
+        public int SessionID {
+            get { return sessionID; }
+            set { sessionID = value; }
         }
 
-        private void InitDatabase()
+        public Analytics(int session)
         {
-            IDbCommand createSessionsTable;
-            createSessionsTable = dbcon.CreateCommand();
-            string q_createTable = "CREATE TABLE if not exists \"sessions\" (" +
-                "\"SessionID\"	INTEGER UNIQUE,	" +
-                "\"StartTime\"	INTEGER,	" +
-                "\"RandomSeed\"	INTEGER,	" +
-                "PRIMARY KEY(\"SessionID\" AUTOINCREMENT));";
-            createSessionsTable.CommandText = q_createTable;
-            createSessionsTable.ExecuteReader();
-
-            string q_create_table_events = "CREATE TABLE if not exists \"events\" (    " +
-                "\"eventID\"   INTEGER,	" +
-                "\"sessionID\" INTEGER NOT NULL,	" +
-                "\"TimeStamp\" INTEGER,	" +
-                "\"playerID\"  INTEGER,	" +
-                "\"eventType\" TEXT,	" +
-                "\"module\"    INTEGER,	" +
-                "\"hazardType\" INTEGER, " +
-                "\"info\"  TEXT," +
-                "PRIMARY KEY(\"eventID\" AUTOINCREMENT)); ";
-
-            IDbCommand createEventsTable = dbcon.CreateCommand();
-            createEventsTable.CommandText = q_create_table_events;
-            createEventsTable.ExecuteReader();
+            sessionID = session;
         }
 
-        private int LogSessionID()
-        {
-            IDbCommand cmnd = dbcon.CreateCommand();
-            Debug.Log($"{sessionID}, {System.DateTime.UnixEpoch.Second}");
-            cmnd.CommandText = $"INSERT INTO sessions (StartTime, RandomSeed) values (@time, @seed)";
-            
-            cmnd.Parameters.Add(new SqliteParameter("@time", TimeStamp));
-            cmnd.Parameters.Add(new SqliteParameter("@seed", minebuddies.GameSystem.GameManager.RandomSeed));
-            
-            Debug.Log($"SQLite command: {cmnd.CommandText}, parameters: ");
-            int written = cmnd.ExecuteNonQuery();
+        List<LogEntry> logCollection = new List<LogEntry>();
 
-            cmnd.CommandText = "select max(sessionID) as sessionID from sessions";
-            IDataReader reader = cmnd.ExecuteReader();
-            //Debug.Log($"Query returned: {reader[0].ToString()}");
-            if (reader.Read())
+        struct LogEntry
+        {
+            public DateTime timestamp;
+            public int sessionID;
+            public string playerID;
+            public LogAction action;
+            public GameManager.HazardType hazardType;
+            public float value;
+            public string data;
+        }
+
+        public enum LogAction
+        {
+            UseModule,
+            DamageHazard,
+            DestroyHazard,
+            DispenseFuel,
+            Refuel,
+            HazardSpawn,
+            HazardActivate,
+            HazardDamageCarriage,
+            GameStart,
+            GameEnd
+        };
+
+
+        public void LogEvent(string playerID, LogAction action, 
+            GameManager.HazardType hazardType, float logValue, string logData)
+        {
+            LogEntry log = new LogEntry();
+            log.timestamp = DateTime.Now;
+            log.sessionID = SessionID;
+            log.playerID = playerID;
+            log.action = action;
+            log.value = logValue;
+            log.data = logData;
+
+            logCollection.Add(log);
+
+        }
+        void WriteLogLineToFile(LogEntry log)
+        {
+
+        }
+        
+        public string GetTopPlayer()
+        {
+            var playerScores = from l in logCollection
+                               where l.action == LogAction.DamageHazard
+                               group l by l.playerID into playerGroup
+                               select new
+                               {
+                                   playerID = playerGroup.Key,
+                                   playerScore = playerGroup.Sum(x => x.value)
+                               };
+
+            var topPlayer = (from p in playerScores
+                             orderby p.playerScore descending
+                             select p.playerID).First();
+            return topPlayer;
+        }
+
+        public int GetTopPlayerScore()
+        {
+            var highScore = (from l in logCollection
+                             where l.playerID == GetTopPlayer() && l.action == LogAction.DamageHazard
+                             select l).Sum(x => x.value);
+
+            return (int)highScore;
+                           
+        }
+
+        public Dictionary<string, int> GetPlayerScores()
+        {
+            var scores = (from l in logCollection
+                          where l.action == LogAction.DamageHazard
+                          group l by l.playerID into playerScores
+                          select new
+                          {
+                              playerID = playerScores.Key,
+                              playerScore = playerScores.Sum(x => x.value)
+                          });
+            Dictionary<string, int> scoreDict = new Dictionary<string, int>();
+            foreach (var score in scores)
             {
-                return int.Parse(reader[0].ToString());
+                scoreDict.Add(score.playerID, (int)score.playerScore);
             }
-            return -1;
 
-        }
-        public void Logger(int playerID = -1, string eventType = "GenericEvent", int moduleID = -1, int hazardType = -1, string info = "")
-        {
-            IDbCommand cmnd = dbcon.CreateCommand();
-            cmnd.CommandText = $"insert into events (sessionID, TimeStamp, palyerID, eventType, module, hazardType, info) values (@timestamp, @playerID, @eventtype, @hazardType, @module, @info)";
-            cmnd.Parameters.Add(new SqliteParameter("@timestamp", TimeStamp));
-            cmnd.Parameters.Add(new SqliteParameter("@playerID", playerID));
-            cmnd.Parameters.Add(new SqliteParameter("@eventType", eventType));
-            cmnd.Parameters.Add(new SqliteParameter("@hazardType", hazardType));
-            cmnd.Parameters.Add(new SqliteParameter("@eventType", hazardType));
-            cmnd.Parameters.Add(new SqliteParameter("@info", info));
-
-            if (cmnd.ExecuteNonQuery() != 1)
-                Debug.Log($"{name}: logging data - insert returned wrong number of rows");
+            return scoreDict;
         }
     }
 }
