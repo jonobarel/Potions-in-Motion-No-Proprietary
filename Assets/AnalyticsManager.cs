@@ -4,16 +4,19 @@ using UnityEngine;
 
 namespace com.baltamstudios.minebuddies
 {
-    public class AnalyticsComponentWrapper : MonoBehaviour
+    public class AnalyticsManager : MonoBehaviour
     {
         Analytics analytics;
 
-        static AnalyticsComponentWrapper instance = null;
-        public static AnalyticsComponentWrapper Instance
+        static AnalyticsManager instance = null;
+        public static AnalyticsManager Instance
         {
-            get { if (instance == null) instance = FindObjectOfType<AnalyticsComponentWrapper>();
-            return instance;}    
+            get { 
+                if (instance == null) instance = FindObjectOfType<AnalyticsManager>();
+                return instance;
+            }    
         }
+
 
         void Awake() {
             if (instance != null) {
@@ -25,11 +28,15 @@ namespace com.baltamstudios.minebuddies
         void Start()
         {
             DontDestroyOnLoad(gameObject);
-            analytics = new Analytics(GameSystem.Instance.gameManager.SessionID);
         }
 
         // Update is called once per frame
-        
+
+        public void Initialize()
+        {
+            analytics = new Analytics(GameSystem.Instance.gameManager.SessionID);
+        }
+
         public void LogEvent(string playerID, 
             Analytics.LogAction action, 
             GameManager.HazardType hazardType,
@@ -37,5 +44,17 @@ namespace com.baltamstudios.minebuddies
         {
             analytics.LogEvent(playerID, action, hazardType, logValue, logData);
         }
+
+        public string GetTopPlayer()
+        {
+            return analytics.GetTopPlayer();
+        }
+
+        public int GetTotalHazards()
+        {
+            return analytics.GetTotalHazards();
+        }
+
+        
     }
 }

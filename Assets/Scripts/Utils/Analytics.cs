@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Data;
-using GameAnalyticsSDK;
+
 using System;
 using System.Linq;
 namespace com.baltamstudios.minebuddies
@@ -115,6 +115,15 @@ namespace com.baltamstudios.minebuddies
             }
 
             return scoreDict;
+        }
+
+        public int GetTotalHazards()
+        {
+            var totalHazards = (from l in logCollection
+                                where l.action == LogAction.DestroyHazard
+                                select l.value).Sum();
+
+            return (int)totalHazards;
         }
     }
 }
