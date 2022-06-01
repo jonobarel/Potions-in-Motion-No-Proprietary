@@ -24,8 +24,26 @@ namespace com.baltamstudios.minebuddies
         {
             A, B, C, D, E, F
         }
+        public List<HazardType> AvailableHazardTypes
+        {
+            get { if (availableHazardTypes == null)
+                    InitAvailableHazards();
+            return availableHazardTypes; 
+                    }
+        }
 
-        public List<HazardType> availableHazardTypes = new List<HazardType>();
+        private void InitAvailableHazards()
+        {
+            availableHazardTypes = new List<HazardType>();
+            ActionModule[] modules = FindObjectsOfType<ActionModule>();
+            foreach (var m in modules)
+            {
+                availableHazardTypes.Add(m.hazardType);
+            }
+
+        }
+
+        List<HazardType> availableHazardTypes;
         private void Awake()
         {
             RandomSeed = GetRandomSeed();
@@ -51,18 +69,11 @@ namespace com.baltamstudios.minebuddies
                 //InstantiateDefaultPlayers();
                 Application.Quit(-100);
             }
-
         }
+
         void Start()
         {
             GameSystem.Instance.analytics.Initialize();
-
-            ActionModule[] modules = FindObjectsOfType<ActionModule>();
-            foreach (var m in modules)
-            {
-                availableHazardTypes.Add(m.hazardType);
-            }
-
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
 

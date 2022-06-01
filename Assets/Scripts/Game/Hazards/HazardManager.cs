@@ -109,7 +109,7 @@ namespace com.baltamstudios.minebuddies
             Debug.Log($"Next hazard group: {size} hazards starting at {nextHazardSpawn}");
             for (int i = 0; i < size; i++)
             {
-                nextHazardGroup.Push(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
+                nextHazardGroup.Push(GameSystem.GameManager.AvailableHazardTypes[Random.Range(0, GameSystem.GameManager.AvailableHazardTypes.Count)]);
             }
 
         }
