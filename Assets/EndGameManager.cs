@@ -3,27 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class EndGameManager : MonoBehaviour
+namespace com.baltamstudios.minebuddies
 {
-
-    [SerializeField] TextMeshProUGUI TopPlayerName, HazardNumber, DistanceCovered, RefuelNumber;
-    
-    
-    // Start is called before the first frame update
-    void Start()
+    public class EndGameManager : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Player1_Pause") ||
-              Input.GetButtonDown("Player2_Pause") ||
-              Input.GetButtonDown("Player3_Pause") ||
-              Input.GetButtonDown("Player4_Pause"))
+        [SerializeField] TextMeshProUGUI TopPlayerName, HazardNumber, DistanceCovered, RefuelNumber;
+
+        AnalyticsManager analytics;
+        // Start is called before the first frame update
+        void Start()
         {
-            MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
+            analytics = FindObjectOfType<AnalyticsManager>();
+            if (analytics == null)
+                Debug.LogError($"{name}: Could not find analytics object.");
+            else
+            {
+                TopPlayerName.text = analytics.GetTopPlayer();
+                HazardNumber.text = $"{analytics.GetTotalHazards()}";
+            }
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetButtonDown("Player1_Pause") ||
+                  Input.GetButtonDown("Player2_Pause") ||
+                  Input.GetButtonDown("Player3_Pause") ||
+                  Input.GetButtonDown("Player4_Pause"))
+            {
+                MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
+            }
         }
     }
 }

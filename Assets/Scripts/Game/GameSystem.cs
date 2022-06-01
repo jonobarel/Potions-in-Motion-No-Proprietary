@@ -10,9 +10,9 @@ namespace com.baltamstudios.minebuddies
     {
         public GameManager gameManager;
         public HazardManager hazardManager;
-        public Analytics analytics;
 
         public ConfigManager configManager;
+        public AnalyticsManager analytics;
 
         public static GameManager GameManager { get {return GameSystem.Instance.gameManager;} }
         public static HazardManager HazardManager { get { return GameSystem.Instance.hazardManager;} }
@@ -62,7 +62,6 @@ namespace com.baltamstudios.minebuddies
         private void Start()
         {
             GameObject.DontDestroyOnLoad(gameObject);
-            analytics = new Analytics(gameManager.SessionID);
         }
     }
 }

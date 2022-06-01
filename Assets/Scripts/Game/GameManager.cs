@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
-using GameAnalyticsSDK;
+
 using UnityEngine.SceneManagement;
 
 namespace com.baltamstudios.minebuddies
@@ -55,6 +55,7 @@ namespace com.baltamstudios.minebuddies
         }
         void Start()
         {
+            GameSystem.Instance.analytics.Initialize();
 
             ActionModule[] modules = FindObjectsOfType<ActionModule>();
             foreach (var m in modules)
@@ -65,7 +66,6 @@ namespace com.baltamstudios.minebuddies
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
 
-            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "MineCart");
 
         }
       
