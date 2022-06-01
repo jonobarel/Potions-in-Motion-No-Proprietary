@@ -2,11 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
-public class ModuleButtonActivated : ButtonActivated
+
+namespace com.baltamstudios.minebuddies
 {
-    public override void TriggerButtonAction(GameObject instigator)
+    public class ModuleButtonActivated : ButtonActivated
     {
-        base.TriggerButtonAction(instigator);
-        Debug.Log($"{instigator.name} pressed my ({name} button!");
+        ActionModule module;
+
+        public void Start()
+        {
+            module = GetComponent<ActionModule>();
+            if (module == null) Application.Quit();
+        }
+
+        public override void TriggerButtonAction(GameObject instigator)
+        {
+            base.TriggerButtonAction(instigator);
+            GameSystem.Instance.analytics.LogEvent(instigator.name, Analytics.LogAction.UseModule, module.hazardType, 1, "player activated module"); 
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+        }
     }
 }
