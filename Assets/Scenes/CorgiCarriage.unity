@@ -319,7 +319,6 @@ MonoBehaviour:
   - {fileID: 1299793725}
   - {fileID: 728921592}
   SessionID: 0
-  availableHazardTypes: 
 --- !u!1 &52893264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1871,7 +1870,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   hazardManager: {fileID: 0}
   configManager: {fileID: 0}
-  analytics: {fileID: 0}
+  analytics: {fileID: 745472500}
 --- !u!114 &1087296970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2935101837853889778, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
