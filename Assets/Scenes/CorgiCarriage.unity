@@ -670,6 +670,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+      propertyPath: InitialHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: ApplyDeathForce
       value: 0
       objectReference: {fileID: 0}
@@ -1275,7 +1279,7 @@ MonoBehaviour:
   DebugActive: 0
   LoadingSceneName: LoadingScreen
   DestinationSceneName: Endgame
-  LoadingMode: 2
+  LoadingMode: 1
   Priority: 4
   InterpolateProgress: 1
   SecureLoad: 1
@@ -1662,13 +1666,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745472498}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0478007, y: 1.9981036, z: 10.981478}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.4825864, y: 3.8981037, z: -0.07472229}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 971376512}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &745472500
 MonoBehaviour:
@@ -1848,6 +1852,7 @@ Transform:
   - {fileID: 1829463806}
   - {fileID: 41178592}
   - {fileID: 1698345436}
+  - {fileID: 745472499}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1866,6 +1871,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   hazardManager: {fileID: 0}
   configManager: {fileID: 0}
+  analytics: {fileID: 0}
 --- !u!114 &1087296970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2935101837853889778, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
