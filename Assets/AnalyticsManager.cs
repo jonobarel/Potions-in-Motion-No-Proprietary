@@ -55,6 +55,11 @@ namespace com.baltamstudios.minebuddies
             return analytics.GetTotalHazards();
         }
 
+        public void DumpToFile()
+        {
+            analytics.CloseLogAndWriteToFile();
+        }
+
         
     }
 }

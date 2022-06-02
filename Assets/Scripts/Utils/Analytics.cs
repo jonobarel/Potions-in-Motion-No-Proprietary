@@ -10,7 +10,7 @@ namespace com.baltamstudios.minebuddies
 {
     public class Analytics //: MonoBehaviour
     {
-        string FileName = "MineBuddiesLog.csv";
+        string FileName = Application.persistentDataPath + "/MineBuddiesLog.csv";
 
         int sessionID;
 
@@ -22,6 +22,7 @@ namespace com.baltamstudios.minebuddies
         public Analytics(int session)
         {
             sessionID = session;
+            Debug.Log($"File location: {FileName}");
         }
 
         List<LogEntry> logCollection = new List<LogEntry>();
@@ -35,8 +36,14 @@ namespace com.baltamstudios.minebuddies
             public GameManager.HazardType hazardType;
             public float value;
             public string data;
+
+            public string ToCSV()
+            {
+                return $"{timestamp}, {sessionID}, {playerID}, {action}, {hazardType}, {value}, {data}";
+            }
         }
 
+        
         public enum LogAction
         {
             UseModule,
@@ -60,6 +67,7 @@ namespace com.baltamstudios.minebuddies
             log.sessionID = SessionID;
             log.playerID = playerID;
             log.action = action;
+            log.hazardType = hazardType;
             log.value = logValue;
             log.data = logData;
 
@@ -124,6 +132,24 @@ namespace com.baltamstudios.minebuddies
                                 select l.value).Sum();
 
             return (int)totalHazards;
+        }
+
+        public void CloseLogAndWriteToFile()
+        {
+            File.AppendAllLines(FileName, ToCSVArr());
+
+        }
+
+        public String[] ToCSVArr()
+        {
+            List<string> stringCollection = new List<string>();
+            foreach (var log in logCollection)
+            {
+                stringCollection.Add(log.ToCSV());
+            }
+
+            return stringCollection.ToArray();
+            
         }
     }
 }

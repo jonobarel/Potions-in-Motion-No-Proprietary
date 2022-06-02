@@ -23,6 +23,8 @@ namespace com.baltamstudios.minebuddies
                 HazardNumber.text = $"{analytics.GetTotalHazards()}";
             }
 
+            analytics.DumpToFile();
+
         }
 
         // Update is called once per frame
@@ -36,5 +38,7 @@ namespace com.baltamstudios.minebuddies
                 MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
             }
         }
+
+       
     }
 }
