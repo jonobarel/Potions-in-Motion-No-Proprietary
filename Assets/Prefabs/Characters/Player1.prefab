@@ -581,7 +581,7 @@ MonoBehaviour:
   AbilityPermitted: 1
   BlockingMovementStates: 
   BlockingConditionStates: 
-  ButtonBased: 1
+  ButtonBased: 0
   CanPush: 1
   CanPull: 1
   PushWhenGroundedOnly: 1
