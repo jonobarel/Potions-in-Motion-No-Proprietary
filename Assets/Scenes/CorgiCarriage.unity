@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: InitialHealth
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: ApplyDeathForce
