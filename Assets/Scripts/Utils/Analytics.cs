@@ -151,5 +151,13 @@ namespace com.baltamstudios.minebuddies
             return stringCollection.ToArray();
             
         }
+
+        public int GetDistanceCovered()
+        {
+            var distanceCovered = (from l in logCollection
+                                   where l.sessionID == sessionID && l.action == LogAction.GameEnd
+                                   select l.value).Last();
+            return (int)distanceCovered;
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace com.baltamstudios.minebuddies
             {
                 TopPlayerName.text = analytics.GetTopPlayer();
                 HazardNumber.text = $"{analytics.GetTotalHazards()}";
+                DistanceCovered.text = $"{analytics.GetDistanceCovered()}";
             }
 
             analytics.DumpToFile();

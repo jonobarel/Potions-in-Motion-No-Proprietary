@@ -9,6 +9,8 @@ namespace com.baltamstudios.minebuddies
     {
         ActionModule module;
 
+        public Character instigator;
+
         public void Start()
         {
             module = GetComponent<ActionModule>();
@@ -18,7 +20,9 @@ namespace com.baltamstudios.minebuddies
         public override void TriggerButtonAction(GameObject instigator)
         {
             base.TriggerButtonAction(instigator);
-            GameSystem.Instance.analytics.LogEvent(instigator.name, Analytics.LogAction.UseModule, module.hazardType, 1, "player activated module"); 
+            this.instigator = instigator.GetComponent<Character>();
+            GetComponent<ActionModule>().ActivatingPlayer = instigator.GetComponent<Character>().PlayerID;
+            GameSystem.Instance.analytics.LogEvent(this.instigator.PlayerID, Analytics.LogAction.UseModule, module.hazardType, 1, "player activated module"); 
         }
 
         protected override void OnEnable()

@@ -60,6 +60,7 @@ namespace com.baltamstudios.minebuddies
             analytics.CloseLogAndWriteToFile();
         }
 
-        
+        public int GetDistanceCovered()
+        { return analytics.GetDistanceCovered(); }
     }
 }

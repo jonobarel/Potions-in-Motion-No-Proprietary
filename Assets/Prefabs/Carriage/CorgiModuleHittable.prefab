@@ -581,6 +581,7 @@ MonoBehaviour:
   connected: 0
   particles: {fileID: 0}
   DamageToHazard: 1
+  ActivatingPlayer: 
 --- !u!50 &5614744962815043573
 Rigidbody2D:
   serializedVersion: 4
@@ -757,8 +758,8 @@ MonoBehaviour:
   UseVisualPrompt: 1
   ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
     type: 3}
-  ButtonPromptText: X
-  ButtonPromptColor: {r: 0, g: 0.08235294, b: 0.9882353, a: 1}
+  ButtonPromptText: B
+  ButtonPromptColor: {r: 0.990566, g: 0.7593859, b: 0.2476415, a: 1}
   ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
   AlwaysShowPrompt: 0
   ShowPromptWhenColliding: 1
@@ -789,6 +790,7 @@ MonoBehaviour:
   OnStay:
     m_PersistentCalls:
       m_Calls: []
+  instigator: {fileID: 0}
 --- !u!1 &7941817532555367231
 GameObject:
   m_ObjectHideFlags: 0
