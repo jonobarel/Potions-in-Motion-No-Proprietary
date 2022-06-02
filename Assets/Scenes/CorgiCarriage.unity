@@ -669,16 +669,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
-      propertyPath: InitialHealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: ApplyDeathForce
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
-      propertyPath: DelayBeforeDestruction
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: healthBar
