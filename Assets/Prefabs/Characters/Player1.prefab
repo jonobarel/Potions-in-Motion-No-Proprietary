@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46406e788b52547b6b352456466eb58b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStartFeedbacks: {fileID: 4068220610546323409}
   AbilityStopFeedbacks: {fileID: 0}
   AbilityPermitted: 1
   BlockingMovementStates: 
@@ -610,6 +610,7 @@ GameObject:
   - component: {fileID: 3643436356785947922}
   - component: {fileID: 4068220610546323409}
   - component: {fileID: 2307095040152801755}
+  - component: {fileID: 137793243397348122}
   m_Layer: 9
   m_Name: ButtonActivationFeedback
   m_TagString: Untagged
@@ -646,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Feedbacks:
   - {fileID: 2307095040152801755}
+  - {fileID: 137793243397348122}
   InitializationMode: 2
   SafeMode: 3
   Direction: 0
@@ -741,6 +743,67 @@ MonoBehaviour:
   FloatValueMin: 0
   FloatValueMax: 5
   FloatIncrement: 1
+--- !u!114 &137793243397348122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072718821315084635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a102c1a91e34644aa37f1e4f00c31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Events
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  PlayEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7328846536305297715}
+        m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.MineBuddiesCharacter,
+          Assembly-CSharp
+        m_MethodName: LogModuleActivation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StopEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  InitializationEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  ResetEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6462403293124183159
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,22 +917,22 @@ PrefabInstance:
     - target: {fileID: 4491122761078831387, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.0042378306
+      value: 0.0042386055
       objectReference: {fileID: 0}
     - target: {fileID: 4491122761078831387, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.00450933
+      value: 0.0045090914
       objectReference: {fileID: 0}
     - target: {fileID: 4491122761078831387, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.73238826
+      value: 0.7323878
       objectReference: {fileID: 0}
     - target: {fileID: 4491122761078831387, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.258162
+      value: 1.2581625
       objectReference: {fileID: 0}
     - target: {fileID: 4737471372957740446, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
@@ -904,42 +967,42 @@ PrefabInstance:
     - target: {fileID: 5097345010081047043, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.052532554
+      value: 0.052532434
       objectReference: {fileID: 0}
     - target: {fileID: 5097345010081047043, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.028102398
+      value: -0.028101683
       objectReference: {fileID: 0}
     - target: {fileID: 5097345010081047043, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.1727834
+      value: 1.1727831
       objectReference: {fileID: 0}
     - target: {fileID: 5097345010081047043, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.9576534
+      value: 1.9576528
       objectReference: {fileID: 0}
     - target: {fileID: 5545238470444408344, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.08354807
+      value: 0.08354783
       objectReference: {fileID: 0}
     - target: {fileID: 5545238470444408344, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.020965815
+      value: -0.020966291
       objectReference: {fileID: 0}
     - target: {fileID: 5545238470444408344, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 2.7548532
+      value: 2.754853
       objectReference: {fileID: 0}
     - target: {fileID: 5545238470444408344, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 3.699644
+      value: 3.6996436
       objectReference: {fileID: 0}
     - target: {fileID: 5975934154133206520, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
@@ -1139,17 +1202,17 @@ PrefabInstance:
     - target: {fileID: 8951617952597965418, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.010835767
+      value: -0.010836959
       objectReference: {fileID: 0}
     - target: {fileID: 8951617952597965418, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 1.1875613
+      value: 1.1875615
       objectReference: {fileID: 0}
     - target: {fileID: 8951617952597965418, guid: 092beb4c8d602fc41b58baf5d7b24bd5,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 1.9514
+      value: 1.9514015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 092beb4c8d602fc41b58baf5d7b24bd5, type: 3}

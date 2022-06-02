@@ -16,7 +16,7 @@ MonoBehaviour:
   RandomSeed: 230708
   SliderUpdateDuration: 1
   MaxCarriageSpeed: 1.5
-  HazardSlowDownFactor: 0.25
+  HazardSlowDownFactor: 0.142
   FuelBurnRateFactor: 0.3
   RefuelCooldownTime: 5
   RefuelTime: 0.5
@@ -36,6 +36,7 @@ MonoBehaviour:
   HazardFixProgressionRate: 2
   HazardDifficultyFactor: 1
   HazardProgressAfterActivation: 2
+  MaxActiveHazards: 7
   DistanceToActivate: 10
   DistanceToShakeUI1: 35
   DistanceToShakeUI2: 20

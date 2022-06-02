@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
 
+using UnityEngine.SceneManagement;
+
 namespace com.baltamstudios.minebuddies
 {
     public class GameManager : MonoBehaviour
@@ -15,24 +17,50 @@ namespace com.baltamstudios.minebuddies
         public int RandomSeed;
         public Transform[] SpawnPoints;
 
+        public int SessionID;
+        
+
         public enum HazardType
         {
             A, B, C, D, E, F
         }
-
-        public List<HazardType> availableHazardTypes = new List<HazardType>();
-        private void Awake()
+        public List<HazardType> AvailableHazardTypes
         {
-            RandomSeed = GetRandomSeed();
-            Random.InitState(RandomSeed);
+            get { if (availableHazardTypes == null)
+                    InitAvailableHazards();
+            return availableHazardTypes; 
+                    }
         }
-        void Start()
+
+        private void InitAvailableHazards()
         {
+            availableHazardTypes = new List<HazardType>();
             ActionModule[] modules = FindObjectsOfType<ActionModule>();
             foreach (var m in modules)
             {
                 availableHazardTypes.Add(m.hazardType);
             }
+
+        }
+
+        List<HazardType> availableHazardTypes;
+        private void Awake()
+        {
+            RandomSeed = GetRandomSeed();
+            Random.InitState(RandomSeed);
+
+        }
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
+        }
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("Carriage scene reloaded");
+
+            SessionID = System.DateTime.Now.GetHashCode();
+            Debug.Log($"SessionID: {SessionID}");
 
             CharacterSelection players = CharacterSelection.Instance;
             if (players == null)
@@ -41,21 +69,11 @@ namespace com.baltamstudios.minebuddies
                 //InstantiateDefaultPlayers();
                 Application.Quit(-100);
             }
-            /*
-            MoreMountains.CorgiEngine.MultiplayerLevelManager levelManager = FindObjectOfType<MoreMountains.CorgiEngine.MultiplayerLevelManager>();
-            if (levelManager != null)
-            {
-                for (int i = 0; i < players.Participating.Length; i++)
-                {
-                    Debug.Log($"{name}: checking to add player {i}.");
-                    if (players.Participating[i])
-                    {
-                        Character p = (Character)Instantiate(playerPrefabs[i],SpawnPoints[i].position, Quaternion.identity, null);
-                        
-                    }
-                }
-            }*/
+        }
 
+        void Start()
+        {
+            GameSystem.Instance.analytics.Initialize();
 
             Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
 

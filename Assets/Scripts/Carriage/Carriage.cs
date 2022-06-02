@@ -75,5 +75,9 @@ namespace com.baltamstudios.minebuddies
             healthBar.UpdateBar(health.CurrentHealth, 0, health.MaximumHealth);
         }
       
+        public void OnDeath()
+        {
+            GameSystem.Instance.analytics.LogEvent("Carriage", Analytics.LogAction.GameEnd, GameManager.HazardType.A, carriageMovement.DistanceCovered, "Total distance");
+        }
     }
 }

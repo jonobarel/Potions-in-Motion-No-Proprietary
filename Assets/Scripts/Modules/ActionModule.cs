@@ -20,6 +20,9 @@ namespace com.baltamstudios.minebuddies
         [Range(1, 100)]
         int DamageToHazard;
 
+        public string ActivatingPlayer;
+        
+
         MoreMountains.CorgiEngine.ButtonActivated moduleActivator;
 
         public bool HasPower { get { return hasPower; }  set { hasPower = value; } }
@@ -62,14 +65,18 @@ namespace com.baltamstudios.minebuddies
         public void DamageHazard()
         {
             Hazard hazard = GetTargetHazard();
-            if (hazard == null) return;
-            if (Carriage.Instance.Engine.ModuleFuel() && hazard.isActive)
+            if (hazard == null || !Carriage.Instance.Engine.ModuleFuel() || !hazard.isActive) return;
+            else
             {
+                GameSystem.Instance.analytics.LogEvent(ActivatingPlayer, Analytics.LogAction.DamageHazard, hazardType, DamageToHazard, "player damaged hazard");
                 hazard.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
                 hazard.UpdateUIHealth();
             }
         }
+        public void LogActivatingPlayer()
+        {
 
+        }
         Hazard GetTargetHazard()
         {
             //find closest Hazard  of type Type to the carriage
