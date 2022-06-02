@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
+using UnityEngine.SceneManagement;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -57,7 +58,8 @@ namespace com.baltamstudios.minebuddies
                 Input.GetButtonDown("Player3_Pause") ||
                 Input.GetButtonDown("Player4_Pause") )
             {
-                MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");
+                if (SceneManager.GetActiveScene().name.Equals("MineBuddiesCharacterJoin"))
+                    MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");
             }
 
 

@@ -45,6 +45,13 @@ namespace com.baltamstudios.minebuddies
 
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            if (scene.name == "CorgiCarriage")
+            {
+                Debug.Log($"resetting analytics");
+                analytics.Initialize();
+                //gameManager.ResetLevel();
+            }
+
 
         }
         private void Awake()
