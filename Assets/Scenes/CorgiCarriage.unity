@@ -318,7 +318,7 @@ MonoBehaviour:
   - {fileID: 1712932320}
   - {fileID: 1299793725}
   - {fileID: 728921592}
-  availableHazardTypes: 
+  SessionID: 0
 --- !u!1 &52893264
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +667,10 @@ PrefabInstance:
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+      propertyPath: InitialHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: ApplyDeathForce
@@ -1274,7 +1278,7 @@ MonoBehaviour:
   DebugActive: 0
   LoadingSceneName: LoadingScreen
   DestinationSceneName: Endgame
-  LoadingMode: 2
+  LoadingMode: 1
   Priority: 4
   InterpolateProgress: 1
   SecureLoad: 1
@@ -1339,6 +1343,66 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+--- !u!114 &502426217
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502426215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a102c1a91e34644aa37f1e4f00c31a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Events
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  PlayEvents:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 502426213}
+        m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.Carriage, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  StopEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  InitializationEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  ResetEvents:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &548829274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,6 +1653,50 @@ Transform:
   m_Father: {fileID: 933005081}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &745472498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 745472499}
+  - component: {fileID: 745472500}
+  m_Layer: 0
+  m_Name: Analytics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &745472499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745472498}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.4825864, y: 3.8981037, z: -0.07472229}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 971376512}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &745472500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745472498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cb7c0cf3bd94941b95ca775da80b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &798349588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1863,7 @@ Transform:
   - {fileID: 1829463806}
   - {fileID: 41178592}
   - {fileID: 1698345436}
+  - {fileID: 745472499}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1773,6 +1882,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   hazardManager: {fileID: 0}
   configManager: {fileID: 0}
+  analytics: {fileID: 745472500}
 --- !u!114 &1087296970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2935101837853889778, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
@@ -2812,6 +2922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardSpawner: {fileID: 548829278}
+  PauseHazards: 0
   StartingDistance: 20
   hazardEffectTriggers: {fileID: 1228329879}
   HazardDistanceSliderContainer: {fileID: 1836619558}

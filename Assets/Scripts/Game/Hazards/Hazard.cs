@@ -37,10 +37,6 @@ namespace com.baltamstudios.minebuddies
                     GameObject.Destroy(positionSlider.gameObject);
             }
 
-            
-            
-           
-
         }
 
         public void Start()
@@ -50,7 +46,7 @@ namespace com.baltamstudios.minebuddies
             MMdamageOnTouch = GetComponent<MoreMountains.CorgiEngine.DamageOnTouch>();
             MMdamageOnTouch.DamageCaused = GameSystem.Instance.configManager.config.HazardDamageRating;
 
-            SetType(GameSystem.GameManager.availableHazardTypes[Random.Range(0, GameSystem.GameManager.availableHazardTypes.Count)]);
+            SetType(GameSystem.GameManager.AvailableHazardTypes[Random.Range(0, GameSystem.GameManager.AvailableHazardTypes.Count)]);
             name = $"Hazard-{type}";
             //Debug.Log($"{name}: type {type}");
             //Spawn the timeline indicator
@@ -105,6 +101,7 @@ namespace com.baltamstudios.minebuddies
         public void Deactivate()
         {
             isActive = false;
+            FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.DestroyHazard, type, 1, "hazard destroyed");
             GameSystem.Instance.hazardManager.ActiveHazards.Remove(this);
             activeUI.GetComponent<Animate>().DoFadeAnimation();
             GameObject.Destroy(activeUI.gameObject, 1f);

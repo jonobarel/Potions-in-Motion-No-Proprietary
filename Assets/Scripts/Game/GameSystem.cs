@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains;
+using UnityEngine.SceneManagement;
 
 namespace com.baltamstudios.minebuddies
 {
@@ -9,8 +10,9 @@ namespace com.baltamstudios.minebuddies
     {
         public GameManager gameManager;
         public HazardManager hazardManager;
-        
+
         public ConfigManager configManager;
+        public AnalyticsManager analytics;
 
         public static GameManager GameManager { get {return GameSystem.Instance.gameManager;} }
         public static HazardManager HazardManager { get { return GameSystem.Instance.hazardManager;} }
@@ -35,6 +37,16 @@ namespace com.baltamstudios.minebuddies
             get { return configManager.config; }
         }
         */
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+
+        }
         private void Awake()
         {
             if (instance != null)
@@ -49,7 +61,7 @@ namespace com.baltamstudios.minebuddies
 
         private void Start()
         {
-            
+            GameObject.DontDestroyOnLoad(gameObject);
         }
     }
 }
