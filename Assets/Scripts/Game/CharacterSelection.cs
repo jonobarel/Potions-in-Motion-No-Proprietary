@@ -58,7 +58,7 @@ namespace com.baltamstudios.minebuddies
                 Input.GetButtonDown("Player3_Pause") ||
                 Input.GetButtonDown("Player4_Pause") )
             {
-                if (SceneManager.GetActiveScene().name.Equals("MineBuddiesCharacterJoin"))
+                if (Participants.Count > 0 && SceneManager.GetActiveScene().name.Equals("MineBuddiesCharacterJoin"))
                     MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");
             }
 
