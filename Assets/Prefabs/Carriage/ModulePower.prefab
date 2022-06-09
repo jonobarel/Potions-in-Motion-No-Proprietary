@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 8459278162336710173}
   m_Layer: 0
   m_Name: ModulePower
-  m_TagString: CarriageModule
+  m_TagString: PowerModule
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

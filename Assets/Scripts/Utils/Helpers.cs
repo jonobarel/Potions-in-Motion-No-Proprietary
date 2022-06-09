@@ -6,6 +6,6 @@ namespace com.baltamstudios.minebuddies
 {
     public class Helpers
     {
-        public static MineBuddiesConfigFile Config { get { return GameSystem.Instance.configManager.config; } }
+        public static MineBuddiesConfigFile Config { get { if (GameSystem.Instance) return GameSystem.Instance.configManager.config; return null; } }
     }
 }

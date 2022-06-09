@@ -9,9 +9,13 @@ namespace com.baltamstudios.minebuddies
     {
 
         [SerializeField]
-        float MaxFuel { get { return GameSystem.Instance.configManager.config.FuelCapacity;  } }
+        float MaxFuel { get { if (GameSystem.Instance) return GameSystem.Instance.configManager.config.FuelCapacity;
+                return 100f; //placeholder value for testing in scenes
+            } }
         [SerializeField]
-        float FuelBurnRate { get { return GameSystem.Instance.configManager.config.FuelBurnRateFactor; } }  //fuel consumption per second per power unit
+        float FuelBurnRate { get { if (GameSystem.Instance) return GameSystem.Instance.configManager.config.FuelBurnRateFactor;
+                return 10f; //placeholder value for testing in scenes.
+            } }  //fuel consumption per second per power unit
         [SerializeField]
         float FuelPerUnit { get { return GameSystem.Instance.configManager.config.RefuelSize; } } // the amount of fuel added to the engine for each Refueling resource.
         [SerializeField]
@@ -28,7 +32,7 @@ namespace com.baltamstudios.minebuddies
         float fuel;
         public float CurrentFuel { get { return fuel; } }
 
-        bool isRefueling;
+        bool isRefueling = false;
         float refuelCooldownStatus;
 
         Coroutine refuelRoutine;
@@ -38,16 +42,27 @@ namespace com.baltamstudios.minebuddies
         void Start()
         {
             //TODO figure out a different way to set the starting fuel.
-            fuel = MaxFuel;
-            fuelGuage = FindObjectOfType<FuelBar>().GetComponent<MoreMountains.Tools.MMProgressBar>();
-            fuelGuage.SetBar01(FuelLevel);
+            if (GameSystem.Instance != null)
+            {
+                fuel = MaxFuel;
+            }
+            else fuel = 100f;
+
+            var fuelBar = FindObjectOfType<FuelBar>();
+            if (fuelBar != null)
+            {
+                fuelGuage = fuelBar.GetComponent<MoreMountains.Tools.MMProgressBar>();
+                fuelGuage.SetBar01(FuelLevel);
+            }
+            
+            
         }
 
         // Update is called once per frame
         void Update()
         {
             
-            if (fuel > 0)
+            if (fuelGuage && fuel > 0)
             {
                 fuel -= FuelBurnRate * Time.deltaTime;
                 fuelGuage.SetBar01(FuelLevel);
@@ -92,9 +107,13 @@ namespace com.baltamstudios.minebuddies
 
         public void DoRefuel()
         {
-            fuel += Helpers.Config.RefuelSize;
-            fuel = Mathf.Min(fuel, MaxFuel);
-            fuelGuage.UpdateBar01(fuel / MaxFuel);
+            if (Helpers.Config && fuelGuage)
+            {
+                fuel += Helpers.Config.RefuelSize;
+                fuel = Mathf.Min(fuel, MaxFuel);
+                fuelGuage.UpdateBar01(fuel / MaxFuel);
+            }
+            
 
         }
     }
