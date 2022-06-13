@@ -41,8 +41,8 @@ MonoBehaviour:
   DistanceToShakeUI1: 35
   DistanceToShakeUI2: 20
   layersParallaxFactors:
-  - 0
   - 0.1
   - 0.33
   - 1
   - 2
+  - 5
