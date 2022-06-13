@@ -1238,10 +1238,10 @@ RectTransform:
   m_Father: {fileID: 1424548442}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 210}
-  m_SizeDelta: {x: 965.8762, y: 241.4691}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -98.369995}
+  m_SizeDelta: {x: 965.8762, y: 196.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851040973
 MonoBehaviour:
@@ -1263,7 +1263,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press A to join
+  m_text: 'Press A to join
+
+    Press Start to begin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c39c54744de2e5842b63f5dbf2491b27, type: 2}
   m_sharedMaterial: {fileID: -6904487963169203146, guid: c39c54744de2e5842b63f5dbf2491b27,
@@ -1327,7 +1329,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -51.119263}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
