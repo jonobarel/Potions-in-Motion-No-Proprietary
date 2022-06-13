@@ -90,10 +90,15 @@ namespace com.baltamstudios.minebuddies
                                    playerScore = playerGroup.Sum(x => x.value)
                                };
 
-            var topPlayer = (from p in playerScores
-                             orderby p.playerScore descending
-                             select p.playerID).First();
-            return topPlayer;
+            if (playerScores.Count() > 0)
+            {
+                var topPlayer = (from p in playerScores
+                                 orderby p.playerScore descending
+                                 select p.playerID).First();
+                return topPlayer;
+            }
+            else return "None";
+            
         }
 
         public int GetTopPlayerScore()
