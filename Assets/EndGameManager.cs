@@ -24,6 +24,8 @@ namespace com.baltamstudios.minebuddies
                 DistanceCovered.text = $"{analytics.GetDistanceCovered()}";
             }
 
+            CharacterSelection.Instance.Reset();
+
             analytics.DumpToFile();
 
         }

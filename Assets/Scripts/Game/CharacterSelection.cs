@@ -28,8 +28,15 @@ namespace com.baltamstudios.minebuddies
             }
         }
 
+        public void Awake()
+        {
+            if (instance != null)
+                GameObject.Destroy(gameObject);
+        }
+
         private void Start()
         {
+
             GameObject.DontDestroyOnLoad(gameObject);
             Participating = new bool[PlayerPrefabs.Length];
             Participants = new Dictionary<string, int>();
@@ -79,6 +86,11 @@ namespace com.baltamstudios.minebuddies
 
             
             
+        }
+
+        public void Reset()
+        {
+            Participants.Clear();
         }
 
     }
