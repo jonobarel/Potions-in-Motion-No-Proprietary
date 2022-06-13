@@ -293,7 +293,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 971376512}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &41178593
 MonoBehaviour:
@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: InitialHealth
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 502426213, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: ApplyDeathForce
@@ -696,6 +696,10 @@ PrefabInstance:
       propertyPath: HazardActivator
       value: 
       objectReference: {fileID: 1624563703}
+    - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+      propertyPath: HazardEffectTriggers
+      value: 
+      objectReference: {fileID: 1228329879}
     - target: {fileID: 502426216, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: healthBarPosition
       value: 
@@ -1683,7 +1687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 971376512}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &745472500
 MonoBehaviour:
@@ -1841,7 +1845,7 @@ GameObject:
   - component: {fileID: 971376512}
   - component: {fileID: 971376513}
   m_Layer: 0
-  m_Name: Managers
+  m_Name: StaticManagers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1860,12 +1864,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1606095349}
-  - {fileID: 1829463806}
   - {fileID: 41178592}
-  - {fileID: 1698345436}
   - {fileID: 745472499}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &971376513
 MonoBehaviour:
@@ -1879,9 +1881,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f77e12344ee8a4fb80010e95dd7d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 41178593}
   hazardManager: {fileID: 0}
-  configManager: {fileID: 0}
+  configManager: {fileID: 1606095350}
   analytics: {fileID: 745472500}
 --- !u!114 &1087296970 stripped
 MonoBehaviour:
@@ -2867,13 +2869,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698345435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.43478394, y: -1.8999939, z: 11.0562}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 971376512}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1698345437
 MonoBehaviour:
@@ -2924,7 +2926,6 @@ MonoBehaviour:
   hazardSpawner: {fileID: 548829278}
   PauseHazards: 0
   StartingDistance: 20
-  hazardEffectTriggers: {fileID: 1228329879}
   HazardDistanceSliderContainer: {fileID: 1836619558}
   PositionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
     type: 3}
@@ -3125,12 +3126,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829463804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.95478565, y: 1.74, z: -11.0562}
+  m_LocalPosition: {x: 0.52, y: -0.15999997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 971376512}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1829463807
 MonoBehaviour:
@@ -3468,6 +3469,19 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2935101838915944760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2009857587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009857585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9036e9c5df007b347a64a53c54a1571a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DistanceSlider: {fileID: 1836619557}
 --- !u!1 &2084298508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6378069146465415172, guid: 57a937463fd14d64687cc9034e04207b,

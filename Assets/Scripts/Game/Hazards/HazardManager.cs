@@ -23,6 +23,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField, Range(0f, 100f)]
         public float StartingDistance = 20f;
 
+        private GameObject hazardEffectTriggers;
         public GameObject HazardEffectTriggers
         {
             get { if (hazardEffectTriggers == null) hazardEffectTriggers = Carriage.Instance.HazardEffectTriggers; return hazardEffectTriggers; }

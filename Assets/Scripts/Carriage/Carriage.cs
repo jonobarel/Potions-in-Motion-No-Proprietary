@@ -17,6 +17,7 @@ namespace com.baltamstudios.minebuddies
         
         public GameObject HazardSpawner;
         public Transform HazardActivator;
+        public GameObject HazardEffectTriggers;
 
         public float CurrentDamage { get { return currentDamage; } }
         
