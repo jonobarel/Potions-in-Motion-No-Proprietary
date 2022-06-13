@@ -466,7 +466,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 5, y: 5, z: 5}
   ConvertToColliderBoundsButton: 0
-  LoadingSceneMode: 2
+  LoadingSceneMode: 1
   LoadingSceneName: LoadingScreen
   AdditiveLoadingSettings:
     LoadingSceneName: MMAdditiveLoadingScreen
