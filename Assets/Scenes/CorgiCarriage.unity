@@ -442,7 +442,7 @@ MonoBehaviour:
   FuelCanisterPrefab: {fileID: 1273923128057797712, guid: da8a401f34a5a254f81fc909e55ec8b3,
     type: 3}
   SpawnPoint: {fileID: 2000669502}
---- !u!114 &113831325
+--- !u!114 &113831328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -451,12 +451,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 113831319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c7dd7423a0f67044bda66149a287048, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c9a8d3a37870f64aa737715684b2eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonActivatedRequirement: 2
   RequiresPlayerType: 1
-  RequiresButtonActivationAbility: 0
+  RequiresButtonActivationAbility: 1
   PreventJumpsWhileInThisZone: 0
   Activable: 1
   AutoActivation: 0
@@ -467,19 +467,18 @@ MonoBehaviour:
   AlsoPerformChecksOnStay: 0
   UnlimitedActivations: 1
   MaxNumberOfActivations: 0
-  DelayBetweenUses: 1
+  DelayBetweenUses: 0
   DisableAfterUse: 0
   InputType: 0
   InputButton: Interact
   InputKey: 32
   AnimationTriggerParameterName: 
   UseVisualPrompt: 1
-  ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
-    type: 3}
+  ButtonPromptPrefab: {fileID: 0}
   ButtonPromptText: X
-  ButtonPromptColor: {r: 0, g: 0.3000196, b: 0.9882353, a: 1}
+  ButtonPromptColor: {r: 0, g: 0.17325237, b: 0.9882353, a: 1}
   ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
-  AlwaysShowPrompt: 0
+  AlwaysShowPrompt: 1
   ShowPromptWhenColliding: 1
   HidePromptAfterUse: 0
   PromptRelativePosition: {x: 0, y: 1, z: 0}
@@ -507,11 +506,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnStay:
-    m_PersistentCalls:
-      m_Calls: []
-  RequiresKey: 0
-  KeyID: 
-  KeyAction:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &235695116
@@ -943,6 +937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244115581758706476, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_Name
+      value: FuelTank
       objectReference: {fileID: 0}
     - target: {fileID: 4420191347442419310, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
