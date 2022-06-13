@@ -9,11 +9,14 @@ namespace com.baltamstudios.minebuddies
     {
 
         Character character;
+        CharacterButtonActivation buttonActivator;
+
 
         // Start is called before the first frame update
         void Start()
         {
             character = GetComponent<Character>();
+            buttonActivator = GetComponent<CharacterButtonActivation>();
             //Destroy this object if it should not exist.
             if (Carriage.Instance != null) //we are in a play level - so destroy if shouldn't be.
             {
@@ -31,8 +34,10 @@ namespace com.baltamstudios.minebuddies
         }
 
         public void LogModuleActivation()
-        {
-            throw new System.NotImplementedException();
+        {/*
+            var moduleButton = (ModuleButtonActivated)buttonActivator.ButtonActivatedZone;
+            GameManager.HazardType type = moduleButton.Module.hazardType;
+            GameSystem.Instance.analytics.LogEvent(character.PlayerID, Analytics.LogAction.UseModule, type, 1, "player activated module");*/
         }
     }
 }

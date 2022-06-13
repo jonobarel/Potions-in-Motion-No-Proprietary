@@ -8,6 +8,7 @@ namespace com.baltamstudios.minebuddies
     public class ModuleButtonActivated : ButtonActivated
     {
         ActionModule module;
+        public ActionModule Module { get { return module; } }
 
         public Character instigator;
 
