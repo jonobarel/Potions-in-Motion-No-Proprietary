@@ -10,6 +10,7 @@ namespace com.baltamstudios.minebuddies
         [SerializeField]
         Transform[] layers;
         float[] layerParallaxFactors;
+        SpriteRenderer[] spriteRenderers;
 
         void Start()
         {
@@ -18,6 +19,7 @@ namespace com.baltamstudios.minebuddies
                       where t != transform
                       orderby t.GetSiblingIndex() ascending
                       select t).ToArray();
+            spriteRenderers = (from layer in layers select layer.GetComponent<SpriteRenderer>()).ToArray();
 
             ConfigManager cfg = (GameSystem.Instance)? GameSystem.ConfigManager : FindObjectOfType<ConfigManager>();
             layerParallaxFactors = cfg.config.layersParallaxFactors;
@@ -36,7 +38,9 @@ namespace com.baltamstudios.minebuddies
             else currentSpeed = 10f;
             for (int i = 0; i < layers.Length; i++) {
                 float factor = layerParallaxFactors[i];
-                layers[i].position+=new Vector3(-factor*currentSpeed*Time.deltaTime, 0,0);
+                float delta = factor*currentSpeed*Time.deltaTime;
+                layers[i].position+=new Vector3(-delta, 0,0);
+                spriteRenderers[i].size += new Vector2 (delta, 0);
             }
         }
     }
