@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MineBuddiesSplashScreen.unity
     guid: 322cd9a49c8ade54383313be4cc40c2e
   - enabled: 1
-    path: Assets/Scenes/LoadingScreen.unity
-    guid: 146eb92981eb0ed448e191e1dbcc8e98
-  - enabled: 1
     path: Assets/Scenes/MineBuddiesTitleScreen.unity
     guid: 58876403140db0f41b176b167d821eac
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: 146eb92981eb0ed448e191e1dbcc8e98
   - enabled: 1
     path: Assets/Scenes/MineBuddiesCharacterJoin.unity
     guid: 021f2675a43dd5944a2e4e5367ee92de
