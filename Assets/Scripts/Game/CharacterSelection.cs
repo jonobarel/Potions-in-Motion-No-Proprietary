@@ -43,32 +43,35 @@ namespace com.baltamstudios.minebuddies
         }
         public void Update()
         {
-            if (Input.GetButtonDown("Player1_Jump"))
+            if (SceneManager.GetActiveScene().name.Equals("MineBuddiesCharacterJoin"))
             {
-                InstantiatePlayer(0);
-            }
-            if (Input.GetButtonDown("Player2_Jump"))
-            {
-                InstantiatePlayer(1);
-            }
-            if (Input.GetButtonDown("Player3_Jump"))
-            {
-                InstantiatePlayer(2);
-            }
-            if (Input.GetButtonDown("Player4_Jump"))
-            {
-                InstantiatePlayer(3);
-            }
+                if (Input.GetButtonDown("Player1_Jump"))
+                {
+                    InstantiatePlayer(0);
+                }
+                if (Input.GetButtonDown("Player2_Jump"))
+                {
+                    InstantiatePlayer(1);
+                }
+                if (Input.GetButtonDown("Player3_Jump"))
+                {
+                    InstantiatePlayer(2);
+                }
+                if (Input.GetButtonDown("Player4_Jump"))
+                {
+                    InstantiatePlayer(3);
+                }
 
-            if (Input.GetButtonDown("Player1_Pause") || 
-                Input.GetButtonDown("Player2_Pause") ||
-                Input.GetButtonDown("Player3_Pause") ||
-                Input.GetButtonDown("Player4_Pause") )
-            {
-                if (Participants.Count > 0 && SceneManager.GetActiveScene().name.Equals("MineBuddiesCharacterJoin"))
-                    MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");
-            }
 
+                if (Input.GetButtonDown("Player1_Pause") ||
+                    Input.GetButtonDown("Player2_Pause") ||
+                    Input.GetButtonDown("Player3_Pause") ||
+                    Input.GetButtonDown("Player4_Pause"))
+                {
+                    if (Participants.Count > 0)
+                        MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");
+                }
+            }
 
         }
 
