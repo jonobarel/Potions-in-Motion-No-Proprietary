@@ -8,7 +8,8 @@ namespace com.baltamstudios.minebuddies
     {
         Analytics analytics;
 
-        static AnalyticsManager instance = null;
+        //static AnalyticsManager instance = null;
+        /*
         public static AnalyticsManager Instance
         {
             get { 
@@ -23,7 +24,7 @@ namespace com.baltamstudios.minebuddies
                 GameObject.Destroy(gameObject);
             }
         }
-
+        */
         // Start is called before the first frame update
         void Start()
         {
