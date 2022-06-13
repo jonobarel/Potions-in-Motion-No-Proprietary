@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Libraries/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/LoadingScreen.unity
     guid: 888394d52616e5e42b3b54c3f2bbd3eb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Libraries/MoreMountainsLibraries/CorgiEngine/Common/Scenes/StartScreen.unity
     guid: b9cf7e391a5874f80a0485164885fe54
   - enabled: 0
