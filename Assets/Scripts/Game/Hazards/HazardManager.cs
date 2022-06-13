@@ -23,7 +23,11 @@ namespace com.baltamstudios.minebuddies
         [SerializeField, Range(0f, 100f)]
         public float StartingDistance = 20f;
 
-        public GameObject hazardEffectTriggers;
+        public GameObject HazardEffectTriggers
+        {
+            get { if (hazardEffectTriggers == null) hazardEffectTriggers = Carriage.Instance.HazardEffectTriggers; return hazardEffectTriggers; }
+        }
+        
         public Transform HazardDistanceSliderContainer;
         public Slider PositionSliderPrefab;
 
@@ -67,19 +71,18 @@ namespace com.baltamstudios.minebuddies
 
             #endregion
 
-            Transform[] effectTriggers = hazardEffectTriggers.GetComponentsInChildren<Transform>();
+            Transform[] effectTriggers = HazardEffectTriggers.GetComponentsInChildren<Transform>();
             if (effectTriggers.Length != 3) Application.Quit();
             if (HazardDistanceSliderContainer == null)
             {
                 Debug.LogError($"{name}: HazardDistanceSliderContainer not initialized");
-                Application.Quit();
             }
             effectTriggers[1].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI1, effectTriggers[1].position.y);
             effectTriggers[2].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI2, effectTriggers[2].position.y);
 
 
 
-           // CreateNextHazardGroup(15f);
+            // CreateNextHazardGroup(15f);
         }
 
         float HazardDifficultyFactor()
@@ -113,6 +116,8 @@ namespace com.baltamstudios.minebuddies
             }
 
         }
+
+
         /*
         void NextHazard()
         {

@@ -15,7 +15,13 @@ namespace com.baltamstudios.minebuddies
         public AnalyticsManager analytics;
 
         public static GameManager GameManager { get {return GameSystem.Instance.gameManager;} }
-        public static HazardManager HazardManager { get { return GameSystem.Instance.hazardManager;} }
+        public static HazardManager HazardManager { 
+            get { 
+                if (Instance.hazardManager == null) 
+                    Instance.hazardManager = FindObjectOfType<HazardManager>();
+                return GameSystem.Instance.hazardManager;
+            } 
+        }
         
         public static ConfigManager ConfigManager { get { return GameSystem.Instance.configManager;} }
 
@@ -50,7 +56,15 @@ namespace com.baltamstudios.minebuddies
                 Debug.Log($"resetting analytics");
                 analytics.Initialize();
                 //gameManager.ResetLevel();
+                
+                foreach (ManagerBase manager in GetComponentsInChildren<ManagerBase>())
+                {
+                    manager.LevelReset();
+                }
             }
+
+            
+
 
 
         }
@@ -59,6 +73,7 @@ namespace com.baltamstudios.minebuddies
             if (instance != null)
             {
                 DestroyImmediate(gameObject);
+                return;
             }
             gameManager = GetComponentInChildren<GameManager>();
             hazardManager = GetComponentInChildren<HazardManager>();

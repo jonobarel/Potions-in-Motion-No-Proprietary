@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace com.baltamstudios.minebuddies
 {
-    public class ConfigManager : MonoBehaviour
+    public class ConfigManager : ManagerBase
     {
         public MineBuddiesConfigFile config;
         public void Start()
