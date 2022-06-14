@@ -1844,6 +1844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971376512}
   - component: {fileID: 971376513}
+  - component: {fileID: 971376514}
   m_Layer: 0
   m_Name: StaticManagers
   m_TagString: Untagged
@@ -1885,6 +1886,26 @@ MonoBehaviour:
   hazardManager: {fileID: 0}
   configManager: {fileID: 1606095350}
   analytics: {fileID: 745472500}
+--- !u!114 &971376514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971376511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7de9ef06f04864391a928af29f4b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NormalTimescale: 1
+  DefaultLerpSpeed: 1
+  DefaultLerpTimescale: 0
+  CurrentTimeScale: 1
+  TargetTimeScale: 1
+  LerpTimescale: 1
+  LerpSpeed: 0
+  TestButton: 0
 --- !u!114 &1087296970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2935101837853889778, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
@@ -2163,6 +2184,7 @@ GameObject:
   - component: {fileID: 1215982242}
   - component: {fileID: 1215982240}
   - component: {fileID: 1215982244}
+  - component: {fileID: 1215982245}
   m_Layer: 0
   m_Name: UICamera
   m_TagString: Untagged
@@ -2262,6 +2284,18 @@ MonoBehaviour:
   PointsText: {fileID: 0}
   LevelText: {fileID: 0}
   PointsPattern: 000000
+--- !u!114 &1215982245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215982239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193bbf164db32874d8aff4329f973a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1228329879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3434590112664842690, guid: 57a937463fd14d64687cc9034e04207b,
