@@ -8,28 +8,6 @@ namespace com.baltamstudios.minebuddies
     {
         Analytics analytics;
 
-        //static AnalyticsManager instance = null;
-        /*
-        public static AnalyticsManager Instance
-        {
-            get { 
-                if (instance == null) instance = FindObjectOfType<AnalyticsManager>();
-                return instance;
-            }    
-        }
-
-
-        void Awake() {
-            if (instance != null) {
-                GameObject.Destroy(gameObject);
-            }
-        }
-        */
-        // Start is called before the first frame update
-        void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
 
         // Update is called once per frame
 
