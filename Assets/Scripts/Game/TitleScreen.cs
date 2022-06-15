@@ -2,6 +2,7 @@ using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MoreMountains.CorgiEngine;
 
 public class TitleScreen : MonoBehaviour
 {
@@ -22,7 +23,10 @@ public class TitleScreen : MonoBehaviour
         {
             MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
         }
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GetComponent<PauseButton>().PauseButtonAction();
+        }
 
     }
 }
