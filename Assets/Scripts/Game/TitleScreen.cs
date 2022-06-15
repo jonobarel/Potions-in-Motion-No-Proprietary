@@ -22,5 +22,7 @@ public class TitleScreen : MonoBehaviour
         {
             MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
         }
+
+
     }
 }

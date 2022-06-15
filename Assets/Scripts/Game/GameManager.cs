@@ -65,10 +65,11 @@ namespace com.baltamstudios.minebuddies
             CharacterSelection players = CharacterSelection.Instance;
             if (players == null)
             {
-                Debug.Log("Error finding participating players");
+                Debug.LogError("Error finding participating players");
                 //InstantiateDefaultPlayers();
-                Application.Quit(-100);
             }
+
+            CorgiEngineEvent.Trigger(CorgiEngineEventTypes.UnPause);
         }
 
         void Start()
