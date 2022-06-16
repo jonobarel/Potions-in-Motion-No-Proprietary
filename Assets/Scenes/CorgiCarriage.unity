@@ -763,6 +763,11 @@ PrefabInstance:
       propertyPath: Active
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 34828178991641976, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.4021096
+      objectReference: {fileID: 0}
     - target: {fileID: 100558918349396889, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
@@ -791,7 +796,7 @@ PrefabInstance:
     - target: {fileID: 676787942075922811, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 980256622803937565, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -847,6 +852,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913392175465869996, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4.1565623
       objectReference: {fileID: 0}
     - target: {fileID: 1951278664273574452, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -952,7 +962,7 @@ PrefabInstance:
     - target: {fileID: 4591581156741480168, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4715580605289669156, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -994,6 +1004,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305169392775494797, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5541
       objectReference: {fileID: 0}
     - target: {fileID: 5355544322359057731, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -1065,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: 6010545686867065689, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.96
+      value: -3.9156
       objectReference: {fileID: 0}
     - target: {fileID: 6010545686867065689, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -1110,7 +1125,7 @@ PrefabInstance:
     - target: {fileID: 7372063504668808706, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7602193295751731602, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -3342,7 +3357,7 @@ MonoBehaviour:
   BoundsMode: 1
   LevelBounds:
     m_Center: {x: -0.23, y: 1.53, z: 0}
-    m_Extent: {x: 5.46, y: 4.72, z: 5}
+    m_Extent: {x: 5.8, y: 4.72, z: 5}
   ConvertToColliderBoundsButton: 0
   LoadingSceneMode: 1
   LoadingSceneName: LoadingScreen
