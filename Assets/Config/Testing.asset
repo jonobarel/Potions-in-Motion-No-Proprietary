@@ -15,7 +15,7 @@ MonoBehaviour:
   UseRandomSeed: 1
   RandomSeed: 230708
   SliderUpdateDuration: 1
-  MaxCarriageSpeed: 1.5
+  MaxCarriageSpeed: 6
   HazardSlowDownFactor: 0.142
   FuelBurnRateFactor: 0.3
   RefuelCooldownTime: 5
