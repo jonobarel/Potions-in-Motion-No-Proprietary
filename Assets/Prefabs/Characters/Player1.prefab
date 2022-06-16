@@ -320,7 +320,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   NumberOfJumps: 1
-  JumpHeight: 1.2
+  JumpHeight: 2
   JumpRestrictions: 0
   ResetCameraOffsetOnJump: 0
   CanJumpDownOneWayPlatforms: 0
