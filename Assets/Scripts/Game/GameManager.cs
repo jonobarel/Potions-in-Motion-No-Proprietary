@@ -57,8 +57,6 @@ namespace com.baltamstudios.minebuddies
         }
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Debug.Log("Carriage scene reloaded");
-
             SessionID = System.DateTime.Now.GetHashCode();
             Debug.Log($"SessionID: {SessionID}");
 

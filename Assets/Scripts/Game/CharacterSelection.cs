@@ -40,6 +40,8 @@ namespace com.baltamstudios.minebuddies
             GameObject.DontDestroyOnLoad(gameObject);
             Participating = new bool[PlayerPrefabs.Length];
             Participants = new Dictionary<string, int>();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
         }
         public void Update()
         {
@@ -89,6 +91,14 @@ namespace com.baltamstudios.minebuddies
 
             
             
+        }
+        
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "MineBuddiesCharacterJoin")
+            {
+                Reset();
+            }
         }
 
         public void Reset()
