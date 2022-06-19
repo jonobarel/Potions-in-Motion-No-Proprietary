@@ -46,9 +46,8 @@ namespace com.baltamstudios.minebuddies
 
         [Header("Hazard Parameters")]
         #region Hazard params
-        [Range(0f, 150f)]
-        public float HazardStartingDistance = 100f;
-        public float InitialDuration = 10f;
+        
+        //public float InitialDuration = 10f;
         public float HazardProgressionRate = 1f;
 
         public int HazardDamageRating = 10;
@@ -61,8 +60,9 @@ namespace com.baltamstudios.minebuddies
 
         public int MaxActiveHazards = 7;
         [Space]
+        [Range(0f, 150f)]
+        public float HazardStartingDistance = 100f;
         public float DistanceToActivate = 10f;
-
         public float DistanceToShakeUI1;
         public float DistanceToShakeUI2;
         #endregion

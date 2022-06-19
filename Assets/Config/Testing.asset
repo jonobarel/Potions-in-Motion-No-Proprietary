@@ -29,17 +29,16 @@ MonoBehaviour:
   diffB: 0.01
   hazardDist: 5
   hazardDistOffset: 2
-  HazardStartingDistance: 35
-  InitialDuration: 30
   HazardProgressionRate: 1
   HazardDamageRating: 10
   HazardFixProgressionRate: 2
   HazardDifficultyFactor: 1
   HazardProgressAfterActivation: 2
   MaxActiveHazards: 7
-  DistanceToActivate: 10
-  DistanceToShakeUI1: 35
-  DistanceToShakeUI2: 20
+  HazardStartingDistance: 30
+  DistanceToActivate: 25
+  DistanceToShakeUI1: 15
+  DistanceToShakeUI2: 5
   layersParallaxFactors:
   - 0.1
   - 0.33

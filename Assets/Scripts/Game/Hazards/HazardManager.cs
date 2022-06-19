@@ -20,8 +20,7 @@ namespace com.baltamstudios.minebuddies
         public ActiveHazards ActiveHazards { get { return activeHazards; } }
         ConfigManager configManager;
 
-        [SerializeField, Range(0f, 100f)]
-        public float StartingDistance = 20f;
+        float StartingDistance = 20f;
 
         private GameObject hazardEffectTriggers;
         public GameObject HazardEffectTriggers
@@ -55,7 +54,7 @@ namespace com.baltamstudios.minebuddies
         {
             // Adjust position of Hazard UI Effect Triggers
 
-            
+           
 
             hazardIcons = GetComponent<HazardIcons>();
             activeHazards = GetComponent<ActiveHazards>();
@@ -78,10 +77,14 @@ namespace com.baltamstudios.minebuddies
             {
                 Debug.LogError($"{name}: HazardDistanceSliderContainer not initialized");
             }
+
+
+            Vector2 carriagePosition = Carriage.Instance.transform.position;
+            hazardSpawner.transform.position = carriagePosition + new Vector2(StartingDistance,0);
+            hazardActivator.transform.position = carriagePosition + new Vector2(configManager.config.DistanceToActivate, 0);
+            
             effectTriggers[1].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI1, effectTriggers[1].position.y);
             effectTriggers[2].position = new Vector2(Carriage.Instance.transform.position.x + configManager.config.DistanceToShakeUI2, effectTriggers[2].position.y);
-
-
 
             // CreateNextHazardGroup(15f);
         }

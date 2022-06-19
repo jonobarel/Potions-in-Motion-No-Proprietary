@@ -78,6 +78,7 @@ namespace com.baltamstudios.minebuddies
       
         public void OnDeath()
         {
+            carriageMovement.ToggleBrake();
             GameSystem.Instance.analytics.LogEvent("Carriage", Analytics.LogAction.GameEnd, GameManager.HazardType.A, carriageMovement.DistanceCovered, "Total distance");
         }
     }

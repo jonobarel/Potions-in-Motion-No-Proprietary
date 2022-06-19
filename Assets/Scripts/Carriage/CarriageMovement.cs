@@ -16,7 +16,12 @@ namespace com.baltamstudios.minebuddies
         float currentSpeed;
         public TextMeshProUGUI Odometer;
         public TextMeshProUGUI Speedometer;
+        bool brake = false;
 
+        public void ToggleBrake()
+        {
+            brake = !brake;
+        }
 
         public float CurrentSpeed { get { return currentSpeed; } }
         float MaxSpeed { get { return configManager.config.MaxCarriageSpeed; } }
@@ -57,7 +62,10 @@ namespace com.baltamstudios.minebuddies
         // Update is called once per frame
         void Update()
         {
-            float newTargetSpeed = CalculateSpeed();
+            float newTargetSpeed = 0f;
+            if (!brake)
+                newTargetSpeed = CalculateSpeed();
+
             if (newTargetSpeed != targetSpeed) //need to restart the speed shifting process
             {
                 speedChangeProgress = 0f;
@@ -84,5 +92,6 @@ namespace com.baltamstudios.minebuddies
                 Speedometer.SetText($"{currentSpeed:F} m/s");
             }
         }
+
     }
 }
