@@ -164,5 +164,25 @@ namespace com.baltamstudios.minebuddies
                                    select l.value).Last();
             return (int)distanceCovered;
         }
+
+        public string GetTopRefueler()
+        {
+            var refuellingMetrics = (from l in logCollection
+                                     where l.action == LogAction.Refuel
+                                     group l by l.playerID into refuelMetrics
+                                     select new
+                                     {
+                                         playerID = refuelMetrics.Key,
+                                         refuelScore = refuelMetrics.Sum(x => x.value)
+                                     });
+            string topRefueler = (from l in refuellingMetrics
+                                  orderby l.refuelScore descending
+                                  select l.playerID).First();
+
+            if (topRefueler != null)
+                return topRefueler;
+            return "";
+
+        }
     }
 }

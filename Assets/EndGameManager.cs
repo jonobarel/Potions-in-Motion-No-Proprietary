@@ -22,6 +22,8 @@ namespace com.baltamstudios.minebuddies
                 TopPlayerName.text = analytics.GetTopPlayer();
                 HazardNumber.text = $"{analytics.GetTotalHazards()}";
                 DistanceCovered.text = $"{analytics.GetDistanceCovered()}";
+                RefuelNumber.text = $"{analytics.GetTopRefueler()}";
+                
             }
 
             CharacterSelection.Instance.Reset();

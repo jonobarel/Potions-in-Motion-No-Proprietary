@@ -41,5 +41,10 @@ namespace com.baltamstudios.minebuddies
 
         public int GetDistanceCovered()
         { return analytics.GetDistanceCovered(); }
+
+        public string GetTopRefueler()
+        {
+            return analytics.GetTopRefueler();
+        }
     }
 }
