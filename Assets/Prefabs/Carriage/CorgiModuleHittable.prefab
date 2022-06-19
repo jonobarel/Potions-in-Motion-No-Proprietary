@@ -745,7 +745,7 @@ MonoBehaviour:
   AutoActivationAndButtonInteraction: 0
   CanOnlyActivateIfGrounded: 0
   ShouldUpdateState: 1
-  OnlyOneActivationAtOnce: 1
+  OnlyOneActivationAtOnce: 0
   AlsoPerformChecksOnStay: 0
   UnlimitedActivations: 1
   MaxNumberOfActivations: 0

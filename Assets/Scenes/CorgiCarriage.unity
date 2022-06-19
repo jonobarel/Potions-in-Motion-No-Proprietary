@@ -463,7 +463,7 @@ MonoBehaviour:
   AutoActivationAndButtonInteraction: 0
   CanOnlyActivateIfGrounded: 0
   ShouldUpdateState: 1
-  OnlyOneActivationAtOnce: 1
+  OnlyOneActivationAtOnce: 0
   AlsoPerformChecksOnStay: 0
   UnlimitedActivations: 1
   MaxNumberOfActivations: 0
@@ -958,11 +958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 4244115581758706476, guid: 57a937463fd14d64687cc9034e04207b,
-        type: 3}
-      propertyPath: m_Name
-      value: FuelTank
       objectReference: {fileID: 0}
     - target: {fileID: 4420191347442419310, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}

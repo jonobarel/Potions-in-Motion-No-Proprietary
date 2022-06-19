@@ -1416,7 +1416,7 @@ PrefabInstance:
     - target: {fileID: 4012832219209365763, guid: d20adb124d01c054eb026417f9fdbda6,
         type: 3}
       propertyPath: m_Name
-      value: BottleAngled
+      value: FuelTank
       objectReference: {fileID: 0}
     - target: {fileID: 6319139737409720788, guid: d20adb124d01c054eb026417f9fdbda6,
         type: 3}
