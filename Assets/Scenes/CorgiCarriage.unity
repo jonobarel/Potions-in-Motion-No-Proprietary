@@ -788,6 +788,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 508129096493485271, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 4.1565623
+      objectReference: {fileID: 0}
     - target: {fileID: 594770376068186724, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_IsTrigger
@@ -862,6 +867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160387207407799043, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 5.4021096
       objectReference: {fileID: 0}
     - target: {fileID: 2187258733859380857, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -1844,7 +1854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933005080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.7031581, y: 1.0207945, z: 0}
+  m_LocalPosition: {x: -1.7031581, y: 1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2520,7 +2530,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1299793722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0800002, y: 4.18, z: 0}
+  m_LocalPosition: {x: 2.18, y: 4.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
