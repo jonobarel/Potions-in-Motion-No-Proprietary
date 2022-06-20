@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.CorgiEngine;
 
-namespace com.baltamstudios.minebuddies
+namespace com.ZeroPrepGames.TrollTruckerTales
 {
     [RequireComponent(typeof(HazardIcons))]
     public class HazardManager : MonoBehaviour

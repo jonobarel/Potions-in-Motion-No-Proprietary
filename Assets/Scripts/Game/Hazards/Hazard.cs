@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace com.baltamstudios.minebuddies
+namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class Hazard : MonoBehaviour
     {

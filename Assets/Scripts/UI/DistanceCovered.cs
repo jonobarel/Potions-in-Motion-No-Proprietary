@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace com.baltamstudios.minebuddies
+namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class DistanceCovered : MonoBehaviour
     {

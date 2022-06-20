@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace com.baltamstudios.minebuddies
+namespace com.ZeroPrepGames.TrollTruckerTales
 {
     [CreateAssetMenu(fileName = "MineBuddiesConfig", menuName = "MineBuddies Config Asset", order = 0)]
     public class MineBuddiesConfigFile : ScriptableObject

@@ -4,7 +4,7 @@ using UnityEngine;
 using MoreMountains.CorgiEngine;
 using UnityEngine.SceneManagement;
 
-namespace com.baltamstudios.minebuddies
+namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class CharacterSelection : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
 
-namespace com.baltamstudios.minebuddies
+namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class ModuleButtonActivated : ButtonActivated
     {
