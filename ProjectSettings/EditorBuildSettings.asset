@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MineBuddiesSplashScreen.unity
     guid: 322cd9a49c8ade54383313be4cc40c2e
   - enabled: 1
+    path: Assets/Scenes/PreGameSplash.unity
+    guid: d6aab47be76b4b34da311113d44c4461
+  - enabled: 1
     path: Assets/Scenes/MineBuddiesTitleScreen.unity
     guid: 58876403140db0f41b176b167d821eac
   - enabled: 1
