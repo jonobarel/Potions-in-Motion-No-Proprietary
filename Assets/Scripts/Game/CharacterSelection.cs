@@ -68,7 +68,8 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                 if (Input.GetButtonDown("Player1_Pause") ||
                     Input.GetButtonDown("Player2_Pause") ||
                     Input.GetButtonDown("Player3_Pause") ||
-                    Input.GetButtonDown("Player4_Pause"))
+                    Input.GetButtonDown("Player4_Pause") ||
+                    Input.GetKeyDown(KeyCode.Return))
                 {
                     if (Participants.Count > 0)
                         MoreMountains.Tools.MMSceneLoadingManager.LoadScene("CorgiCarriage");

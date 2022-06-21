@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 3275042616085530924, guid: 9a50bdba2dafb0b4dbe61094aa224d92,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3275042616085530924, guid: 9a50bdba2dafb0b4dbe61094aa224d92,
         type: 3}
@@ -1275,8 +1275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -98.369995}
-  m_SizeDelta: {x: 965.8762, y: 196.73}
+  m_AnchoredPosition: {x: -0.0095291, y: -127.207886}
+  m_SizeDelta: {x: 1201, y: 254.4057}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851040973
 MonoBehaviour:
@@ -1298,12 +1298,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press A to join
+  m_text: 'Press Jump to join
 
-    Press Start to begin'
+    Press Start or Enter to begin'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c39c54744de2e5842b63f5dbf2491b27, type: 2}
-  m_sharedMaterial: {fileID: -6904487963169203146, guid: c39c54744de2e5842b63f5dbf2491b27,
+  m_fontAsset: {fileID: 11400000, guid: 95e4851a34b823941a58532be78933b8, type: 2}
+  m_sharedMaterial: {fileID: -2773716978800718616, guid: 95e4851a34b823941a58532be78933b8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
