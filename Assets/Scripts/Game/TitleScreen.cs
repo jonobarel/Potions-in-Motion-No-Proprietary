@@ -15,21 +15,11 @@ public class TitleScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Player1_Jump") || 
-            Input.GetButtonDown("Player2_Jump") ||
-            Input.GetButtonDown("Player3_Jump") ||
-            Input.GetButtonDown("Player4_Jump")
-            )
-        {
-            MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
-        }
-        if (Input.GetButtonDown("Player1_Pause") ||
-            Input.GetButtonDown("Player2_Pause") ||
-            Input.GetButtonDown("Player3_Pause") ||
-            Input.GetButtonDown("Player4_Pause"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             GetComponent<PauseButton>().PauseButtonAction();
         }
-
+        else if (Input.anyKeyDown)
+            MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
     }
 }
