@@ -1478,10 +1478,9 @@ MonoBehaviour:
   ButtonPressedFirstTime:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1209570940}
-        m_TargetAssemblyTypeName: com.ZeroPrepGames.TrollTruckerTales.ShowControls,
-          Assembly-CSharp
-        m_MethodName: Show
+      - m_Target: {fileID: 1579901625}
+        m_TargetAssemblyTypeName: MoreMountains.CorgiEngine.PauseButton, MoreMountains.CorgiEngine
+        m_MethodName: PauseButtonAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

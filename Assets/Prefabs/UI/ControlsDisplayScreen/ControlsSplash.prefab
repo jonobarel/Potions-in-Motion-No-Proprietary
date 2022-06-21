@@ -1758,7 +1758,7 @@ PrefabInstance:
     - target: {fileID: 320937161925483090, guid: 93e097a9d12b1ec4fb9a756a909ad178,
         type: 3}
       propertyPath: m_text
-      value: Up or Left Ctrl
+      value: Up or ,
       objectReference: {fileID: 0}
     - target: {fileID: 729465287349641143, guid: 93e097a9d12b1ec4fb9a756a909ad178,
         type: 3}
@@ -1778,9 +1778,7 @@ PrefabInstance:
     - target: {fileID: 3967885352016033856, guid: 93e097a9d12b1ec4fb9a756a909ad178,
         type: 3}
       propertyPath: m_text
-      value: 'Enter
-
-'
+      value: .
       objectReference: {fileID: 0}
     - target: {fileID: 4016459573873832424, guid: 93e097a9d12b1ec4fb9a756a909ad178,
         type: 3}
