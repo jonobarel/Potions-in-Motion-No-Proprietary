@@ -23,7 +23,10 @@ public class TitleScreen : MonoBehaviour
         {
             MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Player1_Pause") ||
+            Input.GetButtonDown("Player2_Pause") ||
+            Input.GetButtonDown("Player3_Pause") ||
+            Input.GetButtonDown("Player4_Pause"))
         {
             GetComponent<PauseButton>().PauseButtonAction();
         }
