@@ -615,12 +615,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
+  m_HorizontalAxis: Player1_Horizontal
+  m_VerticalAxis: Player1_Vertical
+  m_SubmitButton: Player1_Interact
+  m_CancelButton: Player1_Pause
+  m_InputActionsPerSecond: 4
+  m_RepeatDelay: 0.25
   m_ForceModuleActive: 0
 --- !u!114 &253522630
 MonoBehaviour:
@@ -3537,26 +3537,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711964450517895384, guid: 720b3717e5f38dc4897624eb5be8bb0b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -4.2857666
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711964450517895384, guid: 720b3717e5f38dc4897624eb5be8bb0b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.022369385
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711964450568639204, guid: 720b3717e5f38dc4897624eb5be8bb0b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 7.0302734
-      objectReference: {fileID: 0}
-    - target: {fileID: 5246065105164421267, guid: 720b3717e5f38dc4897624eb5be8bb0b,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.00048828125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 720b3717e5f38dc4897624eb5be8bb0b, type: 3}
