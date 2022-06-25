@@ -1977,6 +1977,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseSplash
       objectReference: {fileID: 0}
+    - target: {fileID: 3450723019203556066, guid: 693c775c90436c440ae7a0d4c4fcf74c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 693c775c90436c440ae7a0d4c4fcf74c, type: 3}
 --- !u!224 &939673611 stripped

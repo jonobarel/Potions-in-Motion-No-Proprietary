@@ -76,6 +76,8 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                 }
             }
 
+            if (Input.GetButtonDown()
+
         }
 
         void InstantiatePlayer(int i)

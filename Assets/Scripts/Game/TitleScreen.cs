@@ -13,13 +13,5 @@ public class TitleScreen : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GetComponent<PauseButton>().PauseButtonAction();
-        }
-        else if (Input.anyKeyDown && !Input.GetMouseButtonDown(0))
-            MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
-    }
+
 }
