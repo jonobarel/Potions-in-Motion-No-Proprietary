@@ -64,10 +64,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                 }
 
 
-                if (Input.GetButtonDown("Player1_Pause") ||
-                    Input.GetButtonDown("Player2_Pause") ||
-                    Input.GetButtonDown("Player3_Pause") ||
-                    Input.GetButtonDown("Player4_Pause") ||
+                if (Input.GetButtonDown("StartButton") ||
                     Input.GetKeyDown(KeyCode.Return))
                 {
                     if (Participants.Count > 0)
