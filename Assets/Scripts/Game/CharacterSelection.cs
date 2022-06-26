@@ -12,8 +12,8 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         public GameObject[] PlayerPrefabs;
         public Transform[] SpawnPoints;
-        public bool[] Participating;
-        public Dictionary<string, int> Participants;
+        
+        public Dictionary<string, GameObject> Participants;
 
 
         public static CharacterSelection Instance
@@ -38,8 +38,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         {
 
             GameObject.DontDestroyOnLoad(gameObject);
-            Participating = new bool[PlayerPrefabs.Length];
-            Participants = new Dictionary<string, int>();
+            Participants = new Dictionary<string, GameObject>();
             SceneManager.sceneLoaded += OnSceneLoaded;
 
         }
@@ -76,8 +75,44 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                 }
             }
 
-            if (Input.GetButtonDown()
+            if (Input.GetButtonDown("Cancel")) {
+                //check if active players, and drop out accordingly
+                if (Participants.Count > 0)
+                {
+                    if (Input.GetButtonDown("Player1_Cancel"))
+                    {
+                        RemovePlayer("Player1");
+                    }
+                    if (Input.GetButtonDown("Player2_Cancel"))
+                    {
+                        RemovePlayer("Player2");
+                    }
+                    if (Input.GetButtonDown("Player3_Cancel"))
+                    {
+                        RemovePlayer("Player3");
+                    }
+                    if (Input.GetButtonDown("Player4_Cancel"))
+                    {
+                        RemovePlayer("Player4");
+                    }
 
+                }
+                else
+                {
+                    MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesTitleScreen");
+                }
+                
+            }
+
+        }
+
+        void RemovePlayer(string PlayerID) {
+            if (Participants.ContainsKey(PlayerID))
+            {
+                GameObject playerToRemove = Participants[PlayerID];
+                Participants.Remove(PlayerID);
+                GameObject.Destroy(playerToRemove);
+            }
         }
 
         void InstantiatePlayer(int i)
@@ -89,7 +124,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                 player.name = player.GetComponent<Character>().PlayerID;
                 //player.GetComponent<MoreMountains.CorgiEngine.Character>().SetPlayerID($"Player{i+1}");
                 //player.GetComponent<MoreMountains.CorgiEngine.InputManager>().enabled = false;
-                Participants.Add(player.GetComponent<Character>().PlayerID, 0);
+                Participants.Add(player.GetComponent<Character>().PlayerID, player);
             }
 
             
