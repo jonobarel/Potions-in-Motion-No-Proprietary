@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1862180397168342101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862180397168342102}
+  - component: {fileID: 1862180397168342103}
+  - component: {fileID: 1862180397168342096}
+  m_Layer: 0
+  m_Name: KeyboardTilemap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1862180397168342102
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862180397168342101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.51, y: 0}
+  m_SizeDelta: {x: 388.02, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1862180397168342103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862180397168342101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 1
+  m_ConstraintCount: 3
+--- !u!114 &1862180397168342096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862180397168342101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581504158f21ec1468669173e069de1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyMapArr:
+  - name: q
+    keyTile: {fileID: 150062158, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: w
+    keyTile: {fileID: 203324471, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: e
+    keyTile: {fileID: 511098208, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: r
+    keyTile: {fileID: 2109342787, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: t
+    keyTile: {fileID: 400599230, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: y
+    keyTile: {fileID: -122362467, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: u
+    keyTile: {fileID: 1619944222, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: i
+    keyTile: {fileID: 1928286188, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: o
+    keyTile: {fileID: 1553360075, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: p
+    keyTile: {fileID: -430874990, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '['
+    keyTile: {fileID: 909192876, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: ']'
+    keyTile: {fileID: 100839945, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: a
+    keyTile: {fileID: 1843029297, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: s
+    keyTile: {fileID: -1068131478, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: d
+    keyTile: {fileID: 1512155850, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: f
+    keyTile: {fileID: 194708516, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: g
+    keyTile: {fileID: 49332868, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: h
+    keyTile: {fileID: 2026000078, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: j
+    keyTile: {fileID: -1006476757, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: k
+    keyTile: {fileID: 1953159375, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: l
+    keyTile: {fileID: -495651987, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: ;
+    keyTile: {fileID: 8565559, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: ''''
+    keyTile: {fileID: 435624866, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: z
+    keyTile: {fileID: -1288481699, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: x
+    keyTile: {fileID: 1368785648, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: c
+    keyTile: {fileID: 912350140, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: v
+    keyTile: {fileID: 470606008, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: b
+    keyTile: {fileID: 578032900, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: n
+    keyTile: {fileID: -1224710677, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: m
+    keyTile: {fileID: 1705717441, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: ','
+    keyTile: {fileID: -2009102555, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: .
+    keyTile: {fileID: -708620658, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: /
+    keyTile: {fileID: -21536160, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: up
+    keyTile: {fileID: 2034590784, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: down
+    keyTile: {fileID: -1647400804, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: left
+    keyTile: {fileID: 1125762707, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: right
+    keyTile: {fileID: 207815016, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[1]'
+    keyTile: {fileID: -1146394013, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[2]'
+    keyTile: {fileID: 1101153430, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[3]'
+    keyTile: {fileID: 94461422, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[4]'
+    keyTile: {fileID: 892639932, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[5]'
+    keyTile: {fileID: -352410037, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[6]'
+    keyTile: {fileID: -1314270520, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[7]'
+    keyTile: {fileID: 682504264, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[8]'
+    keyTile: {fileID: -1015955284, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[9]'
+    keyTile: {fileID: 1803779447, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
+  - name: '[0]'
+    keyTile: {fileID: -1035493312, guid: c0c4ef390eb7a6c4eb3e08c8d611d3b7, type: 3}
