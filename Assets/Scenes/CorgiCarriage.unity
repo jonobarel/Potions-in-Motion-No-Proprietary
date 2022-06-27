@@ -615,10 +615,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Player1_Horizontal
-  m_VerticalAxis: Player1_Vertical
-  m_SubmitButton: Player1_Interact
-  m_CancelButton: Player1_Pause
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
   m_InputActionsPerSecond: 4
   m_RepeatDelay: 0.25
   m_ForceModuleActive: 0
@@ -2341,7 +2341,6 @@ GameObject:
   - component: {fileID: 1215982242}
   - component: {fileID: 1215982240}
   - component: {fileID: 1215982244}
-  - component: {fileID: 1215982245}
   m_Layer: 0
   m_Name: UICamera
   m_TagString: Untagged
@@ -2441,18 +2440,6 @@ MonoBehaviour:
   PointsText: {fileID: 0}
   LevelText: {fileID: 0}
   PointsPattern: 000000
---- !u!114 &1215982245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215982239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 193bbf164db32874d8aff4329f973a7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1228329879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3434590112664842690, guid: 57a937463fd14d64687cc9034e04207b,
