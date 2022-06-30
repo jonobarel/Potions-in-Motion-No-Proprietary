@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CorgiCarriage.unity
     guid: bd50d5f3b8e8ef3489b9ffc3cc754542
   - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: e508741eb1867754790aa1171efec496
+  - enabled: 1
     path: Assets/Scenes/Endgame.unity
     guid: 11ba16bc305f9a047ac1a0088c7eab89
   - enabled: 0
