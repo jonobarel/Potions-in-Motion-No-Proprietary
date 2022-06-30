@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 5424586082105777807}
   - component: {fileID: 7627640564066893177}
   - component: {fileID: 7172673277827544051}
+  - component: {fileID: 775745969975591294}
   m_Layer: 29
   m_Name: CorgiModuleHittable
   m_TagString: Untagged
@@ -758,8 +759,8 @@ MonoBehaviour:
   UseVisualPrompt: 1
   ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
     type: 3}
-  ButtonPromptText: X
-  ButtonPromptColor: {r: 0.24705878, g: 0.3997228, b: 0.99215686, a: 1}
+  ButtonPromptText: Y
+  ButtonPromptColor: {r: 0, g: 0.4745098, b: 0, a: 1}
   ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
   AlwaysShowPrompt: 0
   ShowPromptWhenColliding: 1
@@ -791,6 +792,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   instigator: {fileID: 0}
+--- !u!114 &775745969975591294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188668530597834665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0617763b4190c364093ae8e7b62aea45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7941817532555367231
 GameObject:
   m_ObjectHideFlags: 0
