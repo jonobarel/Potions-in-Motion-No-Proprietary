@@ -476,8 +476,8 @@ MonoBehaviour:
   UseVisualPrompt: 1
   ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
     type: 3}
-  ButtonPromptText: X
-  ButtonPromptColor: {r: 0, g: 0.17325237, b: 0.9882353, a: 1}
+  ButtonPromptText: Y
+  ButtonPromptColor: {r: 0, g: 0.4745098, b: 0, a: 1}
   ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
   AlwaysShowPrompt: 0
   ShowPromptWhenColliding: 1
