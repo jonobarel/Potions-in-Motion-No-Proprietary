@@ -200,7 +200,7 @@ RectTransform:
   m_GameObject: {fileID: 1035182205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.54923, y: 0.54923, z: 0.54923}
+  m_LocalScale: {x: 0.27248946, y: 0.27248946, z: 0.27248946}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 231292168536033741}
@@ -209,7 +209,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -354}
-  m_SizeDelta: {x: 1004, y: 126}
+  m_SizeDelta: {x: 1682, y: 539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1035182208
 CanvasRenderer:
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 619829aef92d66945b42cc911453b237, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75018fa46b374fc4a8d358a2da88b1a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -972,7 +972,7 @@ MonoBehaviour:
     m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 4650388149990002213}
 --- !u!114 &7606013287630297343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1198,9 +1198,7 @@ PrefabInstance:
     - target: {fileID: 4287426114898112737, guid: 4af50c76e01983d4eb9497b6b8b8cff1,
         type: 3}
       propertyPath: m_text
-      value: 'Aviv "Icel" Manoach
-
-        Ben Cohen'
+      value: Ben Cohen
       objectReference: {fileID: 0}
     - target: {fileID: 5317804988279203423, guid: 4af50c76e01983d4eb9497b6b8b8cff1,
         type: 3}
@@ -1220,7 +1218,7 @@ PrefabInstance:
     - target: {fileID: 9074545104830997972, guid: 4af50c76e01983d4eb9497b6b8b8cff1,
         type: 3}
       propertyPath: m_text
-      value: Art
+      value: Additional Art
       objectReference: {fileID: 0}
     - target: {fileID: 9121430001690273749, guid: 4af50c76e01983d4eb9497b6b8b8cff1,
         type: 3}
