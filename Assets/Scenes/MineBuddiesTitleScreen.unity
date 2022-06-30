@@ -1938,6 +1938,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShowControls
       objectReference: {fileID: 0}
+    - target: {fileID: 5874686264362548362, guid: cade27a26e6d5124a963393a7bfbfe27,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874686264362548362, guid: cade27a26e6d5124a963393a7bfbfe27,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874686264362548362, guid: cade27a26e6d5124a963393a7bfbfe27,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5874686264362548362, guid: cade27a26e6d5124a963393a7bfbfe27,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7086296049675714076, guid: cade27a26e6d5124a963393a7bfbfe27,
         type: 3}
       propertyPath: ButtonPressedFirstTime.m_PersistentCalls.m_Calls.Array.size
@@ -4359,6 +4379,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CreditsOverlay
+      objectReference: {fileID: 0}
+    - target: {fileID: 231292168549905517, guid: 1d7a48520850797439e83e95815509de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 527652859343612518, guid: 1d7a48520850797439e83e95815509de,
         type: 3}
