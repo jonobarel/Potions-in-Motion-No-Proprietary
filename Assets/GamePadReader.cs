@@ -63,5 +63,16 @@ public class GamePadReader : MonoBehaviour
         {
             textlabel.text += "Joystick Button 10";
         }
+
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+
+        textlabel.text += $"X: {x}, Y: {y}";
+        if (x > 0.01 || y > 0.01)
+        {
+            Debug.Log(x + " " + y);
+        }
+
+
     }
 }
