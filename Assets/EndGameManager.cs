@@ -29,7 +29,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             CharacterSelection.Instance.Reset();
 
             analytics.DumpToFile();
-
+            
         }
 
         // Update is called once per frame
@@ -40,10 +40,14 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                   Input.GetButtonDown("Player3_Pause") ||
                   Input.GetButtonDown("Player4_Pause"))
             {
-                MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesCharacterJoin");
+                MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesTitleScreen");
             }
         }
 
-       
+       IEnumerator LoadTitleScreen()
+        {
+            yield return new WaitForSeconds(30f);
+            MoreMountains.Tools.MMSceneLoadingManager.LoadScene("MineBuddiesTitleScreen");
+        }
     }
 }
