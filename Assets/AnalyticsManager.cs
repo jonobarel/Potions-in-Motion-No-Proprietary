@@ -45,7 +45,6 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         public void DumpToFile()
         {
-            Debug.Log("Dumping analytics to file");
             analytics.CloseLogAndWriteToFile();
             analytics = null;
             ready = false;

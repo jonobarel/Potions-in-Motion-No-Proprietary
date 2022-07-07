@@ -10,7 +10,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class Analytics //: MonoBehaviour
     {
-        string FileName = @"d:\MineBuddiesLog.csv";
+        string FileName = Application.persistentDataPath + "/MineBuddiesLog.csv";
 
         int sessionID;
 
@@ -22,7 +22,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         public Analytics(int session)
         {
             sessionID = session;
-            Debug.Log($"Analytics - File location: {FileName}");
+            Debug.Log($"File location: {FileName}");
         }
 
         List<LogEntry> logCollection = new List<LogEntry>();
@@ -143,7 +143,6 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         public void CloseLogAndWriteToFile()
         {
-            Debug.Log($"Writing file - {FileName}");
             File.AppendAllLines(FileName, ToCSVArr());
 
         }
