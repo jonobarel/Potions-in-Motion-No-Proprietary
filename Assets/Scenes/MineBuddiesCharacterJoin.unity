@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press      to join
+  m_text: 'Press      or Jump to join
 
     Press Start or Enter to begin'
   m_isRightToLeft: 0
@@ -1429,7 +1429,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: B
+  m_Text: A
 --- !u!222 &222971504319756445
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1544,7 +1544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.9904785, y: 22}
+  m_AnchoredPosition: {x: -167, y: 22}
   m_SizeDelta: {x: 9.4051, y: 7.2735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7471794207833714090
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.94509804, g: 0.72156864, b: 0.13333334, a: 1}
+  m_Color: {r: 0.13333333, g: 0.94509804, b: 0.45018506, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
