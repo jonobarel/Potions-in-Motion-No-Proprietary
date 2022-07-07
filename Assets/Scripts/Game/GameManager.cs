@@ -57,17 +57,23 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         }
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            SessionID = System.DateTime.Now.GetHashCode();
-            Debug.Log($"SessionID: {SessionID}");
-
-            CharacterSelection players = CharacterSelection.Instance;
-            if (players == null)
+            if (scene.name == "CorgiCarriage")
             {
-                Debug.LogError("Error finding participating players");
-                //InstantiateDefaultPlayers();
-            }
+                SessionID = System.DateTime.Now.GetHashCode();
+                Debug.Log($"SessionID: {SessionID}");
 
-            CorgiEngineEvent.Trigger(CorgiEngineEventTypes.UnPause);
+                CharacterSelection players = CharacterSelection.Instance;
+                if (players == null)
+                {
+                    Debug.LogError("Error finding participating players");
+                    //InstantiateDefaultPlayers();
+                }
+
+                FindObjectOfType<AnalyticsManager>().LogEvent("Game", Analytics.LogAction.GameStart, HazardType.A, 0, "Seed id=", RandomSeed);
+
+                CorgiEngineEvent.Trigger(CorgiEngineEventTypes.UnPause);
+            }
+            
         }
 
         void Start()

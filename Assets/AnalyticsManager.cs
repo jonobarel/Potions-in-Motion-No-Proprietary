@@ -7,22 +7,30 @@ namespace com.ZeroPrepGames.TrollTruckerTales
     public class AnalyticsManager : MonoBehaviour
     {
         Analytics analytics;
-
+        bool ready = false;
 
         // Update is called once per frame
 
         public void Initialize()
         {
-            Debug.Log("AnalyticsManager init");
-            analytics = new Analytics(GameSystem.Instance.gameManager.SessionID);
+            if (!ready)
+            {
+                Debug.Log("AnalyticsManager init");
+                analytics = new Analytics(GameSystem.Instance.gameManager.SessionID);
+                ready = true;
+            }
         }
 
         public void LogEvent(string playerID, 
             Analytics.LogAction action, 
             GameManager.HazardType hazardType,
-            float logValue, string logData)
+            float logValue, string logData, int id = 0)
         {
-            analytics.LogEvent(playerID, action, hazardType, logValue, logData);
+            if (!ready)
+            {
+                Initialize();
+            }
+            analytics.LogEvent(playerID, action, hazardType, logValue, logData, id);
         }
 
         public string GetTopPlayer()
@@ -39,6 +47,8 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         {
             Debug.Log("Dumping analytics to file");
             analytics.CloseLogAndWriteToFile();
+            analytics = null;
+            ready = false;
         }
 
         public int GetDistanceCovered()

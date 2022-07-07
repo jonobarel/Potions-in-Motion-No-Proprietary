@@ -36,10 +36,11 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             public GameManager.HazardType hazardType;
             public float value;
             public string data;
+            public int id;
 
             public string ToCSV()
             {
-                return $"{timestamp}, {sessionID}, {playerID}, {action}, {hazardType}, {value}, {data}";
+                return $"{timestamp}, {sessionID}, {playerID}, {action}, {hazardType}, {value}, {data}, {id}";
             }
         }
 
@@ -60,7 +61,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
 
         public void LogEvent(string playerID, LogAction action, 
-            GameManager.HazardType hazardType, float logValue, string logData)
+            GameManager.HazardType hazardType, float logValue, string logData, int id = 0)
         {
             LogEntry log = new LogEntry();
             log.timestamp = DateTime.Now;
@@ -70,6 +71,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             log.hazardType = hazardType;
             log.value = logValue;
             log.data = logData;
+            log.id = id;
 
             logCollection.Add(log);
 

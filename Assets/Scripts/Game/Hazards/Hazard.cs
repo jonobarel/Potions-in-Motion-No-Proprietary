@@ -8,10 +8,14 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class Hazard : MonoBehaviour
     {
+        public static int index = 0;
+
         public GameManager.HazardType type;
         public bool isActive = false;
         public ActiveHazardUI activeUI;
         public MoreMountains.CorgiEngine.Health MMHealth;
+
+        public int id;
 
         [SerializeField]
         Slider positionSlider;
@@ -41,6 +45,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         public void Start()
         {
+            id = index++;
             horizontalMovement = GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>();
             MMHealth = GetComponent<MoreMountains.CorgiEngine.Health>();
             MMdamageOnTouch = GetComponent<MoreMountains.CorgiEngine.DamageOnTouch>();
@@ -51,7 +56,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             //Debug.Log($"{name}: type {type}");
             //Spawn the timeline indicator
             var hazardManager = GameSystem.Instance.hazardManager.GetComponent<HazardManager>();
-
+            FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.HazardSpawn, type, 1, "hazard spawned", id);
             positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
             positionSlider.GetComponent<HazardSliderDisplay>().Hazard = this;
             startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
@@ -94,6 +99,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         {
             isActive = true;
             GameSystem.Instance.hazardManager.ActiveHazards.Add(this);
+            FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.HazardActivate, type, 1, "hazard activated", id);
             GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().WalkSpeed = Helpers.Config.HazardProgressAfterActivation;
             //Debug.Log($"{name}: activated");
         }
@@ -101,7 +107,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         public void Deactivate()
         {
             isActive = false;
-            FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.DestroyHazard, type, 1, "hazard destroyed");
+            FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.DestroyHazard, type, 1, "hazard destroyed", id);
             GameSystem.Instance.hazardManager.ActiveHazards.Remove(this);
             activeUI.GetComponent<Animate>().DoFadeAnimation();
             GameObject.Destroy(activeUI.gameObject, 1f);

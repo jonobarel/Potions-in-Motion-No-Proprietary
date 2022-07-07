@@ -68,7 +68,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             if (hazard == null || !Carriage.Instance.Engine.ModuleFuel() || !hazard.isActive) return;
             else
             {
-                GameSystem.Instance.analytics.LogEvent(ActivatingPlayer, Analytics.LogAction.DamageHazard, hazardType, DamageToHazard, "player damaged hazard");
+                GameSystem.Instance.analytics.LogEvent(ActivatingPlayer, Analytics.LogAction.DamageHazard, hazardType, DamageToHazard, "player damaged hazard", hazard.id);
                 hazard.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
                 hazard.UpdateUIHealth();
             }
