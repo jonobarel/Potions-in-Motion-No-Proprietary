@@ -13,6 +13,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         public void Initialize()
         {
+            Debug.Log("AnalyticsManager init");
             analytics = new Analytics(GameSystem.Instance.gameManager.SessionID);
         }
 
@@ -36,6 +37,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         public void DumpToFile()
         {
+            Debug.Log("Dumping analytics to file");
             analytics.CloseLogAndWriteToFile();
         }
 
