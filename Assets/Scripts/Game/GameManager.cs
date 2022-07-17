@@ -71,7 +71,6 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
                 FindObjectOfType<AnalyticsManager>().LogEvent("Game", Analytics.LogAction.GameStart, HazardType.A, 0, "Seed id=", RandomSeed);
 
-                CorgiEngineEvent.Trigger(CorgiEngineEventTypes.UnPause);
             }
             
         }
