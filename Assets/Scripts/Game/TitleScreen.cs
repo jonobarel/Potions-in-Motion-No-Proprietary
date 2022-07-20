@@ -7,8 +7,11 @@ using MoreMountains.CorgiEngine;
 public class TitleScreen : MonoBehaviour
 {
     // Start is called before the first frame update
+#if !UNITY_WEBGL
     void Start()
     {
+
+
         StartCoroutine(LoadTrailer());
     }
 
@@ -19,5 +22,6 @@ public class TitleScreen : MonoBehaviour
         yield return new WaitForSeconds(60f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("TrailerPlayer");
     }
+#endif
 
 }

@@ -21,7 +21,7 @@ public class DownloadLogFile : MonoBehaviour
     private static extern void DownloadFile(string gameObjectName, string methodName, string filename, byte[] byteArray, int byteArraySize);
 
     // Browser plugin should be called in OnPointerDown.
-    public void OnPointerDown(PointerEventData eventData) {
+    public void FileDownload() {
 
         Debug.Log("Clicked download log button");
         var path = Application.persistentDataPath + "/" + "MineBuddiesLog.csv";
@@ -40,22 +40,28 @@ public class DownloadLogFile : MonoBehaviour
     // Standalone platforms & editor
     //
 
-        public void OnPointerDown(PointerEventData eventData) { }
+    public void OnPointerDown(PointerEventData eventData) { }
 
     // Listen OnClick event in standlone builds
-    void Start()
+    void Awake()
     {
         logFile = Application.persistentDataPath + "/" + "MineBuddiesLog.csv";
-        var button = GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
+        if (!File.Exists(logFile))
+        {
+            Destroy(gameObject);
+        }
+        //button.onClick.AddListener(OnClick);
     }
 
-    public void OnClick()
+    public void FileDownload()
     {
         var path = StandaloneFileBrowser.SaveFilePanel("Save log file", "", "MineBuddiesLog", "csv");
-        File.WriteAllBytes(path, File.ReadAllBytes(logFile));
-        
+        if (path != null && path != "")
+        {
+            File.WriteAllBytes(path, File.ReadAllBytes(logFile));
+        }
     }
+
 #endif
 
 /*************
