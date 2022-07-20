@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using MoreMountains.CorgiEngine;
 
 namespace com.ZeroPrepGames.TrollTruckerTales
 {
@@ -23,12 +24,18 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                 HazardNumber.text = $"{analytics.GetTotalHazards()}";
                 DistanceCovered.text = $"{analytics.GetDistanceCovered()}";
                 RefuelNumber.text = $"{analytics.GetTopRefueler()}";
-                
+
             }
 
-            CharacterSelection.Instance.Reset();
+            if (CharacterSelection.Instance != null)
+            {
+                CharacterSelection.Instance.Reset();
+            }
+            
 
             analytics.DumpToFile();
+            
+            
             
         }
 
