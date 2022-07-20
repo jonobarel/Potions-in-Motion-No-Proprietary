@@ -177,12 +177,15 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                                          playerID = refuelMetrics.Key,
                                          refuelScore = refuelMetrics.Sum(x => x.value)
                                      });
-            string topRefueler = (from l in refuellingMetrics
-                                  orderby l.refuelScore descending
-                                  select l.playerID).First();
+            string topRefueler = "";
 
-            if (topRefueler != null)
-                return topRefueler;
+            if (refuellingMetrics.Count() > 0)
+            {
+                topRefueler = (from l in refuellingMetrics
+                               orderby l.refuelScore descending
+                               select l.playerID).First();
+            }
+
             return "";
 
         }
