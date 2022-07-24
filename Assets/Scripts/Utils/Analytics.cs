@@ -10,7 +10,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 {
     public class Analytics //: MonoBehaviour
     {
-        string FileName = Application.persistentDataPath + "/MineBuddiesLog.csv";
+        static string FileName = Application.persistentDataPath + "/MineBuddiesLog.csv";
 
         int sessionID;
 
@@ -19,6 +19,13 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             set { sessionID = value; }
         }
 
+        public static void InitFile()
+        {
+            if (!File.Exists(FileName))
+            {
+                File.Create(FileName);
+            }
+        }
         public Analytics(int session)
         {
             sessionID = session;

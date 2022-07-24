@@ -9,6 +9,7 @@ public class Paging : MonoBehaviour
     public GameObject PrevButton;
     public string TitleScene;
     public Transform[] images;
+    public Transform CenterPosition;
     public int position = 0;
 
     public float SwoopSize;
@@ -17,6 +18,10 @@ public class Paging : MonoBehaviour
     public void Start()
     {
         SwoopSize = 5000;
+        for (int i = 1; i < images.Length; i++)
+        {
+            images[i].position = CenterPosition.position + new Vector3(SwoopSize, 0, 0);
+        }
     }
 
     public void Next()
