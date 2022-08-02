@@ -4,10 +4,9 @@ using UnityEngine;
 using TMPro;
 using System.Runtime.InteropServices;
 using UnityEngine.UI;
-using SFB;
 using System.IO;
 using UnityEngine.EventSystems;
-
+using Assets.SimpleFileBrowserForWindows;
 public class DownloadLogFile : MonoBehaviour
 {
 
@@ -55,11 +54,12 @@ public class DownloadLogFile : MonoBehaviour
 
     public void FileDownload()
     {
-        var path = StandaloneFileBrowser.SaveFilePanel("Save log file", "", "MineBuddiesLog", "csv");
-        if (path != null && path != "")
+        StartCoroutine(WindowsFileBrowser.SaveFile("Save", null, "MineBuddiesLog", "CSV", ".csv", File.ReadAllBytes(logFile), (success, path) =>
         {
-            File.WriteAllBytes(path, File.ReadAllBytes(logFile));
-        }
+            Debug.Log(success);
+            Debug.Log(path);
+        }));
+
     }
 
 #endif
