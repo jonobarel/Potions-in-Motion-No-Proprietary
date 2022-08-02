@@ -2751,6 +2751,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInputDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 1915949822690180448, guid: 3d3d5a7a4f74c3b4cb3254cda90ee6a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1915949822690180455, guid: 3d3d5a7a4f74c3b4cb3254cda90ee6a2,
         type: 3}
       propertyPath: m_Pivot.x
