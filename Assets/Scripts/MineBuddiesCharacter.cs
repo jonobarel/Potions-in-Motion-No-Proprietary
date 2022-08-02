@@ -10,7 +10,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
 
         Character character;
         CharacterButtonActivation buttonActivator;
-
+        public string PlayerLabel;
 
         // Start is called before the first frame update
         void Start()

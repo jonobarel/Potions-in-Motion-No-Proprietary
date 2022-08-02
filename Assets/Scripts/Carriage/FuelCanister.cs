@@ -24,7 +24,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
             {
                 powerModule.DoRefuel();
                 MoreMountains.CorgiEngine.Pushable pushable = GetComponent<MoreMountains.CorgiEngine.Pushable>();
-                GameSystem.Instance.analytics.LogEvent(pushable.Pusher.GetComponent<MoreMountains.CorgiEngine.Character>().PlayerID, Analytics.LogAction.Refuel, GameManager.HazardType.A, 1, "Player refueled");
+                GameSystem.Instance.analytics.LogEvent(pushable.Pusher.GetComponent<MineBuddiesCharacter>().PlayerLabel, Analytics.LogAction.Refuel, GameManager.HazardType.A, 1, "Player refueled");
                 pushable.Detach(pushable.Pusher);
                 GameObject.Destroy(gameObject);
             }

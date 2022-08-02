@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 241149926137111592, guid: c3c0ac5c970a1de4fa80db4ff40b7386,
         type: 3}
       propertyPath: m_Name
-      value: Player2 (variant)
+      value: Grey
       objectReference: {fileID: 0}
     - target: {fileID: 241149926137111604, guid: c3c0ac5c970a1de4fa80db4ff40b7386,
         type: 3}
@@ -374,6 +374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.9999951
+      objectReference: {fileID: 0}
+    - target: {fileID: 7328846536305297715, guid: c3c0ac5c970a1de4fa80db4ff40b7386,
+        type: 3}
+      propertyPath: PlayerLabel
+      value: Grey
       objectReference: {fileID: 0}
     - target: {fileID: 7919443020256922701, guid: c3c0ac5c970a1de4fa80db4ff40b7386,
         type: 3}

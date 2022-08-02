@@ -193,7 +193,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
                                select l.playerID).First();
             }
 
-            return "";
+            return topRefueler;
 
         }
     }

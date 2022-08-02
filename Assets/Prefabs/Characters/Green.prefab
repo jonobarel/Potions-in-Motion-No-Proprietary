@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 1641926370762369301}
   - component: {fileID: 7328846536305297715}
   m_Layer: 9
-  m_Name: Player1
+  m_Name: Green
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b026a508c9c7a894baf08b788ccd8916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerLabel: Green
 --- !u!1 &4072718821315084635
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ namespace com.ZeroPrepGames.TrollTruckerTales
         {
             base.TriggerButtonAction(instigator);
             
-            GameSystem.Instance.analytics.LogEvent(instigator.GetComponent<Character>().PlayerID, Analytics.LogAction.DispenseFuel, GameManager.HazardType.A, 1, "player dispensed fuel");
+            GameSystem.Instance.analytics.LogEvent(instigator.GetComponent<MineBuddiesCharacter>().PlayerLabel, Analytics.LogAction.DispenseFuel, GameManager.HazardType.A, 1, "player dispensed fuel");
         }
     }
 }
