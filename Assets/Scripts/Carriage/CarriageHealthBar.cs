@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Tools;
 
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     public class CarriageHealthBar : MoreMountains.Tools.MMHealthBar
     {

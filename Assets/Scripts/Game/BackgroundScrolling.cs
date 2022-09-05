@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     public class BackgroundScrolling : MonoBehaviour
     {

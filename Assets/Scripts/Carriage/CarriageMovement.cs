@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     public class CarriageMovement : MonoBehaviour
     {

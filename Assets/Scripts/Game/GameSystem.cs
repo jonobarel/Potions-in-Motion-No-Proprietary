@@ -4,7 +4,7 @@ using UnityEngine;
 using MoreMountains;
 using UnityEngine.SceneManagement;
 
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     public class GameSystem : MonoBehaviour
     {

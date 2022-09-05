@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     [RequireComponent(typeof(HazardManager))]
     public class ActiveHazards : MonoBehaviour

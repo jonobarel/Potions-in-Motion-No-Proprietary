@@ -6,7 +6,7 @@ using System.Data;
 
 using System;
 using System.Linq;
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     public class Analytics //: MonoBehaviour
     {
