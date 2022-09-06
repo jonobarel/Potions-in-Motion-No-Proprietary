@@ -46,7 +46,7 @@ namespace ZeroPrep.MineBuddies
             {
                 HazardManager.hazardSpawner.enabled = false;
 
-                Carriage.Instance.Stalled = true;
+                //Carriage.Instance.Stalled = true;
                 var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
                                             where hazard.isActive == false
                                             select hazard);
@@ -67,7 +67,7 @@ namespace ZeroPrep.MineBuddies
                 {
                     HazardManager.hazardSpawner.enabled = true;
 
-                    Carriage.Instance.Stalled = false;
+                    //Carriage.Instance.Stalled = false;
                     var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
                                            where hazard.isActive == false
                                            select hazard);

@@ -38,7 +38,7 @@ namespace ZeroPrep.MineBuddies
             }
         }
 
-        public bool Stalled { get; internal set; }
+        //public bool Stalled { get; internal set; }
 
         private void Awake()
         {
@@ -58,7 +58,7 @@ namespace ZeroPrep.MineBuddies
                 _engine = FindObjectOfType<PowerModule>();
             Debug.Log($"{name}: engine found");
             
-            _carriageMovement = new CarriageMovement();
+            _carriageMovement = new CarriageMovement(GameSystem.GameManager.Odometer, GameSystem.GameManager.Speedometer);
             
             _health = GetComponent<MoreMountains.CorgiEngine.Health>();
             Debug.Log($"{name}: Health component: {_health.name}");

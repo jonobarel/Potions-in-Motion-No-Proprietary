@@ -14,8 +14,8 @@ namespace ZeroPrep.MineBuddies
         [Range(0f, 10f)]
         float _speedOverride;
         float _currentSpeed;
-        public TextMeshProUGUI Odometer;
-        public TextMeshProUGUI Speedometer;
+        TextMeshProUGUI _odometer;
+        TextMeshProUGUI _speedometer;
         bool _brake = false;
 
         public void ToggleBrake()
@@ -34,13 +34,15 @@ namespace ZeroPrep.MineBuddies
         float _speedChangeProgress = 0f;
 
 
-        float CalculateSpeed()
+        float CalculateTargetSpeed()
         {
             if (_speedOverride > 0f)
                 return _speedOverride;
             //let's set the speed as MaxSpeed - A*activeHazards*(1-damage)
             else if (Carriage.Instance.Engine.FuelLevel > 0)
             {
+                // max speed is reduced by damage ratio
+                // speed is reduced by number of active hazards * slowdown factor 
                 var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - _hazardSlowdownFactor * GameSystem.HazardManager.ActiveHazards.Count;
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
                 return speed;
@@ -49,13 +51,12 @@ namespace ZeroPrep.MineBuddies
             
         }
 
-        public CarriageMovement()
+        public CarriageMovement(TextMeshProUGUI odo, TextMeshProUGUI speedo)
         {
             _configManager = GameObject.FindObjectOfType<ConfigManager>();
             _speedOverride = 0f;
-            #region config
-            _hazardSlowdownFactor = _configManager.config.HazardSlowDownFactor;
-            #endregion
+            _speedometer = speedo;
+            _odometer = odo;
 
         }
 
@@ -64,7 +65,7 @@ namespace ZeroPrep.MineBuddies
         {
             float newTargetSpeed = 0f;
             if (!_brake)
-                newTargetSpeed = CalculateSpeed();
+                newTargetSpeed = CalculateTargetSpeed();
 
             if (newTargetSpeed > _targetSpeed || newTargetSpeed < _targetSpeed) //need to restart the speed shifting process
             {
@@ -83,13 +84,13 @@ namespace ZeroPrep.MineBuddies
             _distanceCovered += _currentSpeed * deltaTime;
             
             //transform.position += new Vector3(currentSpeed * Time.deltaTime,0,0);
-            if (Odometer != null)
+            if (_odometer != null)
             {
-                Odometer.SetText($"{(int)_distanceCovered}");
+                _odometer.SetText($"{(int)_distanceCovered}");
             }
-            if (Speedometer != null)
+            if (_speedometer != null)
             {
-                Speedometer.SetText($"{_currentSpeed:F} m/s");
+                _speedometer.SetText($"{_currentSpeed:F} m/s");
             }
         }
 

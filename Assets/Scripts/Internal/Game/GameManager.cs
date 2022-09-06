@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
-
+using TMPro;
 using UnityEngine.SceneManagement;
 
 namespace ZeroPrep.MineBuddies
 {
     public class GameManager : MonoBehaviour
     {
+        //TODO: move these to a UI manager
+        [SerializeField]
+        private TextMeshProUGUI _odometer;
+        [SerializeField]
+        private TextMeshProUGUI _speedometer;
+
+        public TextMeshProUGUI Odometer => _odometer;
+        public TextMeshProUGUI Speedometer => _speedometer;
 
         float hazardActivatorDistance = -1;
 
