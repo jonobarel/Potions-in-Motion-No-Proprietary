@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using MoreMountains.CorgiEngine;
 
-namespace com.ZeroPrepGames.TrollTruckerTales
+namespace ZeroPrep.MineBuddies
 {
     public class EndGameManager : MonoBehaviour
     {
