@@ -98,7 +98,7 @@ namespace ZeroPrep.MineBuddies
             get { 
                 if (hazardActivatorDistance < 0)
                 {
-                    hazardActivatorDistance = (Carriage.Instance.HazardActivator.transform.position - Carriage.Instance.transform.position).magnitude;
+                    hazardActivatorDistance = (Carriage.Instance.hazardActivator.transform.position - Carriage.Instance.transform.position).magnitude;
                 }    
                 return hazardActivatorDistance;
             } 

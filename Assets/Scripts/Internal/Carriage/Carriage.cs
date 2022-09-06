@@ -1,36 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ZeroPrep.MineBuddies
 {
     public class Carriage : MonoBehaviour
     {
 
-        PowerModule engine;
-        float currentDamage = 0f;
-        CarriageMovement carriageMovement;
+        PowerModule _engine;
+        float _currentDamage = 0f;
+
+        public float CurrenSpeed => _carriageMovement.CurrentSpeed;
+        
+        CarriageMovement _carriageMovement;
         public MoreMountains.Tools.MMProgressBar healthBar;
 
-        MoreMountains.CorgiEngine.Health health;
-        public CarriageMovement CarriageMovement { get { return carriageMovement; } }
+        MoreMountains.CorgiEngine.Health _health;
+        public CarriageMovement CarriageMovement { get { return _carriageMovement; } }
         
-        public GameObject HazardSpawner;
-        public Transform HazardActivator;
-        public GameObject HazardEffectTriggers;
+        [FormerlySerializedAs("HazardSpawner")] public GameObject hazardSpawner;
+        [FormerlySerializedAs("HazardActivator")] public Transform hazardActivator;
+        [FormerlySerializedAs("HazardEffectTriggers")] public GameObject hazardEffectTriggers;
 
-        public float CurrentDamage { get { return currentDamage; } }
+        public float CurrentDamage { get { return _currentDamage; } }
         
-        public PowerModule Engine { get { return engine; } }
+        public PowerModule Engine { get { return _engine; } }
 
-        private static Carriage instance;
+        private static Carriage _instance;
         public static Carriage Instance
         {
             get {  
-                if (instance == null) { 
-                    instance = FindObjectOfType<Carriage>(); 
+                if (_instance == null) { 
+                    _instance = FindObjectOfType<Carriage>(); 
                 } 
-                return instance;
+                return _instance;
             }
         }
 
@@ -38,7 +42,7 @@ namespace ZeroPrep.MineBuddies
 
         private void Awake()
         {
-            if (instance != null)
+            if (_instance != null)
             {
                 Debug.LogError($"{name}: duplicate instance - destroy object by singleton");
                 DestroyImmediate(this.gameObject);
@@ -50,36 +54,37 @@ namespace ZeroPrep.MineBuddies
         {
             Debug.Log($"{name}: begin Start()");
      
-            if (engine == null)
-                engine = FindObjectOfType<PowerModule>();
+            if (_engine == null)
+                _engine = FindObjectOfType<PowerModule>();
             Debug.Log($"{name}: engine found");
-            carriageMovement = GetComponent<CarriageMovement>();
-            Debug.Log($"{name}: carriageMovement: {carriageMovement.name}");
-            health = GetComponent<MoreMountains.CorgiEngine.Health>();
-            Debug.Log($"{name}: Health component: {health.name}");
-            if (health == null) Debug.LogError($"{name}: could not find Corgi Health component in Carriage");
+            
+            _carriageMovement = new CarriageMovement();
+            
+            _health = GetComponent<MoreMountains.CorgiEngine.Health>();
+            Debug.Log($"{name}: Health component: {_health.name}");
+            if (_health == null) Debug.LogError($"{name}: could not find Corgi Health component in Carriage");
             else
             {
                 Debug.Log($"{name}: HealthBar component: {healthBar.name}");
-                healthBar.SetBar(health.MaximumHealth, 0, health.MaximumHealth);
+                healthBar.SetBar(_health.MaximumHealth, 0, _health.MaximumHealth);
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-        
+            _carriageMovement.Tick(Time.deltaTime);
         }
 
         public void UpdateHealthBar()
         {
-            healthBar.UpdateBar(health.CurrentHealth, 0, health.MaximumHealth);
+            healthBar.UpdateBar(_health.CurrentHealth, 0, _health.MaximumHealth);
         }
       
         public void OnDeath()
         {
-            carriageMovement.ToggleBrake();
-            GameSystem.Instance.analytics.LogEvent("Carriage", Analytics.LogAction.GameEnd, GameManager.HazardType.A, carriageMovement.DistanceCovered, "Total distance");
+            _carriageMovement.ToggleBrake();
+            GameSystem.Instance.analytics.LogEvent("Carriage", Analytics.LogAction.GameEnd, GameManager.HazardType.A, _carriageMovement.DistanceCovered, "Total distance");
         }
     }
 }

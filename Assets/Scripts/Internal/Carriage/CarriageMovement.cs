@@ -5,43 +5,43 @@ using TMPro;
 
 namespace ZeroPrep.MineBuddies
 {
-    public class CarriageMovement : MonoBehaviour
+    public class CarriageMovement
     {
-        ConfigManager configManager;
-        float distanceCovered = 0f;
-        public float DistanceCovered { get { return distanceCovered; } }
+        ConfigManager _configManager;
+        float _distanceCovered = 0f;
+        public float DistanceCovered { get { return _distanceCovered; } }
         [SerializeField]
         [Range(0f, 10f)]
-        float speedOverride;
-        float currentSpeed;
+        float _speedOverride;
+        float _currentSpeed;
         public TextMeshProUGUI Odometer;
         public TextMeshProUGUI Speedometer;
-        bool brake = false;
+        bool _brake = false;
 
         public void ToggleBrake()
         {
-            brake = !brake;
+            _brake = !_brake;
         }
 
-        public float CurrentSpeed { get { return currentSpeed; } }
-        float MaxSpeed { get { return configManager.config.MaxCarriageSpeed; } }
-        [SerializeField]
-        float HazardSlowdownFactor = 0.1f;
+        public float CurrentSpeed { get { return _currentSpeed; } }
+        float MaxSpeed => _configManager.config.MaxCarriageSpeed;
+
+        float _hazardSlowdownFactor = 0.1f;
 
         //for Lerping speed.
-        float startSpeed;
-        float targetSpeed;
-        float speedChangeProgress = 0f;
+        float _startSpeed;
+        float _targetSpeed;
+        float _speedChangeProgress = 0f;
 
 
         float CalculateSpeed()
         {
-            if (speedOverride > 0f)
-                return speedOverride;
+            if (_speedOverride > 0f)
+                return _speedOverride;
             //let's set the speed as MaxSpeed - A*activeHazards*(1-damage)
             else if (Carriage.Instance.Engine.FuelLevel > 0)
             {
-                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - HazardSlowdownFactor * GameSystem.HazardManager.ActiveHazards.Count;
+                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - _hazardSlowdownFactor * GameSystem.HazardManager.ActiveHazards.Count;
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
                 return speed;
             }
@@ -49,47 +49,47 @@ namespace ZeroPrep.MineBuddies
             
         }
 
-        void Start()
+        public CarriageMovement()
         {
-            configManager = FindObjectOfType<ConfigManager>();
-            speedOverride = 0f;
+            _configManager = GameObject.FindObjectOfType<ConfigManager>();
+            _speedOverride = 0f;
             #region config
-            HazardSlowdownFactor = configManager.config.HazardSlowDownFactor;
+            _hazardSlowdownFactor = _configManager.config.HazardSlowDownFactor;
             #endregion
 
         }
 
         // Update is called once per frame
-        void Update()
+        public void Tick(float deltaTime)
         {
             float newTargetSpeed = 0f;
-            if (!brake)
+            if (!_brake)
                 newTargetSpeed = CalculateSpeed();
 
-            if (newTargetSpeed != targetSpeed) //need to restart the speed shifting process
+            if (newTargetSpeed > _targetSpeed || newTargetSpeed < _targetSpeed) //need to restart the speed shifting process
             {
-                speedChangeProgress = 0f;
-                targetSpeed = newTargetSpeed;
-                startSpeed = currentSpeed;
+                _speedChangeProgress = 0f;
+                _targetSpeed = newTargetSpeed;
+                _startSpeed = _currentSpeed;
             }
 
-            if (currentSpeed != targetSpeed)
+            if ((_currentSpeed - _targetSpeed)*(_currentSpeed - _targetSpeed) > 0.01) //Not yet at target speed
             {
-                currentSpeed = Mathf.Lerp(startSpeed, targetSpeed, speedChangeProgress);
-                speedChangeProgress += Time.deltaTime;
-                if (speedChangeProgress >= 1f) currentSpeed = targetSpeed;
+                _currentSpeed = Mathf.Lerp(_startSpeed, _targetSpeed, _speedChangeProgress);
+                _speedChangeProgress += deltaTime;
+                if (_speedChangeProgress >= 1f) _currentSpeed = _targetSpeed;
             }
 
-            distanceCovered += currentSpeed * Time.deltaTime;
+            _distanceCovered += _currentSpeed * deltaTime;
             
             //transform.position += new Vector3(currentSpeed * Time.deltaTime,0,0);
             if (Odometer != null)
             {
-                Odometer.SetText($"{(int)distanceCovered}");
+                Odometer.SetText($"{(int)_distanceCovered}");
             }
             if (Speedometer != null)
             {
-                Speedometer.SetText($"{currentSpeed:F} m/s");
+                Speedometer.SetText($"{_currentSpeed:F} m/s");
             }
         }
 

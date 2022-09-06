@@ -7,14 +7,14 @@ namespace ZeroPrep.MineBuddies
 {
     public class CarriageHealthBar : MoreMountains.Tools.MMHealthBar
     {
-        MoreMountains.Tools.MMProgressBar healthBar;
+        MoreMountains.Tools.MMProgressBar _healthBar;
         [SerializeField]
         public Transform healthBarPosition;
         void Start()
         {
              
-            healthBar = GetComponentInChildren<MMProgressBar>();
-            healthBar.transform.position = healthBarPosition.position;
+            _healthBar = GetComponentInChildren<MMProgressBar>();
+            _healthBar.transform.position = healthBarPosition.position;
         }
 
 

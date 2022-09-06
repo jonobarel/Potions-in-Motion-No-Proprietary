@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ZeroPrep.MineBuddies
 {
     public class WheelRotation : MonoBehaviour
     {
+        [FormerlySerializedAs("RotationSpeedFactor")]
         [SerializeField]
         [Range(0f, 100f)]
-        float RotationSpeedFactor = 30f;
+        float rotationSpeedFactor = 30f;
         // Start is called before the first frame update
         void Start()
         {
@@ -18,8 +20,8 @@ namespace ZeroPrep.MineBuddies
         // Update is called once per frame
         void Update()
         {
-            var cm = Carriage.Instance.GetComponent<CarriageMovement>();
-            transform.Rotate( new Vector3(0, 0, -RotationSpeedFactor*Time.deltaTime * cm.CurrentSpeed));
+            float currentSpeed = Carriage.Instance.CurrenSpeed;
+            transform.Rotate( new Vector3(0, 0, -rotationSpeedFactor*Time.deltaTime * currentSpeed));
         }
     }
 }

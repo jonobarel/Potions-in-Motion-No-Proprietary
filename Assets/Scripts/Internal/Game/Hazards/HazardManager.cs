@@ -25,7 +25,7 @@ namespace ZeroPrep.MineBuddies
         private GameObject hazardEffectTriggers;
         public GameObject HazardEffectTriggers
         {
-            get { if (hazardEffectTriggers == null) hazardEffectTriggers = Carriage.Instance.HazardEffectTriggers; return hazardEffectTriggers; }
+            get { if (hazardEffectTriggers == null) hazardEffectTriggers = Carriage.Instance.hazardEffectTriggers; return hazardEffectTriggers; }
         }
         
         public Transform HazardDistanceSliderContainer;

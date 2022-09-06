@@ -439,9 +439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 845252b3c4404cf4cb85a6df2b17c2b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FuelCanisterPrefab: {fileID: 1273923128057797712, guid: da8a401f34a5a254f81fc909e55ec8b3,
+  fuelCanisterPrefab: {fileID: 1273923128057797712, guid: da8a401f34a5a254f81fc909e55ec8b3,
     type: 3}
-  SpawnPoint: {fileID: 2000669502}
+  spawnPoint: {fileID: 2000669502}
 --- !u!114 &113831328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,11 +688,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 548829274}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+      propertyPath: hazardSpawner
+      value: 
+      objectReference: {fileID: 548829274}
+    - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: HazardActivator
       value: 
       objectReference: {fileID: 1624563703}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+      propertyPath: hazardActivator
+      value: 
+      objectReference: {fileID: 1624563703}
+    - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: HazardEffectTriggers
+      value: 
+      objectReference: {fileID: 1228329879}
+    - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+      propertyPath: hazardEffectTriggers
       value: 
       objectReference: {fileID: 1228329879}
     - target: {fileID: 502426216, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
@@ -1821,10 +1833,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2052adb627d364da8771ae96b06dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  configManager: {fileID: 0}
+  distanceCovered: 0
   speedOverride: 0
+  currentSpeed: 0
   Odometer: {fileID: 1930068950}
   Speedometer: {fileID: 639916715}
+  brake: 0
   HazardSlowdownFactor: 0.1
+  startSpeed: 0
+  targetSpeed: 0
+  speedChangeProgress: 0
 --- !u!1 &933005080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,19 +3630,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2935101838915944760}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2009857587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009857585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9036e9c5df007b347a64a53c54a1571a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DistanceSlider: {fileID: 1836619557}
 --- !u!1 &2084298508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6378069146465415172, guid: 57a937463fd14d64687cc9034e04207b,
