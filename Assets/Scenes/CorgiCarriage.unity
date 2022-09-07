@@ -2030,8 +2030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f77e12344ee8a4fb80010e95dd7d5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 41178593}
-  hazardManager: {fileID: 0}
+  managers: {fileID: 41178593}
+  hazardManagerMono: {fileID: 0}
   configManager: {fileID: 1606095350}
   analytics: {fileID: 745472500}
 --- !u!114 &971376514
@@ -3264,7 +3264,6 @@ GameObject:
   - component: {fileID: 1829463806}
   - component: {fileID: 1829463807}
   - component: {fileID: 1829463808}
-  - component: {fileID: 1829463809}
   m_Layer: 21
   m_Name: LevelManager
   m_TagString: Untagged
@@ -3393,18 +3392,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.188393, y: 5.86, z: 10}
   m_Center: {x: 0.09307027, y: 0, z: 0}
---- !u!114 &1829463809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829463804}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cec153d4e15e89c469b04215e70b93db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1832567703
 PrefabInstance:
   m_ObjectHideFlags: 0

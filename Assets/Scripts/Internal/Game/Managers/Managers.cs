@@ -35,24 +35,24 @@ namespace ZeroPrep.MineBuddies
         }
         public List<HazardType> AvailableHazardTypes
         {
-            get { if (availableHazardTypes == null)
+            get { if (_availableHazardTypes == null)
                     InitAvailableHazards();
-            return availableHazardTypes; 
+                return _availableHazardTypes; 
                     }
         }
 
         private void InitAvailableHazards()
         {
-            availableHazardTypes = new List<HazardType>();
+            _availableHazardTypes = new List<HazardType>();
             ActionModule[] modules = FindObjectsOfType<ActionModule>();
             foreach (var m in modules)
             {
-                availableHazardTypes.Add(m.hazardType);
+                _availableHazardTypes.Add(m.hazardType);
             }
 
         }
 
-        List<HazardType> availableHazardTypes;
+        List<HazardType> _availableHazardTypes;
         private void Awake()
         {
             RandomSeed = GetRandomSeed();
@@ -88,7 +88,7 @@ namespace ZeroPrep.MineBuddies
         {
             GameSystem.Instance.analytics.Initialize();
 
-            Debug.Log($"{name}: available hazard types in this session - {availableHazardTypes}");
+            Debug.Log($"{name}: available hazard types in this session - {_availableHazardTypes}");
 
 
         }
