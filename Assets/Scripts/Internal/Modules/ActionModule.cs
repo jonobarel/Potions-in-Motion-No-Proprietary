@@ -7,7 +7,7 @@ namespace ZeroPrep.MineBuddies
 {
     public class ActionModule : ModuleBase
     {
-        public GameManager.HazardType hazardType;
+        public Managers.HazardType hazardType;
 
         PowerModule Engine { get { return Carriage.Instance.Engine; } }
         [SerializeField]

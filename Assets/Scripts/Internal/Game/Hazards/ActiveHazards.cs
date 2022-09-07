@@ -7,23 +7,23 @@ using UnityEngine.UI;
 
 namespace ZeroPrep.MineBuddies
 {
-    [RequireComponent(typeof(HazardManager))]
+    [RequireComponent(typeof(HazardManagerMono))]
     public class ActiveHazards : MonoBehaviour
     {
         List<Hazard> activeHazardsList = new List<Hazard>();
         [SerializeField] 
         VerticalLayoutGroup activeHazardQueueUI;
 
-        public HazardManager HazardManager {
+        public HazardManagerMono HazardManagerMono {
             get {
-                if (hazardManager == null) hazardManager = GetComponent<HazardManager>();
-                if (hazardManager != null) return hazardManager;
+                if (_hazardManagerMono == null) _hazardManagerMono = GetComponent<HazardManagerMono>();
+                if (_hazardManagerMono != null) return _hazardManagerMono;
                 else Debug.LogError($"{name}: could not find HazardManager object");
                 throw new System.Exception("HazardManager not found");
             } 
         }
 
-        private HazardManager hazardManager;
+        private HazardManagerMono _hazardManagerMono;
         
 
         [SerializeField]
@@ -44,7 +44,7 @@ namespace ZeroPrep.MineBuddies
 
             if (activeHazardsList.Count >= GameSystem.Instance.configManager.config.MaxActiveHazards)
             {
-                HazardManager.hazardSpawner.enabled = false;
+                HazardManagerMono.hazardSpawner.enabled = false;
 
                 //Carriage.Instance.Stalled = true;
                 var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
@@ -65,7 +65,7 @@ namespace ZeroPrep.MineBuddies
                 activeHazardsList.Remove(h);
                 if (activeHazardsList.Count < GameSystem.Instance.configManager.config.MaxActiveHazards)
                 {
-                    HazardManager.hazardSpawner.enabled = true;
+                    HazardManagerMono.hazardSpawner.enabled = true;
 
                     //Carriage.Instance.Stalled = false;
                     var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
@@ -81,7 +81,7 @@ namespace ZeroPrep.MineBuddies
             }
         }
 
-        public Hazard FindTop(GameManager.HazardType t)
+        public Hazard FindTop(Managers.HazardType t)
         {
             var h_list = (from hazard in activeHazardsList
                      where hazard.type == t

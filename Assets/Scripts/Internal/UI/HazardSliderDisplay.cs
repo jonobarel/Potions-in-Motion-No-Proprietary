@@ -16,7 +16,7 @@ namespace ZeroPrep.MineBuddies
                 if (value != null)
                 {
                     
-                    var spr = GameSystem.Instance.hazardManager.GetIconForHazardType(value.type);
+                    var spr = GameSystem.Instance.hazardManagerMono.GetIconForHazardType(value.type);
                     if (spr != null)
                     {
                         hazardIcon.sprite = spr;

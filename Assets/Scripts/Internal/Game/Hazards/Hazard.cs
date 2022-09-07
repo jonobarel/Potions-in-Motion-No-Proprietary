@@ -10,7 +10,7 @@ namespace ZeroPrep.MineBuddies
     {
         public static int index = 0;
 
-        public GameManager.HazardType type;
+        public Managers.HazardType type;
         public bool isActive = false;
         public ActiveHazardUI activeUI;
         public MoreMountains.CorgiEngine.Health MMHealth;
@@ -35,7 +35,7 @@ namespace ZeroPrep.MineBuddies
 
            if (positionSlider != null)
             {
-                var distanceToActivatorSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
+                var distanceToActivatorSqr = (transform.position - GameSystem.Instance.hazardManagerMono.hazardActivator.transform.position).sqrMagnitude;
                 positionSlider.value = Mathf.Sqrt(distanceToActivatorSqr / startingDistanceSqr);
                 if (isActive)
                     GameObject.Destroy(positionSlider.gameObject);
@@ -51,15 +51,15 @@ namespace ZeroPrep.MineBuddies
             MMdamageOnTouch = GetComponent<MoreMountains.CorgiEngine.DamageOnTouch>();
             MMdamageOnTouch.DamageCaused = GameSystem.Instance.configManager.config.HazardDamageRating;
 
-            SetType(GameSystem.GameManager.AvailableHazardTypes[Random.Range(0, GameSystem.GameManager.AvailableHazardTypes.Count)]);
+            SetType(GameSystem.Managers.AvailableHazardTypes[Random.Range(0, GameSystem.Managers.AvailableHazardTypes.Count)]);
             name = $"Hazard-{type}";
             //Debug.Log($"{name}: type {type}");
             //Spawn the timeline indicator
-            var hazardManager = GameSystem.Instance.hazardManager.GetComponent<HazardManager>();
+            var hazardManager = GameSystem.Instance.hazardManagerMono.GetComponent<HazardManagerMono>();
             FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.HazardSpawn, type, 1, "hazard spawned", id);
             positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
             positionSlider.GetComponent<HazardSliderDisplay>().Hazard = this;
-            startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManager.hazardActivator.transform.position).sqrMagnitude;
+            startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManagerMono.hazardActivator.transform.position).sqrMagnitude;
         }
 
         internal void ResumeHazardsAdvancement()
@@ -72,7 +72,7 @@ namespace ZeroPrep.MineBuddies
             GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().MovementSpeed = 0;
         }
 
-        public void SetType(GameManager.HazardType t)
+        public void SetType(Managers.HazardType t)
         {
             type = t;
         }
@@ -98,7 +98,7 @@ namespace ZeroPrep.MineBuddies
         public void Activate()
         {
             isActive = true;
-            GameSystem.Instance.hazardManager.ActiveHazards.Add(this);
+            GameSystem.Instance.hazardManagerMono.ActiveHazards.Add(this);
             FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.HazardActivate, type, 1, "hazard activated", id);
             GetComponent<MoreMountains.CorgiEngine.CharacterHorizontalMovement>().WalkSpeed = Helpers.Config.HazardProgressAfterActivation;
             //Debug.Log($"{name}: activated");
@@ -108,7 +108,7 @@ namespace ZeroPrep.MineBuddies
         {
             isActive = false;
             FindObjectOfType<AnalyticsManager>().LogEvent("", Analytics.LogAction.DestroyHazard, type, 1, "hazard destroyed", id);
-            GameSystem.Instance.hazardManager.ActiveHazards.Remove(this);
+            GameSystem.Instance.hazardManagerMono.ActiveHazards.Remove(this);
             activeUI.GetComponent<Animate>().DoFadeAnimation();
             GameObject.Destroy(activeUI.gameObject, 1f);
             

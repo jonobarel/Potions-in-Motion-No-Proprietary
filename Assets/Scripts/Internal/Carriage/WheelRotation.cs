@@ -11,12 +11,7 @@ namespace ZeroPrep.MineBuddies
         [SerializeField]
         [Range(0f, 100f)]
         float rotationSpeedFactor = 30f;
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
+        
         // Update is called once per frame
         void Update()
         {

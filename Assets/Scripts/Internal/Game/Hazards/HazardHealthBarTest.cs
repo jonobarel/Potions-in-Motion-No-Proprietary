@@ -8,7 +8,7 @@ namespace ZeroPrep.MineBuddies
 {
     public class HazardHealthBarTest : MonoBehaviour
     {
-        public GameManager.HazardType type;
+        public Managers.HazardType type;
         public bool isActive = false;
         public ActiveHazardUI activeUI;
         public MoreMountains.Tools.MMProgressBar HealthBar;

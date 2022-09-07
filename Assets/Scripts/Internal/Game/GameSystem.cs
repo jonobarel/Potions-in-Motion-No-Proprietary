@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace ZeroPrep.MineBuddies
 {
     public class GameSystem : MonoBehaviour
     {
-        public GameManager gameManager;
-        public HazardManager hazardManager;
+        [FormerlySerializedAs("gameManager")] public Managers managers;
+        [FormerlySerializedAs("hazardManager")] public HazardManagerMono hazardManagerMono;
 
         public ConfigManager configManager;
         public AnalyticsManager analytics;
 
-        public static GameManager GameManager { get {return GameSystem.Instance.gameManager;} }
-        public static HazardManager HazardManager { 
+        public static Managers Managers { get {return GameSystem.Instance.managers;} }
+        public static HazardManagerMono HazardManagerMono { 
             get { 
-                if (Instance.hazardManager == null) 
-                    Instance.hazardManager = FindObjectOfType<HazardManager>();
-                return GameSystem.Instance.hazardManager;
+                if (Instance.hazardManagerMono == null) 
+                    Instance.hazardManagerMono = FindObjectOfType<HazardManagerMono>();
+                return GameSystem.Instance.hazardManagerMono;
             } 
         }
         
@@ -75,8 +76,8 @@ namespace ZeroPrep.MineBuddies
                 DestroyImmediate(gameObject);
                 return;
             }
-            gameManager = GetComponentInChildren<GameManager>();
-            hazardManager = GetComponentInChildren<HazardManager>();
+            managers = GetComponentInChildren<Managers>();
+            hazardManagerMono = GetComponentInChildren<HazardManagerMono>();
             
             configManager = GetComponentInChildren<ConfigManager>();
         }

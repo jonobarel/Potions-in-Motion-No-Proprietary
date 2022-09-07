@@ -16,14 +16,14 @@ namespace ZeroPrep.MineBuddies
             if (!ready)
             {
                 Debug.Log("AnalyticsManager init");
-                analytics = new Analytics(GameSystem.Instance.gameManager.SessionID);
+                analytics = new Analytics(GameSystem.Instance.managers.SessionID);
                 ready = true;
             }
         }
 
         public void LogEvent(string playerID, 
             Analytics.LogAction action, 
-            GameManager.HazardType hazardType,
+            Managers.HazardType hazardType,
             float logValue, string logData, int id = 0)
         {
             if (!ready)

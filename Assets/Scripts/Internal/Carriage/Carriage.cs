@@ -58,7 +58,7 @@ namespace ZeroPrep.MineBuddies
                 _engine = FindObjectOfType<PowerModule>();
             Debug.Log($"{name}: engine found");
             
-            _carriageMovement = new CarriageMovement(GameSystem.GameManager.Odometer, GameSystem.GameManager.Speedometer);
+            _carriageMovement = new CarriageMovement(GameSystem.Managers.Odometer, GameSystem.Managers.Speedometer);
             
             _health = GetComponent<MoreMountains.CorgiEngine.Health>();
             Debug.Log($"{name}: Health component: {_health.name}");
@@ -84,7 +84,7 @@ namespace ZeroPrep.MineBuddies
         public void OnDeath()
         {
             _carriageMovement.ToggleBrake();
-            GameSystem.Instance.analytics.LogEvent("Carriage", Analytics.LogAction.GameEnd, GameManager.HazardType.A, _carriageMovement.DistanceCovered, "Total distance");
+            GameSystem.Instance.analytics.LogEvent("Carriage", Analytics.LogAction.GameEnd, Managers.HazardType.A, _carriageMovement.DistanceCovered, "Total distance");
         }
     }
 }

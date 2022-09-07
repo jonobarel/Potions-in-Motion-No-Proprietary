@@ -40,7 +40,7 @@ namespace ZeroPrep.MineBuddies
             public int sessionID;
             public string playerID;
             public LogAction action;
-            public GameManager.HazardType hazardType;
+            public Managers.HazardType hazardType;
             public float value;
             public string data;
             public int id;
@@ -68,7 +68,7 @@ namespace ZeroPrep.MineBuddies
 
 
         public void LogEvent(string playerID, LogAction action, 
-            GameManager.HazardType hazardType, float logValue, string logData, int id = 0)
+            Managers.HazardType hazardType, float logValue, string logData, int id = 0)
         {
             LogEntry log = new LogEntry();
             log.timestamp = DateTime.Now;

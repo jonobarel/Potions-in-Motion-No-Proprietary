@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 
 namespace ZeroPrep.MineBuddies
 {
-    public class GameManager : MonoBehaviour
+    public class Managers : MonoBehaviour
     {
+        
         //TODO: move these to a UI manager
         [SerializeField]
         private TextMeshProUGUI _odometer;
@@ -21,7 +22,7 @@ namespace ZeroPrep.MineBuddies
         float hazardActivatorDistance = -1;
 
         public Character[]  playerPrefabs;
-
+        
         public int RandomSeed;
         public Transform[] SpawnPoints;
 
