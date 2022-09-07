@@ -36,23 +36,6 @@ namespace ZeroPrep.MineBuddies
             moduleActivator = GetComponent<MoreMountains.CorgiEngine.ButtonActivated>();
         }
 
-        // Update is called once per frame
-        
-        public override void Interact(bool isStart, Dwarf player)
-        {
-            
-            if (isStart)
-            {//begin interaction
-                Debug.Log($"{name} - begin activation by {player.name}");
-                //Engine.Connect(this);
-            }
-            else
-            {
-                Debug.Log($"{name} - stop");
-                //Engine.Disconnect(this);
-            }
-        }
-
         public void Update()
         {
             if (Carriage.Instance.Engine.CurrentFuel < Helpers.Config.ModuleFuelConsumption)

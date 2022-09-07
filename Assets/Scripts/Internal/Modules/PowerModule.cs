@@ -92,18 +92,6 @@ namespace ZeroPrep.MineBuddies
             fuelGuage.UpdateBar01(FuelLevel);
         }
 
-        public override void Interact(bool isStart, Dwarf player)
-        {
-            if (isStart)
-            {
-                if (!isRefueling && refuelCooldownStatus == 0)
-                {
-                    DoRefuel();
-                }
-                else Debug.Log($"{ player.name}: cannot refule. IsRefueling: {isRefueling}, cooldownTimer: {refuelCooldownStatus}s");
-
-            }
-        }
 
         public void DoRefuel()
         {

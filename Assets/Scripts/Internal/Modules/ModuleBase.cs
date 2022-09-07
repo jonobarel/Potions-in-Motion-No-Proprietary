@@ -18,8 +18,6 @@ namespace ZeroPrep.MineBuddies
             Debug.Log($"{name}: upgraded");
         }
 
-        public abstract void Interact(bool isStart, Dwarf player); //call this function to make the machine work and subtract its power.
-
         public void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Player"))
