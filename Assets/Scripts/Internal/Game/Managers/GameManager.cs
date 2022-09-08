@@ -30,8 +30,8 @@ namespace ZeroPrep.MineBuddies
             else
             {
                 _instance = this;
-                _hazardManager = new HazardManager();
-                _analytics = new AnalyticsManager();
+                //_hazardManager = new HazardManager();
+                //_analytics = new AnalyticsManager();
                 
             }
 

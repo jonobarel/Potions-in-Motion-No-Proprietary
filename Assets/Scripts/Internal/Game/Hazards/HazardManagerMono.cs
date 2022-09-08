@@ -50,18 +50,11 @@ namespace ZeroPrep.MineBuddies
         HazardIcons hazardIcons;
         // Start is called before the first frame update
 
-        public HazardManager(HazardIcons icons)
-        {
-            hazardIcons = icons;
-            activeHazards = new ActiveHazards();
-            
-
-        }
-
         void Start()
         {
             // Adjust position of Hazard UI Effect Triggers
 
+            hazardIcons = GetComponent<HazardIcons>();
             activeHazards = GetComponent<ActiveHazards>();
 
             #region read configuration
