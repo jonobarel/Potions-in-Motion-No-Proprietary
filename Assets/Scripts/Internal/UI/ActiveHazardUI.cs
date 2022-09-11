@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 namespace ZeroPrep.MineBuddies
 {
     public class ActiveHazardUI : MonoBehaviour
     {
         //This class displays the ActiveHazard in the UI
-        [SerializeField]
-        Hazard activeHazardObj;
-        public Hazard ActiveHazardObj { get { return activeHazardObj; }
+        [FormerlySerializedAs("activeHazardObj")] [SerializeField]
+        HazardMono activeHazardMonoObj;
+        public HazardMono ActiveHazardMonoObj { get { return activeHazardMonoObj; }
         set { 
-                activeHazardObj = value;
+                activeHazardMonoObj = value;
                 if (iconSprite == null)
                 {
                     iconSprite = FindIconForHazard();
@@ -50,9 +51,9 @@ namespace ZeroPrep.MineBuddies
         {
             Sprite s = null;
 
-            if (activeHazardObj != null)
+            if (activeHazardMonoObj != null)
             {
-                s = GameSystem.HazardManagerMono.GetIconForHazardType(activeHazardObj.type);
+                s = GameSystem.HazardManagerMono.GetIconForHazardType(activeHazardMonoObj.type);
                 //Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
             }
                 return s;

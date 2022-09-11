@@ -10,7 +10,7 @@ namespace ZeroPrep.MineBuddies
     [RequireComponent(typeof(HazardManagerMono))]
     public class ActiveHazards : MonoBehaviour
     {
-        List<Hazard> activeHazardsList = new List<Hazard>();
+        List<HazardMono> activeHazardsList = new List<HazardMono>();
         [SerializeField] 
         VerticalLayoutGroup activeHazardQueueUI;
 
@@ -30,7 +30,7 @@ namespace ZeroPrep.MineBuddies
         ActiveHazardUI activeHazardUIPrefab;
         public int Count { get { return activeHazardsList.Count; } }
 
-        public void Add(Hazard h)
+        public void Add(HazardMono h)
         {
             if (!activeHazardsList.Contains(h))
             {
@@ -38,7 +38,7 @@ namespace ZeroPrep.MineBuddies
                 //Instantiate the UI for the new Hazard.
                 ActiveHazardUI uiDisplay = Instantiate(activeHazardUIPrefab, activeHazardQueueUI.transform);
                 uiDisplay.transform.SetAsLastSibling();
-                uiDisplay.ActiveHazardObj = h;
+                uiDisplay.ActiveHazardMonoObj = h;
                 h.activeUI = uiDisplay;
             }
 
@@ -47,10 +47,10 @@ namespace ZeroPrep.MineBuddies
                 HazardManagerMono.hazardSpawner.enabled = false;
 
                 //Carriage.Instance.Stalled = true;
-                var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
+                var inActiveHazards = (from hazard in FindObjectsOfType<HazardMono>()
                                             where hazard.isActive == false
                                             select hazard);
-                foreach (Hazard iah in inActiveHazards)
+                foreach (HazardMono iah in inActiveHazards)
                 {
                     iah.PauseHazardsAdvancement();
                 }
@@ -58,7 +58,7 @@ namespace ZeroPrep.MineBuddies
             
         }
 
-        public void Remove(Hazard h)
+        public void Remove(HazardMono h)
         {
             if (activeHazardsList.Contains(h))
             {
@@ -68,10 +68,10 @@ namespace ZeroPrep.MineBuddies
                     HazardManagerMono.hazardSpawner.enabled = true;
 
                     //Carriage.Instance.Stalled = false;
-                    var inActiveHazards = (from hazard in FindObjectsOfType<Hazard>()
+                    var inActiveHazards = (from hazard in FindObjectsOfType<HazardMono>()
                                            where hazard.isActive == false
                                            select hazard);
-                    foreach (Hazard iah in inActiveHazards)
+                    foreach (HazardMono iah in inActiveHazards)
                     {
                         iah.ResumeHazardsAdvancement();
                     }
@@ -81,13 +81,13 @@ namespace ZeroPrep.MineBuddies
             }
         }
 
-        public Hazard FindTop(Managers.HazardType t)
+        public HazardMono FindTop(Managers.HazardType t)
         {
             var h_list = (from hazard in activeHazardsList
                      where hazard.type == t
                      orderby hazard.gameObject.transform.GetSiblingIndex() ascending
                      select hazard);
-            if (h_list.Count<Hazard>() == 0) return null;
+            if (h_list.Count<HazardMono>() == 0) return null;
             else return h_list.First();
             
                 

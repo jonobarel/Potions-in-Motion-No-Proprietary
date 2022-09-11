@@ -47,20 +47,20 @@ namespace ZeroPrep.MineBuddies
 
         public void DamageHazard()
         {
-            Hazard hazard = GetTargetHazard();
-            if (hazard == null || !Carriage.Instance.Engine.ModuleFuel() || !hazard.isActive) return;
+            HazardMono hazardMono = GetTargetHazard();
+            if (hazardMono == null || !Carriage.Instance.Engine.ModuleFuel() || !hazardMono.isActive) return;
             else
             {
-                GameSystem.Instance.analytics.LogEvent(ActivatingPlayer, Analytics.LogAction.DamageHazard, hazardType, DamageToHazard, "player damaged hazard", hazard.id);
-                hazard.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
-                hazard.UpdateUIHealth();
+                GameSystem.Instance.analytics.LogEvent(ActivatingPlayer, Analytics.LogAction.DamageHazard, hazardType, DamageToHazard, "player damaged hazard", hazardMono.id);
+                hazardMono.MMHealth.Damage(DamageToHazard, gameObject, 0.5f, 0f, Vector3.zero);
+                hazardMono.UpdateUIHealth();
             }
         }
         public void LogActivatingPlayer()
         {
 
         }
-        Hazard GetTargetHazard()
+        HazardMono GetTargetHazard()
         {
             //find closest Hazard  of type Type to the carriage
             /*
@@ -72,7 +72,7 @@ namespace ZeroPrep.MineBuddies
             if (h_list.Count<Hazard>() == 0) return null;
             */
 
-            Hazard[] hazardList = FindObjectsOfType<Hazard>();
+            HazardMono[] hazardList = FindObjectsOfType<HazardMono>();
             var hazard = from h in hazardList
                           where h.type == hazardType
                           orderby h.SqrDistanceToCarriage() ascending

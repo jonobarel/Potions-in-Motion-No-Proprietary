@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.CorgiEngine;
+using UnityEngine.Serialization;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -10,7 +11,7 @@ namespace ZeroPrep.MineBuddies
     public class HazardManagerMono : MonoBehaviour
     {
         private ActiveHazards activeHazards;
-        public Dictionary<Hazard, float> hazardPositions = new Dictionary<Hazard, float>();
+        public Dictionary<HazardMono, float> hazardPositions = new Dictionary<HazardMono, float>();
 
         public Dictionary<Managers.HazardType, ActionModule> HazardModuleMap;
 
@@ -45,8 +46,8 @@ namespace ZeroPrep.MineBuddies
 
         Coroutine hazardGeneratorCoroutine;
 
-        [SerializeField]
-        Hazard hazardPrefab;
+        [FormerlySerializedAs("hazardPrefab")] [SerializeField]
+        HazardMono hazardMonoPrefab;
         HazardIcons hazardIcons;
         // Start is called before the first frame update
 

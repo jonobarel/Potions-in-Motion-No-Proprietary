@@ -14,7 +14,7 @@ namespace ZeroPrep.MineBuddies
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
-            Hazard h = collision.GetComponent<Hazard>();
+            HazardMono h = collision.GetComponent<HazardMono>();
             if (h != null)
             {
                 h.Activate();

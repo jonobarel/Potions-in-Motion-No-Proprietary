@@ -9,8 +9,8 @@ namespace ZeroPrep.MineBuddies
     {
         public Transform iconContainer;
         public Image hazardIcon;
-        Hazard hazard;
-        public Hazard Hazard { 
+        HazardMono _hazardMono;
+        public HazardMono HazardMono { 
             set
             {
                 if (value != null)
@@ -21,7 +21,7 @@ namespace ZeroPrep.MineBuddies
                     {
                         hazardIcon.sprite = spr;
                         name = $"Slider {value.name}";
-                        hazard = value;
+                        _hazardMono = value;
                     }
                     else Debug.LogError($"{name}: could not set hazard icon");
 
