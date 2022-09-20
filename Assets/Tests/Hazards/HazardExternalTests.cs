@@ -13,12 +13,14 @@ namespace ZeroPrep.Minebuddies
         private bool _treatmentTriggerResult = false;
 
         private bool _expireTriggerResult = false;
+        private bool _clearTriggerResult = false;
+        private bool _advanceTriggerResult = false;
         
         /// <summary>
         /// Test <c>HazardHealthReachesZero</c> tests that when treating the Hazard, it will reach 0.
         /// </summary>
         [Test]
-        public void HazardHeatlhReachesZero()
+        public void HazardHealthReachesZero()
         {
             HazardExternal hzTest = new HazardExternal(0.5f, Managers.HazardType.A);
             hzTest.Treat(0.25f);
@@ -35,6 +37,8 @@ namespace ZeroPrep.Minebuddies
         {
             HazardExternal hzTest = new HazardExternal(0.5f, Managers.HazardType.A);
             hzTest.Advance(1f);
+            Assert.Less(hzTest.Progress, 1f, "After partial progress, Progress should be less than 1");
+            Assert.Greater(hzTest.Progress,0f, "after partial progress, Progress should be gt 0");
             Assert.AreEqual(hzTest.Progress, 0.5f);
             hzTest.Advance(1f);
             Assert.AreEqual(hzTest.Progress, 1.0f);
@@ -51,6 +55,16 @@ namespace ZeroPrep.Minebuddies
             Assert.AreEqual(((HazardExternal)h).Type, Managers.HazardType.B );
         }
         
+        [Test]
+        public void HazardTreatmentTriggersEvent()
+        {
+            HazardBase.OnTreat += TestTreatmentEventTrigger;
+            HazardExternal hzTreat = new HazardExternal(0.5f, Managers.HazardType.B);
+            hzTreat.Treat(0.5f);
+            Assert.IsTrue(_treatmentTriggerResult);
+            HazardBase.OnTreat -= TestTreatmentEventTrigger;
+        }
+
         /// <summary>
         /// Method to be added to OnExpire.
         /// </summary>
@@ -59,25 +73,61 @@ namespace ZeroPrep.Minebuddies
         {
             _expireTriggerResult = true;
             Assert.NotNull(h);
-            Assert.AreEqual(((HazardExternal)h).Type, Managers.HazardType.B);
+            HazardExternal hzTest = (HazardExternal)h;
+            
+            Assert.AreEqual(hzTest.Type, Managers.HazardType.C);
         }
         
         [Test]
-        public void HazardTreatmentTriggersEvent()
-        {
-            HazardBase.OnTreat += TestTreatmentEventTrigger;
-            HazardExternal hzTreat = new HazardExternal(0.5f, Managers.HazardType.B);
-            hzTreat.Treat(1f);
-            Assert.IsTrue(_treatmentTriggerResult);
-        }
-
-        [Test]
-        public void HazardProgressTriggersEvent()
+        public void HazardProgressTriggersExpireEvent()
         {
             HazardBase.OnExpire += TestExpireEventTrigger;
-            HazardExternal hzExpire = new HazardExternal(1f, Managers.HazardType.B);
+            HazardExternal hzExpire = new HazardExternal(1f, Managers.HazardType.C);
             hzExpire.Advance(1f);
             Assert.IsTrue(_expireTriggerResult);
+            HazardBase.OnExpire -= TestExpireEventTrigger;
+        }
+
+        public void TestOnClearEvent(HazardBase h)
+        {
+            Assert.NotNull(h);
+            HazardExternal hz = (HazardExternal)h;
+            Assert.IsTrue(hz.Health <=0f);
+            _clearTriggerResult = true;
+        }
+        
+        [Test]
+        public void HazardClearTriggersEvent()
+        {
+            HazardBase.OnClear += TestOnClearEvent;
+
+            HazardExternal hzTest = new HazardExternal(1f, Managers.HazardType.C);
+            hzTest.Treat(0.5f);
+            Assert.IsFalse(_clearTriggerResult);
+            hzTest.Treat(10f);
+            Assert.IsTrue(_clearTriggerResult);
+            HazardBase.OnClear -= TestOnClearEvent;
+        }
+
+        public void HazardAdvanceTriggerMethod(HazardBase h)
+        {
+            Assert.NotNull(h);
+            HazardExternal hzTest = (HazardExternal)h;
+
+            Assert.AreEqual(hzTest.Type, Managers.HazardType.D, "mismatched hazard type");
+
+            _advanceTriggerResult = true;
+
+        }
+        [Test]
+        public void HazardAdvanceTriggersEvent()
+        {
+            HazardBase.OnAdvance += HazardAdvanceTriggerMethod;
+            HazardExternal hzTest = new HazardExternal(1f, Managers.HazardType.D);
+            hzTest.Advance(0.1f);
+            Assert.IsTrue(_advanceTriggerResult, "Event was not triggered");
+            HazardBase.OnAdvance -= HazardAdvanceTriggerMethod;
+
         }
         /*
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

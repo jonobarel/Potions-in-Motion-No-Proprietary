@@ -3,7 +3,7 @@ namespace ZeroPrep.MineBuddies
     public class HazardExternal : HazardBase
     {
         private Managers.HazardType _type;
-
+        
         public Managers.HazardType Type => _type;
         
         private float _speed;

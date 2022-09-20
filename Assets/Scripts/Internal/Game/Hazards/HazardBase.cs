@@ -7,6 +7,7 @@ namespace ZeroPrep.MineBuddies
     {
         private float _health = 1f;
 
+        
         /// <summary>
         /// Value between 1 and 0.
         /// This is the "health" or "life" of the hazard.
@@ -24,7 +25,7 @@ namespace ZeroPrep.MineBuddies
         public virtual void Advance(float delta)
         {
             _progress += delta;
-            OnAdvance?.Invoke();
+            OnAdvance?.Invoke(this);
 
             if (_progress >= 1f)
             {
@@ -67,7 +68,7 @@ namespace ZeroPrep.MineBuddies
         /// <summary>
         /// Register this event for updating UI-related fields.
         /// </summary>
-        public static event Action OnAdvance; 
+        public static event Action<HazardBase> OnAdvance; 
         
 
 
