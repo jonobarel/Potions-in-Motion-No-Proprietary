@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 using ZeroPrep.MineBuddies;
 
 
-namespace ZeroPrep.Minebuddies
+namespace ZeroPrep.MineBuddies
 {
     public class HazardExternalTests
     {

@@ -6,7 +6,8 @@ namespace ZeroPrep.MineBuddies
     public abstract class HazardBase
     {
         private float _health = 1f;
-
+        private Managers.HazardType _type;
+        public Managers.HazardType Type => _type;
         
         /// <summary>
         /// Value between 1 and 0.
@@ -33,6 +34,11 @@ namespace ZeroPrep.MineBuddies
             }
         }
 
+        protected HazardBase(Managers.HazardType type)
+        {
+            _type = type;
+            OnSpawn?.Invoke(this);
+        }
         public virtual void Treat(float treatment)
         {
             _health -= treatment;
@@ -54,6 +60,7 @@ namespace ZeroPrep.MineBuddies
             OnExpire?.Invoke(this);
         }
         
+        
         /// <summary>
         /// When the Hazard expires, i.e. its timer runs out, this event is invoked.
         /// This happens when an external hazard hits the carriage, when an internal hazard triggers damage, etc.
@@ -68,8 +75,9 @@ namespace ZeroPrep.MineBuddies
         /// <summary>
         /// Register this event for updating UI-related fields.
         /// </summary>
-        public static event Action<HazardBase> OnAdvance; 
-        
+        public static event Action<HazardBase> OnAdvance;
+
+        public static event Action<HazardBase> OnSpawn;
 
 
     }
