@@ -7,6 +7,17 @@ using UnityEngine.Serialization;
 
 namespace ZeroPrep.MineBuddies
 {
+    /// <summary>
+    /// What does HazardManagerMono *do*:
+    ///
+    /// - Holds the HazardIcons component
+    /// - Start():
+    ///     set distance of Hazard "escalation" effects (new HazardManager does this through floats)
+    ///     identifies modules (we won't need this)
+    ///     Adjusts position of HazardSpawner (won't need)
+    ///     Hazard Activator position (won't need because no separation of spawn and active)
+    ///     
+    /// </summary>
     [RequireComponent(typeof(HazardIcons))]
     public class HazardManagerMono : MonoBehaviour
     {
