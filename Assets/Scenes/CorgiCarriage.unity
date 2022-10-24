@@ -1464,7 +1464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &548829275
 Transform:
   m_ObjectHideFlags: 0
@@ -3010,6 +3010,7 @@ GameObject:
   - component: {fileID: 1698345437}
   - component: {fileID: 1698345438}
   - component: {fileID: 1698345439}
+  - component: {fileID: 1698345440}
   m_Layer: 0
   m_Name: HazardManager
   m_TagString: Untagged
@@ -3073,7 +3074,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698345435}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 079939f4c5fd70243bd9b2ccf41bedaa, type: 3}
   m_Name: 
@@ -3084,7 +3085,24 @@ MonoBehaviour:
   PositionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
     type: 3}
   hazardActivator: {fileID: 1624563705}
-  hazardPrefab: {fileID: 0}
+  hazardMonoPrefab: {fileID: 0}
+--- !u!114 &1698345440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698345435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09e297a323a4e69ac2f9f24b156b628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTime: 0.5
+  maxTime: 1.5
+  hazardDistanceSliderContainer: {fileID: 1836619558}
+  positionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
+    type: 3}
 --- !u!1 &1712932317
 GameObject:
   m_ObjectHideFlags: 0

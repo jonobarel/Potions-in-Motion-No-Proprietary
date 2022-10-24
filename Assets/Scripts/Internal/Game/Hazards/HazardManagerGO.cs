@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace ZeroPrep.MineBuddies
@@ -22,6 +23,9 @@ namespace ZeroPrep.MineBuddies
 
         private HazardManager _hazardManager = new HazardManager();
         private HazardSpawner _hazardSpawner;
+        
+        public Transform hazardDistanceSliderContainer;
+        public Slider positionSliderPrefab;
         
         public void Start()
         {

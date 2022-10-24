@@ -18,7 +18,7 @@ namespace ZeroPrep.MineBuddies
                     iconSprite = FindIconForHazard();
                     iconDisplay.sprite = iconSprite;
                 }
-            }
+        }
         }
 
         [SerializeField]
@@ -56,7 +56,7 @@ namespace ZeroPrep.MineBuddies
                 s = GameSystem.HazardManagerMono.GetIconForHazardType(activeHazardMonoObj.type);
                 //Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
             }
-                return s;
+            return s;
         }
 
     }
