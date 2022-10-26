@@ -26,6 +26,7 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
     
     void Start()
     {
+        _sliders = new Dictionary<HazardBase, GameObject>();
         HazardBase.OnSpawn += AddHazardToTimeline;
         HazardBase.OnClear += HazardCleared;
         HazardBase.OnExpire += HazardExpired;
@@ -40,7 +41,8 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
         Slider prefab = ProgressSliderPrefab;
 
         Slider positionSlider = Object.Instantiate(prefab, sliderContainer);
-            
+        _sliders.Add(h, positionSlider.gameObject);
+
         /*positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
         positionSlider.GetComponent<HazardSliderDisplay>().HazardMono = this;
         */
@@ -48,12 +50,21 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
 
     private void HazardExpired(HazardBase h)
     {
-        throw new System.NotImplementedException();
+        HardRemoveSliderFromTimeline(h);
     }
 
     private void HazardCleared(HazardBase h)
     {
-        throw new System.NotImplementedException();
+        HardRemoveSliderFromTimeline(h);
+    }
+
+    private void HardRemoveSliderFromTimeline(HazardBase h)
+    {
+        GameObject positionSlider;
+        if (_sliders.Remove(h, out positionSlider) && positionSlider)
+        {
+            GameObject.Destroy(positionSlider);
+        }
     }
     
 
