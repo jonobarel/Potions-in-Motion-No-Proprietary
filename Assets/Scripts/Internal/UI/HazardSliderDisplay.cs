@@ -28,9 +28,5 @@ namespace ZeroPrep.MineBuddies
                 }
             }
         }
-
-        
-
-
     }
 }

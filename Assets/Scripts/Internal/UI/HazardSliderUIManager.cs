@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 namespace ZeroPrep.MineBuddies
 {
@@ -9,15 +11,15 @@ namespace ZeroPrep.MineBuddies
     public class HazardSliderUIManager
     {
         // ReSharper disable once InconsistentNaming
-        private HazardTimeLineUI _hazardTimeLineUI;
+        private HazardSliderUIManagerGameObject _hazardTimeLineUI;
 
-        private Dictionary<HazardBase, GameObject> _sliders;
+
         
         #region ConstructorDestructor
 
-        public HazardSliderUIManager(HazardTimeLineUI hmGo)
+        public HazardSliderUIManager(HazardSliderUIManagerGameObject hmGo)
         {
-            _hazardTimeLineUI = hmGo;
+            _hazardTimeLineUI = hmGo.GetComponent<HazardSliderUIManagerGameObject>();
             HazardBase.OnSpawn += AddHazardToTimeline;
             HazardBase.OnClear += HazardCleared;
             HazardBase.OnExpire += HazardExpired;
@@ -26,6 +28,8 @@ namespace ZeroPrep.MineBuddies
         ~HazardSliderUIManager()
         {
             HazardBase.OnSpawn -= AddHazardToTimeline;
+            HazardBase.OnClear -= HazardCleared;
+            HazardBase.OnExpire -= HazardExpired;
         }
         #endregion 
         
@@ -43,8 +47,15 @@ namespace ZeroPrep.MineBuddies
         {
             //Instantiate the UI element and
             //add it to the timeline
+
+            Transform sliderContainer = _hazardTimeLineUI.Slidercontainer;
+            Slider prefab = _hazardTimeLineUI.ProgressSliderPrefab;
+
+            Slider positionSlider = Object.Instantiate(prefab, sliderContainer);
             
-            throw new System.NotImplementedException();
+            /*positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
+            positionSlider.GetComponent<HazardSliderDisplay>().HazardMono = this;
+            */
         }
         
         #endregion
