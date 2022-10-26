@@ -16,6 +16,7 @@ namespace ZeroPrep.MineBuddies
 
         private bool _stopSpawning = false;
 
+        
         private Array _types = Enum.GetValues((typeof(Managers.HazardType)));
 
         /*
@@ -68,6 +69,11 @@ namespace ZeroPrep.MineBuddies
         {
             Managers.HazardType newType = (Managers.HazardType)_types.GetValue(Random.Range(0, _types.Length));
             HazardExternal h = new HazardExternal(0.5f, newType);
+        }
+
+        public bool IsSpawning()
+        {
+            return !_stopSpawning;
         }
         
     }

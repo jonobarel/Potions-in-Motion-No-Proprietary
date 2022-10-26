@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using MoreMountains.CorgiEngine;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -19,9 +20,11 @@ namespace ZeroPrep.MineBuddies
         [Range(0.1f, 5f)]
         private float maxTime = 1.5f;
 
+        public bool TimedSpawning = true;
+        
         private bool _isPaused = false;
-
-        private HazardManager _hazardManager = new HazardManager();
+        
+        private HazardManager _hazardManager;
         private HazardSpawner _hazardSpawner;
         
         public Transform hazardDistanceSliderContainer;
@@ -29,13 +32,28 @@ namespace ZeroPrep.MineBuddies
         
         public void Start()
         {
+            _hazardManager = new HazardManager();
             _hazardSpawner = new HazardSpawner(minTime, maxTime);
+            if (TimedSpawning)
+            {
+                _hazardSpawner.StartSpawning(this);    
+            }
+            
         }
 
         public void Update()
         {
-            
+            _hazardManager.Update(Time.deltaTime);
+            //if should spawn but isn't
+            if (TimedSpawning && !_hazardSpawner.IsSpawning())
+            {
+                _hazardSpawner.StartSpawning(this);
+            }
+            //if should not spawn but is still spawning
+            else if (!TimedSpawning && _hazardSpawner.IsSpawning())
+            {
+                _hazardSpawner.StopSpawning();
+            }
         }
-        
     }
 }
