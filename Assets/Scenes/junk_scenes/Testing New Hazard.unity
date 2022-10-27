@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c6aa8317ee0fc4cac9956b96f22dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hazardProgressDisplayPrefab: {fileID: 1246312503}
+  _hazardProgressDisplayPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
+    type: 3}
   _hazardSliderContainer: {fileID: 715109225}
 --- !u!1001 &715109224
 PrefabInstance:
@@ -345,7 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minTime: 0.5
   maxTime: 1.5
-  TimedSpawning: 0
+  TimedSpawning: 1
   hazardDistanceSliderContainer: {fileID: 715109225}
   positionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
     type: 3}
@@ -544,18 +545,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1246312503 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4711964450389723549, guid: 720b3717e5f38dc4897624eb5be8bb0b,
-    type: 3}
-  m_PrefabInstance: {fileID: 715109224}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1541810539
 GameObject:
   m_ObjectHideFlags: 0

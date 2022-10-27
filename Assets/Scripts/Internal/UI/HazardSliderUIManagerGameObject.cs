@@ -42,6 +42,7 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
 
         Slider positionSlider = Object.Instantiate(prefab, sliderContainer);
         _sliders.Add(h, positionSlider.gameObject);
+        positionSlider.GetComponent<HazardSliderDisplay>().Init(h);
 
         /*positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
         positionSlider.GetComponent<HazardSliderDisplay>().HazardMono = this;

@@ -53,6 +53,7 @@ namespace ZeroPrep.MineBuddies
 
             Slider positionSlider = Object.Instantiate(prefab, sliderContainer);
             
+            
             /*positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
             positionSlider.GetComponent<HazardSliderDisplay>().HazardMono = this;
             */

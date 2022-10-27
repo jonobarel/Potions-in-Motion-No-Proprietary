@@ -29,17 +29,17 @@ namespace ZeroPrep.MineBuddies
         public void Update()
         {
            if (activeUI != null)
-            {
-                //activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
-            }
+           {
+               //activeUI.distanceBar.SetBar(SqrDistanceToCarriage(), 0, GameSystem.Instance.gameManager.HazardMaxDistance* GameSystem.Instance.gameManager.HazardMaxDistance);
+           }
 
            if (positionSlider != null)
-            {
-                var distanceToActivatorSqr = (transform.position - GameSystem.Instance.hazardManagerMono.hazardActivator.transform.position).sqrMagnitude;
-                positionSlider.value = Mathf.Sqrt(distanceToActivatorSqr / startingDistanceSqr);
-                if (isActive)
-                    GameObject.Destroy(positionSlider.gameObject);
-            }
+           {
+               var distanceToActivatorSqr = (transform.position - GameSystem.Instance.hazardManagerMono.hazardActivator.transform.position).sqrMagnitude;
+               positionSlider.value = Mathf.Sqrt(distanceToActivatorSqr / startingDistanceSqr);
+               if (isActive)
+                   GameObject.Destroy(positionSlider.gameObject);
+           }
 
         }
 
