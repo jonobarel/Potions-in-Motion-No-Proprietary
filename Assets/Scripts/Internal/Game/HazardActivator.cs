@@ -11,7 +11,7 @@ namespace ZeroPrep.MineBuddies
         {
 
         }
-
+        /*
         public void OnTriggerEnter2D(Collider2D collision)
         {
             HazardMono h = collision.GetComponent<HazardMono>();
@@ -21,7 +21,7 @@ namespace ZeroPrep.MineBuddies
                 
                 
             }
-        }
+        }*/
 
 
         // Update is called once per frame

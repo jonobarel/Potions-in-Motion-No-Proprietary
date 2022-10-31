@@ -25,7 +25,7 @@ namespace ZeroPrep.MineBuddies
         MoreMountains.CorgiEngine.CharacterHorizontalMovement horizontalMovement;
         MoreMountains.CorgiEngine.DamageOnTouch MMdamageOnTouch;
         
-
+        /*
         public void Update()
         {
            if (activeUI != null)
@@ -60,7 +60,7 @@ namespace ZeroPrep.MineBuddies
             positionSlider = Instantiate(hazardManager.PositionSliderPrefab, hazardManager.HazardDistanceSliderContainer);
             positionSlider.GetComponent<HazardSliderDisplay>().HazardMono = this;
             startingDistanceSqr = (transform.position - GameSystem.Instance.hazardManagerGo.hazardActivator.transform.position).sqrMagnitude;
-        }
+        }*/
 
         internal void ResumeHazardsAdvancement()
         {
@@ -95,6 +95,8 @@ namespace ZeroPrep.MineBuddies
 
 
         }
+        
+        /*
         public void Activate()
         {
             isActive = true;
@@ -113,5 +115,6 @@ namespace ZeroPrep.MineBuddies
             GameObject.Destroy(activeUI.gameObject, 1f);
             
         }
+        */
     }
 }

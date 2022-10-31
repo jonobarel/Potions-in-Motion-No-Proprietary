@@ -43,7 +43,7 @@ namespace ZeroPrep.MineBuddies
             {
                 // max speed is reduced by damage ratio
                 // speed is reduced by number of active hazards * slowdown factor 
-                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - _hazardSlowdownFactor * GameSystem.HazardManagerGo.ActiveHazards.Count;
+                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - _hazardSlowdownFactor * GameSystem.HazardManagerGo.ActiveHazardsCount();
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
                 return speed;
             }

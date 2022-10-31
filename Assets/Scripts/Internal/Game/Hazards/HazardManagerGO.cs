@@ -26,14 +26,20 @@ namespace ZeroPrep.MineBuddies
         
         private HazardManager _hazardManager;
         private HazardSpawner _hazardSpawner;
+        HazardIcons hazardIcons;
         
         public Transform hazardDistanceSliderContainer;
         public Slider positionSliderPrefab;
-        
-        public ActiveHazards
+
+        public int ActiveHazardsCount()
+        {
+            return _hazardManager.Hazards.Count;
+        }
         
         public void Start()
         {
+            hazardIcons = GetComponent<HazardIcons>();
+
             _hazardManager = new HazardManager();
             _hazardSpawner = new HazardSpawner(minTime, maxTime);
             if (TimedSpawning)
@@ -57,6 +63,11 @@ namespace ZeroPrep.MineBuddies
             {
                 _hazardSpawner.StopSpawning();
             }
+        }
+        
+        public Sprite GetIconForHazardType(Managers.HazardType e)
+        {
+            return hazardIcons.GetIconForHazardType(e);
         }
     }
 }

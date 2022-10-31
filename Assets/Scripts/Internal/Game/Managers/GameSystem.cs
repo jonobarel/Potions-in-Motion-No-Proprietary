@@ -26,6 +26,7 @@ namespace ZeroPrep.MineBuddies
         
         public static ConfigManager ConfigManager { get { return GameSystem.Instance.configManager;} }
 
+        
         static GameSystem instance;
         public static GameSystem Instance
         {
@@ -77,7 +78,7 @@ namespace ZeroPrep.MineBuddies
                 return;
             }
             managers = GetComponentInChildren<Managers>();
-            hazardManagerGo = GetComponentInChildren<HazardManagerMono>();
+            hazardManagerGo = GetComponentInChildren<HazardManagerGO>();
             
             configManager = GetComponentInChildren<ConfigManager>();
         }
