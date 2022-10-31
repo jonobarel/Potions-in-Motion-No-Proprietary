@@ -53,7 +53,7 @@ namespace ZeroPrep.MineBuddies
 
             if (activeHazardMonoObj != null)
             {
-                s = GameSystem.HazardManagerMono.GetIconForHazardType(activeHazardMonoObj.type);
+                s = GameSystem.HazardManagerGo.GetIconForHazardType(activeHazardMonoObj.type);
                 //Debug.Log($"{name}: Hazard type: {activeHazardObj.type}, icon name: {s.name}");
             }
             return s;

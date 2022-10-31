@@ -19,18 +19,28 @@ namespace ZeroPrep.MineBuddies
         public List<HazardBase> Hazards => _hazards;
         public HazardManager()
         {
-            HazardBase.OnSpawn += HandleNewHazard;
-            HazardBase.OnClear += HazardCleared;
-            HazardBase.OnExpire += HazardExpired;
+            HazardBase.Spawn += OnSpawn;
+            HazardBase.Clear += OnClear;
+            HazardBase.Expire += OnExpire;
         }
 
-        private void HazardExpired(HazardBase h)
+        ~HazardManager()
+        {
+            HazardBase.Spawn -= OnSpawn;
+            HazardBase.Clear -= OnClear;
+            HazardBase.Expire -= OnExpire;
+        }
+        private void OnSpawn(HazardBase h)
+        {
+            HandleNewHazard(h);
+        }
+        private void OnExpire(HazardBase h)
         {
             MarkForRemoval(h);
             
         }
 
-        private void HazardCleared(HazardBase h)
+        private void OnClear(HazardBase h)
         {
             MarkForRemoval(h);
         }
@@ -64,7 +74,7 @@ namespace ZeroPrep.MineBuddies
         {
             foreach (HazardBase h in _hazards)
             {
-                h.Advance(delta);
+                h.AdvanceAction(delta);
             }
 
             ClearHazardsToRemove();

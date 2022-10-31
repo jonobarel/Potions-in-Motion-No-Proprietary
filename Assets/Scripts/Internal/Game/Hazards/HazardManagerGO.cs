@@ -30,6 +30,8 @@ namespace ZeroPrep.MineBuddies
         public Transform hazardDistanceSliderContainer;
         public Slider positionSliderPrefab;
         
+        public ActiveHazards
+        
         public void Start()
         {
             _hazardManager = new HazardManager();
@@ -43,7 +45,8 @@ namespace ZeroPrep.MineBuddies
 
         public void Update()
         {
-            _hazardManager.Update(Time.deltaTime);
+            
+            _hazardManager.Update(Time.deltaTime * Mathf.Min(Carriage.Instance.CurrenSpeed,0.1f));
             //if should spawn but isn't
             if (TimedSpawning && !_hazardSpawner.IsSpawning())
             {

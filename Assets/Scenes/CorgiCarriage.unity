@@ -2687,8 +2687,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c6aa8317ee0fc4cac9956b96f22dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hazardProgressDisplayPrefab: {fileID: 0}
-  _hazardSliderContainer: {fileID: 1836619558}
+  _hazardProgressDisplayPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
+    type: 3}
+  _hazardSliderContainer: {fileID: 1832567704}
 --- !u!1001 &1465768998
 PrefabInstance:
   m_ObjectHideFlags: 0

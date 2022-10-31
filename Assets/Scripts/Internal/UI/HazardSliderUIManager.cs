@@ -20,30 +20,30 @@ namespace ZeroPrep.MineBuddies
         public HazardSliderUIManager(HazardSliderUIManagerGameObject hmGo)
         {
             _hazardTimeLineUI = hmGo.GetComponent<HazardSliderUIManagerGameObject>();
-            HazardBase.OnSpawn += AddHazardToTimeline;
-            HazardBase.OnClear += HazardCleared;
-            HazardBase.OnExpire += HazardExpired;
+            HazardBase.Spawn += OnSpawn;
+            HazardBase.Clear += OnClear;
+            HazardBase.Expire += OnExpire;
         }
 
         ~HazardSliderUIManager()
         {
-            HazardBase.OnSpawn -= AddHazardToTimeline;
-            HazardBase.OnClear -= HazardCleared;
-            HazardBase.OnExpire -= HazardExpired;
+            HazardBase.Spawn -= OnSpawn;
+            HazardBase.Clear -= OnClear;
+            HazardBase.Expire -= OnExpire;
         }
         #endregion 
         
         #region EventMethods
-        private void HazardExpired(HazardBase h)
+        private void OnExpire(HazardBase h)
         {
             throw new System.NotImplementedException();
         }
 
-        private void HazardCleared(HazardBase h)
+        private void OnClear(HazardBase h)
         {
             throw new System.NotImplementedException();
         }
-        private void AddHazardToTimeline(HazardBase h)
+        private void OnSpawn(HazardBase h)
         {
             //Instantiate the UI element and
             //add it to the timeline

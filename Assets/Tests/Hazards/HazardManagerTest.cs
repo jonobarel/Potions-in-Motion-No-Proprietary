@@ -52,7 +52,7 @@ public class HazardManagerTest
     {
         HazardManager hazardManager = new HazardManager();
         HazardExternal hazard1 = new HazardExternal(1f, type.A);
-        hazard1.Treat(1f);
+        hazard1.TreatAction(1f);
         hazardManager.Update(0.1f);
         Assert.AreEqual(0, hazardManager.Hazards.Count);
     }

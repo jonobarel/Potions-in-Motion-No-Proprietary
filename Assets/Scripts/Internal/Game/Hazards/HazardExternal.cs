@@ -13,9 +13,9 @@ namespace ZeroPrep.MineBuddies
             _speed = speed;
         }
         
-        public override void Advance(float delta)
+        public override void AdvanceAction(float delta)
         {
-            base.Advance(delta * _speed);
+            base.AdvanceAction(delta * _speed);
         }
     }
 }

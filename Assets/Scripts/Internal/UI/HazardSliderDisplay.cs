@@ -20,7 +20,7 @@ namespace ZeroPrep.MineBuddies
                 if (value != null)
                 {
                     
-                    var spr = GameSystem.Instance.hazardManagerMono.GetIconForHazardType(value.type);
+                    var spr = GameSystem.Instance.hazardManagerGo.GetIconForHazardType(value.type);
                     if (spr != null)
                     {
                         hazardIcon.sprite = spr;
@@ -34,9 +34,9 @@ namespace ZeroPrep.MineBuddies
 
         public void Awake()
         {
-            HazardBase.OnExpire += ExpiredHazard;
-            HazardBase.OnClear += HazardCleared;
-            HazardBase.OnTreat += HazardTreated;
+            HazardBase.Expire += ExpiredHazard;
+            HazardBase.Clear += HazardCleared;
+            HazardBase.Treat += HazardTreated;
         }
 
         public void Start()

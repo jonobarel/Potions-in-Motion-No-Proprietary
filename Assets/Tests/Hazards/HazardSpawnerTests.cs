@@ -29,11 +29,11 @@ public class HazardSpawnerTests
     [Test]
     public void HazardSpawnsRandomType()
     {
-        HazardBase.OnSpawn += ValidateHazardCreated;
+        HazardBase.Spawn += ValidateHazardCreated;
         HazardSpawner hs = new HazardSpawner(_minDelay, _maxDelay);
         hs.SpawnRandomTypeHazard();
         Assert.IsTrue(_isSpawned);
-        HazardBase.OnSpawn -= ValidateHazardCreated;
+        HazardBase.Spawn -= ValidateHazardCreated;
     }
 
     private void ValidateHazardDelay(HazardBase h)
@@ -51,13 +51,13 @@ public class HazardSpawnerTests
         SpawnerTestMonoBehaviour spawnContainer = hazardTestGo.AddComponent<SpawnerTestMonoBehaviour>();
         
         _isSpawned = false;
-        HazardBase.OnSpawn += ValidateHazardDelay;
+        HazardBase.Spawn += ValidateHazardDelay;
         HazardSpawner hs = new HazardSpawner(_minDelay, _maxDelay);
 
         _startTime = Time.time;
         hs.StartSpawning((MonoBehaviour)spawnContainer);
         yield return new WaitForSeconds(_maxDelay+0.1f);
-        HazardBase.OnSpawn -= ValidateHazardDelay;
+        HazardBase.Spawn -= ValidateHazardDelay;
     }
     
     /*[UnityTest]

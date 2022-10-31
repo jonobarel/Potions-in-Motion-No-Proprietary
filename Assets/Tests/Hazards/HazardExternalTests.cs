@@ -23,9 +23,9 @@ namespace ZeroPrep.MineBuddies
         public void HazardHealthReachesZero()
         {
             HazardExternal hzTest = new HazardExternal(0.5f, Managers.HazardType.A);
-            hzTest.Treat(0.25f);
+            hzTest.TreatAction(0.25f);
             Assert.AreEqual(hzTest.Health, 0.75f);
-            hzTest.Treat(0.25f);
+            hzTest.TreatAction(0.25f);
             Assert.AreEqual(hzTest.Health,0.5f);
         }
 
@@ -36,11 +36,11 @@ namespace ZeroPrep.MineBuddies
         public void HazardProgressReachesZero()
         {
             HazardExternal hzTest = new HazardExternal(0.5f, Managers.HazardType.A);
-            hzTest.Advance(1f);
+            hzTest.AdvanceAction(1f);
             Assert.Less(hzTest.Progress, 1f, "After partial progress, Progress should be less than 1");
             Assert.Greater(hzTest.Progress,0f, "after partial progress, Progress should be gt 0");
             Assert.AreEqual(hzTest.Progress, 0.5f);
-            hzTest.Advance(1f);
+            hzTest.AdvanceAction(1f);
             Assert.AreEqual(hzTest.Progress, 1.0f);
         }
 
@@ -48,7 +48,7 @@ namespace ZeroPrep.MineBuddies
         /// Method to be added to OnTreat
         /// </summary>
         /// <param name="h">the Hazard that triggers the event.</param>
-        public void TestTreatmentEventTrigger(HazardBase h)
+        public void TestTreatmentTrigger(HazardBase h)
         {
             _treatmentTriggerResult = true;
             Assert.NotNull(h);
@@ -58,18 +58,18 @@ namespace ZeroPrep.MineBuddies
         [Test]
         public void HazardTreatmentTriggersEvent()
         {
-            HazardBase.OnTreat += TestTreatmentEventTrigger;
+            HazardBase.Treat += TestTreatmentTrigger;
             HazardExternal hzTreat = new HazardExternal(0.5f, Managers.HazardType.B);
-            hzTreat.Treat(0.5f);
+            hzTreat.TreatAction(0.5f);
             Assert.IsTrue(_treatmentTriggerResult);
-            HazardBase.OnTreat -= TestTreatmentEventTrigger;
+            HazardBase.Treat -= TestTreatmentTrigger;
         }
 
         /// <summary>
         /// Method to be added to OnExpire.
         /// </summary>
         /// <param name="h">the Hazard that triggers the event.</param>
-        public void TestExpireEventTrigger(HazardBase h)
+        public void TestExpireTrigger(HazardBase h)
         {
             _expireTriggerResult = true;
             Assert.NotNull(h);
@@ -81,14 +81,14 @@ namespace ZeroPrep.MineBuddies
         [Test]
         public void HazardProgressTriggersExpireEvent()
         {
-            HazardBase.OnExpire += TestExpireEventTrigger;
+            HazardBase.Expire += TestExpireTrigger;
             HazardExternal hzExpire = new HazardExternal(1f, Managers.HazardType.C);
-            hzExpire.Advance(1f);
+            hzExpire.AdvanceAction(1f);
             Assert.IsTrue(_expireTriggerResult);
-            HazardBase.OnExpire -= TestExpireEventTrigger;
+            HazardBase.Expire -= TestExpireTrigger;
         }
 
-        public void TestOnClearEvent(HazardBase h)
+        public void TestClear(HazardBase h)
         {
             Assert.NotNull(h);
             HazardExternal hz = (HazardExternal)h;
@@ -99,14 +99,14 @@ namespace ZeroPrep.MineBuddies
         [Test]
         public void HazardClearTriggersEvent()
         {
-            HazardBase.OnClear += TestOnClearEvent;
+            HazardBase.Clear += TestClear;
 
             HazardExternal hzTest = new HazardExternal(1f, Managers.HazardType.C);
-            hzTest.Treat(0.5f);
+            hzTest.TreatAction(0.5f);
             Assert.IsFalse(_clearTriggerResult);
-            hzTest.Treat(10f);
+            hzTest.TreatAction(10f);
             Assert.IsTrue(_clearTriggerResult);
-            HazardBase.OnClear -= TestOnClearEvent;
+            HazardBase.Clear -= TestClear;
         }
 
         public void HazardAdvanceTriggerMethod(HazardBase h)
@@ -122,11 +122,11 @@ namespace ZeroPrep.MineBuddies
         [Test]
         public void HazardAdvanceTriggersEvent()
         {
-            HazardBase.OnAdvance += HazardAdvanceTriggerMethod;
+            HazardBase.Advance += HazardAdvanceTriggerMethod;
             HazardExternal hzTest = new HazardExternal(1f, Managers.HazardType.D);
-            hzTest.Advance(0.1f);
+            hzTest.AdvanceAction(0.1f);
             Assert.IsTrue(_advanceTriggerResult, "Event was not triggered");
-            HazardBase.OnAdvance -= HazardAdvanceTriggerMethod;
+            HazardBase.Advance -= HazardAdvanceTriggerMethod;
 
         }
         /*

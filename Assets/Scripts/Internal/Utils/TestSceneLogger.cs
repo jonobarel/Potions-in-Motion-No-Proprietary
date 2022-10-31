@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +14,14 @@ namespace ZeroPrep.MineBuddies
         // Start is called before the first frame update
         void Start()
         {
-            HazardBase.OnSpawn += LogHazardSpawn;
-            HazardBase.OnExpire += LogHazardExpire;
+            HazardBase.Spawn += LogHazardSpawn;
+            HazardBase.Expire += LogHazardExpire;
+        }
+
+        private void OnDestroy()
+        {
+            HazardBase.Spawn -= LogHazardSpawn;
+            HazardBase.Expire -= LogHazardExpire;
         }
 
         private void LogHazardSpawn(HazardBase h)

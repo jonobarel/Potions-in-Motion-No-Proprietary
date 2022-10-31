@@ -27,11 +27,21 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
     void Start()
     {
         _sliders = new Dictionary<HazardBase, GameObject>();
-        HazardBase.OnSpawn += AddHazardToTimeline;
-        HazardBase.OnClear += HazardCleared;
-        HazardBase.OnExpire += HazardExpired;
+        HazardBase.Spawn += OnSpawn;
+        HazardBase.Clear += OnClear;
+        HazardBase.Expire += OnExpire;
     }
 
+    void OnDestroy()
+    {
+        HazardBase.Spawn -= OnSpawn;
+        HazardBase.Clear -= OnClear;
+        HazardBase.Expire -= OnExpire;
+    }
+    private void OnSpawn(HazardBase h)
+    {
+        AddHazardToTimeline(h);
+    }
     private void AddHazardToTimeline(HazardBase h)
     {
         //Instantiate the UI element and
@@ -49,11 +59,19 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
         */
     }
 
+    private void OnExpire(HazardBase h)
+    {
+        HazardExpired(h);
+    }
     private void HazardExpired(HazardBase h)
     {
         HardRemoveSliderFromTimeline(h);
     }
 
+    private void OnClear(HazardBase h)
+    {
+        HazardCleared(h);
+    }
     private void HazardCleared(HazardBase h)
     {
         HardRemoveSliderFromTimeline(h);

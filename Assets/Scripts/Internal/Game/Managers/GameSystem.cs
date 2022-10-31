@@ -10,17 +10,17 @@ namespace ZeroPrep.MineBuddies
     public class GameSystem : MonoBehaviour
     {
         [FormerlySerializedAs("gameManager")] public Managers managers;
-        [FormerlySerializedAs("hazardManager")] public HazardManagerMono hazardManagerMono;
+        [FormerlySerializedAs("hazardManager")] public HazardManagerGO hazardManagerGo;
 
         public ConfigManager configManager;
         public AnalyticsManager analytics;
 
         public static Managers Managers { get {return GameSystem.Instance.managers;} }
-        public static HazardManagerMono HazardManagerMono { 
+        public static HazardManagerGO HazardManagerGo { 
             get { 
-                if (Instance.hazardManagerMono == null) 
-                    Instance.hazardManagerMono = FindObjectOfType<HazardManagerMono>();
-                return GameSystem.Instance.hazardManagerMono;
+                if (Instance.hazardManagerGo == null) 
+                    Instance.hazardManagerGo = FindObjectOfType<HazardManagerGO>();
+                return GameSystem.Instance.hazardManagerGo;
             } 
         }
         
@@ -77,7 +77,7 @@ namespace ZeroPrep.MineBuddies
                 return;
             }
             managers = GetComponentInChildren<Managers>();
-            hazardManagerMono = GetComponentInChildren<HazardManagerMono>();
+            hazardManagerGo = GetComponentInChildren<HazardManagerMono>();
             
             configManager = GetComponentInChildren<ConfigManager>();
         }

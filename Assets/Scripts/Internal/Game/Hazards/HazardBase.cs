@@ -23,41 +23,41 @@ namespace ZeroPrep.MineBuddies
         /// </summary>
         public float Progress => _progress;
 
-        public virtual void Advance(float delta)
+        public virtual void AdvanceAction(float delta)
         {
             _progress += delta;
-            OnAdvance?.Invoke(this);
+            Advance?.Invoke(this);
 
             if (_progress >= 1f)
             {
-                Expire();
+                ExpireAction();
             }
         }
 
         protected HazardBase(Managers.HazardType type)
         {
             _type = type;
-            OnSpawn?.Invoke(this);
+            Spawn?.Invoke(this);
         }
-        public virtual void Treat(float treatment)
+        public virtual void TreatAction(float treatment)
         {
             _health -= treatment;
-            OnTreat?.Invoke(this);
+            Treat?.Invoke(this);
             
             if (_health <= 0f)
             {
-                Clear();
+                ClearAction();
             }
         }
 
-        protected virtual void Clear()
+        protected virtual void ClearAction()
         {
-            OnClear?.Invoke(this);
+            Clear?.Invoke(this);
         }
 
-        protected virtual void Expire()
+        protected virtual void ExpireAction()
         {
-            OnExpire?.Invoke(this);
+            Expire?.Invoke(this);
         }
         
         
@@ -65,19 +65,19 @@ namespace ZeroPrep.MineBuddies
         /// When the Hazard expires, i.e. its timer runs out, this event is invoked.
         /// This happens when an external hazard hits the carriage, when an internal hazard triggers damage, etc.
         /// </summary>
-        public static event Action<HazardBase> OnExpire;
+        public static event Action<HazardBase> Expire;
         /// <summary>
         /// This event is called when the hazard is cleared by the players. If this is called, Expire will not happen.
         /// </summary>
-        public static event Action<HazardBase> OnClear;
-        public static event Action<HazardBase> OnTreat;
+        public static event Action<HazardBase> Clear;
+        public static event Action<HazardBase> Treat;
 
         /// <summary>
         /// Register this event for updating UI-related fields.
         /// </summary>
-        public static event Action<HazardBase> OnAdvance;
+        public static event Action<HazardBase> Advance;
 
-        public static event Action<HazardBase> OnSpawn;
+        public static event Action<HazardBase> Spawn;
 
 
     }
