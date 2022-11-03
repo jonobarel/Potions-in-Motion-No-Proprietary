@@ -82,7 +82,7 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
         GameObject positionSlider;
         if (_sliders.Remove(h, out positionSlider) && positionSlider)
         {
-            GameObject.Destroy(positionSlider);
+            positionSlider.GetComponent<HazardSliderDisplay>().MarkForRemoval();
         }
     }
     

@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using MoreMountains.CorgiEngine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +16,10 @@ namespace ZeroPrep.MineBuddies
     public class HazardManagerGO : MonoBehaviour
     {
         [SerializeField]
-        [Range(0.1f,5f)]
+        [Range(0.1f,20f)]
         private float minTime = 0.5f;
         [SerializeField]
-        [Range(0.1f, 5f)]
+        [Range(0.1f, 20f)]
         private float maxTime = 1.5f;
 
         public bool TimedSpawning = true;
@@ -38,10 +40,24 @@ namespace ZeroPrep.MineBuddies
         
         public void Start()
         {
+            ActionModule[] modules = FindObjectsOfType<ActionModule>();
+            
+            if (modules.Length < 1)
+            {
+                throw new ArgumentOutOfRangeException("Cannot find Action Modules in scene");
+            }
+
+            List<Managers.HazardType> hazardTypes = new List<Managers.HazardType>();
+            
+            foreach (var module in modules)
+            {
+                hazardTypes.Add(module.hazardType);                
+            } 
+
             hazardIcons = GetComponent<HazardIcons>();
 
             _hazardManager = new HazardManager();
-            _hazardSpawner = new HazardSpawner(minTime, maxTime);
+            _hazardSpawner = new HazardSpawner(minTime, maxTime, hazardTypes.ToArray());
             if (TimedSpawning)
             {
                 _hazardSpawner.StartSpawning(this);    
