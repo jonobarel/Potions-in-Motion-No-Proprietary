@@ -4,33 +4,75 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c36c655e-e2ba-41ef-ae80-7cd71c99dbd5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+    <list default="true" id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardBase.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardExternal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardExternal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardExternal.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardExternal.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/HazardSpawner.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/HazardSpawner.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/MonoBehaviours.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/MonoBehaviours.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/MonoBehaviours/HazardIcons.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/MonoBehaviours/HazardIcons.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/MonoBehaviours/HazardIcons.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/MonoBehaviours/HazardIcons.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/MonoBehaviours/HazardManagerGO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/MonoBehaviours/HazardManagerGO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Hazards/MonoBehaviours/HazardManagerGO.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Hazards/MonoBehaviours/HazardManagerGO.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Interactables.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Interactables/Module.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Interactables/Module.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/25/869e5050/020009A0pdb49.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/a1/dfa5778f/02000004pdb66.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/a6/e66a9818/020000B1pdb66.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/e8/a0f156bc/020009B7pdb49.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Analytics.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Unity.2D.Animation.Editor.asmdef" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/Interactions/MultiTapInteraction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.6/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@12.1.6/Editor/Drawing/Views/MaterialGraphView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.31/UnityEngine.TestRunner/NUnitExtensions/Commands/UnityTestMethodCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.31/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Tests/Runtime/TMP_RuntimeTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2EcDddWUd0QxGo8zTMWZWwV1368" />
+  <component name="ProjectId" id="2EyrGsFGM2R8D9z2zlMVTxtmCB6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Zero Prep Games/MineBuddies/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/Common/Scripts&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -75,15 +117,28 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c36c655e-e2ba-41ef-ae80-7cd71c99dbd5" name="Changes" comment="" />
-      <created>1662886072127</created>
+      <changelist id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="" />
+      <created>1663578579625</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1662886072127</updated>
-      <workItem from="1662886097279" duration="10566000" />
-      <workItem from="1662975839359" duration="8958000" />
-      <workItem from="1663074618274" duration="607000" />
-      <workItem from="1663150085100" duration="610000" />
+      <updated>1663578579625</updated>
+      <workItem from="1663578619880" duration="13047000" />
+      <workItem from="1663669226918" duration="5289000" />
+      <workItem from="1663748969181" duration="6270000" />
+      <workItem from="1663834473651" duration="9612000" />
+      <workItem from="1664698325599" duration="5317000" />
+      <workItem from="1664786887520" duration="17441000" />
+      <workItem from="1665574042939" duration="5224000" />
+      <workItem from="1666077106441" duration="3287000" />
+      <workItem from="1666164373276" duration="9517000" />
+      <workItem from="1666253863441" duration="9415000" />
+      <workItem from="1666517432439" duration="19073000" />
+      <workItem from="1666772705742" duration="9121000" />
+      <workItem from="1666861228470" duration="8847000" />
+      <workItem from="1667207424517" duration="11225000" />
+      <workItem from="1667379955095" duration="4734000" />
+      <workItem from="1667463956244" duration="4406000" />
+      <workItem from="1667727864486" duration="4513000" />
     </task>
     <servers />
   </component>
@@ -106,5 +161,34 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/Hazards/HazardExternalTests.cs</url>
+          <line>113</line>
+          <properties documentPath="C:\Users\Jono Barel\Documents\MineBuddies\Assets\Tests\Hazards\HazardExternalTests.cs" initialLine="110" containingFunctionPresentation="method 'HazardAdvanceTriggerMethod'" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/Hazards/HazardManagerTest.cs</url>
+          <line>37</line>
+          <properties documentPath="C:\Users\Jono Barel\Documents\MineBuddies\Assets\Tests\Hazards\HazardManagerTest.cs" initialLine="52" containingFunctionPresentation="method 'HazardTreatTest'" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Game/Hazards/HazardManagerMono.cs</url>
+          <line>104</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Game\Hazards\HazardManagerMono.cs" initialLine="104" containingFunctionPresentation="method 'GetIconForHazardType'" />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
+        <watch expression="module.hazardType" language="C#" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
