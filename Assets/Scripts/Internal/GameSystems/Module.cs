@@ -11,7 +11,11 @@ namespace ZeroPrep.MineBuddies
 
     public class Module : MonoBehaviour
     {
+        [SerializeField]
         private Engine _engine;
+        public Engine Engine => _engine;
+    
+        
         private Managers.HazardType _hazardType;
         private HazardManager _hazardManager;
 
@@ -20,15 +24,20 @@ namespace ZeroPrep.MineBuddies
         {
         }
 
+                
         [Inject]
-        public void Init(Engine engine)
+        public void Construct(Engine engine)
         {
-            if (engine == null)
+            if (engine != null)
+            {
+                _engine = engine;
+            }
+            else
             {
                 throw new ArgumentException();
             }
-            _engine = engine;
         }
+        
         public void Interact(GameObject actor)
         {
             throw new NotImplementedException();
