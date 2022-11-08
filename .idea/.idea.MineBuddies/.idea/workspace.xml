@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Engine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Zenject.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,14 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/25/869e5050/020009A0pdb49.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/a1/dfa5778f/02000004pdb66.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/a6/e66a9818/020000B1pdb66.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/e8/a0f156bc/020009B7pdb49.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Infra/CarriageSceneInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Modules/ModulesTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Analytics.cs" root0="SKIP_HIGHLIGHTING" />
@@ -75,7 +68,7 @@
       <method v="2" />
     </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.2.18f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity 2021.2.18f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\Jono Barel\Documents\MineBuddies&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Jono Barel\Documents\MineBuddies" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -92,10 +85,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5472">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5472" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -128,6 +121,7 @@
       <workItem from="1667379955095" duration="4734000" />
       <workItem from="1667463956244" duration="4406000" />
       <workItem from="1667727864486" duration="14418000" />
+      <workItem from="1667898709589" duration="631000" />
     </task>
     <servers />
   </component>
@@ -175,40 +169,19 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Module.cs</url>
           <line>30</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Systems\Module.cs" initialLine="26" containingFunctionPresentation="method 'Init'">
-            <startOffsets>
-              <option value="626" />
-            </startOffsets>
-            <endOffsets>
-              <option value="645" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Systems\Module.cs" initialLine="26" containingFunctionPresentation="method 'Init'" />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Infra/CarriageSceneInstaller.cs</url>
           <line>10</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Infra\CarriageSceneInstaller.cs" initialLine="10" containingFunctionPresentation="method 'InstallBindings'">
-            <startOffsets>
-              <option value="208" />
-            </startOffsets>
-            <endOffsets>
-              <option value="283" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Infra\CarriageSceneInstaller.cs" initialLine="10" containingFunctionPresentation="method 'InstallBindings'" />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Systems/Engine.cs</url>
           <line>26</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Systems\Engine.cs" initialLine="18" containingFunctionPresentation="constructor 'Engine'">
-            <startOffsets>
-              <option value="537" />
-            </startOffsets>
-            <endOffsets>
-              <option value="538" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Systems\Engine.cs" initialLine="18" containingFunctionPresentation="constructor 'Engine'" />
           <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
