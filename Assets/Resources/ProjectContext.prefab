@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8226544418877817691}
   - component: {fileID: 2844941592952131875}
   m_Layer: 0
-  m_Name: MineBuddiesProjectContext
+  m_Name: ProjectContext
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e6589720da476459dc6dd71624b071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 3d92671354d710a4e96f36fba2df7f44, type: 2}
   _monoInstallers: []
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 1

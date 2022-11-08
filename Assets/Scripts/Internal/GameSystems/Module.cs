@@ -11,10 +11,15 @@ namespace ZeroPrep.MineBuddies
 
     public class Module : MonoBehaviour
     {
+        [Inject]
+        private GameSettings _gameSettings;
+        
         [SerializeField]
         private Engine _engine;
         public Engine Engine => _engine;
     
+        [SerializeField]
+        private bool IsInitialized = false;
         
         private Managers.HazardType _hazardType;
         private HazardManager _hazardManager;
@@ -26,7 +31,7 @@ namespace ZeroPrep.MineBuddies
 
                 
         [Inject]
-        public void Construct(Engine engine)
+        public void Init(Engine engine)
         {
             if (engine != null)
             {
@@ -36,6 +41,8 @@ namespace ZeroPrep.MineBuddies
             {
                 throw new ArgumentException();
             }
+
+            IsInitialized = true;
         }
         
         public void Interact(GameObject actor)

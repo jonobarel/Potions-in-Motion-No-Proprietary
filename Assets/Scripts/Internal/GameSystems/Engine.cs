@@ -7,6 +7,7 @@ namespace ZeroPrep.MineBuddies
     [Serializable]
     public class Engine
     {
+        
         public float FuelCapacity
         {
             get;
