@@ -5,7 +5,7 @@ using Zenject;
 namespace ZeroPrep.MineBuddies
 {
     [Serializable]
-    public class Engine
+    public class EngineFuel
     {
         
         public float FuelCapacity
@@ -24,7 +24,7 @@ namespace ZeroPrep.MineBuddies
         public float FuelLevel => CurrentFuel / FuelCapacity;
        
 
-        public Engine(float capacity, float startingFuel, float burnRate)
+        public EngineFuel(float capacity, float startingFuel, float burnRate)
         {
             
             if (capacity <= 0f || startingFuel <= 0f || burnRate <= 0f || startingFuel > capacity )

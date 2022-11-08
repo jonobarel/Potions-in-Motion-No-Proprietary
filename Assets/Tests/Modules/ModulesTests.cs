@@ -17,6 +17,6 @@ public class ModulesTest
         yield return null;
         Module m = obj.GetComponent<Module>();
         Assert.IsNotNull(m);
-        Assert.IsNotNull(m.Engine);
+        Assert.IsNotNull(m.EngineFuel);
     }
 }

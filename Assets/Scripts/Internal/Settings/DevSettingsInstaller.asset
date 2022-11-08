@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DevSettingsInstaller
   m_EditorClassIdentifier: 
   gameSettings:
-    EngineCapacity: 97
-    EngineStartingFuel: 96
-    EngineBurnRate: 7
+    EngineCapacity: 100
+    EngineStartingFuel: 100
+    EngineBurnRate: 10
+    FuelConsumption: 5

@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/GameAnalytics.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/MineBuddiesProjectContext.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/MineBuddiesProjectContext.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectContext.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Resources/ProjectContext.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ProjectContext.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Resources/ProjectContext.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Module.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Module.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/GameSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/GameSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Resources/DevSettingsInstaller.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Resources/DevSettingsInstaller.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/GameSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/GameSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/Modules/ModulesTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/Modules/ModulesTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Unity.2D.Animation.Editor.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/Interactions/MultiTapInteraction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/Samples~/UIvsGameInput/UIvsGameInputHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.6/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@12.1.6/Editor/Drawing/Views/MaterialGraphView.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.31/UnityEngine.TestRunner/NUnitExtensions/Commands/UnityTestMethodCommand.cs" root0="SKIP_HIGHLIGHTING" />
@@ -128,7 +131,7 @@
       <workItem from="1667379955095" duration="4734000" />
       <workItem from="1667463956244" duration="4406000" />
       <workItem from="1667727864486" duration="14418000" />
-      <workItem from="1667898709589" duration="7229000" />
+      <workItem from="1667898709589" duration="14027000" />
     </task>
     <servers />
   </component>
@@ -186,43 +189,17 @@
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Module.cs</url>
-          <line>34</line>
-          <properties documentPath="C:\Users\morbi\Documents\unity\MineBuddies\Assets\Scripts\Internal\GameSystems\Module.cs" initialLine="29" containingFunctionPresentation="method 'Construct'">
-            <startOffsets>
-              <option value="746" />
-            </startOffsets>
-            <endOffsets>
-              <option value="747" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine.cs</url>
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs</url>
           <line>27</line>
           <properties documentPath="C:\Users\morbi\Documents\unity\MineBuddies\Assets\Scripts\Internal\GameSystems\Engine.cs" initialLine="27" containingFunctionPresentation="constructor 'Engine'">
             <startOffsets>
-              <option value="546" />
+              <option value="554" />
             </startOffsets>
             <endOffsets>
-              <option value="547" />
+              <option value="555" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs</url>
-          <line>10</line>
-          <properties documentPath="C:\Users\morbi\Documents\unity\MineBuddies\Assets\Scripts\Internal\Bindings\CarriageSceneInstaller.cs" initialLine="10" containingFunctionPresentation="method 'InstallBindings'">
-            <startOffsets>
-              <option value="254" />
-            </startOffsets>
-            <endOffsets>
-              <option value="329" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/GameSettingsInstaller.cs</url>

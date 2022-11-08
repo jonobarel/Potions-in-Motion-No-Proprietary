@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using MoreMountains.CorgiEngine;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
+using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -15,49 +10,51 @@ namespace ZeroPrep.MineBuddies
     /// </summary>
     public class HazardManagerGO : MonoBehaviour
     {
-        [SerializeField]
-        [Range(0.1f,20f)]
-        private float minTime = 0.5f;
-        [SerializeField]
-        [Range(0.1f, 20f)]
-        private float maxTime = 1.5f;
+        private GameSettings _gameSettings;
+        [SerializeField] [Range(0.1f, 20f)] private float minTime = 0.5f;
+        [SerializeField] [Range(0.1f, 20f)] private float maxTime = 1.5f;
 
         public bool TimedSpawning = true;
-        
+
         private bool _isPaused = false;
-        
+
         private HazardManager _hazardManager;
         private HazardSpawner _hazardSpawner;
         HazardIcons hazardIcons;
-        
+
         public Transform hazardDistanceSliderContainer;
         public Slider positionSliderPrefab;
+
+        private EngineSpeed _engineSpeed;
+
+        private AvailableHazardTypes _availableHazardTypes;
 
         public int ActiveHazardsCount()
         {
             return _hazardManager.Hazards.Count;
         }
-        
+
+        [Inject]
+        public void Init(HazardManager hazardManager,
+            HazardSpawner hazardSpawner,
+            EngineSpeed engineSpeed,
+            GameSettings gameSettings,
+            AvailableHazardTypes availableHazardTypes)
+        {
+            _hazardManager = hazardManager;
+            _hazardSpawner = hazardSpawner;
+            _engineSpeed = engineSpeed;
+            _gameSettings = gameSettings;
+            _availableHazardTypes = availableHazardTypes;
+
+        }
+
         public void Start()
         {
-            ActionModule[] modules = FindObjectsOfType<ActionModule>();
-            
-            if (modules.Length < 1)
-            {
-                throw new ArgumentOutOfRangeException("Cannot find Action Modules in scene");
-            }
-
-            List<Managers.HazardType> hazardTypes = new List<Managers.HazardType>();
-            
-            foreach (var module in modules)
-            {
-                hazardTypes.Add(module.hazardType);                
-            } 
-
             hazardIcons = GetComponent<HazardIcons>();
 
-            _hazardManager = new HazardManager();
-            _hazardSpawner = new HazardSpawner(minTime, maxTime, hazardTypes.ToArray());
+            //_hazardSpawner = new HazardSpawner(minTime, maxTime, _availableHazardTypes.Types);
+            
             if (TimedSpawning)
             {
                 _hazardSpawner.StartSpawning(this);    
@@ -84,6 +81,20 @@ namespace ZeroPrep.MineBuddies
         public Sprite GetIconForHazardType(Managers.HazardType e)
         {
             return hazardIcons.GetIconForHazardType(e);
+        }
+
+        public HazardBase GetClosestHazardOfType(Managers.HazardType type)
+        {
+            return _hazardManager.GetClosestHazardOfType(type);
+        }
+
+        public void TreatHazardOfType(Managers.HazardType type, float amount)
+        {
+            HazardBase affectedHazard = GetClosestHazardOfType(type);
+            if (affectedHazard != null)
+            {
+                affectedHazard.TreatAction(amount);
+            }
         }
     }
 }
