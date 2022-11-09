@@ -11,7 +11,7 @@ namespace ZeroPrep.MineBuddies
         
         public AvailableHazardTypes()
         {
-            ActionModule[] modules = GameObject.FindObjectsOfType<ActionModule>();
+            Module[] modules = GameObject.FindObjectsOfType<Module>();
             
             if (modules.Length < 1)
             {
@@ -22,7 +22,7 @@ namespace ZeroPrep.MineBuddies
             
             foreach (var module in modules)
             {
-                hazardTypes.Add(module.hazardType);                
+                hazardTypes.Add(module.HazardType);                
             }
 
             Types = hazardTypes.ToArray();

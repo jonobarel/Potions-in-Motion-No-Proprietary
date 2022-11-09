@@ -18,6 +18,7 @@ namespace ZeroPrep.MineBuddies
         private EngineFuel _engineFuel;
         public EngineFuel EngineFuel => _engineFuel;
 
+        public Managers.HazardType HazardType => _hazardType;
         private Managers.HazardType _hazardType;
         private HazardManagerGO _hazardManager;
 

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using ZeroPrep.MineBuddies;
 using Random = UnityEngine.Random;
+using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -16,6 +17,7 @@ namespace ZeroPrep.MineBuddies
 
         private bool _stopSpawning = false;
 
+        [Inject]
         private Managers.HazardType[] _validTypes;
         
         private Array _types = Enum.GetValues((typeof(Managers.HazardType)));
@@ -27,15 +29,11 @@ namespace ZeroPrep.MineBuddies
         */
         #region Constructor
 
+        [Inject]
         public HazardSpawner(float minTime, float maxTime, Managers.HazardType[] validTypes)
         {
             MinTime = minTime;
             MaxTime = maxTime;
-            if (validTypes == null)
-            {
-                throw new ArgumentNullException("Hazard types not initialized for spawner");
-            }
-            Debug.Log($"Hazard spawner available types: ${validTypes}");
             _validTypes = validTypes;
         }
 

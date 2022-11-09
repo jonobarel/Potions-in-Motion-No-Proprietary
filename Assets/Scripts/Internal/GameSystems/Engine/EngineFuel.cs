@@ -7,7 +7,7 @@ namespace ZeroPrep.MineBuddies
     [Serializable]
     public class EngineFuel
     {
-        
+        private GameSettings _gameSettings;
         public float FuelCapacity
         {
             get;
@@ -24,17 +24,18 @@ namespace ZeroPrep.MineBuddies
         public float FuelLevel => CurrentFuel / FuelCapacity;
        
 
-        public EngineFuel(float capacity, float startingFuel, float burnRate)
+        public EngineFuel(GameSettings gameSettings)
         {
+            _gameSettings = gameSettings;
             
-            if (capacity <= 0f || startingFuel <= 0f || burnRate <= 0f || startingFuel > capacity )
+            FuelCapacity = gameSettings.EngineCapacity;
+            CurrentFuel = gameSettings.EngineStartingFuel;
+            BurnRate = gameSettings.EngineBurnRate;
+            
+            if (FuelCapacity <= 0f || CurrentFuel <= 0f || BurnRate <= 0f || CurrentFuel > FuelCapacity )
             {
                 throw new ArgumentOutOfRangeException("Engine parameters not set correctly");
             }
-            
-            FuelCapacity = capacity;
-            CurrentFuel = startingFuel;
-            BurnRate = burnRate;
         }
 
         public bool HasFuel(float amount)

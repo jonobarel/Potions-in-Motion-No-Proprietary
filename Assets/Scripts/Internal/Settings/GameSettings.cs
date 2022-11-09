@@ -19,5 +19,13 @@ namespace ZeroPrep.MineBuddies
         [Tooltip("base value of how much the module affects the target hazards, before buffs/debuffs")]
         [Range(0f, 1f)]
         public float TreatmentEffect;
+
+        [Header("Hazard Settings")] 
+        [Range(0f,20f)]
+        public float MinSpawnTime;
+
+        [Range(0f, 20f)] public float MaxSpawnTime;
+        
+
     }
 }

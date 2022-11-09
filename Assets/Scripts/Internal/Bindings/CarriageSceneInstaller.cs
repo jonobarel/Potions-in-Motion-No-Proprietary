@@ -17,14 +17,18 @@ namespace ZeroPrep.MineBuddies
 
         private void InstallEngineComponents()
         {
-            Container.Bind<EngineFuel>().FromNew().AsSingle().WithArguments(_gameSettings.EngineCapacity, _gameSettings.EngineStartingFuel, _gameSettings.EngineBurnRate);
+            Container.Bind<EngineFuel>().FromNew().AsSingle();
+            Container.Bind<EngineSpeed>().FromNew().AsSingle();
         }
 
         private void InstallHazardComponents()
         {
             Container.Bind<HazardManager>().FromNew().AsSingle();
-            Container.Bind<HazardManagerGO>().FromComponentInNewPrefab(hazardManagerGameObjectPrefab).AsSingle();
             Container.Bind<AvailableHazardTypes>().FromNew().AsSingle();
+            Container.Bind<HazardSpawner>().FromNew().AsSingle()
+                .WithArguments(_gameSettings.MinSpawnTime, _gameSettings.MaxSpawnTime);
+            Container.Bind<HazardManagerGO>().FromComponentInNewPrefab(hazardManagerGameObjectPrefab).AsSingle();
+            
         }
     }
 }
