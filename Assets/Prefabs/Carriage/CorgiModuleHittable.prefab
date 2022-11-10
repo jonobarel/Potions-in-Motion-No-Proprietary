@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 7627640564066893177}
   - component: {fileID: 7172673277827544051}
   - component: {fileID: 775745969975591294}
+  - component: {fileID: 7236305925336268950}
   m_Layer: 29
   m_Name: CorgiModuleHittable
   m_TagString: Untagged
@@ -571,7 +572,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c996e855f107cf6458efd972bdacc23e, type: 3}
   m_Name: 
@@ -773,13 +774,13 @@ MonoBehaviour:
   OnActivation:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5383403383194942899}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: DamageHazard
+      - m_Target: {fileID: 7236305925336268950}
+        m_TargetAssemblyTypeName: ZeroPrep.MineBuddies.Module, MineBuddies
+        m_MethodName: Interact
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -804,6 +805,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0617763b4190c364093ae8e7b62aea45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7236305925336268950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188668530597834665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9d7d97a96897f4796f6840042341c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameSettings:
+    EngineCapacity: 0
+    EngineStartingFuel: 0
+    EngineBurnRate: 0
+    FuelConsumption: 0
+    TreatmentEffect: 0
+    MinSpawnTime: 0
+    MaxSpawnTime: 0
+  _hazardType: 0
+  fuelConsumption: 0
 --- !u!1 &7941817532555367231
 GameObject:
   m_ObjectHideFlags: 0
