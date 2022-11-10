@@ -19,6 +19,7 @@ namespace ZeroPrep.MineBuddies
         public EngineFuel EngineFuel => _engineFuel;
 
         public Managers.HazardType HazardType => _hazardType;
+        [SerializeField]
         private Managers.HazardType _hazardType;
         private HazardManagerGO _hazardManager;
 
@@ -51,8 +52,9 @@ namespace ZeroPrep.MineBuddies
 
         }
         
-        public void Interact(GameObject actor)
+        public void Interact()
         {
+            Debug.Log($"{name} - activated");
             if (!_engineFuel.HasFuel(fuelConsumption))
             {
                 throw new NotImplementedException("Insufficient fuel, play feedback");

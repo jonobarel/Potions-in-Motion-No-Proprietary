@@ -19,6 +19,8 @@ namespace ZeroPrep.MineBuddies
 
         [Inject]
         private Managers.HazardType[] _validTypes;
+
+        [Inject] private GameSettings _gameSettings;
         
         private Array _types = Enum.GetValues((typeof(Managers.HazardType)));
 
@@ -73,7 +75,7 @@ namespace ZeroPrep.MineBuddies
         public void SpawnRandomTypeHazard()
         {
             Managers.HazardType newType = (Managers.HazardType)_types.GetValue(Random.Range(0, _types.Length));
-            HazardExternal h = new HazardExternal(0.5f, newType);
+            HazardExternal h = new HazardExternal(0.5f, newType, _gameSettings.HazardStartingHealth);
         }
 
         public bool IsSpawning()

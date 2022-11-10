@@ -8,7 +8,7 @@ namespace ZeroPrep.MineBuddies
         
         private float _speed;
         
-        public HazardExternal(float speed, Managers.HazardType type) : base(type)
+        public HazardExternal(float speed, Managers.HazardType type, float startingHealth = 1f) : base(type, startingHealth)
         {
             _speed = speed;
         }

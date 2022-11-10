@@ -93,6 +93,7 @@ namespace ZeroPrep.MineBuddies
             HazardBase affectedHazard = GetClosestHazardOfType(type);
             if (affectedHazard != null)
             {
+                Debug.Log($"Treating hazard type {type}");
                 affectedHazard.TreatAction(amount);
             }
         }

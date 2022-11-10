@@ -5,7 +5,7 @@ namespace ZeroPrep.MineBuddies
 {
     public abstract class HazardBase
     {
-        private float _health = 1f;
+        
         private Managers.HazardType _type;
         public Managers.HazardType Type => _type;
         
@@ -15,6 +15,7 @@ namespace ZeroPrep.MineBuddies
         /// When it reaches 0, the Hazard will call Clear() and the OnClear event will trigger.
         /// </summary>
         public float Health => _health;
+        private float _health;
 
         private float _progress = 0f;
         /// <summary>
@@ -34,8 +35,9 @@ namespace ZeroPrep.MineBuddies
             }
         }
 
-        protected HazardBase(Managers.HazardType type)
+        protected HazardBase(Managers.HazardType type, float startingHealth)
         {
+            _health = startingHealth;
             _type = type;
             Spawn?.Invoke(this);
         }

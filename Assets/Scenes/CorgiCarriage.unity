@@ -731,6 +731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736740ee16ce7e84db243d300adba46c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazardManagerGameObjectPrefab: {fileID: 5083856232491753050, guid: f0df06179b910ef438b48b93ab88fd08,
+    type: 3}
 --- !u!1001 &502426211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1004,6 +1006,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3126630473160136733, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: _hazardType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3162129299792973775, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1157,6 +1164,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 5619776797886083709, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: _hazardType
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5732257249117429825, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
       propertyPath: m_RootOrder
@@ -1192,6 +1204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123187315268500452, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: _hazardType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6249998445230145037, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -1312,6 +1329,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 5.791717
+      objectReference: {fileID: 0}
+    - target: {fileID: 8793894416006145576, guid: 57a937463fd14d64687cc9034e04207b,
+        type: 3}
+      propertyPath: _hazardType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9053909221526948115, guid: 57a937463fd14d64687cc9034e04207b,
         type: 3}
@@ -2137,24 +2159,6 @@ MonoBehaviour:
   LerpTimescale: 1
   LerpSpeed: 0
   TestButton: 0
---- !u!1 &993326192 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1762700570959331815, guid: 57a937463fd14d64687cc9034e04207b,
-    type: 3}
-  m_PrefabInstance: {fileID: 502426211}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &993326204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993326192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9d7d97a96897f4796f6840042341c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1087296970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2935101837853889778, guid: 91dbd5b2ad3188e4ca475c42a5618b90,

@@ -1,4 +1,5 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ namespace ZeroPrep.MineBuddies
             Destroy
         }
 
+        [SerializeField]
+        private MMF_Player _treated_feedback, _expired_feedback, _cleared_feedback;
+        
         private State _state;
         public Transform iconContainer;
         public Image hazardIcon;
@@ -58,6 +62,11 @@ namespace ZeroPrep.MineBuddies
         public void MarkForRemoval()
         {
             _state = State.Destroy;
+        }
+
+        public void TreatmentAnimation()
+        {
+            _treated_feedback.PlayFeedbacks();
         }
     }
 }

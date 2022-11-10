@@ -25,7 +25,8 @@ namespace ZeroPrep.MineBuddies
         public float MinSpawnTime;
 
         [Range(0f, 20f)] public float MaxSpawnTime;
-        
+        public float HazardStartingHealth;
+
 
     }
 }
