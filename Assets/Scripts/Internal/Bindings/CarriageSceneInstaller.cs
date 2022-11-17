@@ -29,7 +29,8 @@ namespace ZeroPrep.MineBuddies
             Container.Bind<HazardSpawner>().FromNew().AsSingle()
                 .WithArguments(_gameSettings.MinSpawnTime, _gameSettings.MaxSpawnTime);
             Container.Bind<HazardManagerGO>().FromComponentInNewPrefab(hazardManagerGameObjectPrefab).AsSingle();
-            
+            Container.Bind<HazardIcons>().FromComponentInNewPrefab(hazardIconsPrefab).AsSingle();
+
         }
     }
 }

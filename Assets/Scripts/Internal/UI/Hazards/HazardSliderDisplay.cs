@@ -33,11 +33,12 @@ namespace ZeroPrep.MineBuddies
             _slider = GetComponent<Slider>();
         }
         
-        public void Init(HazardBase h)
+        
+        public void Init(HazardBase h, Sprite icon)
         {
             _hazard = h;
             _type = h.Type;
-            hazardIcon.sprite = GameSystem.Instance.hazardManagerGo.GetIconForHazardType(h.Type);
+            hazardIcon.sprite = icon;
         }
 
         public void Update()
