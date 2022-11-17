@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Hazard_Slider_Display.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Hazard_Slider_Display.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/junk_scenes/Testing New Hazard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/junk_scenes/Testing New Hazard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Effects/Explode.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Effects/Explode.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/AvailableHazardTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/AvailableHazardTypes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" afterDir="false" />
-    </list>
+    <list default="true" id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +119,7 @@
       <workItem from="1667727864486" duration="14418000" />
       <workItem from="1667898709589" duration="14027000" />
       <workItem from="1668000050123" duration="15737000" />
-      <workItem from="1668605886926" duration="3754000" />
+      <workItem from="1668605886926" duration="4295000" />
     </task>
     <servers />
   </component>
