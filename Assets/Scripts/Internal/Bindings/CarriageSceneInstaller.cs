@@ -6,6 +6,7 @@ namespace ZeroPrep.MineBuddies
     public class CarriageSceneInstaller : MonoInstaller
     {
         public HazardManagerGO hazardManagerGameObjectPrefab;
+        public HazardIcons hazardIconsPrefab;
         
         [Inject] private GameSettings _gameSettings;
         public override void InstallBindings()

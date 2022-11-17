@@ -53,7 +53,7 @@ namespace ZeroPrep.MineBuddies
 
             if (_state == State.Destroy)
             {
-                GameObject.Destroy(gameObject);
+                GameObject.Destroy(gameObject, 1f);
             }
             
             
@@ -67,6 +67,11 @@ namespace ZeroPrep.MineBuddies
         public void TreatmentAnimation()
         {
             _treated_feedback.PlayFeedbacks();
+        }
+
+        public void PlayClearAnimation()
+        {
+            _cleared_feedback.PlayFeedbacks();
         }
     }
 }

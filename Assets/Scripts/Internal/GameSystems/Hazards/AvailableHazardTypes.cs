@@ -15,17 +15,19 @@ namespace ZeroPrep.MineBuddies
             
             if (modules.Length < 1)
             {
-                throw new System.ArgumentOutOfRangeException("Cannot find Action Modules in scene");
+                Types = new[] { Managers.HazardType.A, Managers.HazardType.B, Managers.HazardType.C };
             }
-
-            List<Managers.HazardType> hazardTypes = new List<Managers.HazardType>();
-            
-            foreach (var module in modules)
+            else
             {
-                hazardTypes.Add(module.HazardType);                
-            }
+                List<Managers.HazardType> hazardTypes = new List<Managers.HazardType>();
 
-            Types = hazardTypes.ToArray();
+                foreach (var module in modules)
+                {
+                    hazardTypes.Add(module.HazardType);
+                }
+
+                Types = hazardTypes.ToArray();
+            }
         }
         
     }

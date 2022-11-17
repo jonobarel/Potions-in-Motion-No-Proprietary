@@ -77,6 +77,7 @@ public class HazardSliderUIManagerGameObject : MonoBehaviour
 
     private void OnClear(HazardBase h)
     {
+        _sliders[h].PlayClearAnimation();
         HazardCleared(h);
     }
     private void HazardCleared(HazardBase h)
