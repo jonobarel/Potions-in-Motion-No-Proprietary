@@ -40,8 +40,17 @@ namespace ZeroPrep.MineBuddies
 
         public void Update()
         {
-            _currentSpeed += Time.deltaTime * _acceleration;
+            if (_engineFuel.RequestFuel(_burnRate * Time.deltaTime))
+            {
+                _currentSpeed += Time.deltaTime * _acceleration;
+                
+            }
+            else
+            {
+                _currentSpeed -= Time.deltaTime * _acceleration;
+            }
             _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, _maxSpeed);
+            
         }
     }
 }
