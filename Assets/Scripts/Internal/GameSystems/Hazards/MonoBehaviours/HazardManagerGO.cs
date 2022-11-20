@@ -11,16 +11,16 @@ namespace ZeroPrep.MineBuddies
     public class HazardManagerGO : MonoBehaviour
     {
         private GameSettings _gameSettings;
-        [SerializeField] [Range(0.1f, 20f)] private float minTime = 0.5f;
-        [SerializeField] [Range(0.1f, 20f)] private float maxTime = 1.5f;
 
         public bool TimedSpawning = true;
 
+        [SerializeField]
         private bool _isPaused = false;
+
+        private bool _previousIsPaused = false;
 
         private HazardManager _hazardManager;
         private HazardSpawner _hazardSpawner;
-        HazardIcons hazardIcons;
 
         public Transform hazardDistanceSliderContainer;
         public Slider positionSliderPrefab;
@@ -46,13 +46,10 @@ namespace ZeroPrep.MineBuddies
             _engineSpeed = engineSpeed;
             _gameSettings = gameSettings;
             _availableHazardTypes = availableHazardTypes;
-
         }
 
         public void Start()
         {
-            hazardIcons = GetComponent<HazardIcons>();
-
             //_hazardSpawner = new HazardSpawner(minTime, maxTime, _availableHazardTypes.Types);
             
             if (TimedSpawning)
@@ -64,25 +61,27 @@ namespace ZeroPrep.MineBuddies
 
         public void Update()
         {
-            
-            _hazardManager.Update(Time.deltaTime * Mathf.Min(_engineSpeed.CurrentSpeed(),0.1f));
-            //if should spawn but isn't
-            if (TimedSpawning && !_hazardSpawner.IsSpawning())
-            {
-                _hazardSpawner.StartSpawning(this);
-            }
-            //if should not spawn but is still spawning
-            else if (!TimedSpawning && _hazardSpawner.IsSpawning())
+            if (_isPaused)
             {
                 _hazardSpawner.StopSpawning();
             }
+
+            else
+            {
+                _hazardManager.Update(Time.deltaTime * Mathf.Min(_engineSpeed.CurrentSpeed(), 0.1f));
+                //if should spawn but isn't
+                if (TimedSpawning && !_hazardSpawner.IsSpawning())
+                {
+                    _hazardSpawner.StartSpawning(this);
+                }
+                //if should not spawn but is still spawning
+                else if (!TimedSpawning && _hazardSpawner.IsSpawning())
+                {
+                    _hazardSpawner.StopSpawning();
+                }
+            }
         }
         
-        public Sprite GetIconForHazardType(Managers.HazardType e)
-        {
-            return hazardIcons.GetIconForHazardType(e);
-        }
-
         public HazardBase GetClosestHazardOfType(Managers.HazardType type)
         {
             return _hazardManager.GetClosestHazardOfType(type);

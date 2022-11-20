@@ -20,3 +20,4 @@ MonoBehaviour:
     TreatmentEffect: 0.5
     MinSpawnTime: 2
     MaxSpawnTime: 4
+    HazardStartingHealth: 1

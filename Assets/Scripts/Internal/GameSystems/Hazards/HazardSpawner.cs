@@ -18,11 +18,11 @@ namespace ZeroPrep.MineBuddies
         private bool _stopSpawning = false;
 
         [Inject]
-        private Managers.HazardType[] _validTypes;
+        private AvailableHazardTypes _validTypes;
 
         [Inject] private GameSettings _gameSettings;
-        
-        private Array _types = Enum.GetValues((typeof(Managers.HazardType)));
+
+        private Array _types => _validTypes.Types;
 
         /*
         Array values = Enum.GetValues(typeof(Bar));
@@ -32,7 +32,7 @@ namespace ZeroPrep.MineBuddies
         #region Constructor
 
         [Inject]
-        public HazardSpawner(float minTime, float maxTime, Managers.HazardType[] validTypes)
+        public HazardSpawner(float minTime, float maxTime, AvailableHazardTypes validTypes)
         {
             MinTime = minTime;
             MaxTime = maxTime;
