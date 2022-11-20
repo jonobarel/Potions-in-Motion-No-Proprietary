@@ -12,6 +12,11 @@ namespace ZeroPrep.MineBuddies
         public float EngineStartingFuel;
 
         public float EngineBurnRate;
+
+        [Tooltip("in m/s^2")]
+        public float EngineAcceleration;
+
+        public float EngineMaxSpeed;
         
         [Header("Module Settings")]
         public float FuelConsumption;

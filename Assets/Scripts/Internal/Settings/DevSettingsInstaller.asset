@@ -16,6 +16,8 @@ MonoBehaviour:
     EngineCapacity: 100
     EngineStartingFuel: 100
     EngineBurnRate: 10
+    EngineAcceleration: 1
+    EngineMaxSpeed: 10
     FuelConsumption: 5
     TreatmentEffect: 0.5
     MinSpawnTime: 2
