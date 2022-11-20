@@ -16,8 +16,8 @@ namespace ZeroPrep.MineBuddies
 
         private AnalyticsManager _analytics;
 
-        private HazardManagerMono _hazardManager;
-        public HazardManagerMono HazardManager => _hazardManager;
+        //private HazardManagerMono _hazardManager;
+        //public HazardManagerMono HazardManager => _hazardManager;
 
         // Start is called before the first frame update
         void Awake()

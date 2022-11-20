@@ -22,7 +22,7 @@ namespace ZeroPrep.MineBuddies
         {
             base.TriggerButtonAction(instigator);
             this.instigator = instigator.GetComponent<Character>();
-            GetComponent<ActionModule>().ActivatingPlayer = instigator.GetComponent<MineBuddiesCharacter>().PlayerLabel;
+            module.ActivatingPlayer = instigator.GetComponent<MineBuddiesCharacter>().PlayerLabel;
             GameSystem.Instance.analytics.LogEvent(this.instigator.GetComponent<MineBuddiesCharacter>().PlayerLabel, Analytics.LogAction.UseModule, module.hazardType, 1, "player activated module"); 
         }
 

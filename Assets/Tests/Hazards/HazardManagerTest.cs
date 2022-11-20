@@ -6,19 +6,19 @@ using UnityEngine.TestTools;
 using ZeroPrep.MineBuddies;
 using type = ZeroPrep.MineBuddies.Managers.HazardType;
 
+
 public class HazardManagerTest
 {
     // A Test behaves as an ordinary method
-    
     
     [Test]
     public void DetectHazardCreated()
     {
         HazardManager hazardManager = new HazardManager();
         Assert.AreEqual(hazardManager.Hazards.Count, 0);
-        HazardExternal hazard1 = new HazardExternal(1f, type.A);
+        HazardExternal hazard1 = new HazardExternal(1f, type.A, 1f);
         Assert.AreEqual(hazardManager.Hazards.Count, 1);
-        HazardExternal hazard2 = new HazardExternal(1f, type.B);
+        HazardExternal hazard2 = new HazardExternal(1f, type.B, 1f);
         Assert.AreEqual(hazardManager.Hazards.Count, 2);
 
     }
@@ -27,7 +27,7 @@ public class HazardManagerTest
     public void HazardProgression()
     {
         HazardManager hazardManager = new HazardManager();
-        HazardExternal hazard1 = new HazardExternal(0.5f, type.A);
+        HazardExternal hazard1 = new HazardExternal(0.5f, type.A, 1f);
         hazardManager.Update(1f);
         Assert.AreEqual(0.5f, hazard1.Progress);
     }
@@ -36,9 +36,9 @@ public class HazardManagerTest
     public void HazardExpiresTest()
     {
         HazardManager hazardManager = new HazardManager();
-        HazardExternal hazard1 = new HazardExternal(1f, type.A);
-        HazardExternal hazard2 = new HazardExternal(0.5f, type.A);
-        HazardExternal hazard3 = new HazardExternal(0.25f, type.A);
+        HazardExternal hazard1 = new HazardExternal(1f, type.A, 1f);
+        HazardExternal hazard2 = new HazardExternal(0.5f, type.A, 1f);
+        HazardExternal hazard3 = new HazardExternal(0.25f, type.A, 1f);
         hazardManager.Update(1f);
         Assert.AreEqual(2,hazardManager.Hazards.Count);
         hazardManager.Update(1f);
@@ -51,7 +51,7 @@ public class HazardManagerTest
     public void HazardTreatTest()
     {
         HazardManager hazardManager = new HazardManager();
-        HazardExternal hazard1 = new HazardExternal(1f, type.A);
+        HazardExternal hazard1 = new HazardExternal(1f, type.A, 1f);
         hazard1.TreatAction(1f);
         hazardManager.Update(0.1f);
         Assert.AreEqual(0, hazardManager.Hazards.Count);
@@ -77,7 +77,7 @@ public class HazardManagerTest
         
         foreach (var t in types)
         {
-            HazardExternal h = new HazardExternal(1f, t);
+            HazardExternal h = new HazardExternal(1f, t, 1f);
             if (closestA == null && t == type.A)
             {
                 closestA = h;

@@ -85,7 +85,7 @@ namespace ZeroPrep.MineBuddies
 
         private void Start()
         {
-            GameObject.DontDestroyOnLoad(gameObject);
+            //GameObject.DontDestroyOnLoad(gameObject);
         }
     }
 }

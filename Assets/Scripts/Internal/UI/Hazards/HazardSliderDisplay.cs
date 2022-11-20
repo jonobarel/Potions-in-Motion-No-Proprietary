@@ -1,4 +1,5 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,9 @@ namespace ZeroPrep.MineBuddies
             Destroy
         }
 
+        [SerializeField]
+        private MMF_Player _treated_feedback, _expired_feedback, _cleared_feedback;
+        
         private State _state;
         public Transform iconContainer;
         public Image hazardIcon;
@@ -29,11 +33,12 @@ namespace ZeroPrep.MineBuddies
             _slider = GetComponent<Slider>();
         }
         
-        public void Init(HazardBase h)
+        
+        public void Init(HazardBase h, Sprite icon)
         {
             _hazard = h;
             _type = h.Type;
-            hazardIcon.sprite = GameSystem.Instance.hazardManagerGo.GetIconForHazardType(h.Type);
+            hazardIcon.sprite = icon;
         }
 
         public void Update()
@@ -49,7 +54,7 @@ namespace ZeroPrep.MineBuddies
 
             if (_state == State.Destroy)
             {
-                GameObject.Destroy(gameObject);
+                GameObject.Destroy(gameObject, 1f);
             }
             
             
@@ -58,6 +63,16 @@ namespace ZeroPrep.MineBuddies
         public void MarkForRemoval()
         {
             _state = State.Destroy;
+        }
+
+        public void TreatmentAnimation()
+        {
+            _treated_feedback.PlayFeedbacks();
+        }
+
+        public void PlayClearAnimation()
+        {
+            _cleared_feedback.PlayFeedbacks();
         }
     }
 }

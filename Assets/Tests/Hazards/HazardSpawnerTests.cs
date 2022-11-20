@@ -30,7 +30,7 @@ public class HazardSpawnerTests
     public void HazardSpawnsRandomType()
     {
         HazardBase.Spawn += ValidateHazardCreated;
-        HazardSpawner hs = new HazardSpawner(_minDelay, _maxDelay, new[]{ Managers.HazardType.A, Managers.HazardType.B });
+        HazardSpawner hs = new HazardSpawner(_minDelay, _maxDelay, new AvailableHazardTypes());
 
     hs.SpawnRandomTypeHazard();
         Assert.IsTrue(_isSpawned);
@@ -53,7 +53,7 @@ public class HazardSpawnerTests
         
         _isSpawned = false;
         HazardBase.Spawn += ValidateHazardDelay;
-        HazardSpawner hs = new HazardSpawner(_minDelay, _maxDelay, new[]{ Managers.HazardType.A, Managers.HazardType.B });
+        HazardSpawner hs = new HazardSpawner(_minDelay, _maxDelay, new AvailableHazardTypes());
 
         _startTime = Time.time;
         hs.StartSpawning((MonoBehaviour)spawnContainer);
