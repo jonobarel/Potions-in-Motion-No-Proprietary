@@ -33,8 +33,8 @@ namespace ZeroPrep.MineBuddies
         void Update()
         {
             float currentSpeed;
-            if (Carriage.Instance != null)
-                currentSpeed = Carriage.Instance.CarriageMovement.CurrentSpeed;
+            if (VehicleDamageHandler.Instance != null)
+                currentSpeed = VehicleDamageHandler.Instance.CarriageMovement.CurrentSpeed;
             else currentSpeed = 10f;
             for (int i = 0; i < layers.Length; i++) {
                 float factor = layerParallaxFactors[i];

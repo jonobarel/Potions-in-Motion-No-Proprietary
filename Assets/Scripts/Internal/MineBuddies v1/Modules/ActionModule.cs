@@ -9,7 +9,7 @@ namespace ZeroPrep.MineBuddies
     {
         public Managers.HazardType hazardType;
 
-        PowerModule Engine { get { return Carriage.Instance.Engine; } }
+        PowerModule Engine { get { return VehicleDamageHandler.Instance.Engine; } }
         [SerializeField]
         bool hasPower = false;
         [SerializeField]
@@ -38,7 +38,7 @@ namespace ZeroPrep.MineBuddies
 
         public void Update()
         {
-            if (Carriage.Instance.Engine.CurrentFuel < Helpers.Config.ModuleFuelConsumption)
+            if (VehicleDamageHandler.Instance.Engine.CurrentFuel < Helpers.Config.ModuleFuelConsumption)
             {
                 moduleActivator.Activable = false;
             }
@@ -48,7 +48,7 @@ namespace ZeroPrep.MineBuddies
         public void DamageHazard()
         {
             HazardMono hazardMono = GetTargetHazard();
-            if (hazardMono == null || !Carriage.Instance.Engine.ModuleFuel() || !hazardMono.isActive) return;
+            if (hazardMono == null || !VehicleDamageHandler.Instance.Engine.ModuleFuel() || !hazardMono.isActive) return;
             else
             {
                 GameSystem.Instance.analytics.LogEvent(ActivatingPlayer, Analytics.LogAction.DamageHazard, hazardType, DamageToHazard, "player damaged hazard", hazardMono.id);

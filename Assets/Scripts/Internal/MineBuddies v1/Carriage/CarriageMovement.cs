@@ -39,11 +39,11 @@ namespace ZeroPrep.MineBuddies
             if (_speedOverride > 0f)
                 return _speedOverride;
             //let's set the speed as MaxSpeed - A*activeHazards*(1-damage)
-            else if (Carriage.Instance.Engine.FuelLevel > 0)
+            else if (VehicleDamageHandler.Instance.Engine.FuelLevel > 0)
             {
                 // max speed is reduced by damage ratio
                 // speed is reduced by number of active hazards * slowdown factor 
-                var speed = MaxSpeed * (1 - Carriage.Instance.CurrentDamage) - _hazardSlowdownFactor * GameSystem.HazardManagerGo.ActiveHazardsCount();
+                var speed = MaxSpeed * (1 - VehicleDamageHandler.Instance.CurrentDamage) - _hazardSlowdownFactor * GameSystem.HazardManagerGo.ActiveHazardsCount();
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
                 return speed;
             }

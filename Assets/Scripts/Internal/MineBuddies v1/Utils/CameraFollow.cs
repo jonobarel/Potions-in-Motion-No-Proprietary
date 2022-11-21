@@ -11,7 +11,7 @@ namespace ZeroPrep.MineBuddies
         // Start is called before the first frame update
         void Start()
         {
-            carriageTransform = Carriage.Instance.transform;
+            carriageTransform = VehicleDamageHandler.Instance.transform;
             cameraOffset = transform.position - carriageTransform.position;
         }
 

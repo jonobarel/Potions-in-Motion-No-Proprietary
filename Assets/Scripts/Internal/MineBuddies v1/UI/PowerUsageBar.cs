@@ -12,7 +12,7 @@ namespace ZeroPrep.MineBuddies
 
         void Update()
         {
-            powerUsageBar.fillAmount = Carriage.Instance.Engine.PowerDemand;
+            powerUsageBar.fillAmount = VehicleDamageHandler.Instance.Engine.PowerDemand;
         }
     }
 }

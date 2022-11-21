@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/green.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/green.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/junk_scenes/Testing New Hazard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/junk_scenes/Testing New Hazard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/DevSettingsInstaller.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/DevSettingsInstaller.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/GameSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/GameSettings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/Carriage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/Carriage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/CarriageMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/CarriageMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/BackgroundScrolling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/BackgroundScrolling.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardMono.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardMono.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/Managers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/Managers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Modules/ActionModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Modules/ActionModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/DistanceCovered.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/DistanceCovered.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/InfoSlidersUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/InfoSlidersUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/PowerUsageBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/PowerUsageBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Utils/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Utils/CameraFollow.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +32,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8b27195d2ee14da7b6fd1e5435850f80157400/43/360b704f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/GameSettingsInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/VehicleDamageHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Modules/ModulesTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Analytics.cs" root0="SKIP_HIGHLIGHTING" />
@@ -31,7 +40,13 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Unity.2D.Animation.Editor.asmdef" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/IK/Editor/IKGizmos.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/IK/Runtime/Solvers/CCD2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/IK/Runtime/Solvers/FABRIK2D.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/IK/Runtime/Solvers/Limb.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/GridEditorUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.6.4/Runtime/Intrinsics/Arm/NEON_AArch64_fp16.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.burst@1.6.4/Runtime/Intrinsics/Arm/NEON_AArch64_rdma.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.8.4/Runtime/Impulse/CinemachineImpulseManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/InputInteractionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/Interactions/MultiTapInteraction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/Samples~/UIvsGameInput/UIvsGameInputHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.6/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
@@ -98,10 +113,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="12108">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="12108" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />

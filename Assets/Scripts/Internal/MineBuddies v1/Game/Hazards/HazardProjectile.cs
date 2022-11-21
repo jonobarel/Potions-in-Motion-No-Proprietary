@@ -11,9 +11,9 @@ namespace ZeroPrep.MineBuddies
         new void Update()
         {
             base.Update();
-            if (Carriage.Instance != null)
+            if (VehicleDamageHandler.Instance != null)
             {
-                Speed = Carriage.Instance.CarriageMovement.CurrentSpeed;
+                Speed = VehicleDamageHandler.Instance.CarriageMovement.CurrentSpeed;
             }
         }
     }

@@ -81,7 +81,7 @@ namespace ZeroPrep.MineBuddies
         {
             if (isActiveAndEnabled)
             {
-                return (transform.position - Carriage.Instance.transform.position).sqrMagnitude;
+                return (transform.position - VehicleDamageHandler.Instance.transform.position).sqrMagnitude;
                 
             }
             else return float.MaxValue;

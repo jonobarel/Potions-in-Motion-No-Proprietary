@@ -19,7 +19,7 @@ namespace ZeroPrep.MineBuddies
         // Update is called once per frame
         void Update()
         {
-            var dist = (int)(Carriage.Instance.GetComponent<CarriageMovement>().DistanceCovered);
+            var dist = (int)(VehicleDamageHandler.Instance.GetComponent<CarriageMovement>().DistanceCovered);
             //if (dist % 10 == 0) Debug.Log($"Distance covered: {dist}");
             bodyText.text = $"{dist}m";
         }

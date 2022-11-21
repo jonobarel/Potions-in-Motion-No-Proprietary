@@ -23,13 +23,13 @@ namespace ZeroPrep.MineBuddies
         {
             if (carriageDamageSlider != null)
             {
-                carriageDamageSlider.value = Carriage.Instance.CurrentDamage;
+                carriageDamageSlider.value = VehicleDamageHandler.Instance.CurrentDamage;
             }
             else throw new System.NullReferenceException($"{name}: Carriage Damage Slider not set");
             if (carriageSpeedSlider != null)
             {
                 float MaxSpeed = GameSystem.Instance.configManager.config.MaxCarriageSpeed;
-                carriageSpeedSlider.value = Carriage.Instance.CarriageMovement.CurrentSpeed / MaxSpeed;
+                carriageSpeedSlider.value = VehicleDamageHandler.Instance.CarriageMovement.CurrentSpeed / MaxSpeed;
             }
             else throw new System.NullReferenceException($"{name}: Carriage Speed slider not set");
             

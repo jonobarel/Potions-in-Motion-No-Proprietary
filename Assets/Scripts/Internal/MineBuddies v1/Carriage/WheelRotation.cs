@@ -15,7 +15,7 @@ namespace ZeroPrep.MineBuddies
         // Update is called once per frame
         void Update()
         {
-            float currentSpeed = Carriage.Instance.CurrenSpeed;
+            float currentSpeed = VehicleDamageHandler.Instance.CurrenSpeed;
             transform.Rotate( new Vector3(0, 0, -rotationSpeedFactor*Time.deltaTime * currentSpeed));
         }
     }
