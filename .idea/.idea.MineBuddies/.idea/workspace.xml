@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/HazardManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/HazardManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Hazard_Slider_Display.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Hazard_Slider_Display.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,6 +325,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs</url>
+          <line>63</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Engine\EngineSpeed.cs" initialLine="48" containingFunctionPresentation="method 'CalculateTargetSpeed'">
+            <startOffsets>
+              <option value="1848" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1910" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

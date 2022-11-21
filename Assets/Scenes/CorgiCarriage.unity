@@ -733,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardManagerGameObjectPrefab: {fileID: 5083856232491753050, guid: f0df06179b910ef438b48b93ab88fd08,
     type: 3}
+  enginePrefab: {fileID: 0}
   hazardIconsPrefab: {fileID: 5440580687992612444, guid: 2185f0bd2846d6d49b811e837ff5b5e5,
     type: 3}
 --- !u!1001 &502426211
@@ -764,7 +765,7 @@ PrefabInstance:
       objectReference: {fileID: 1815145187}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: HazardSpawner
@@ -1353,6 +1354,7 @@ PrefabInstance:
     - {fileID: 3398338272659907707, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
     - {fileID: 502426216, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
     - {fileID: 502426217, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+    - {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
 --- !u!1 &502426212 stripped
 GameObject:
@@ -1360,18 +1362,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 502426211}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &502426213 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b,
-    type: 3}
-  m_PrefabInstance: {fileID: 502426211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdc2e2633f7bca84ca62019c2406993d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &502426214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8339445741038076539, guid: 57a937463fd14d64687cc9034e04207b,
@@ -1526,7 +1516,7 @@ MonoBehaviour:
   PlayEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502426213}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.Carriage, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
@@ -2717,7 +2707,7 @@ MonoBehaviour:
   PlayEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502426213}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.Carriage, Assembly-CSharp
         m_MethodName: UpdateHealthBar
         m_Mode: 1
@@ -3185,9 +3175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09e297a323a4e69ac2f9f24b156b628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTime: 3
-  maxTime: 5
   TimedSpawning: 1
+  _isPaused: 0
   hazardDistanceSliderContainer: {fileID: 1836619558}
   positionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
     type: 3}
