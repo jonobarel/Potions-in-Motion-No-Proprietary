@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 7188668530597834670}
   - component: {fileID: 7188668530597834669}
   - component: {fileID: 2069817434948299899}
-  - component: {fileID: 5383403383194942899}
   - component: {fileID: 5614744962815043573}
   - component: {fileID: 6299766909234668375}
   - component: {fileID: 5424586082105777807}
@@ -565,25 +564,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3864017, y: 2.4027655}
   m_EdgeRadius: 0
---- !u!114 &5383403383194942899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c996e855f107cf6458efd972bdacc23e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  hazardType: 0
-  hasPower: 0
-  connected: 0
-  particles: {fileID: 0}
-  DamageToHazard: 1
-  ActivatingPlayer: 
 --- !u!50 &5614744962815043573
 Rigidbody2D:
   serializedVersion: 4
@@ -821,10 +801,18 @@ MonoBehaviour:
     EngineCapacity: 0
     EngineStartingFuel: 0
     EngineBurnRate: 0
+    EngineAcceleration: 0
+    EngineDeceleration: 0
+    EngineMaxSpeed: 0
     FuelConsumption: 0
     TreatmentEffect: 0
     MinSpawnTime: 0
     MaxSpawnTime: 0
+    HazardStartingHealth: 0
+    HazardMinSpeed: 0
+    HazardSpeedToEngineRatio: 0
+    HazardSlowdownFactor: 0
+    MaxHazardsForSlowdown: 0
   _hazardType: 0
   fuelConsumption: 0
 --- !u!1 &7941817532555367231
