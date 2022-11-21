@@ -68,7 +68,7 @@ namespace ZeroPrep.MineBuddies
 
             else
             {
-                _hazardManager.Update(Time.deltaTime * Mathf.Max(_engineSpeed.CurrentSpeed(), 0.1f));
+                _hazardManager.Update(Time.deltaTime * Mathf.Max(_engineSpeed.CurrentSpeed()*_gameSettings.HazardSpeedToEngineRatio, 0.1f));
                 //if should spawn but isn't
                 if (TimedSpawning && !_hazardSpawner.IsSpawning())
                 {
