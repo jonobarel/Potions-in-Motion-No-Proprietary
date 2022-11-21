@@ -14,12 +14,7 @@ namespace ZeroPrep.MineBuddies
             private set;
         }
 
-        public float BurnRate
-        {
-            get;
-            private set;
-        }
-        public float CurrentFuel { get; private set; }
+       public float CurrentFuel { get; private set; }
         
         public float FuelLevel => CurrentFuel / FuelCapacity;
        
@@ -30,9 +25,9 @@ namespace ZeroPrep.MineBuddies
             
             FuelCapacity = gameSettings.EngineCapacity;
             CurrentFuel = gameSettings.EngineStartingFuel;
-            BurnRate = gameSettings.EngineBurnRate;
             
-            if (FuelCapacity <= 0f || CurrentFuel <= 0f || BurnRate <= 0f || CurrentFuel > FuelCapacity )
+            
+            if (FuelCapacity <= 0f || CurrentFuel <= 0f || CurrentFuel > FuelCapacity )
             {
                 throw new ArgumentOutOfRangeException("Engine parameters not set correctly");
             }

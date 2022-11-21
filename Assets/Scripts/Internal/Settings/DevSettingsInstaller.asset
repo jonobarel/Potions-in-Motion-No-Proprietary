@@ -24,3 +24,7 @@ MonoBehaviour:
     MinSpawnTime: 2
     MaxSpawnTime: 4
     HazardStartingHealth: 1
+    HazardMinSpeed: 0
+    HazardSpeedToEngineRatio: 0.03
+    HazardSlowdownFactor: 0.8
+    MaxHazardsForSlowdown: 10

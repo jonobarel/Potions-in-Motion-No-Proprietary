@@ -12,7 +12,14 @@ namespace ZeroPrep.MineBuddies
         public float EngineStartingFuel;
 
         public float EngineBurnRate;
+
+        [Tooltip("in m/s^2")]
+        public float EngineAcceleration;
+        public float EngineDeceleration;
+
+        public float EngineMaxSpeed;
         
+       
         [Header("Module Settings")]
         public float FuelConsumption;
 
@@ -26,6 +33,14 @@ namespace ZeroPrep.MineBuddies
 
         [Range(0f, 20f)] public float MaxSpawnTime;
         public float HazardStartingHealth;
+
+        public float HazardMinSpeed;
+        public float HazardSpeedToEngineRatio;
+
+        [Tooltip("This number is used to calculate how the number of hazards affects the speed of the vehicle")]
+        public float HazardSlowdownFactor;
+        public int MaxHazardsForSlowdown;
+        
 
 
     }
