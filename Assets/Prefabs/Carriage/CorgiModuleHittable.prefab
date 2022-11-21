@@ -422,9 +422,9 @@ GameObject:
   - component: {fileID: 6299766909234668375}
   - component: {fileID: 5424586082105777807}
   - component: {fileID: 7627640564066893177}
-  - component: {fileID: 7172673277827544051}
   - component: {fileID: 775745969975591294}
   - component: {fileID: 7236305925336268950}
+  - component: {fileID: 6567608351332581790}
   m_Layer: 29
   m_Name: CorgiModuleHittable
   m_TagString: Untagged
@@ -706,73 +706,6 @@ MonoBehaviour:
   DebugMessage: Module Activated
   DebugColor: {r: 0, g: 1, b: 1, a: 1}
   DisplayFrameCount: 1
---- !u!114 &7172673277827544051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79d2451da6c21b4a852985e6a6a8b32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ButtonActivatedRequirement: 2
-  RequiresPlayerType: 1
-  RequiresButtonActivationAbility: 0
-  PreventJumpsWhileInThisZone: 0
-  Activable: 1
-  AutoActivation: 0
-  AutoActivationAndButtonInteraction: 0
-  CanOnlyActivateIfGrounded: 0
-  ShouldUpdateState: 1
-  OnlyOneActivationAtOnce: 0
-  AlsoPerformChecksOnStay: 0
-  UnlimitedActivations: 1
-  MaxNumberOfActivations: 0
-  DelayBetweenUses: 0
-  DisableAfterUse: 0
-  InputType: 1
-  InputButton: Interact
-  InputKey: 32
-  AnimationTriggerParameterName: 
-  UseVisualPrompt: 1
-  ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
-    type: 3}
-  ButtonPromptText: X
-  ButtonPromptColor: {r: 0, g: 0.08222163, b: 0.9882353, a: 1}
-  ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
-  AlwaysShowPrompt: 0
-  ShowPromptWhenColliding: 1
-  HidePromptAfterUse: 1
-  PromptRelativePosition: {x: 0, y: 1, z: 0}
-  ActivationFeedback: {fileID: 6174916185869893268}
-  DeniedFeedback: {fileID: 0}
-  EnterFeedback: {fileID: 0}
-  ExitFeedback: {fileID: 0}
-  OnActivation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7236305925336268950}
-        m_TargetAssemblyTypeName: ZeroPrep.MineBuddies.Module, MineBuddies
-        m_MethodName: Interact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnExit:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStay:
-    m_PersistentCalls:
-      m_Calls: []
-  instigator: {fileID: 0}
 --- !u!114 &775745969975591294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,6 +748,72 @@ MonoBehaviour:
     MaxHazardsForSlowdown: 0
   _hazardType: 0
   fuelConsumption: 0
+--- !u!114 &6567608351332581790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188668530597834665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bc48148c07a804a85950d44daf8b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonActivatedRequirement: 2
+  RequiresPlayerType: 1
+  RequiresButtonActivationAbility: 1
+  PreventJumpsWhileInThisZone: 0
+  Activable: 1
+  AutoActivation: 0
+  AutoActivationAndButtonInteraction: 0
+  CanOnlyActivateIfGrounded: 0
+  ShouldUpdateState: 1
+  OnlyOneActivationAtOnce: 1
+  AlsoPerformChecksOnStay: 0
+  UnlimitedActivations: 1
+  MaxNumberOfActivations: 0
+  DelayBetweenUses: 0
+  DisableAfterUse: 0
+  InputType: 0
+  InputButton: Interact
+  InputKey: 32
+  AnimationTriggerParameterName: 
+  UseVisualPrompt: 1
+  ButtonPromptPrefab: {fileID: 114235008137252218, guid: bb1fc0f1f16f31248b9b4d80aa795609,
+    type: 3}
+  ButtonPromptText: A
+  ButtonPromptColor: {r: 0.4862745, g: 0.9882353, b: 0, a: 1}
+  ButtonPromptTextColor: {r: 1, g: 1, b: 1, a: 1}
+  AlwaysShowPrompt: 1
+  ShowPromptWhenColliding: 1
+  HidePromptAfterUse: 0
+  PromptRelativePosition: {x: 0, y: 0, z: 0}
+  ActivationFeedback: {fileID: 0}
+  DeniedFeedback: {fileID: 0}
+  EnterFeedback: {fileID: 0}
+  ExitFeedback: {fileID: 0}
+  OnActivation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7236305925336268950}
+        m_TargetAssemblyTypeName: ZeroPrep.MineBuddies.Module, MineBuddies
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStay:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7941817532555367231
 GameObject:
   m_ObjectHideFlags: 0
