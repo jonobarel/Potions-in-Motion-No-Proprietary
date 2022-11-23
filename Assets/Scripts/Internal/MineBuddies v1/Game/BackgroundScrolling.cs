@@ -12,6 +12,10 @@ namespace ZeroPrep.MineBuddies
         float[] layerParallaxFactors;
         SpriteRenderer[] spriteRenderers;
 
+        private void Init(EngineSpeed _engineSpeed)
+        {
+            
+        }
         void Start()
         {
             //DontDestroyOnLoad(gameObject);

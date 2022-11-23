@@ -7,13 +7,13 @@ namespace ZeroPrep.MineBuddies
     public class FuelCanister : MonoBehaviour
     {
         bool _setToRefuel = false;
-        PowerModule _powerModule;
+        //PowerModule _powerModule;
 
         public void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag.Equals("PowerModule"))
             {
-                _powerModule = collision.gameObject.GetComponent<PowerModule>();
+          //      _powerModule = collision.gameObject.GetComponent<PowerModule>();
                 _setToRefuel = true;
             }
         }
@@ -22,7 +22,7 @@ namespace ZeroPrep.MineBuddies
         {
             if (_setToRefuel)
             {
-                _powerModule.DoRefuel();
+                //_powerModule.DoRefuel();
                 MoreMountains.CorgiEngine.Pushable pushable = GetComponent<MoreMountains.CorgiEngine.Pushable>();
                 GameSystem.Instance.analytics.LogEvent(pushable.Pusher.GetComponent<MineBuddiesCharacter>().PlayerLabel, Analytics.LogAction.Refuel, Managers.HazardType.A, 1, "Player refueled");
                 pushable.Detach(pushable.Pusher);

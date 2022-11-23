@@ -1,11 +1,12 @@
 using System;
+using Internal.UI;
 using UnityEngine;
 using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
     [Serializable]
-    public class EngineFuel
+    public class EngineFuel : IDisplayable
     {
         private GameSettings _gameSettings;
         public float FuelCapacity
@@ -53,8 +54,11 @@ namespace ZeroPrep.MineBuddies
 
             return false;
         }
-        
-        
-        
+
+        public float Value()
+        {
+            return FuelLevel;
+        }
+
     }
 }

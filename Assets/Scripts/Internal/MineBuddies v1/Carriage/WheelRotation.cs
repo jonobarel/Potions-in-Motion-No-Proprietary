@@ -7,10 +7,17 @@ namespace ZeroPrep.MineBuddies
 {
     public class WheelRotation : MonoBehaviour
     {
-        [FormerlySerializedAs("RotationSpeedFactor")]
         [SerializeField]
         [Range(0f, 100f)]
         float rotationSpeedFactor = 30f;
+
+        private EngineSpeed _engineSpeed;
+
+        [Inject]
+        private void Init(EngineSpeed engineSpeed)
+        {
+            _engineSpeed = engineSpeed;
+        }
         
         // Update is called once per frame
         void Update()
