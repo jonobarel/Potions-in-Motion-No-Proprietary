@@ -17,14 +17,7 @@ namespace ZeroPrep.MineBuddies
         {
             character = GetComponent<Character>();
             buttonActivator = GetComponent<CharacterButtonActivation>();
-            //Destroy this object if it should not exist.
-            if (VehicleDamageHandler.Instance != null) //we are in a play level - so destroy if shouldn't be.
-            {
-                if (!CharacterSelection.Instance.Participants.ContainsKey(GetComponent<Character>().PlayerID))
-                {
-                    GameObject.Destroy(gameObject);
-                }
-            }
+            
         }
 
         // Update is called once per frame

@@ -36,7 +36,7 @@ namespace ZeroPrep.MineBuddies
 
         float CalculateTargetSpeed()
         {
-            if (_speedOverride > 0f)
+           /* if (_speedOverride > 0f)
                 return _speedOverride;
             //let's set the speed as MaxSpeed - A*activeHazards*(1-damage)
             else if (VehicleDamageHandler.Instance.Engine.FuelLevel > 0)
@@ -47,8 +47,9 @@ namespace ZeroPrep.MineBuddies
                 speed = Mathf.Clamp(speed, 0, MaxSpeed);
                 return speed;
             }
-            else return 0f;
-            
+            else return 0f;*/
+           return 1f;
+
         }
 
         public CarriageMovement(TextMeshProUGUI odo, TextMeshProUGUI speedo)
