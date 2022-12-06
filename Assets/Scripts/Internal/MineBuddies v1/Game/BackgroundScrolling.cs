@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -11,11 +12,14 @@ namespace ZeroPrep.MineBuddies
         Transform[] layers;
         float[] layerParallaxFactors;
         SpriteRenderer[] spriteRenderers;
-
-        private void Init(EngineSpeed _engineSpeed)
+        private EngineSpeed _engineSpeed;
+        
+        [Inject]
+        void Init(EngineSpeed engineSpeed)
         {
-            
+            _engineSpeed = engineSpeed;
         }
+        
         void Start()
         {
             //DontDestroyOnLoad(gameObject);
@@ -37,9 +41,7 @@ namespace ZeroPrep.MineBuddies
         void Update()
         {
             float currentSpeed;
-            if (Carriage.Instance != null)
-                currentSpeed = Carriage.Instance.CarriageMovement.CurrentSpeed;
-            else currentSpeed = 10f;
+            currentSpeed = _engineSpeed.CurrentSpeed();
             for (int i = 0; i < layers.Length; i++) {
                 float factor = layerParallaxFactors[i];
                 float delta = factor*currentSpeed*Time.deltaTime;

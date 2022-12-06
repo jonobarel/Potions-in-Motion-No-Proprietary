@@ -7,11 +7,11 @@ namespace ZeroPrep.MineBuddies
     public class CameraFollow : MonoBehaviour
     {
         Vector3 cameraOffset;
+        [SerializeField]
         Transform carriageTransform;
         // Start is called before the first frame update
         void Start()
         {
-            carriageTransform = Carriage.Instance.transform;
             cameraOffset = transform.position - carriageTransform.position;
         }
 

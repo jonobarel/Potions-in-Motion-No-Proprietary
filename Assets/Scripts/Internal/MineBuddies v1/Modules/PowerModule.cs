@@ -27,7 +27,7 @@ namespace ZeroPrep.MineBuddies
             get { return (float)connectedModules.Count/MaxConnections; }
         }
         [SerializeField]
-        List<ActionModule> connectedModules = new List<ActionModule>();
+        List<Module> connectedModules = new List<Module>();
         [SerializeField]
         float fuel;
         public float CurrentFuel { get { return fuel; } }

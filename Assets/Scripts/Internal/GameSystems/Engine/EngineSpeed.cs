@@ -9,12 +9,49 @@ namespace ZeroPrep.MineBuddies
     {
         private GameSettings _gameSettings;
         
+        [SerializeField]
         private EngineFuel _engineFuel;
 
-        public EngineSpeed(EngineFuel engineFuel, GameSettings gameSettings)
+        [SerializeField]
+        private float _currentSpeed;
+
+        [SerializeField]
+        private float _targetSpeed;
+
+        public float TargetSpeed => _targetSpeed;
+        
+        private float _maxSpeed;
+        private float _acceleration;
+        private float _deceleration;
+        
+        /// <summary>
+        /// Amount of fuel consumed/second of engine operation.
+        /// </summary>
+        private float _burnRate;
+
+        private HazardManager _hazardManager;
+        
+        [Inject]
+        public void Init(EngineFuel engineFuel, GameSettings gameSettings, HazardManager hazardManager)
         {
+            if (gameSettings.EngineDeceleration <= 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("Deceleration should be > 0");
+            }
+
+            if (gameSettings.EngineDeceleration <= 0f)
+            {
+                throw new System.ArgumentOutOfRangeException("Acceleration should be > 0");
+            }
             _engineFuel = engineFuel;
             _gameSettings = gameSettings;
+            _currentSpeed = 0f;
+            _maxSpeed = gameSettings.EngineMaxSpeed;
+            _acceleration = gameSettings.EngineAcceleration;
+            _deceleration = gameSettings.EngineDeceleration;
+            _burnRate = gameSettings.EngineBurnRate;
+            _hazardManager = hazardManager;
+
         }
 
         public float CurrentSpeed()

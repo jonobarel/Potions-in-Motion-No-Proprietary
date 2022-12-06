@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -22,7 +23,7 @@ namespace ZeroPrep.MineBuddies
         // Update is called once per frame
         void Update()
         {
-            float currentSpeed = Carriage.Instance.CurrenSpeed;
+            float currentSpeed = _engineSpeed.CurrentSpeed();
             transform.Rotate( new Vector3(0, 0, -rotationSpeedFactor*Time.deltaTime * currentSpeed));
         }
     }
