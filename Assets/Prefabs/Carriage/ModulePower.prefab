@@ -110,6 +110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1028706637612442237}
+  - component: {fileID: 53281624}
   - component: {fileID: 8459278162336710173}
   m_Layer: 0
   m_Name: ModulePower
@@ -135,6 +136,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &53281624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028706637612442236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4f5df44a53f4247a33febe0f8d46fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  MaxConnections: 4
+  connectedModules: []
+  fuel: 0
 --- !u!61 &8459278162336710173
 BoxCollider2D:
   m_ObjectHideFlags: 0
