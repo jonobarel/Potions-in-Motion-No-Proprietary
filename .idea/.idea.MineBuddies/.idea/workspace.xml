@@ -6,9 +6,34 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/CarriageMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/CarriageMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI2_deprecated.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI2_deprecated.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardsQueueUI.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardsQueueUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/HazardEffectTrigger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/HazardEffectTrigger.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/BackgroundScrolling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/BackgroundScrolling.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardHealthBarTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardHealthBarTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardMono.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardMono.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/Managers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/Managers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Modules/PowerModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Modules/PowerModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/ActiveHazardUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/ActiveHazardUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/DistanceCovered.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/DistanceCovered.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/HazardUIEffectTrigger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/HazardUIEffectTrigger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/InfoSlidersUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/InfoSlidersUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/PowerUsageBar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/PowerUsageBar.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Utils/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Utils/CameraFollow.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +55,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Modules/ModulesTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Analytics.cs" root0="SKIP_HIGHLIGHTING" />
@@ -47,6 +71,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/InputInteractionContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/InputSystem/Actions/Interactions/MultiTapInteraction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.3.0/Samples~/UIvsGameInput/UIvsGameInputHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.3.0/PostProcessing/Runtime/Monitors/HistogramMonitor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.6/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.6/Runtime/Lighting/ProbeVolume/ProbeBrickPool.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@12.1.6/Runtime/PostProcessing/Shaders/ffx/ffx_fsr1.hlsl" root0="SKIP_HIGHLIGHTING" />

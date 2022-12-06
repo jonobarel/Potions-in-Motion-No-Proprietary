@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZeroPrep.MineBuddies
 {
     public class FuelCanister : MonoBehaviour
     {
-        bool _setToRefuel = false;
+        bool _setToRefuel;
         PowerModule _powerModule;
 
         public void OnTriggerEnter2D(Collider2D collision)

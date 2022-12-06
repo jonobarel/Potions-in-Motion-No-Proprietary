@@ -44,10 +44,10 @@ namespace ZeroPrep.MineBuddies
         private void InitAvailableHazards()
         {
             _availableHazardTypes = new List<HazardType>();
-            ActionModule[] modules = FindObjectsOfType<ActionModule>();
+            Module[] modules = FindObjectsOfType<Module>();
             foreach (var m in modules)
             {
-                _availableHazardTypes.Add(m.hazardType);
+                _availableHazardTypes.Add(m.HazardType);
             }
 
         }
@@ -103,15 +103,6 @@ namespace ZeroPrep.MineBuddies
             else throw new System.ArgumentOutOfRangeException("Game set to use FIXED random seed but no random seed selected in config file");
         }
 
-        public float HazardMaxDistance { 
-            get { 
-                if (hazardActivatorDistance < 0)
-                {
-                    hazardActivatorDistance = (VehicleDamageHandler.Instance.hazardActivator.transform.position - VehicleDamageHandler.Instance.transform.position).magnitude;
-                }    
-                return hazardActivatorDistance;
-            } 
-        }
 
         // Update is called once per frame
 

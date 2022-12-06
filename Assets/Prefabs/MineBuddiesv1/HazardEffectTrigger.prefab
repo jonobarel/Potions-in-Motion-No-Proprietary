@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1915566752737184071}
   - component: {fileID: 1915566752737184070}
-  - component: {fileID: 8656974822821855012}
   m_Layer: 29
   m_Name: HazardEffectTrigger
   m_TagString: Untagged
@@ -59,16 +58,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 15.84727}
   m_EdgeRadius: 0
---- !u!114 &8656974822821855012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915566752737184068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f73b28d82a4714b8dc44b509c4eee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FeedbackLevel: 1
