@@ -1,11 +1,10 @@
 using System;
-using Internal.UI;
 using UnityEngine;
 using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
-    public class EngineSpeed : MonoBehaviour, IDisplayable
+    public class EngineSpeed : IDisplayable
     {
         private GameSettings _gameSettings;
         
@@ -23,6 +22,9 @@ namespace ZeroPrep.MineBuddies
         private float _maxSpeed;
         private float _acceleration;
         private float _deceleration;
+     
+        public event Action<float> ValueChanged;
+        
         
         /// <summary>
         /// Amount of fuel consumed/second of engine operation.
@@ -71,14 +73,15 @@ namespace ZeroPrep.MineBuddies
             return maxPotential;
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
-            CalculateCurrentSpeed();
+            CalculateCurrentSpeed(deltaTime);
         }
 
-        private void CalculateCurrentSpeed()
+        private void CalculateCurrentSpeed(float deltaTime)
         {
-            if (_engineFuel.RequestFuel(Time.deltaTime*_burnRate))
+            float newSpeed = _currentSpeed;
+            if (_engineFuel.RequestFuel(deltaTime*_burnRate))
             { 
                 _targetSpeed = CalculateTargetSpeed();
             }
@@ -89,15 +92,21 @@ namespace ZeroPrep.MineBuddies
 
             if (_targetSpeed > _currentSpeed)
             {
-                _currentSpeed += _acceleration * Time.deltaTime;
-                _currentSpeed = Mathf.Min(_targetSpeed, _currentSpeed);
+                newSpeed += _acceleration * deltaTime;
+                newSpeed = Mathf.Min(_targetSpeed, newSpeed);
+                
             }
             else
             {
-                _currentSpeed -= _deceleration * Time.deltaTime;
-                _currentSpeed = Mathf.Max(_targetSpeed, _currentSpeed);
+                newSpeed -= _deceleration * Time.deltaTime;
+                newSpeed = Mathf.Max(_targetSpeed, newSpeed);
             }
 
+            if (newSpeed > _currentSpeed || newSpeed < _currentSpeed)
+            {
+                _currentSpeed = newSpeed;
+                ValueChanged?.Invoke(_currentSpeed);
+            }
             
         }
         
@@ -105,5 +114,8 @@ namespace ZeroPrep.MineBuddies
         {
             return CurrentSpeed();
         }
+
+        
+
     }
 }

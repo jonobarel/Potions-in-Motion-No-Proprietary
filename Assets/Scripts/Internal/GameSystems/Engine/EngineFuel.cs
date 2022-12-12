@@ -1,5 +1,4 @@
 using System;
-using Internal.UI;
 using UnityEngine;
 using Zenject;
 
@@ -44,6 +43,7 @@ namespace ZeroPrep.MineBuddies
             if (HasFuel(amount))
             {
                 CurrentFuel -= amount;
+                ValueChanged?.Invoke(FuelLevel);
                 return true;
             }
 
@@ -55,5 +55,6 @@ namespace ZeroPrep.MineBuddies
             return FuelLevel;
         }
 
+        public event Action<float> ValueChanged;
     }
 }

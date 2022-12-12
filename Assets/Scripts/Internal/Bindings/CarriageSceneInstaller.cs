@@ -6,7 +6,6 @@ namespace ZeroPrep.MineBuddies
     public class CarriageSceneInstaller : MonoInstaller
     {
         public HazardManagerGO hazardManagerGameObjectPrefab;
-        public EngineSpeed enginePrefab;
         public HazardIcons hazardIconsPrefab;
         
         [Inject] private GameSettings _gameSettings;
@@ -20,7 +19,8 @@ namespace ZeroPrep.MineBuddies
         private void InstallEngineComponents()
         {
             Container.Bind<EngineFuel>().FromNew().AsSingle();
-            Container.Bind<EngineSpeed>().FromComponentInNewPrefab(enginePrefab).AsSingle();
+            Container.Bind<EngineSpeed>().FromNew().AsSingle();
+            Container.Bind<EngineOdometer>().FromNew().AsSingle();
         }
 
         private void InstallHazardComponents()

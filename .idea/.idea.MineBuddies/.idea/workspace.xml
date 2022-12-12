@@ -6,34 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI2_deprecated.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardUI2_deprecated.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardsQueueUI.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/ActiveHazardsQueueUI.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/HazardEffectTrigger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/HazardEffectTrigger.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/BackgroundScrolling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/BackgroundScrolling.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardHealthBarTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardHealthBarTest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardMono.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardMono.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Hazards/HazardProjectile.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/Managers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Game/Managers/Managers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Modules/PowerModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Modules/PowerModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/ActiveHazardUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/ActiveHazardUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/DistanceCovered.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/DistanceCovered.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/HazardUIEffectTrigger.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/HazardUIEffectTrigger.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/InfoSlidersUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/InfoSlidersUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/PowerUsageBar.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/UI/PowerUsageBar.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Utils/CameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Utils/CameraFollow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/Vehicle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/Vehicle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineOdometer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineOdometer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/IDisplayable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/IDisplayable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +20,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/39/dc64e949/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/d3/51bd325d/Single.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8b27195d2ee14da7b6fd1e5435850f80157400/43/360b704f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/GameSettingsInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/VehicleDamageHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/HazardManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/CarriageMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/MineBuddiesUI/UIOdometer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/UIDisplayBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Modules/ModulesTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Analytics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/SpritePostProcess.cs" root0="SKIP_HIGHLIGHTING" />
@@ -80,6 +63,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.31/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Tests/Runtime/TMP_RuntimeTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Slider.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -136,10 +120,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="39296">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="39296" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -150,7 +134,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8c257fe7-42a2-45fe-88e1-81e15e49f883" name="Changes" comment="" />
+      <changelist id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="" />
       <created>1663578579625</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -177,6 +161,8 @@
       <workItem from="1668605886926" duration="11999000" />
       <workItem from="1668689478585" duration="597000" />
       <workItem from="1668942823406" duration="4831000" />
+      <workItem from="1670418769657" duration="3259000" />
+      <workItem from="1670751970590" duration="8810000" />
     </task>
     <servers />
   </component>
@@ -318,7 +304,7 @@
           </properties>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+        <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs</url>
           <line>70</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Hazards\MonoBehaviours\HazardManagerGO.cs" initialLine="70" containingFunctionPresentation="method 'Update'">
@@ -333,16 +319,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs</url>
-          <line>54</line>
+          <line>57</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Engine\EngineSpeed.cs" initialLine="48" containingFunctionPresentation="method 'CalculateTargetSpeed'">
             <startOffsets>
-              <option value="1497" />
+              <option value="1527" />
             </startOffsets>
             <endOffsets>
-              <option value="1559" />
+              <option value="1589" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineOdometer.cs</url>
+          <line>17</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Engine\EngineOdometer.cs" initialLine="17" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="411" />
+            </startOffsets>
+            <endOffsets>
+              <option value="412" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/Vehicle.cs</url>
+          <line>21</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Carriage\Vehicle.cs" initialLine="21" containingFunctionPresentation="method 'Update'">
+            <startOffsets>
+              <option value="621" />
+            </startOffsets>
+            <endOffsets>
+              <option value="660" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
