@@ -5,7 +5,7 @@ using Zenject;
 namespace ZeroPrep.MineBuddies
 {
     [Serializable]
-    public class EngineFuel
+    public class EngineFuel : IDisplayable
     {
         private GameSettings _gameSettings;
         public float FuelCapacity
@@ -14,12 +14,7 @@ namespace ZeroPrep.MineBuddies
             private set;
         }
 
-        public float BurnRate
-        {
-            get;
-            private set;
-        }
-        public float CurrentFuel { get; private set; }
+       public float CurrentFuel { get; private set; }
         
         public float FuelLevel => CurrentFuel / FuelCapacity;
        
@@ -30,9 +25,9 @@ namespace ZeroPrep.MineBuddies
             
             FuelCapacity = gameSettings.EngineCapacity;
             CurrentFuel = gameSettings.EngineStartingFuel;
-            BurnRate = gameSettings.EngineBurnRate;
             
-            if (FuelCapacity <= 0f || CurrentFuel <= 0f || BurnRate <= 0f || CurrentFuel > FuelCapacity )
+            
+            if (FuelCapacity <= 0f || CurrentFuel <= 0f || CurrentFuel > FuelCapacity )
             {
                 throw new ArgumentOutOfRangeException("Engine parameters not set correctly");
             }
@@ -48,13 +43,18 @@ namespace ZeroPrep.MineBuddies
             if (HasFuel(amount))
             {
                 CurrentFuel -= amount;
+                ValueChanged?.Invoke(FuelLevel);
                 return true;
             }
 
             return false;
         }
-        
-        
-        
+
+        public float Value()
+        {
+            return FuelLevel;
+        }
+
+        public event Action<float> ValueChanged;
     }
 }

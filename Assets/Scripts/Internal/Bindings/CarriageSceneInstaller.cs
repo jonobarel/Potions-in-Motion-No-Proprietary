@@ -20,6 +20,7 @@ namespace ZeroPrep.MineBuddies
         {
             Container.Bind<EngineFuel>().FromNew().AsSingle();
             Container.Bind<EngineSpeed>().FromNew().AsSingle();
+            Container.Bind<EngineOdometer>().FromNew().AsSingle();
         }
 
         private void InstallHazardComponents()

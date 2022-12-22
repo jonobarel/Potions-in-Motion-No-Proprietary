@@ -12,19 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52119273ad38cdc45b9f1c6ae5dae59e, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: 
+  UseRandomSeed: 0
+  RandomSeed: 0
+  SliderUpdateDuration: 1
   MaxCarriageSpeed: 2
   HazardSlowDownFactor: 0.1
-  HazardStartingDistance: 100
-  InitialDuration: 20
+  FuelBurnRateFactor: 5
+  RefuelCooldownTime: 5
+  RefuelTime: 1
+  FuelCapacity: 10
+  RefuelSize: 10
+  ModuleFuelConsumption: 5
+  MinDelay: 0
+  MaxDelay: 0
+  diffA: 0.3
+  diffB: 0.0075
+  hazardDist: 10
+  hazardDistOffset: 2
   HazardProgressionRate: 1
+  HazardDamageRating: 10
   HazardFixProgressionRate: 0.1
   HazardDifficultyFactor: 1
-  GroundDetection: 0.15
-  GravityScale: 3
-  MaxFallSpeed: 10
-  MaxHorizontalVelocity: 5
-  SmoothTime: 0.25
-  JumpForce: 3.5
-  ClimbSpeed: 3
-  LadderWalkThreshold: 0.92
-  LadderClimbThreshold: 0.45
+  HazardProgressAfterActivation: 2
+  MaxActiveHazards: 7
+  HazardStartingDistance: 100
+  DistanceToActivate: 10
+  DistanceToShakeUI1: 0
+  DistanceToShakeUI2: 0
+  layersParallaxFactors: []

@@ -735,6 +735,12 @@ MonoBehaviour:
     type: 3}
   hazardIconsPrefab: {fileID: 5440580687992612444, guid: 2185f0bd2846d6d49b811e837ff5b5e5,
     type: 3}
+--- !u!1 &378084733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6253819021737210892, guid: 57a937463fd14d64687cc9034e04207b,
+    type: 3}
+  m_PrefabInstance: {fileID: 502426211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &502426211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -764,7 +770,7 @@ PrefabInstance:
       objectReference: {fileID: 1815145187}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
       propertyPath: HazardSpawner
@@ -1353,6 +1359,7 @@ PrefabInstance:
     - {fileID: 3398338272659907707, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
     - {fileID: 502426216, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
     - {fileID: 502426217, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
+    - {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57a937463fd14d64687cc9034e04207b, type: 3}
 --- !u!1 &502426212 stripped
 GameObject:
@@ -1360,18 +1367,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 502426211}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &502426213 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 502426215, guid: 57a937463fd14d64687cc9034e04207b,
-    type: 3}
-  m_PrefabInstance: {fileID: 502426211}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdc2e2633f7bca84ca62019c2406993d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &502426214 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8339445741038076539, guid: 57a937463fd14d64687cc9034e04207b,
@@ -1526,7 +1521,7 @@ MonoBehaviour:
   PlayEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502426213}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.Carriage, Assembly-CSharp
         m_MethodName: OnDeath
         m_Mode: 1
@@ -1547,6 +1542,12 @@ MonoBehaviour:
   ResetEvents:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &536333027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2935101838160347884, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+    type: 3}
+  m_PrefabInstance: {fileID: 2935101838915944760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &547677523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3450723019203556066, guid: 693c775c90436c440ae7a0d4c4fcf74c,
@@ -1630,7 +1631,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2935101838915944760}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1445966501}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -2428,6 +2429,7 @@ GameObject:
   - component: {fileID: 1215982242}
   - component: {fileID: 1215982240}
   - component: {fileID: 1215982244}
+  - component: {fileID: 1215982245}
   m_Layer: 0
   m_Name: UICamera
   m_TagString: Untagged
@@ -2452,7 +2454,7 @@ Camera:
   m_GameObject: {fileID: 1215982239}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2479,7 +2481,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
@@ -2528,12 +2530,57 @@ MonoBehaviour:
   PointsText: {fileID: 0}
   LevelText: {fileID: 0}
   PointsPattern: 000000
+--- !u!114 &1215982245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215982239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 1
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1228329879 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3434590112664842690, guid: 57a937463fd14d64687cc9034e04207b,
     type: 3}
   m_PrefabInstance: {fileID: 502426211}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1260158134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378084733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 449ca52ad0cc40abba27bdded110f05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1299793722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,7 +2764,7 @@ MonoBehaviour:
   PlayEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502426213}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: com.baltamstudios.minebuddies.Carriage, Assembly-CSharp
         m_MethodName: UpdateHealthBar
         m_Mode: 1
@@ -2738,6 +2785,42 @@ MonoBehaviour:
   ResetEvents:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1369931870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2312626288655896077, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+    type: 3}
+  m_PrefabInstance: {fileID: 2935101838915944760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369931874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369931870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58a9519f906d5345a58f7f1e75abb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1445966501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2935101839551110033, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+    type: 3}
+  m_PrefabInstance: {fileID: 2935101838915944760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1445966504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445966501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29edf92b1d197f4bb613eff37233232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1458605787
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,9 +3268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09e297a323a4e69ac2f9f24b156b628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTime: 3
-  maxTime: 5
   TimedSpawning: 1
+  _isPaused: 0
   hazardDistanceSliderContainer: {fileID: 1836619558}
   positionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
     type: 3}
@@ -3666,7 +3748,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2935101838915944760}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 536333027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -3678,6 +3760,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2935101838915944760}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1930068952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536333027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd9bf7468347bb4dafb30f7a1aad89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2000669502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2303727481916910895, guid: 57a937463fd14d64687cc9034e04207b,
@@ -3720,6 +3814,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba88988d1f98624a9b64b4811f0b560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carriageTransform: {fileID: 0}
+--- !u!114 &2091830775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091830768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras:
+  - {fileID: 1215982242}
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &2935101838915944760
 PrefabInstance:
   m_ObjectHideFlags: 0
