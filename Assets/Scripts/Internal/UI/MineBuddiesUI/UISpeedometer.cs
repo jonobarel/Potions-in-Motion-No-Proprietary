@@ -6,8 +6,6 @@ using ZeroPrep.MineBuddies;
 
 public class UISpeedometer : UIDisplayText<EngineSpeed>
 {
-    private EngineOdometer _engineSpeed;
-
     [Inject]
     void Init(EngineSpeed engineSpeed)
     {
@@ -16,6 +14,6 @@ public class UISpeedometer : UIDisplayText<EngineSpeed>
 
     protected override void OnValueChange(float newValue)
     {
-        _textMesh.text = $"{newValue:0} m/s";
+        DisplayText.text = $"{newValue:0} m/s";
     }
 }

@@ -9,12 +9,10 @@ namespace ZeroPrep.MineBuddies
     public abstract class UIDisplayText<TDisplayable> : UIDisplayBase<TDisplayable, TextMeshProUGUI>
         where TDisplayable : IDisplayable
     {
-        protected TextMeshProUGUI _textMesh;
-
+        protected TextMeshProUGUI DisplayText => uiObject;
         public override void Awake()
         {
             base.Awake();
-            _textMesh = GetComponent<TextMeshProUGUI>();
         }
     }
 }
