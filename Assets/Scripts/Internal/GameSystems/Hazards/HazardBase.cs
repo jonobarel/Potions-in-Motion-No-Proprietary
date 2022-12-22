@@ -5,10 +5,11 @@ namespace ZeroPrep.MineBuddies
 {
     public abstract class HazardBase
     {
-        
         private Managers.HazardType _type;
         public Managers.HazardType Type => _type;
-        
+
+        public virtual float DamageFactor { get; } = 1f;
+
         /// <summary>
         /// Value between 1 and 0.
         /// This is the "health" or "life" of the hazard.

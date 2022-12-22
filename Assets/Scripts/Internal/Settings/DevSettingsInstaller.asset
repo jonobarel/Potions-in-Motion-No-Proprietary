@@ -15,16 +15,20 @@ MonoBehaviour:
   gameSettings:
     EngineCapacity: 100
     EngineStartingFuel: 100
-    EngineBurnRate: 1
+    EngineBurnRate: 10
     EngineAcceleration: 2
     EngineDeceleration: 6
     EngineMaxSpeed: 10
+    VehicleStartingHealth: 100
+    BaseDamageOnHazardExpire: 10
+    DamageFlickerDuration: 0.5
+    InvulnerabilityDuration: 0.5
     FuelConsumption: 5
     TreatmentEffect: 0.5
     MinSpawnTime: 2
     MaxSpawnTime: 4
     HazardStartingHealth: 1
-    HazardMinSpeed: 0
+    HazardMinSpeed: 1
     HazardSpeedToEngineRatio: 0.03
     HazardSlowdownFactor: 0.8
     MaxHazardsForSlowdown: 10

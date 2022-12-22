@@ -18,7 +18,11 @@ namespace ZeroPrep.MineBuddies
         public float EngineDeceleration;
 
         public float EngineMaxSpeed;
-        
+
+        [Header("Vehicle Properties")] public int VehicleStartingHealth;
+        public int BaseDamageOnHazardExpire;
+        public float DamageFlickerDuration;
+        public float InvulnerabilityDuration;
        
         [Header("Module Settings")]
         public float FuelConsumption;
