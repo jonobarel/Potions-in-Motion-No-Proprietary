@@ -13,5 +13,10 @@ public class UIOdometer : UIDisplayText<EngineOdometer>
     {
         Displayable = odometer;
     }
+
+    protected override void OnValueChange(float newValue)
+    {
+        _textMesh.text = $"{newValue:0}";
+    }
     
 }
