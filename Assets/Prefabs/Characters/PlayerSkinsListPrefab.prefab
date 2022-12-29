@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSkins:
-  - {fileID: 8134242538350518174, guid: 092beb4c8d602fc41b58baf5d7b24bd5, type: 3}
-  - {fileID: 3539904992102244173, guid: 68c5a2d8858ac854a972f06a809e8b10, type: 3}
-  - {fileID: 6156275842567328237, guid: 3b4c642709b239e4f9c5ca9a8c970b3e, type: 3}
-  - {fileID: 6156275842567328237, guid: 7052f83f83936064db4f079c180dcd9f, type: 3}
+  - {fileID: 21300000, guid: 4a3bd13e5b82c0f49a63f50700d4e365, type: 3}
+  - {fileID: 21300000, guid: 9a284c8ab591bfb49904e7cc6f8120bf, type: 3}
+  - {fileID: 21300000, guid: 561aa4c47c35e2f46b286aaa29aa4114, type: 3}
+  - {fileID: 21300000, guid: 6ca8afb42fe644a4a9ebbe54122040ea, type: 3}
