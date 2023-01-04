@@ -8,11 +8,6 @@ TagManager:
   - Music
   - Background
   - NoMask
-  - Platform
-  - CarriageModule
-  - Ladder
-  - PowerModule
-  - Hazard
   layers:
   - Default
   - TransparentFX
@@ -43,8 +38,8 @@ TagManager:
   - MidHeightOneWayPlatforms
   - Pushables
   - Stairs
-  - Interactables
-  - Carriage
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Background
