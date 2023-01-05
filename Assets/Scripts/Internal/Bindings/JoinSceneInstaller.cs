@@ -1,6 +1,5 @@
 using UnityEngine;
 using Zenject;
-using Zenject.SpaceFighter;
 
 namespace ZeroPrep.MineBuddies
 {

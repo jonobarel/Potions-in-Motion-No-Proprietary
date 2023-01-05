@@ -272,7 +272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5695530824440077391}
   - component: {fileID: 5695530824440077390}
-  - component: {fileID: 8428440259611815257}
   m_Layer: 0
   m_Name: PlayerJoinPanel
   m_TagString: Untagged
@@ -315,25 +314,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerID: 0
   joinPanelUI: {fileID: 2557468654416730481}
---- !u!114 &8428440259611815257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5695530824440077744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0a7c5525d175b488e70c65147b06d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputDetectionActive: 1
-  ResetButtonStatesOnFocusLoss: 1
-  PlayerID: Player1
-  AutoMobileDetection: 1
-  ForcedMode: 0
-  HideMobileControlsInEditor: 0
-  MovementControl: 0
-  DelayedButtonPresses: 0
-  SmoothMovement: 1
-  Threshold: {x: 0.1, y: 0.4}
