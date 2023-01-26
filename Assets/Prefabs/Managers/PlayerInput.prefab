@@ -62,7 +62,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerJoin
+  m_DefaultActionMap: 62b2d67f-ef72-4e89-8b9b-edbfe56727fc
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &7731288932997340602
@@ -99,7 +99,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8053febe9a7ea5943ae6eecf028a0640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActionAsset: {fileID: -944628639613478452, guid: 9bc7476ee91ad6447bb6270dacb22357,
-    type: 3}
   playerJoinUIPrefab: {fileID: 7629892235278235286, guid: e9d6df37ab5c8e246bc24b87295f341e,
     type: 3}

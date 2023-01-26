@@ -11,7 +11,7 @@ public class PlayerSelect : MonoBehaviour
 
     public void Awake()
     {
-        ReadyLabel = GetComponentInChildren<TextMeshProUGUI>();
+        ReadyLabel = GetComponentInChildren<TextMeshProUGUI>(true);
     }
 
     public void SetReady(bool isReady)
