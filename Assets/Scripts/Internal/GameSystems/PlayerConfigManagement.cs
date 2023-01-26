@@ -44,6 +44,11 @@ namespace ZeroPrep.MineBuddies
         public void ReadyPlayer(int index)
         {
             _PlayerConfigsList[index].isReady = true;
+
+            if (_PlayerConfigsList.All(p => p.isReady))
+            {
+                Debug.Log("All players ready");
+            }
         }
     }
 

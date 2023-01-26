@@ -51,6 +51,7 @@ namespace ZeroPrep.MineBuddies
             {
 
                 _playerJoinPanel.SetReady(true);
+                transform.parent.GetComponent<PlayerConfigManagement>().ReadyPlayer(PlayerInput.playerIndex);
             }
         }
 
