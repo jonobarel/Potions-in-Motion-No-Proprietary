@@ -5,13 +5,14 @@ namespace ZeroPrep.MineBuddies
 {
     public class JoinSceneInstaller : MonoInstaller
     {
-        [SerializeField] private PlayerSkinsList playerSkinsList;
-        [SerializeField] PlayerJoinManagement _playerJoinManagement;
-        
+
+        [SerializeField] PlayerConfigManagement playerConfigManagement;
+        [SerializeField] private GameObject playerJoinContainer;
         public override void InstallBindings()
         {
-            Container.Bind<PlayerJoinManagement>().FromInstance(_playerJoinManagement).AsSingle();
-            Container.Bind<PlayerSkinsList>().FromInstance(playerSkinsList).AsSingle();
+            Container.Bind<PlayerConfigManagement>().FromInstance(playerConfigManagement).AsSingle();
+
+            Container.Bind<GameObject>().WithId("PlayerJoinContainer").FromInstance(playerJoinContainer).AsSingle();
 
         }
     }
