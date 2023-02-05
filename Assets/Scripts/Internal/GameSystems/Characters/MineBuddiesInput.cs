@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
 using UnityEngine.InputSystem;
+using Zenject.SpaceFighter;
 
 
 namespace ZeroPrep.MineBuddies
@@ -19,13 +20,14 @@ namespace ZeroPrep.MineBuddies
         private GameObject _playerJoinContainer;
         
         [SerializeField] private GameObject playerJoinUIPrefab;
-
+        private PlayerConfigManagement _playerConfigManagement;
 
         void Awake()
         {
             InputSystemManager = GetComponent<InputSystemManagerEventsBased>();
             PlayerInput = GetComponent<PlayerInput>();
             SetPlayer(PlayerInput.playerIndex);
+            _playerConfigManagement = GetComponentInParent<PlayerConfigManagement>();
         }
 
 
@@ -51,7 +53,16 @@ namespace ZeroPrep.MineBuddies
             {
 
                 _playerJoinPanel.SetReady(true);
-                transform.parent.GetComponent<PlayerConfigManagement>().ReadyPlayer(PlayerInput.playerIndex);
+                _playerConfigManagement.ReadyPlayer(PlayerInput.playerIndex);
+            }
+        }
+
+        public void OnBack(InputValue value)
+        {
+            if (value.isPressed && _isInputReady)
+            {
+                _playerJoinPanel.SetReady(false);
+                _playerConfigManagement.ReadyPlayer(PlayerInput.playerIndex, false);
             }
         }
 

@@ -14,6 +14,11 @@ namespace ZeroPrep.MineBuddies
         private List<Sprite> _availableSkins;
         [SerializeField]
         private GameObject _playerJoinContainer;
+
+        private bool _allPlayersReady = false;
+
+        private GameObject _allPlayersReadyUI;
+        
         
         void Awake()
         {
@@ -24,9 +29,10 @@ namespace ZeroPrep.MineBuddies
         }
 
         [Inject]
-        void Init([Inject(Id = "PlayerJoinContainer")] GameObject playerJoinContainer)
+        void Init([Inject(Id = "PlayerJoinContainer")] GameObject playerJoinContainer, [Inject(Id = "AllPlayersReadyUI")]GameObject allPlayersReady)
         {
             _playerJoinContainer = playerJoinContainer;
+            _allPlayersReadyUI = allPlayersReady;
         }
 
         public void HandlePlayerJoin(PlayerInput pi) 
@@ -38,19 +44,25 @@ namespace ZeroPrep.MineBuddies
             if (!_PlayerConfigsList.Any(p => p.PlayerIndex == pi.playerIndex))
             {
                 _PlayerConfigsList.Add(new PlayerConfig(pi));
+                AllPlayersReady((_PlayerConfigsList.All(p => p.isReady)));
             }
         }
 
-        public void ReadyPlayer(int index)
+        public void ReadyPlayer(int index, bool state = true)
         {
-            _PlayerConfigsList[index].isReady = true;
+            _PlayerConfigsList[index].isReady = state;
 
-            if (_PlayerConfigsList.All(p => p.isReady))
-            {
-                Debug.Log("All players ready");
-            }
+            AllPlayersReady((_PlayerConfigsList.All(p => p.isReady)));
         }
+
+        private void AllPlayersReady(bool ready)
+        {
+            _allPlayersReadyUI.SetActive(ready);
+            _allPlayersReady = ready;
+        }
+
     }
+    
 
     class PlayerConfig
     {
@@ -65,7 +77,6 @@ namespace ZeroPrep.MineBuddies
             Input = pi;
             PlayerIndex = pi.playerIndex;
         }
-        
         
     }
 }
