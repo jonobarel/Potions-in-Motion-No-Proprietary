@@ -16,7 +16,7 @@ namespace ZeroPrep.MineBuddies
         public InputSystemManagerEventsBased InputSystemManager { get; private set; }
         public PlayerInput PlayerInput { get; private set; }
         private PlayerSelect _playerJoinPanel;
-        
+        private bool _playerReady;
         private GameObject _playerJoinContainer;
         
         [SerializeField] private GameObject playerJoinUIPrefab;
@@ -51,7 +51,7 @@ namespace ZeroPrep.MineBuddies
         {
             if ( value.isPressed && _isInputReady)
             {
-
+                _playerReady = true;
                 _playerJoinPanel.SetReady(true);
                 _playerConfigManagement.ReadyPlayer(PlayerInput.playerIndex);
             }
@@ -61,9 +61,23 @@ namespace ZeroPrep.MineBuddies
         {
             if (value.isPressed && _isInputReady)
             {
-                _playerJoinPanel.SetReady(false);
-                _playerConfigManagement.ReadyPlayer(PlayerInput.playerIndex, false);
+                if (_playerReady)
+                {
+                    _playerReady = false;
+                    _playerJoinPanel.SetReady(false);
+                    _playerConfigManagement.ReadyPlayer(PlayerInput.playerIndex, false);    
+                }
+                else
+                {
+                    CleanUpAndDestroy();
+                }
             }
+        }
+
+        private void CleanUpAndDestroy()
+        {
+            Destroy(_playerJoinPanel.gameObject);
+            Destroy(gameObject);
         }
 
     }

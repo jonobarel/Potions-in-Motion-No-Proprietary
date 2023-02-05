@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/JoinSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/JoinSceneInstaller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" afterDir="false" />
     </list>
@@ -186,7 +184,7 @@
       <workItem from="1674394035126" duration="951000" />
       <workItem from="1674469208375" duration="6719000" />
       <workItem from="1674729641505" duration="7004000" />
-      <workItem from="1675591601804" duration="3233000" />
+      <workItem from="1675591601804" duration="6191000" />
     </task>
     <servers />
   </component>
@@ -424,10 +422,10 @@
           <line>51</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="44" containingFunctionPresentation="method 'OnGo'">
             <startOffsets>
-              <option value="1551" />
+              <option value="1577" />
             </startOffsets>
             <endOffsets>
-              <option value="1589" />
+              <option value="1615" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="96" />

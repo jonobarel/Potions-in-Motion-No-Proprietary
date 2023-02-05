@@ -47,6 +47,18 @@ namespace ZeroPrep.MineBuddies
                 AllPlayersReady((_PlayerConfigsList.All(p => p.isReady)));
             }
         }
+        
+        public void HandlePlayerLeave(PlayerInput pi)
+        {
+            Debug.Log($"Player Left: {pi.playerIndex}");
+            /*PlayerConfig p = _PlayerConfigsList.Find(p => p.PlayerIndex == pi.playerIndex);
+            if (p != null)
+            {
+                _PlayerConfigsList.Remove(p);
+               
+            }*/
+            AllPlayersReady((_PlayerConfigsList.All(p => p.isReady)));
+        }
 
         public void ReadyPlayer(int index, bool state = true)
         {
@@ -61,6 +73,7 @@ namespace ZeroPrep.MineBuddies
             _allPlayersReady = ready;
         }
 
+        
     }
     
 
