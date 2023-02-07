@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -18,8 +19,9 @@ namespace ZeroPrep.MineBuddies
         private bool _allPlayersReady = false;
 
         private GameObject _allPlayersReadyUI;
-        
-        
+
+        public UnityEvent<bool> OnPlayersReady;
+
         void Awake()
         {
             _PlayerConfigsList = new List<PlayerConfig>();
@@ -69,10 +71,18 @@ namespace ZeroPrep.MineBuddies
 
         private void AllPlayersReady(bool ready)
         {
-            _allPlayersReadyUI.SetActive(ready);
-            _allPlayersReady = ready;
+            if (_allPlayersReady ^ ready) //change in ready status
+            {
+                _allPlayersReadyUI.SetActive(ready);
+                _allPlayersReady = ready;
+                if (OnPlayersReady != null)
+                {
+                    OnPlayersReady.Invoke(ready);
+                }
+            }
+            
+            
         }
-
         
     }
     

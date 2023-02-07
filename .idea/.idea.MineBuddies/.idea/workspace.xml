@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +15,6 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/39/dc64e949/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/d3/51bd325d/Single.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8b27195d2ee14da7b6fd1e5435850f80157400/43/360b704f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -123,10 +121,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21668">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="21668" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -184,7 +182,8 @@
       <workItem from="1674394035126" duration="951000" />
       <workItem from="1674469208375" duration="6719000" />
       <workItem from="1674729641505" duration="7004000" />
-      <workItem from="1675591601804" duration="6191000" />
+      <workItem from="1675591601804" duration="7773000" />
+      <workItem from="1675775394602" duration="3046000" />
     </task>
     <servers />
   </component>
@@ -418,17 +417,30 @@
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs</url>
-          <line>51</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="44" containingFunctionPresentation="method 'OnGo'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs</url>
+          <line>53</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\PlayerConfigManagement.cs" initialLine="51" containingFunctionPresentation="method 'HandlePlayerLeave'">
             <startOffsets>
-              <option value="1577" />
+              <option value="1619" />
             </startOffsets>
             <endOffsets>
-              <option value="1615" />
+              <option value="1620" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="96" />
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs</url>
+          <line>61</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="61" containingFunctionPresentation="method 'OnBack'">
+            <startOffsets>
+              <option value="1886" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1923" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="101" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
