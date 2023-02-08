@@ -7,7 +7,9 @@
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/GamePlayStartTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/GamePlayStartTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/UIBaseClasses/IDisplayable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/UI/UIBaseClasses/IDisplayable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,23 +79,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.3567073&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Zero Prep Games/MineBuddies/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/Common/Scripts&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "XThreadsFramesViewSplitterKey": "0.3567073",
+    "last_opened_file_path": "D:/Zero Prep Games/MineBuddies/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/Common/Scripts",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Build/Windows/Trippin' Troll Trucker Tales.exe" />
@@ -184,6 +186,7 @@
       <workItem from="1674729641505" duration="7004000" />
       <workItem from="1675591601804" duration="7773000" />
       <workItem from="1675775394602" duration="3046000" />
+      <workItem from="1675843967277" duration="5206000" />
     </task>
     <servers />
   </component>

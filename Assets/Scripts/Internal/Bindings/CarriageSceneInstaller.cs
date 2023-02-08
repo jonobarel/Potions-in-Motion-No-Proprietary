@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace ZeroPrep.MineBuddies
@@ -13,7 +14,8 @@ namespace ZeroPrep.MineBuddies
         {
             InstallEngineComponents();
             InstallHazardComponents();
-            
+            InstallPlayers();
+
         }
 
         private void InstallEngineComponents()
@@ -32,6 +34,11 @@ namespace ZeroPrep.MineBuddies
             Container.Bind<HazardManagerGO>().FromComponentInNewPrefab(hazardManagerGameObjectPrefab).AsSingle();
             Container.Bind<HazardIcons>().FromComponentInNewPrefab(hazardIconsPrefab).AsSingle();
 
+        }
+
+        private void InstallPlayers()
+        {
+            PlayerInput[] players = FindObjectsOfType<PlayerInput>();
         }
     }
 }

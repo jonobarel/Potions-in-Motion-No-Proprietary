@@ -8,7 +8,7 @@ using UnityEngine.Events;
 namespace ZeroPrep.MineBuddies
 {
     [RequireComponent(typeof(MMCountdown))]
-    public class GamePlayStartTrigger : MonoBehaviour
+    public class GamePlayStartTrigger : MonoBehaviour, IDisplayable
     {
        
         private MMCountdown _timer;
@@ -38,7 +38,9 @@ namespace ZeroPrep.MineBuddies
 
         void OnCountdownFinished()
         {
-            throw new NotImplementedException("Timer expired, scene transition should happen here");
+            _timer.StopCountdown();
+            _timer.ResetCountdown();
+            MMSceneLoadingManager.LoadScene("CorgiCarriage");
         }
 
         void OnDestroy()
@@ -49,10 +51,18 @@ namespace ZeroPrep.MineBuddies
                 _playerConfigManagement.OnPlayersReady.RemoveListener(OnReadyPlayers);
             }
         }
-        // Update is called once per frame
-        void Update()
-        {
 
+
+        public float Value()
+        {
+            return _timer.CurrentTime;
         }
+
+        public string ValueString()
+        {
+            return $"{_timer.CurrentTime: 0}";
+        }
+
+        public event Action<float> ValueChanged;
     }
 }
