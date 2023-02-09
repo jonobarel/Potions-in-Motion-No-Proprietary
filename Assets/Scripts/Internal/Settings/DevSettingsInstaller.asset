@@ -32,3 +32,4 @@ MonoBehaviour:
     HazardSpeedToEngineRatio: 0.03
     HazardSlowdownFactor: 0.8
     MaxHazardsForSlowdown: 10
+    PlayerReadyDelay: 2

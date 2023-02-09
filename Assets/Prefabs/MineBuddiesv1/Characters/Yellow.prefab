@@ -310,6 +310,11 @@ PrefabInstance:
       propertyPath: PlayerLabel
       value: Yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 7515154791954060222, guid: c3c0ac5c970a1de4fa80db4ff40b7386,
+        type: 3}
+      propertyPath: PlayerID
+      value: Player4
+      objectReference: {fileID: 0}
     - target: {fileID: 7919443020256922701, guid: c3c0ac5c970a1de4fa80db4ff40b7386,
         type: 3}
       propertyPath: m_FlipX

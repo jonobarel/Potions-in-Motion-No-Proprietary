@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Zenject.SpaceFighter;
 
 
@@ -22,19 +23,23 @@ namespace ZeroPrep.MineBuddies
         [SerializeField] private GameObject playerJoinUIPrefab;
         private PlayerConfigManagement _playerConfigManagement;
 
+        [SerializeField] Character[] playerPrefabs;
+
         void Awake()
         {
             InputSystemManager = GetComponent<InputSystemManagerEventsBased>();
             PlayerInput = GetComponent<PlayerInput>();
             SetPlayer(PlayerInput.playerIndex);
             _playerConfigManagement = GetComponentInParent<PlayerConfigManagement>();
+            
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
 
         void SetPlayer(int i)
         {
-            gameObject.name = $"Player{i}";
-            InputSystemManager.PlayerID = $"Player{i}";
+            gameObject.name = $"Player{i+1}";
+            InputSystemManager.PlayerID = $"Player{i+1}";
         }
 
         void Start()
@@ -80,5 +85,17 @@ namespace ZeroPrep.MineBuddies
             Destroy(gameObject);
         }
 
+        public Character GetPlayerPrefab()
+        {
+            return playerPrefabs[PlayerInput.playerIndex];
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name.Equals("GameScene"))
+            {
+                PlayerInput.SwitchCurrentActionMap("PlayerControls");
+            }
+        }
     }
 }

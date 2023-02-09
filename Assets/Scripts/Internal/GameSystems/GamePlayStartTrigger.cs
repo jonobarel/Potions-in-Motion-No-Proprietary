@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -12,17 +13,23 @@ namespace ZeroPrep.MineBuddies
     {
        
         private MMCountdown _timer;
-
+        
+        
         private PlayerConfigManagement _playerConfigManagement;
 
         void Awake()
         {
-            _timer = GetComponent<MMCountdown>();
             _timer.CountdownCompleteEvent.AddListener(OnCountdownFinished);
-            _playerConfigManagement = GetComponentInParent<PlayerConfigManagement>();
             _playerConfigManagement.OnPlayersReady.AddListener(OnReadyPlayers);
         }
 
+        [Inject]
+        void Init(PlayerConfigManagement playerConfigManagement, GameSettings gameSettings)
+        {
+            _playerConfigManagement = playerConfigManagement;
+            _timer = GetComponent<MMCountdown>();
+            _timer.CountdownFrom = gameSettings.PlayerReadyDelay;
+        }
         void OnReadyPlayers(bool isReady)
         {
             if (isReady)
@@ -40,7 +47,7 @@ namespace ZeroPrep.MineBuddies
         {
             _timer.StopCountdown();
             _timer.ResetCountdown();
-            MMSceneLoadingManager.LoadScene("CorgiCarriage");
+            GetComponent<MMLoadScene>().LoadScene();
         }
 
         void OnDestroy()

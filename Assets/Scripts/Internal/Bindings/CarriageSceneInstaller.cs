@@ -8,6 +8,7 @@ namespace ZeroPrep.MineBuddies
     {
         public HazardManagerGO hazardManagerGameObjectPrefab;
         public HazardIcons hazardIconsPrefab;
+        public GameObject corgiCarriagePrefab;
         
         [Inject] private GameSettings _gameSettings;
         public override void InstallBindings()
@@ -39,6 +40,7 @@ namespace ZeroPrep.MineBuddies
         private void InstallPlayers()
         {
             PlayerInput[] players = FindObjectsOfType<PlayerInput>();
+            Container.Bind<PlayerInput[]>().FromInstance(players).AsSingle();
         }
     }
 }
