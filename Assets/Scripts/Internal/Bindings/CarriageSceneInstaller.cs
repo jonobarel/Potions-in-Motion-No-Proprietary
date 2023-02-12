@@ -39,6 +39,15 @@ namespace ZeroPrep.MineBuddies
 
         private void InstallPlayers()
         {
+            PlayerConfigManagement playerConfigManagement = FindObjectOfType<PlayerConfigManagement>();
+            if (playerConfigManagement is null)
+            {
+                Container.Bind<PlayerConfigManagement>().FromComponentInNewPrefab(PlayerConfigManagementPrefab).AsSingle();
+            }
+            else
+            {
+                Container.Bind<PlayerConfigManagement>().FromInstance(playerConfigManagement).AsSingle();
+            }
             PlayerInput[] players = FindObjectsOfType<PlayerInput>();
             Container.Bind<PlayerInput[]>().FromInstance(players).AsSingle();
         }

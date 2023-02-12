@@ -14,7 +14,20 @@ public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.Mult
     [Inject]
     void Init(PlayerInput[] players = null)
     {
-        if (players != null)
+        
+        //arriving with playerInput objects from another scene:
+        if (players is { Length: > 0 })
+        {
+            //instantiate the relevant players
+            PlayerPrefabs = (Character[])(from p in players select p.GetComponent <MineBuddiesInput>().GetPlayerPrefab());
+            return;
+        }
+    }
+
+    new void Awake()
+    {
+        base.Awake();
+        if (_players is null)
         {
             
             PlayerPrefabs = (from p in players select p.GetComponent <MineBuddiesInput>().GetPlayerPrefab()).ToArray(); 
