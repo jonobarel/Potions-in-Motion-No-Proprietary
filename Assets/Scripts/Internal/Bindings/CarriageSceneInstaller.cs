@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
+using Zenject.SpaceFighter;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -9,6 +10,7 @@ namespace ZeroPrep.MineBuddies
         public HazardManagerGO hazardManagerGameObjectPrefab;
         public HazardIcons hazardIconsPrefab;
         public GameObject corgiCarriagePrefab;
+        public PlayerConfigManagement PlayerConfigManagementPrefab;
         
         [Inject] private GameSettings _gameSettings;
         public override void InstallBindings()
@@ -39,6 +41,11 @@ namespace ZeroPrep.MineBuddies
 
         private void InstallPlayers()
         {
+            PlayerConfigManagement playerConfigManagement = FindObjectOfType<PlayerConfigManagement>();
+            if (playerConfigManagement is null)
+            {
+                Container.Bind<PlayerConfigManagement>().FromComponentInNewPrefab()
+            }
             PlayerInput[] players = FindObjectsOfType<PlayerInput>();
             Container.Bind<PlayerInput[]>().FromInstance(players).AsSingle();
         }

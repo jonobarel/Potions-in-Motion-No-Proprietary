@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,31 @@ namespace ZeroPrep.MineBuddies
             _playerConfigManagement = GetComponentInParent<PlayerConfigManagement>();
             
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            switch (_playerConfigManagement.CurrentState)
+            {
+                case(PlayerConfigManagement.PlayState.PLAYERJOIN):
+                    SetupForPlayerJoin();
+                    break;
+                case(PlayerConfigManagement.PlayState.GAME):
+                    SetupForGameScene();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("Unknown PlayState in MineBuddiesInput");
+                    
+            }
+        }
+
+        private void SetupForPlayerJoin()
+        {
+            _playerJoinContainer = _playerConfigManagement.PlayerJoinContainer;
+            SpawnPlayerUI(_playerJoinContainer);
+            PlayerInput.SwitchCurrentActionMap("PlayerJoin");
+        }
+
+        private void SetupForGameScene()
+        {
+            PlayerInput.SwitchCurrentActionMap("PlayerControls");
         }
 
 
@@ -47,7 +73,7 @@ namespace ZeroPrep.MineBuddies
             _isInputReady = true;
             Debug.Log($"{name} Start");
         }
-        public void SpawnPlayerUI(GameObject joinContainer)
+        void SpawnPlayerUI(GameObject joinContainer)
         {
             _playerJoinPanel = GameObject.Instantiate(playerJoinUIPrefab, joinContainer.transform).GetComponent<PlayerSelect>();
         }
@@ -97,5 +123,6 @@ namespace ZeroPrep.MineBuddies
                 PlayerInput.SwitchCurrentActionMap("PlayerControls");
             }
         }
+
     }
 }

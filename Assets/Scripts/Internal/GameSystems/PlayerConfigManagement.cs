@@ -10,11 +10,21 @@ namespace ZeroPrep.MineBuddies
 {
     public class PlayerConfigManagement : MonoBehaviour
     {
+        public enum PlayState
+        {
+            PLAYERJOIN,
+            GAME
+        };
+
+        public PlayState CurrentState { get; private set; }
+        
+        
         private List<PlayerConfig> _PlayerConfigsList;
 
         private List<Sprite> _availableSkins;
         [SerializeField]
         private GameObject _playerJoinContainer;
+        public GameObject PlayerJoinContainer => _playerJoinContainer;
 
         private bool _allPlayersReady = false;
 
@@ -31,8 +41,9 @@ namespace ZeroPrep.MineBuddies
         }
 
         [Inject]
-        void Init([Inject(Id = "PlayerJoinContainer")] GameObject playerJoinContainer, [Inject(Id = "AllPlayersReadyUI")]GameObject allPlayersReady)
+        void Init([Inject(Id = "PlayerJoinContainer")] GameObject playerJoinContainer, [Inject(Id = "AllPlayersReadyUI")]GameObject allPlayersReady, PlayState currentState)
         {
+            CurrentState = currentState;
             _playerJoinContainer = playerJoinContainer;
             _allPlayersReadyUI = allPlayersReady;
         }
@@ -41,8 +52,7 @@ namespace ZeroPrep.MineBuddies
         {
             Debug.Log("Player joined " + pi.playerIndex);
             pi.transform.SetParent(transform);
-            pi.GetComponent<MineBuddiesInput>().SpawnPlayerUI(_playerJoinContainer);
-            
+
             if (!_PlayerConfigsList.Any(p => p.PlayerIndex == pi.playerIndex))
             {
                 _PlayerConfigsList.Add(new PlayerConfig(pi));

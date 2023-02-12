@@ -609,6 +609,8 @@ MonoBehaviour:
     type: 3}
   corgiCarriagePrefab: {fileID: 6253819021737210892, guid: 57a937463fd14d64687cc9034e04207b,
     type: 3}
+  PlayerConfigManagementPrefab: {fileID: 7489435532225329695, guid: d7333d4e51e40cc4a9b30d88f4faafc4,
+    type: 3}
 --- !u!1 &547677523 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3450723019203556066, guid: 693c775c90436c440ae7a0d4c4fcf74c,
@@ -1590,7 +1592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7018e99fab35934429087222b4f39c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefabs: []
+  PlayerPrefabs:
+  - {fileID: 4677894587427679832, guid: c3c0ac5c970a1de4fa80db4ff40b7386, type: 3}
+  - {fileID: 3827061426970758201, guid: 074a2a6d7ec4f974088f615563c7e1ed, type: 3}
+  - {fileID: 8757822656014541424, guid: 92e812469b2907a478ab6b2e3035cb3d, type: 3}
+  - {fileID: 8534080602044105373, guid: bc1be2085793a144f87df0b6b375cf88, type: 3}
   AutoAttributePlayerIDs: 1
   SceneCharacters: []
   DebugSpawn: {fileID: 0}
@@ -1633,8 +1639,8 @@ MonoBehaviour:
   ResetPointsOnRestart: 1
   BoundsMode: 1
   LevelBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 5, y: 5, z: 5}
+    m_Center: {x: -1.24, y: 0, z: 0}
+    m_Extent: {x: 5.66, y: 5, z: 5}
   ConvertToColliderBoundsButton: 0
   LoadingSceneMode: 1
   LoadingSceneName: LoadingScreen

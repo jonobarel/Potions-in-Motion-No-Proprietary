@@ -5,32 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/LoadingScreenSettings.lighting" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/LoadingScreenSettings.lighting.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Carriage/BensCarriageGraphics.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Carriage/BensCarriageGraphics.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/PlayerInput.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/PlayerInput.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Green.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Green.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Grey.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Grey.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Pink.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Pink.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Yellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesv1/Characters/Yellow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CorgiCarriage.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LoadingScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/LoadingScreen.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MineBuddiesTitleScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MineBuddiesTitleScreen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayerJoinScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMFeedbacks/MMFeedbacksForThirdParty/HDRP/MoreMountains.Feedbacks.HDRP.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMFeedbacks/MMFeedbacksForThirdParty/HDRP/MoreMountains.Feedbacks.HDRP.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMFeedbacks/MMFeedbacksForThirdParty/URP/MoreMountains.Feedbacks.URP.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMFeedbacks/MMFeedbacksForThirdParty/URP/MoreMountains.Feedbacks.URP.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/LoadingScreen.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/LoadingScreen.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/GamePlayStartTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/GamePlayStartTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/DevSettingsInstaller.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/DevSettingsInstaller.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/GameSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Settings/GameSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,10 +129,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19432">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19432" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -213,6 +194,7 @@
       <workItem from="1675775394602" duration="3046000" />
       <workItem from="1675843967277" duration="11965000" />
       <workItem from="1675933425607" duration="2184000" />
+      <workItem from="1676143100970" duration="912000" />
     </task>
     <servers />
   </component>
@@ -368,32 +350,6 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineOdometer.cs</url>
-          <line>17</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Engine\EngineOdometer.cs" initialLine="17" containingFunctionPresentation="method 'Update'">
-            <startOffsets>
-              <option value="411" />
-            </startOffsets>
-            <endOffsets>
-              <option value="412" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/Vehicle.cs</url>
-          <line>21</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Carriage\Vehicle.cs" initialLine="21" containingFunctionPresentation="method 'Update'">
-            <startOffsets>
-              <option value="621" />
-            </startOffsets>
-            <endOffsets>
-              <option value="660" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/DamageOnHazardExpire.cs</url>
           <line>41</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\DamageOnHazardExpire.cs" initialLine="41" containingFunctionPresentation="method 'OnHazardExpire'">
@@ -407,95 +363,56 @@
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/DamageOnHazardExpire.cs</url>
-          <line>19</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\DamageOnHazardExpire.cs" initialLine="19" containingFunctionPresentation="method 'Awake'">
-            <startOffsets>
-              <option value="436" />
-            </startOffsets>
-            <endOffsets>
-              <option value="469" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/Common/ScriptsInputSystem/Scripts/InputSystemManagerEventsBased.cs</url>
-          <line>43</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\External\MoreMountainsLibraries\CorgiEngine\Common\ScriptsInputSystem\Scripts\InputSystemManagerEventsBased.cs" initialLine="43" containingFunctionPresentation="method 'BindButton'">
-            <startOffsets>
-              <option value="2787" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2812" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/PlayerConfigManagement.cs</url>
-          <line>53</line>
+          <line>63</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\PlayerConfigManagement.cs" initialLine="51" containingFunctionPresentation="method 'HandlePlayerLeave'">
             <startOffsets>
-              <option value="1619" />
+              <option value="1829" />
             </startOffsets>
             <endOffsets>
-              <option value="1620" />
+              <option value="1830" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs</url>
-          <line>66</line>
+          <line>92</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="61" containingFunctionPresentation="method 'OnBack'">
             <startOffsets>
-              <option value="2042" />
+              <option value="2933" />
             </startOffsets>
             <endOffsets>
-              <option value="2079" />
+              <option value="2970" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs</url>
-          <line>44</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Hazards\MonoBehaviours\HazardManagerGO.cs" initialLine="43" containingFunctionPresentation="method 'Init'">
-            <startOffsets>
-              <option value="1349" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1380" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs</url>
-          <line>30</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\Bindings\CarriageSceneInstaller.cs" initialLine="30" containingFunctionPresentation="method 'InstallHazardComponents'">
-            <startOffsets>
-              <option value="886" />
-            </startOffsets>
-            <endOffsets>
-              <option value="939" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs</url>
-          <line>94</line>
+          <line>120</line>
           <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="94" containingFunctionPresentation="method 'OnSceneLoaded'">
             <startOffsets>
-              <option value="2826" />
+              <option value="3717" />
             </startOffsets>
             <endOffsets>
-              <option value="2861" />
+              <option value="3752" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs</url>
+          <line>15</line>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\MineBuddiesMultiplayerLevelManager.cs" initialLine="15" containingFunctionPresentation="method 'Init'">
+            <startOffsets>
+              <option value="413" />
+            </startOffsets>
+            <endOffsets>
+              <option value="414" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -503,6 +420,7 @@
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="_allPlayersReadyUI" language="C#" />
         <watch expression="Container" language="C#" />
+        <watch expression="PlayerInput.currentActionMap" language="C#" />
       </configuration>
     </watches-manager>
   </component>
