@@ -9,7 +9,7 @@ using ZeroPrep.MineBuddies;
 
 public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.MultiplayerLevelManager
 {
-    //private PlayerInput[] playersFromCharacterSelection = null;
+    private PlayerInput[] _players = null;
 
     [Inject]
     void Init(PlayerInput[] players = null)
@@ -30,8 +30,8 @@ public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.Mult
         if (_players is null)
         {
             
-            PlayerPrefabs = (from p in players select p.GetComponent <MineBuddiesInput>().GetPlayerPrefab()).ToArray(); 
         }
-        
     }
+    
+    
 }
