@@ -15,6 +15,7 @@ namespace ZeroPrep.MineBuddies
 
             Container.Bind<GameObject>().WithId("PlayerJoinContainer").FromInstance(playerJoinContainer);
             Container.Bind<GameObject>().WithId("AllPlayersReadyUI").FromInstance(allPlayersReady);
+            Container.Bind<PlayerConfigManagement.PlayState>().FromInstance(PlayerConfigManagement.PlayState.PLAYERJOIN);
         }
     }
 }

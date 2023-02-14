@@ -45,6 +45,9 @@ namespace ZeroPrep.MineBuddies
             if (playerConfigManagement is null)
             {
                 Container.Bind<PlayerConfigManagement>().FromComponentInNewPrefab(PlayerConfigManagementPrefab).AsSingle();
+                Container.Bind<GameObject>().WithId("PlayerJoinContainer").FromInstance(null);
+                Container.Bind<GameObject>().WithId("AllPlayersReadyUI").FromInstance(null);
+                Container.Bind<PlayerConfigManagement.PlayState>().FromInstance(PlayerConfigManagement.PlayState.GAME);
             }
             else
             {
