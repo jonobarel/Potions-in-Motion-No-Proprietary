@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.CorgiEngine;
 
@@ -19,13 +17,7 @@ namespace ZeroPrep.MineBuddies
             buttonActivator = GetComponent<CharacterButtonActivation>();
             
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        
         public void LogModuleActivation()
         {/*
             var moduleButton = (ModuleButtonActivated)buttonActivator.ButtonActivatedZone;

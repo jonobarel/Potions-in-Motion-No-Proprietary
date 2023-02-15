@@ -24,6 +24,28 @@ public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.Mult
             return;
         }
     }
+    
+    //When game scene starts directly, the characters are spawned by the MMLevelManager. For debugging purposes, this leaves
+    //the playerinput objects disconnected from the characters.
+    //Adding a process during the Awake to register for player join events.
+    void Awake()
+    {
+        _playerConfig.GetComponent<PlayerInputManager>().playerJoinedEvent.AddListener(OnPlayerInputConnected);
+    }
+
+    void OnDestroy()
+    {
+        _playerConfig.GetComponent<PlayerInputManager>().playerJoinedEvent.RemoveListener(OnPlayerInputConnected);
+    }
+    void OnPlayerInputConnected(PlayerInput p)
+    {
+        Character[] characters = FindObjectsOfType<Character>();
+        foreach (var c in characters)
+        {
+            c.SetInputManager();
+        }
+    }
+
 
 
     
