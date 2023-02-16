@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" afterDir="false" />
@@ -15,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
+=======
+    <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

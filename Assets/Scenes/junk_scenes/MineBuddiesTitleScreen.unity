@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9251a9f35d2c384a9e26195e0c63ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: MineBuddiesCharacterJoin
+  SceneName: PlayerJoinScene
   LoadingSceneMode: 1
 --- !u!1 &1667225390
 GameObject:
@@ -4344,6 +4344,11 @@ PrefabInstance:
     - target: {fileID: 7392996234604760840, guid: 68044f0dbfd7df64e8ba809d8f8e93d8,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392996234604760841, guid: 68044f0dbfd7df64e8ba809d8f8e93d8,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7392996234604760950, guid: 68044f0dbfd7df64e8ba809d8f8e93d8,

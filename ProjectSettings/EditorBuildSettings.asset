@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Instructions.unity
     guid: e508741eb1867754790aa1171efec496
   - enabled: 1
-    path: Assets/Scenes/MineBuddiesTitleScreen.unity
+    path: Assets/Scenes/junk_scenes/MineBuddiesTitleScreen.unity
     guid: 58876403140db0f41b176b167d821eac
   - enabled: 1
     path: Assets/Scenes/PlayerJoinScene.unity
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 0fd327a1534566a47b6a68d339f28ff5
+  - enabled: 1
+    path: Assets/Scenes/TrailerPlayer.unity
+    guid: 012cd9026b171f64792a4325e172d803
   - enabled: 1
     path: Assets/Scenes/Endgame.unity
     guid: 11ba16bc305f9a047ac1a0088c7eab89
