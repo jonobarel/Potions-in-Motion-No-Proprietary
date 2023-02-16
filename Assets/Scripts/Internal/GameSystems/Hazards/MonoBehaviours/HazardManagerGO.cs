@@ -41,6 +41,7 @@ namespace ZeroPrep.MineBuddies
             GameSettings gameSettings,
             AvailableHazardTypes availableHazardTypes)
         {
+            Debug.Log($"{this.GetType()}: injection in HazardManager GameObject");
             _hazardManager = hazardManager;
             _hazardSpawner = hazardSpawner;
             _engineSpeed = engineSpeed;
@@ -51,7 +52,7 @@ namespace ZeroPrep.MineBuddies
         public void Start()
         {
             //_hazardSpawner = new HazardSpawner(minTime, maxTime, _availableHazardTypes.Types);
-            
+            Debug.Log($"{name}: HazardManager GO");
             if (TimedSpawning)
             {
                 _hazardSpawner.StartSpawning(this);    

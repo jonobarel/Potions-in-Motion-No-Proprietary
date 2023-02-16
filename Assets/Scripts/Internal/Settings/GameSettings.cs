@@ -44,8 +44,11 @@ namespace ZeroPrep.MineBuddies
         [Tooltip("This number is used to calculate how the number of hazards affects the speed of the vehicle")]
         public float HazardSlowdownFactor;
         public int MaxHazardsForSlowdown;
-        
 
+
+        [Header("General")]
+        [Tooltip("Seconds countdown when all players are ready on Player Join screen")]
+        public int PlayerReadyDelay;
 
     }
 }

@@ -19,8 +19,6 @@ namespace ZeroPrep.MineBuddies
         public TextMeshProUGUI Odometer => _odometer;
         public TextMeshProUGUI Speedometer => _speedometer;
 
-        float hazardActivatorDistance = -1;
-
         public Character[]  playerPrefabs;
         
         public int RandomSeed;
