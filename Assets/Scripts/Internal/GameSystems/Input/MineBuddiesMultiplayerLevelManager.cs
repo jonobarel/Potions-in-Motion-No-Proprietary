@@ -35,7 +35,7 @@ public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.Mult
 
     public void OnDestroy()
     {
-        if (_playerConfig is not null )
+        if (_playerConfig != null )
         {
             _playerConfig.GetComponent<PlayerInputManager>().playerJoinedEvent.RemoveListener(OnPlayerInputConnected);
         }

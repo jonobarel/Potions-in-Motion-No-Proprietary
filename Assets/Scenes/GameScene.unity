@@ -1209,6 +1209,24 @@ MonoBehaviour:
   PointsText: {fileID: 0}
   LevelText: {fileID: 0}
   PointsPattern: 000000
+--- !u!1 &1428040682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2312626288655896077, guid: 91dbd5b2ad3188e4ca475c42a5618b90,
+    type: 3}
+  m_PrefabInstance: {fileID: 2935101838915944760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1428040686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428040682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58a9519f906d5345a58f7f1e75abb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1458605787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,5 +2151,6 @@ PrefabInstance:
       propertyPath: DebugNewTargetValue
       value: 0.439
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 880693534600516511, guid: 91dbd5b2ad3188e4ca475c42a5618b90, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 91dbd5b2ad3188e4ca475c42a5618b90, type: 3}
