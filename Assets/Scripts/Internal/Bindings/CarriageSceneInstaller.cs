@@ -11,6 +11,7 @@ namespace ZeroPrep.MineBuddies
         public HazardIcons hazardIconsPrefab;
         public GameObject corgiCarriagePrefab;
         public PlayerConfigManagement PlayerConfigManagementPrefab;
+        public BackgroundScrolling BackgroundScrolling;
         
         [Inject] private GameSettings _gameSettings;
         public override void InstallBindings()
@@ -18,6 +19,7 @@ namespace ZeroPrep.MineBuddies
             InstallEngineComponents();
             InstallHazardComponents();
             InstallPlayers();
+            InstallBackground();
 
         }
 
@@ -55,6 +57,11 @@ namespace ZeroPrep.MineBuddies
             }
             PlayerInput[] players = FindObjectsOfType<PlayerInput>();
             Container.Bind<PlayerInput[]>().FromInstance(players).AsSingle();
+        }
+
+        private void InstallBackground()
+        {
+            Container.Bind<BackgroundScrolling>().FromInstance(BackgroundScrolling);
         }
     }
 }

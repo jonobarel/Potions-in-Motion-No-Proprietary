@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392996233318367586}
   - component: {fileID: 7392996233318367589}
+  - component: {fileID: 6431981576300491465}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7392996233318367587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.2203, y: 0, z: 11.86}
+  m_LocalPosition: {x: -37.2203, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -52,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7eb01c3c4d25e5d4a890ffeff46d3f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -445031589
-  m_SortingLayer: 0
+  m_SortingLayerID: -1620175883
+  m_SortingLayer: -1
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 3af0a0b14c6d5dd4fa79a8a629fbbcab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -84,6 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6431981576300491465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392996233318367587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5114b8ed0404fc2a67e1e9532ade314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseScrollSpeed: 0.2
 --- !u!1 &7392996234170153526
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392996234170153673}
   - component: {fileID: 7392996234170153672}
+  - component: {fileID: 2978397887827626067}
   m_Layer: 0
   m_Name: Foreground
   m_TagString: Untagged
@@ -109,7 +124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7392996234170153526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.2138, y: 0, z: -12.47}
+  m_LocalPosition: {x: -37.2138, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -136,7 +151,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7eb01c3c4d25e5d4a890ffeff46d3f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154,8 +169,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -445031589
-  m_SortingLayer: 0
+  m_SortingLayerID: 1795597123
+  m_SortingLayer: 4
   m_SortingOrder: 56
   m_Sprite: {fileID: 21300000, guid: ffad01f1668ea7549849d96a38b6550d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,6 +183,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2978397887827626067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392996234170153526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5114b8ed0404fc2a67e1e9532ade314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseScrollSpeed: 0.6
 --- !u!1 &7392996234246251527
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,8 +204,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7392996234246251526}
+  - component: {fileID: 2494571818322402652}
   - component: {fileID: 7392996234246251545}
+  - component: {fileID: 2334377049831281149}
+  - component: {fileID: 8410791591691664787}
   m_Layer: 0
   m_Name: Ground back and Trees
   m_TagString: Untagged
@@ -185,21 +215,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7392996234246251526
-Transform:
+--- !u!224 &2494571818322402652
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7392996234246251527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.2467, y: 0, z: -21.3}
+  m_LocalPosition: {x: 0, y: 0, z: -21.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7392996234604760840}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -7.5, y: 0.1}
+  m_SizeDelta: {x: 158.1673, y: 20.9766}
+  m_Pivot: {x: -0, y: 0.5}
 --- !u!212 &7392996234246251545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -220,7 +255,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7eb01c3c4d25e5d4a890ffeff46d3f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -238,8 +273,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -445031589
-  m_SortingLayer: 0
+  m_SortingLayerID: -1620175883
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b81485606973b2e4c88f50befedfe243, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -252,6 +287,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!222 &2334377049831281149
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392996234246251527}
+  m_CullTransparentMesh: 1
+--- !u!114 &8410791591691664787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392996234246251527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5114b8ed0404fc2a67e1e9532ade314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseScrollSpeed: 0.3
 --- !u!1 &7392996234604760950
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +339,7 @@ Transform:
   m_Children:
   - {fileID: 7392996234814737319}
   - {fileID: 7392996233318367586}
-  - {fileID: 7392996234246251526}
+  - {fileID: 2494571818322402652}
   - {fileID: 7392996235304860633}
   - {fileID: 7392996234170153673}
   m_Father: {fileID: 0}
@@ -296,7 +352,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7392996234604760950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b269f6e2e59244c9c74d2eb3358e54, type: 3}
   m_Name: 
@@ -312,6 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392996234814737319}
   - component: {fileID: 7392996234814737318}
+  - component: {fileID: 3239578966570017389}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -327,7 +384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7392996234814737316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.2335, y: 0, z: -9.8}
+  m_LocalPosition: {x: -37.2335, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -354,7 +411,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7eb01c3c4d25e5d4a890ffeff46d3f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -372,8 +429,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -445031589
-  m_SortingLayer: 0
+  m_SortingLayerID: -1620175883
+  m_SortingLayer: -1
   m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: 9667b4bc6d41b80409210fe1d9214868, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -386,6 +443,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3239578966570017389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392996234814737316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5114b8ed0404fc2a67e1e9532ade314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseScrollSpeed: 0.1
 --- !u!1 &7392996235304860614
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7392996235304860633}
   - component: {fileID: 7392996235304860632}
+  - component: {fileID: 846876929024590430}
   m_Layer: 0
   m_Name: Ground front and grass
   m_TagString: Untagged
@@ -438,7 +509,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7eb01c3c4d25e5d4a890ffeff46d3f74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -456,8 +527,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -445031589
-  m_SortingLayer: 0
+  m_SortingLayerID: -1620175883
+  m_SortingLayer: -1
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 52be32c9e558198459564d02cf851c53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -470,3 +541,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &846876929024590430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7392996235304860614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5114b8ed0404fc2a67e1e9532ade314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseScrollSpeed: 0.5
