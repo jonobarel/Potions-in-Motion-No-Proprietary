@@ -20,6 +20,7 @@ namespace ZeroPrep.MineBuddies
         public float TargetSpeed => _targetSpeed;
         
         private float _maxSpeed;
+        public float MaxSpeed => _maxSpeed;
         private float _acceleration;
         private float _deceleration;
      

@@ -5,8 +5,6 @@ using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
-
-
     public class UIFuelBar : UIProgressBar<EngineFuel>
     {
         // Start is called before the first frame update
@@ -20,7 +18,12 @@ namespace ZeroPrep.MineBuddies
 
         protected override void OnValueChange(float newValue)
         {
-            MmProgressBar.SetBar01(newValue);
+            if (!Mathf.Approximately(newValue, 0f))
+            {
+                MmProgressBar.SetBar01(newValue);    
+            }
+            else MmProgressBar.SetBar01(0f);
+            
         }
     }
 }
