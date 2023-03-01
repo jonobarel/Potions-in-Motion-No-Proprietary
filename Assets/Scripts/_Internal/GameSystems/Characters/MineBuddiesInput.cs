@@ -34,18 +34,20 @@ namespace ZeroPrep.MineBuddies
             _playerConfigManagement = GetComponentInParent<PlayerConfigManagement>();
             
             SceneManager.sceneLoaded += OnSceneLoaded;
-
-            switch (_playerConfigManagement.CurrentState)
+            if (_playerConfigManagement != null)
             {
-                case(PlayerConfigManagement.PlayState.PLAYERJOIN):
-                    SetupForPlayerJoin();
-                    break;
-                case(PlayerConfigManagement.PlayState.GAME):
-                    SetupForGameScene();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("Unknown PlayState in MineBuddiesInput");
-                    
+                switch (_playerConfigManagement.CurrentState)
+                {
+                    case (PlayerConfigManagement.PlayState.PLAYERJOIN):
+                        SetupForPlayerJoin();
+                        break;
+                    case (PlayerConfigManagement.PlayState.GAME):
+                        SetupForGameScene();
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException("Unknown PlayState in MineBuddiesInput");
+
+                }
             }
         }
 

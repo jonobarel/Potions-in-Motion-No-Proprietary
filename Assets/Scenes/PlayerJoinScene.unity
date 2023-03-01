@@ -186,14 +186,14 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 9bc7476ee91ad6447bb6270dacb22357,
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 351c00a651e034a4aa6d379eb5b6a356,
     type: 3}
   m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 7779900943467362442, guid: 9bc7476ee91ad6447bb6270dacb22357,
+  m_MoveAction: {fileID: 7779900943467362442, guid: 351c00a651e034a4aa6d379eb5b6a356,
     type: 3}
-  m_SubmitAction: {fileID: 7390996153558552428, guid: 9bc7476ee91ad6447bb6270dacb22357,
+  m_SubmitAction: {fileID: 7390996153558552428, guid: 351c00a651e034a4aa6d379eb5b6a356,
     type: 3}
-  m_CancelAction: {fileID: -6644496248588436981, guid: 9bc7476ee91ad6447bb6270dacb22357,
+  m_CancelAction: {fileID: -6644496248588436981, guid: 351c00a651e034a4aa6d379eb5b6a356,
     type: 3}
   m_LeftClickAction: {fileID: 0}
   m_MiddleClickAction: {fileID: 0}

@@ -27,5 +27,7 @@ namespace ZeroPrep.MineBuddies
             Displayable.ValueChanged -= OnValueChange;
         }
         
+        
+        
     }
 }

@@ -1,0 +1,46 @@
+{
+    "name": "RotationInputActions",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "9e7428bf-e5c4-4af7-8b15-4c09deb43a46",
+            "actions": [
+                {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "5c7c820d-3115-4dcf-adf6-04faebb19541",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5efe6cd7-f868-42ea-8f1b-7ed8565f2539",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "NormalizeVector2",
+                    "groups": "RotationTest",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "RotationTest",
+            "bindingGroup": "RotationTest",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
