@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6745142574419548898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 241149926137111592, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_Name
+      value: RedSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745451928546350643, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -779254660, guid: a3607d7674a7ee34a9eb95271da5c4c8,
+        type: 3}
+    - target: {fileID: 2745451928546350643, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176940628278286512, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677894587427679832, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: CharacterAnimator
+      value: 
+      objectReference: {fileID: 4706791957114060856}
+    - target: {fileID: 7053205730468744980, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.77116
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053205730468744980, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -1.0776207
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053205730468744980, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7053205730468744980, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 7.9557157
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95bbde962a269294e962770d0ead6996, type: 3}
+--- !u!1 &6828358615949622986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 241149926137111592, guid: 95bbde962a269294e962770d0ead6996,
+    type: 3}
+  m_PrefabInstance: {fileID: 6745142574419548898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4706791957114060856
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6828358615949622986}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0abfd8fe053f9e14baddd5e61c5c97b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
