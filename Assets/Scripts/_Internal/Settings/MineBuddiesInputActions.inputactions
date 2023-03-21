@@ -384,7 +384,7 @@
                 {
                     "name": "",
                     "id": "70b57a6b-cd02-4751-90a1-9027a8ed50f0",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/e",
                     "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "Keyboard",

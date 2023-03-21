@@ -554,16 +554,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2121396878321743034, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-        type: 3}
-      propertyPath: CharacterModel
-      value: 
-      objectReference: {fileID: 1285209747}
-    - target: {fileID: 2121396878321743034, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-        type: 3}
-      propertyPath: AirborneDistance
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6828358615949622986, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
         type: 3}
       propertyPath: m_Name
@@ -623,27 +613,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8899749019330186449, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 7.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 8899749019330186449, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 5.431561
-      objectReference: {fileID: 0}
-    - target: {fileID: 8899749019330186449, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -432829764, guid: da88ae4fa8d318743bcfc33e7baf183d,
-        type: 3}
-    - target: {fileID: 8899749019330186449, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fa15f0a9d58e4f4eb490306d7345c16, type: 3}
@@ -741,6 +710,11 @@ PrefabInstance:
     - target: {fileID: 6567608351332581790, guid: e95801250836aed43a0fd5b3f64d6339,
         type: 3}
       propertyPath: Activable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567608351332581790, guid: e95801250836aed43a0fd5b3f64d6339,
+        type: 3}
+      propertyPath: UseVisualPrompt
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7145087015290251561, guid: e95801250836aed43a0fd5b3f64d6339,
@@ -1058,12 +1032,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1285209747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2370230690828027973, guid: 7fa15f0a9d58e4f4eb490306d7345c16,
-    type: 3}
-  m_PrefabInstance: {fileID: 678807506}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1572337975
 PrefabInstance:
   m_ObjectHideFlags: 0

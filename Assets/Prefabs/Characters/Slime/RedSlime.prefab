@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2473281984499554088}
   - component: {fileID: 3011295225033084506}
   - component: {fileID: 6483105177543193294}
+  - component: {fileID: 1285209752}
+  - component: {fileID: 1285209753}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -120,6 +122,198 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoRemoveAfterInitialization: 1
   AddAnimationParametersButton: 0
+--- !u!114 &1285209752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370230690828027973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 136c2f9e95e878c4cad19c942cf2731d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1285209753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370230690828027973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks: []
+  InitializationMode: 2
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
+  DurationMultiplier: 1
+  RandomizeDuration: 0
+  RandomDurationMultiplier: {x: 0.5, y: 1.5}
+  DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
+  OnlyPlayIfWithinRange: 0
+  RangeCenter: {fileID: 0}
+  RangeDistance: 5
+  UseRangeFalloff: 0
+  RangeFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RemapRangeFalloff: {x: 0, y: 1}
+  IgnoreRangeEvents: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  CanPlay: 1
+  CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+  FeedbacksList:
+  - rid: 7461298488489803776
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  ForceStopFeedbacksOnDisable: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: 7461298488489803776
+      type: {class: MMF_Animation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
+      data:
+        Active: 1
+        UniqueID: 121608534
+        Label: Animation Parameter
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        Owner: {fileID: 1285209753}
+        DebugActive: 0
+        BoundAnimator: {fileID: 2473281984499554088}
+        DeclaredDuration: 0
+        UpdateTrigger: 1
+        TriggerMode: 0
+        TriggerParameterName: ActivatingTrigger
+        UpdateRandomTrigger: 0
+        RandomTriggerMode: 0
+        RandomTriggerParameterNames: []
+        UpdateBool: 0
+        BoolParameterName: 
+        BoolParameterValue: 1
+        UpdateRandomBool: 0
+        RandomBoolParameterValue: 1
+        RandomBoolParameterNames: []
+        IntValueMode: 0
+        IntParameterName: 
+        IntValue: 0
+        IntValueMin: 0
+        IntValueMax: 5
+        IntIncrement: 1
+        FloatValueMode: 0
+        FloatParameterName: 
+        FloatValue: 0
+        FloatValueMin: 0
+        FloatValueMax: 5
+        FloatIncrement: 1
 --- !u!1001 &6745142574419548898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,6 +321,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 198040215599500778, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: AbilityStartFeedbacks
+      value: 
+      objectReference: {fileID: 1285209753}
     - target: {fileID: 241149926137111592, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
       propertyPath: m_Name
@@ -139,13 +338,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.3650203
       objectReference: {fileID: 0}
     - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.3317473
       objectReference: {fileID: 0}
     - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
@@ -218,11 +427,31 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4068220610546323409, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: Feedbacks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4068220610546323409, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: Feedbacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 1206222672}
+    - target: {fileID: 4068220610546323409, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: Feedbacks.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4176940628278286512, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4677894587427679832, guid: 95bbde962a269294e962770d0ead6996,
+        type: 3}
+      propertyPath: CharacterModel
+      value: 
+      objectReference: {fileID: 2370230690828027973}
     - target: {fileID: 4677894587427679832, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
       propertyPath: AirborneDistance
@@ -280,6 +509,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2745451928546350643, guid: 95bbde962a269294e962770d0ead6996, type: 3}
+    - {fileID: 2307095040152801755, guid: 95bbde962a269294e962770d0ead6996, type: 3}
+    - {fileID: 137793243397348122, guid: 95bbde962a269294e962770d0ead6996, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95bbde962a269294e962770d0ead6996, type: 3}
 --- !u!4 &6828358615949622998 stripped
 Transform:
@@ -287,3 +518,49 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6745142574419548898}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7286467266867927993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4072718821315084635, guid: 95bbde962a269294e962770d0ead6996,
+    type: 3}
+  m_PrefabInstance: {fileID: 6745142574419548898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1206222672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286467266867927993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2259826e984028144bb46fc8fb30adbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Log
+  Chance: 100
+  Timing:
+    TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
+    InitialDelay: 0
+    CooldownDuration: 0
+    InterruptsOnStop: 1
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+    MMFeedbacksDirectionCondition: 0
+    PlayDirection: 0
+    ConstantIntensity: 0
+    UseIntensityInterval: 0
+    IntensityIntervalMin: 0
+    IntensityIntervalMax: 0
+    Sequence: {fileID: 0}
+    TrackID: 0
+    Quantized: 0
+    TargetBPM: 120
+  DebugActive: 0
+  DebugLogMode: 0
+  DebugMessage: Character activation
+  DebugColor: {r: 0, g: 1, b: 1, a: 1}
+  DisplayFrameCount: 1
