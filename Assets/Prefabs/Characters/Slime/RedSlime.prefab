@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2473281984499554088}
   - component: {fileID: 3011295225033084506}
   - component: {fileID: 6483105177543193294}
-  - component: {fileID: 1285209752}
   - component: {fileID: 1285209753}
   m_Layer: 0
   m_Name: Sprite
@@ -122,18 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AutoRemoveAfterInitialization: 1
   AddAnimationParametersButton: 0
---- !u!114 &1285209752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2370230690828027973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136c2f9e95e878c4cad19c942cf2731d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1285209753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,12 +326,12 @@ PrefabInstance:
     - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 241149926137111604, guid: 95bbde962a269294e962770d0ead6996,
         type: 3}
