@@ -31,70 +31,13 @@ SpriteAtlas:
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
-    packables:
-    - {fileID: 102900000, guid: eda144ab1d2a2ee44887170297c1331c, type: 3}
+    packables: []
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites:
-  - {fileID: 21300000, guid: ba48ab6071687b64f854fbf5d74bd358, type: 3}
-  - {fileID: 21300000, guid: 9d7f98716a722734eb0cd60812eb5420, type: 3}
-  - {fileID: 21300000, guid: 644c8971b7b22f247ae3908bcccc218a, type: 3}
-  - {fileID: 21300000, guid: e3fca1b10bc66534eb73f3e3261a47dc, type: 3}
-  - {fileID: 21300000, guid: 2885a3c11be011344adee5c6e7859225, type: 3}
-  - {fileID: 21300000, guid: 777c9f6294780f14288229f7ed923936, type: 3}
-  - {fileID: 21300000, guid: bf2da4c26976ab64a8e7c84945595080, type: 3}
-  - {fileID: 21300000, guid: bb726ce2eebc777499d170258dc15ce5, type: 3}
-  - {fileID: 21300000, guid: 89d81375cb0405b41aa12917d92ac5cb, type: 3}
-  - {fileID: 21300000, guid: e1bc9ec5bccc34547b99608bda01afb0, type: 3}
-  - {fileID: 21300000, guid: 06a12a366d760d048a27212b32ab9904, type: 3}
-  - {fileID: 21300000, guid: b76bdd270a9113c4380690cee0098f37, type: 3}
-  - {fileID: 21300000, guid: 567f5a57da726264f9492f6a7e14a4f6, type: 3}
-  - {fileID: 21300000, guid: a1f00ce71c650a642872825e52b194b8, type: 3}
-  - {fileID: 21300000, guid: ebfab1686fc61734ca807f3979b756ab, type: 3}
-  - {fileID: 21300000, guid: a5a20cba79298524290f91c87986fa73, type: 3}
-  - {fileID: 21300000, guid: d1bc3fba7bbaeec458c7af77b8fd1b6c, type: 3}
-  - {fileID: 21300000, guid: e7c01dda4cfeff544b0566343f447814, type: 3}
-  - {fileID: 21300000, guid: 25516f1b02c30d8468f62055c7f9694b, type: 3}
-  - {fileID: 21300000, guid: 51e8977b623894c419a40d5c3eeeeaa1, type: 3}
-  - {fileID: 21300000, guid: 4c0ccdfb23464534cab02250b2b638e4, type: 3}
-  - {fileID: 21300000, guid: 1446defb3d4d17941867c6a5081469f2, type: 3}
-  - {fileID: 21300000, guid: d63af56c40a8c6149a7c978c41f396c7, type: 3}
-  - {fileID: 21300000, guid: 0dbbad9c0e54b9946b64b5ea8aed8d2b, type: 3}
-  - {fileID: 21300000, guid: a0ca048dca4b8464a8b8fa4b2dc6c508, type: 3}
-  - {fileID: 21300000, guid: 71a812cd884be7f4daccc27022c99c76, type: 3}
-  - {fileID: 21300000, guid: 275eba9e14da27d4b9727a4898fb3abd, type: 3}
-  - {fileID: 21300000, guid: 3f80321f1de7dd0469512d962ce70805, type: 3}
-  m_PackedSpriteNamesToIndex:
-  - Walk-C
-  - Push-D
-  - Action-A
-  - Idle-B
-  - Jump-G
-  - Idle-E
-  - Action-B
-  - Jump-B
-  - Idle-D
-  - Jump-H
-  - Push-A
-  - Push-C
-  - Jump-E
-  - Walk-D
-  - Jump-F
-  - Push-B
-  - Jump-D
-  - Push-E
-  - Action-C
-  - Walk-B
-  - Idle-A
-  - Action-D
-  - Walk-E
-  - Action-E
-  - Jump-A
-  - Jump-C
-  - Walk-A
-  - Idle-C
+  m_PackedSprites: []
+  m_PackedSpriteNamesToIndex: []
   m_RenderDataMap: {}
   m_Tag: red_slime
   m_IsVariant: 0
