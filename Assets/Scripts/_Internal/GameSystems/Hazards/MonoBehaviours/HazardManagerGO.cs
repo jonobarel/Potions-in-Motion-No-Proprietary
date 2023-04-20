@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Zenject;
 
@@ -10,6 +12,14 @@ namespace ZeroPrep.MineBuddies
     /// </summary>
     public class HazardManagerGO : MonoBehaviour
     {
+        public enum InteractionType
+        {
+            None,
+            Button,
+            Rotation,
+            Multi
+        }
+        
         private GameSettings _gameSettings;
 
         public bool TimedSpawning = true;
@@ -22,13 +32,12 @@ namespace ZeroPrep.MineBuddies
         private HazardManager _hazardManager;
         private HazardSpawner _hazardSpawner;
 
-        public Transform hazardDistanceSliderContainer;
-        public Slider positionSliderPrefab;
-
         private EngineSpeed _engineSpeed;
 
         private AvailableHazardTypes _availableHazardTypes;
 
+        public UnityEvent<Managers.HazardType, InteractionType> NextHazardInteraction; 
+        
         public int ActiveHazardsCount()
         {
             return _hazardManager.Hazards.Count;
@@ -48,6 +57,18 @@ namespace ZeroPrep.MineBuddies
             _availableHazardTypes = availableHazardTypes;
         }
 
+        public void Awake()
+        {
+            if (_hazardManager == null)
+            {
+                throw new NullReferenceException("_hazardManager not initialized in Awake");
+            }
+
+            HazardBase.Clear += HandleHazardRemoved;
+            HazardBase.Expire += HandleHazardRemoved;
+            HazardBase.Spawn += HandleHazardSpawn;
+
+        }
         public void Start()
         {
             if (TimedSpawning)
@@ -57,6 +78,28 @@ namespace ZeroPrep.MineBuddies
             
         }
 
+
+        private void HandleHazardRemoved(HazardBase hazard)
+        {
+            HazardBase h = GetClosestHazardOfType(hazard.Type);
+            if (h != null)
+            {
+                NextHazardInteraction?.Invoke(h.Type, h.InteractionType);
+            }
+            else
+            {
+                NextHazardInteraction?.Invoke(hazard.Type, InteractionType.None);
+            }
+        }
+
+        private void HandleHazardSpawn(HazardBase h)
+        {
+            HazardBase closestHazard = GetClosestHazardOfType(h.Type);
+            if (closestHazard == null || closestHazard == h)
+            {
+                NextHazardInteraction?.Invoke(h.Type, h.InteractionType);
+            }   
+        }
         public void Update()
         {
             if (_isPaused)
@@ -93,6 +136,13 @@ namespace ZeroPrep.MineBuddies
                 Debug.Log($"Treating hazard type {type}");
                 affectedHazard.TreatAction(amount);
             }
+        }
+
+        private void OnDestroy()
+        {
+            HazardBase.Expire -= HandleHazardRemoved;
+            HazardBase.Expire -= HandleHazardRemoved;
+            HazardBase.Spawn -= HandleHazardSpawn;
         }
     }
 }

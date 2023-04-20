@@ -8,7 +8,6 @@ namespace ZeroPrep.MineBuddies
     {
         private GameSettings _gameSettings;
         
-        [SerializeField]
         private EngineFuel _engineFuel;
 
         [SerializeField]
@@ -46,7 +45,11 @@ namespace ZeroPrep.MineBuddies
             {
                 throw new System.ArgumentOutOfRangeException("Acceleration should be > 0");
             }
-            _engineFuel = engineFuel;
+
+            _engineFuel = engineFuel;    
+
+            
+            
             _gameSettings = gameSettings;
             _currentSpeed = 0f;
             _maxSpeed = gameSettings.EngineMaxSpeed;

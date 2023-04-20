@@ -5,7 +5,7 @@ using MoreMountains.CorgiEngine;
 
 namespace ZeroPrep.MineBuddies
 {
-    public class FuelTankDispenseButton : ButtonActivated
+    public class FuelTankDispenseButton : MineBuddiesButtonActivated
     {
         public override void TriggerButtonAction(GameObject instigator)
         {

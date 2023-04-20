@@ -16,10 +16,11 @@ namespace ZeroPrep.MineBuddies
     {
 	    public enum RotationType { Clockwise, CounterClockWise, BiDirectional}
 	    public float TotalRotation { get => _totalRotation; protected set => _totalRotation = value; }
+	    public float LastActivationAmount { get; private set; }
 	    
 	    [MMInspectorGroup("Activation", true, 10)]
 	    [Tooltip("Does this control spin in one direction or both")]
-	     
+	    
 	    [SerializeField]
 	    public float _totalRotation;
 	    public RotationType rotationType;
@@ -77,6 +78,8 @@ namespace ZeroPrep.MineBuddies
 		[MMCondition("UseVisualPrompt", true)]
 		[Tooltip("If true, the 'buttonA' prompt will be shown when a player is colliding with the zone")]
 		public bool ShowPromptWhenColliding = true;
+
+		public bool ShowPromptWhenNotActivable = false;
 		/// If true, the prompt will hide after use
 		[MMCondition("UseVisualPrompt", true)]
 		[Tooltip("If true, the prompt will hide after use")]
@@ -152,7 +155,13 @@ namespace ZeroPrep.MineBuddies
 			EnterFeedback?.Initialization(this.gameObject);
 			ExitFeedback?.Initialization(this.gameObject);
 			
-			
+		
+			if (_rotationPrompt == null)
+			{
+				_rotationPrompt = (ButtonPrompt)Instantiate(ButtonPromptPrefab);
+				_rotationPrompt.Initialization();
+				_rotationPromptAnimator = _rotationPrompt.gameObject.MMGetComponentNoAlloc<Animator>();
+			}
 		}
 		
 		/// <summary>
@@ -177,6 +186,7 @@ namespace ZeroPrep.MineBuddies
 		public virtual void ToggleActivable()
 		{
 			Activable = !Activable;
+
 		}
 		
 	
@@ -229,6 +239,8 @@ namespace ZeroPrep.MineBuddies
 			}
 
 			TotalRotation += angleDirectional;
+			LastActivationAmount = angleDirectional;
+			
 			
 			if (OnActivation != null)
 			{

@@ -15,7 +15,7 @@ MonoBehaviour:
   gameSettings:
     EngineCapacity: 100
     EngineStartingFuel: 100
-    EngineBurnRate: 10
+    EngineBurnRate: 1
     EngineAcceleration: 2
     EngineDeceleration: 6
     EngineMaxSpeed: 10

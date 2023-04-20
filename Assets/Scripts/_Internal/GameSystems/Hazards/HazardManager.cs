@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ZeroPrep.MineBuddies;
@@ -15,6 +16,9 @@ namespace ZeroPrep.MineBuddies
     {
         private List<HazardBase> _hazards = new List<HazardBase>();
         private List<HazardBase> _hazardsToRemove = new List<HazardBase>();
+
+        public event Action<HazardBase> HazardExpired;
+        public event Action<HazardBase> HazardCleared;
         
         public List<HazardBase> Hazards => _hazards;
         public HazardManager()
@@ -36,13 +40,15 @@ namespace ZeroPrep.MineBuddies
         }
         private void OnExpire(HazardBase h)
         {
+            HazardExpired?.Invoke(h);
             MarkForRemoval(h);
-            
         }
 
         private void OnClear(HazardBase h)
         {
+            HazardCleared?.Invoke(h);
             MarkForRemoval(h);
+            
         }
 
         private void MarkForRemoval(HazardBase h)

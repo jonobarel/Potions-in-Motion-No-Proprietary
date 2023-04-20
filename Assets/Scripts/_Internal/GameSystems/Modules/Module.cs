@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using MoreMountains.CorgiEngine;
+using MoreMountains.Tools;
 using UnityEngine;
 using Zenject;
 
@@ -12,58 +15,88 @@ namespace ZeroPrep.MineBuddies
         [SerializeField]
         // ReSharper disable once InconsistentNaming
         private GameSettings _gameSettings;
-        
+
         [SerializeField]
         // ReSharper disable once InconsistentNaming
         private EngineFuel _engineFuel;
-        public EngineFuel EngineFuel => _engineFuel;
 
         public Managers.HazardType HazardType => _hazardType;
         [SerializeField]
         private Managers.HazardType _hazardType;
         private HazardManagerGO _hazardManager;
+        private IModuleActivation[] _moduleActivations;
+
+        public IModuleActivation[] ModuleActivations
+        {
+            get => _moduleActivations;
+        }
 
         [SerializeField]
         private float fuelConsumption;
 
         public float TreatmentAmount { get; private set; }
-        
-        
-        
+
+      
         // Start is called before the first frame update
 
                 
         [Inject]
         public void Init(EngineFuel engineFuel, HazardManagerGO hazardManager)
         {
-            if (engineFuel != null)
-            {
-                this._engineFuel = engineFuel;
-            }
-            else
-            {
-                throw new ArgumentException();
-            }
-
+            this._engineFuel = engineFuel;
             fuelConsumption = _gameSettings.FuelConsumption;
 
             _hazardManager = hazardManager;
+            _hazardManager.NextHazardInteraction.AddListener(ToggleHazardInteractions);
             TreatmentAmount = _gameSettings.TreatmentEffect;
-
+            
         }
-        
-        public void Interact()
+
+        private void OnDestroy()
+        {
+            if (_hazardManager != null) {
+                _hazardManager.NextHazardInteraction.RemoveListener(ToggleHazardInteractions);
+            }
+        }
+
+        void Awake()
+        {
+            _moduleActivations = GetComponents<IModuleActivation>();
+        }
+        public void Interact(float amount)
         {
             Debug.Log($"{name} - activated");
-            if (!_engineFuel.HasFuel(fuelConsumption))
+            if (_engineFuel.RequestFuel(fuelConsumption * amount))
             {
-                throw new NotImplementedException("Insufficient fuel, play feedback");
+                _hazardManager.TreatHazardOfType(_hazardType, amount);
+                
             }
             else
             {
-                _hazardManager.TreatHazardOfType(_hazardType, TreatmentAmount);
+                throw new NotImplementedException("Insufficient fuel, play feedback");
             }            
             
+        }
+
+        private void ToggleHazardInteractions(Managers.HazardType type, HazardManagerGO.InteractionType interactions)
+        {
+            if (HazardType == type)
+            {
+                foreach (var activator in _moduleActivations)
+                {
+                    if (activator.InteractionType == interactions)
+                    {
+                        activator.Activable = true;
+                        Debug.Log($"Enabling interaction: {interactions}");
+                    }
+
+                    else if (activator.Activable)
+                    {
+                        activator.Activable = false;
+                        Debug.Log($"Deactivating interaction: {interactions}");
+                    }
+                }
+            }
         }
 
 

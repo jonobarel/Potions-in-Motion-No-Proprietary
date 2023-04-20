@@ -8,6 +8,11 @@ namespace ZeroPrep.MineBuddies
         private Managers.HazardType _type;
         public Managers.HazardType Type => _type;
 
+        private static int id=0;
+        public static int HazardClassID => id;
+        public int ID { get; private set; }
+        
+        public HazardManagerGO.InteractionType InteractionType { get; protected set; }
         public virtual float DamageFactor { get; } = 1f;
 
         /// <summary>
@@ -36,8 +41,10 @@ namespace ZeroPrep.MineBuddies
             }
         }
 
-        protected HazardBase(Managers.HazardType type, float startingHealth)
+        protected HazardBase(Managers.HazardType type, HazardManagerGO.InteractionType interactionType, float startingHealth)
         {
+            InteractionType = interactionType;
+            ID = id++;
             _health = startingHealth;
             _type = type;
             Spawn?.Invoke(this);

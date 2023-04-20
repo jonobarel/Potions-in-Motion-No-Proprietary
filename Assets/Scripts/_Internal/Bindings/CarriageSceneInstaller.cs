@@ -9,9 +9,11 @@ namespace ZeroPrep.MineBuddies
     {
         public HazardManagerGO hazardManagerGameObjectPrefab;
         public HazardIcons hazardIconsPrefab;
-        public GameObject corgiCarriagePrefab;
+        //public GameObject corgiCarriagePrefab;
         public PlayerConfigManagement PlayerConfigManagementPrefab;
         public BackgroundScrolling BackgroundScrolling;
+        
+        public bool ignoreFuel = false;
         
         [Inject] private GameSettings _gameSettings;
         public override void InstallBindings()
@@ -25,8 +27,10 @@ namespace ZeroPrep.MineBuddies
 
         private void InstallEngineComponents()
         {
-            Container.Bind<EngineFuel>().FromNew().AsSingle();
+            Container.Bind<EngineFuel>().FromInstance(new EngineFuel(_gameSettings, ignoreFuel)).AsSingle();
             Container.Bind<EngineSpeed>().FromNew().AsSingle();
+            
+            
             Container.Bind<EngineOdometer>().FromNew().AsSingle();
         }
 
@@ -61,6 +65,7 @@ namespace ZeroPrep.MineBuddies
 
         private void InstallBackground()
         {
+
             Container.Bind<BackgroundScrolling>().FromInstance(BackgroundScrolling);
         }
     }

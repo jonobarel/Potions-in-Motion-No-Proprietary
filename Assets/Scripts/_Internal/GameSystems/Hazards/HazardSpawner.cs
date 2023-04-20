@@ -17,11 +17,14 @@ namespace ZeroPrep.MineBuddies
 
         private bool _stopSpawning = false;
 
-        [Inject]
-        private AvailableHazardTypes _validTypes;
+        [Inject] private AvailableHazardTypes _validTypes;
 
         [Inject] private GameSettings _gameSettings;
 
+        private HazardManagerGO.InteractionType[] _interactions = {
+            HazardManagerGO.InteractionType.Button, HazardManagerGO.InteractionType.Rotation
+        };
+        
         private Array _types => _validTypes.Types;
 
         /*
@@ -75,7 +78,7 @@ namespace ZeroPrep.MineBuddies
         public void SpawnRandomTypeHazard()
         {
             Managers.HazardType newType = (Managers.HazardType)_types.GetValue(Random.Range(0, _types.Length));
-            HazardExternal h = new HazardExternal(0.5f, newType, _gameSettings.HazardStartingHealth);
+            HazardExternal h = new HazardExternal(0.5f, newType, _interactions[HazardBase.HazardClassID %2 ], _gameSettings.HazardStartingHealth);
         }
 
         public bool IsSpawning()

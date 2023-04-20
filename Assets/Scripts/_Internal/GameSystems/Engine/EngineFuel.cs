@@ -8,6 +8,7 @@ namespace ZeroPrep.MineBuddies
     public class EngineFuel : IDisplayable
     {
         private GameSettings _gameSettings;
+        private bool _ignoreFuel = false;
         public float FuelCapacity
         {
             get;
@@ -19,9 +20,10 @@ namespace ZeroPrep.MineBuddies
         public float FuelLevel => CurrentFuel / FuelCapacity;
        
 
-        public EngineFuel(GameSettings gameSettings)
+        public EngineFuel(GameSettings gameSettings, bool ignoreFuel = false)
         {
             _gameSettings = gameSettings;
+            _ignoreFuel = ignoreFuel;
             
             FuelCapacity = gameSettings.EngineCapacity;
             CurrentFuel = gameSettings.EngineStartingFuel;
@@ -35,11 +37,13 @@ namespace ZeroPrep.MineBuddies
 
         public bool HasFuel(float amount)
         {
-            return CurrentFuel >= amount;
+            return (_ignoreFuel || CurrentFuel >= amount);
         }
 
         public bool RequestFuel(float amount)
         {
+            if (_ignoreFuel) return true;
+            
             if (HasFuel(amount))
             {
                 CurrentFuel -= amount;

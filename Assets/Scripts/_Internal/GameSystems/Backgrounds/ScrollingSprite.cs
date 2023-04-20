@@ -42,7 +42,7 @@ namespace ZeroPrep.MineBuddies
             
         }
 
-        public void Update()
+        public void LateUpdate()
         {
             Vector2 offset = _material.GetTextureOffset("_MainTex");
             offset.Set(offset.x+_baseScrollSpeed*Time.deltaTime*_speedFactor, offset.y);
