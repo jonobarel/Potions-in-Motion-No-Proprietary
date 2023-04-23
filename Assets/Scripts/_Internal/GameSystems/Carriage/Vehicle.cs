@@ -1,8 +1,10 @@
+using MoreMountains.CorgiEngine;
 using UnityEngine;
 using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
+    [RequireComponent(typeof(Health))]
     public class Vehicle : MonoBehaviour
     {
         private EngineSpeed _engineSpeed;
@@ -16,6 +18,29 @@ namespace ZeroPrep.MineBuddies
             _engineFuel = engineFuel;
             _engineSpeed = engineSpeed;
             _engineOdometer = engineOdometer;
+        }
+
+        void Start()
+        {
+            VehicleIntegrityCheck();
+        }
+        
+        private void VehicleIntegrityCheck()
+        {
+            if (_engineSpeed == null)
+            {
+                Debug.LogError("EngineSpeed is null");
+            }
+            if (_engineFuel == null)
+            {
+                Debug.LogError("EngineFuel is null");
+            }
+            if (_engineOdometer == null)
+            {
+                Debug.LogError("EngineOdometer is null");
+            }
+            
+            
         }
         
         public void Update() {

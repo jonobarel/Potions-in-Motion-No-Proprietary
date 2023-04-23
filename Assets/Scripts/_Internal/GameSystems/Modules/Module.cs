@@ -84,17 +84,7 @@ namespace ZeroPrep.MineBuddies
             {
                 foreach (var activator in _moduleActivations)
                 {
-                    if (activator.InteractionType == interactions)
-                    {
-                        activator.Activable = true;
-                        Debug.Log($"Enabling interaction: {interactions}");
-                    }
-
-                    else if (activator.Activable)
-                    {
-                        activator.Activable = false;
-                        Debug.Log($"Deactivating interaction: {interactions}");
-                    }
+                    activator.Activable = (activator.InteractionType == interactions);
                 }
             }
         }
