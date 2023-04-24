@@ -870,7 +870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _totalRotation: 0
   rotationType: 0
-  Activable: 1
+  Activable: 0
   AutoActivation: 0
   OnlyOneActivationAtOnce: 0
   AutoActivationAndButtonInteraction: 0

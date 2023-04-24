@@ -21,9 +21,7 @@ namespace ZeroPrep.MineBuddies
 
         [Inject] private GameSettings _gameSettings;
 
-        private HazardManagerGO.InteractionType[] _interactions = {
-            HazardManagerGO.InteractionType.Button, HazardManagerGO.InteractionType.Rotation
-        };
+        private HazardManagerGO.InteractionType[] _interactions;
         
         private Array _types => _validTypes.Types;
 
@@ -35,11 +33,22 @@ namespace ZeroPrep.MineBuddies
         #region Constructor
 
         [Inject]
-        public HazardSpawner(float minTime, float maxTime, AvailableHazardTypes validTypes)
+        public HazardSpawner(float minTime, float maxTime, AvailableHazardTypes validTypes, MineBuddiesMultiplayerLevelManager levelManager)
         {
             MinTime = minTime;
             MaxTime = maxTime;
             _validTypes = validTypes;
+
+            if (levelManager != null)
+            {
+                _interactions = levelManager.AvailableInteractions.ToArray();
+            }
+            else
+            {
+                _interactions = new HazardManagerGO.InteractionType[]{
+                    HazardManagerGO.InteractionType.Button, HazardManagerGO.InteractionType.Rotation
+                };
+            }
         }
 
         #endregion
@@ -78,7 +87,7 @@ namespace ZeroPrep.MineBuddies
         public void SpawnRandomTypeHazard()
         {
             Managers.HazardType newType = (Managers.HazardType)_types.GetValue(Random.Range(0, _types.Length));
-            HazardExternal h = new HazardExternal(0.5f, newType, _interactions[HazardBase.HazardClassID %2 ], _gameSettings.HazardStartingHealth);
+            HazardExternal h = new HazardExternal(0.5f, newType, _interactions[HazardBase.HazardClassID % _interactions.Length ], _gameSettings.HazardStartingHealth);
         }
 
         public bool IsSpawning()

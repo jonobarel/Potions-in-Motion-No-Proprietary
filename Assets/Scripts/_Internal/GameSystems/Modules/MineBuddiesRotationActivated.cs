@@ -1,4 +1,5 @@
 using UnityEngine.Events;
+using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -10,10 +11,15 @@ namespace ZeroPrep.MineBuddies
         }
 
         private Module _module;
+        
+        [Inject]
+        private GameSettings _gameSettings;
 
+        private float _treatmentAmount;
         void Awake()
         {
             _module = GetComponent<Module>();
+            _treatmentAmount = _gameSettings.TreatmentEffect;
         }
         public new bool Activable { get => base.Activable;
             set
@@ -33,7 +39,7 @@ namespace ZeroPrep.MineBuddies
             base.ActivateZone(angle);
             if (_module != null)
             {
-                _module.Interact(angle);
+                _module.Interact(angle*_treatmentAmount);
             }
         } 
         

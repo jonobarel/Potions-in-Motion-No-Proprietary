@@ -10,6 +10,11 @@ using ZeroPrep.MineBuddies;
 public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.MultiplayerLevelManager
 {
     private PlayerConfigManagement _playerConfig;
+
+    public List<HazardManagerGO.InteractionType> AvailableInteractions = new List<HazardManagerGO.InteractionType>()
+    {
+        HazardManagerGO.InteractionType.Button, HazardManagerGO.InteractionType.Rotation
+    };
     
     [Inject]
     void Init(PlayerInput[] players, PlayerConfigManagement playerConfigManagement)
@@ -50,8 +55,8 @@ public class MineBuddiesMultiplayerLevelManager : MoreMountains.CorgiEngine.Mult
         }
     }
 
+    
 
 
-    
-    
+
 }

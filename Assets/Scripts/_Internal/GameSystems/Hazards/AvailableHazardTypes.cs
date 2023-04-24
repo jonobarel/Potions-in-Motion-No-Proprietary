@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 namespace ZeroPrep.MineBuddies
 {
@@ -21,7 +22,7 @@ namespace ZeroPrep.MineBuddies
             {
                 List<Managers.HazardType> hazardTypes = new List<Managers.HazardType>();
 
-                foreach (var module in modules)
+                foreach (var module in modules.Where(m => m.gameObject.activeInHierarchy))
                 {
                     hazardTypes.Add(module.HazardType);
                 }

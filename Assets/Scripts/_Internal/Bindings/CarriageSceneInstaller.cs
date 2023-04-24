@@ -18,6 +18,7 @@ namespace ZeroPrep.MineBuddies
         [Inject] private GameSettings _gameSettings;
         public override void InstallBindings()
         {
+            InstallGameComponents();
             InstallEngineComponents();
             InstallHazardComponents();
             InstallPlayers();
@@ -25,6 +26,11 @@ namespace ZeroPrep.MineBuddies
 
         }
 
+        private void InstallGameComponents()
+        {
+            Container.Bind<MineBuddiesMultiplayerLevelManager>()
+                .FromInstance(FindObjectOfType<MineBuddiesMultiplayerLevelManager>());
+        }
         private void InstallEngineComponents()
         {
             Container.Bind<EngineFuel>().FromInstance(new EngineFuel(_gameSettings, ignoreFuel)).AsSingle();
@@ -38,6 +44,7 @@ namespace ZeroPrep.MineBuddies
         {
             Container.Bind<HazardManager>().FromNew().AsSingle();
             Container.Bind<AvailableHazardTypes>().FromNew().AsSingle();
+            
             Container.Bind<HazardSpawner>().FromNew().AsSingle()
                 .WithArguments(_gameSettings.MinSpawnTime, _gameSettings.MaxSpawnTime);
             Container.Bind<HazardManagerGO>().FromComponentInNewPrefab(hazardManagerGameObjectPrefab).AsSingle();

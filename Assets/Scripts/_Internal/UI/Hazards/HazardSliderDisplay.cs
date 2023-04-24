@@ -24,7 +24,8 @@ namespace ZeroPrep.MineBuddies
 
         private Slider _slider;
         private HazardBase _hazard;
-
+        public HazardBase Hazard => _hazard;
+        
         [SerializeField] private Managers.HazardType _type;
         
         public void Start()

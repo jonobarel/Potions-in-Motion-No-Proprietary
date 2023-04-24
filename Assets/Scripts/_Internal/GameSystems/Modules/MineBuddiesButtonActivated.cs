@@ -33,6 +33,7 @@ namespace ZeroPrep.MineBuddies
         private void Awake()
         {
             _module = GetComponent<Module>();
+            _treatmentAmount = _gameSettings.TreatmentEffect;
         }
 
         public override void Initialization()
