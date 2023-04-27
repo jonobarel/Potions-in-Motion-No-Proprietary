@@ -39,7 +39,7 @@ namespace ZeroPrep.MineBuddies
             base.ActivateZone(angle);
             if (_module != null)
             {
-                _module.Interact(angle*_treatmentAmount);
+                _module.Interact(angle/360*_treatmentAmount);
             }
         } 
         

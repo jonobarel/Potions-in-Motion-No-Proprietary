@@ -21,6 +21,7 @@ namespace ZeroPrep.MineBuddies
             if (_hazardSliderDisplay != null)
             {
                 _text.text = "Type:" + _hazardSliderDisplay.Hazard.Type.ToString();
+                _text.text += $"\nID: {_hazardSliderDisplay.Hazard.ID}";
                 _text.text += $"\nTreatment: {_hazardSliderDisplay.Hazard.Health*100:00f}";
             }
         }

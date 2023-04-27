@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -65,7 +66,7 @@ namespace ZeroPrep.MineBuddies
             Transform sliderContainer = Slidercontainer;
             Slider prefab = ProgressSliderPrefab;
 
-            Slider positionSlider = Object.Instantiate(prefab, sliderContainer);
+            Slider positionSlider = GameObject.Instantiate(prefab, sliderContainer);
             _sliders.Add(h, positionSlider.GetComponent<HazardSliderDisplay>());
             positionSlider.name = $"Hazard: {h.ID}";
             positionSlider.GetComponent<HazardSliderDisplay>().Init(h, _hazardIcons.GetIconForHazardType(h.Type));
@@ -98,6 +99,10 @@ namespace ZeroPrep.MineBuddies
             if (_sliders.Remove(h, out positionSlider) && positionSlider)
             {
                 positionSlider.GetComponent<HazardSliderDisplay>().MarkForRemoval();
+            }
+            else
+            {
+                throw new ArgumentException($"Could not find slider for hazard {h.ID}");
             }
         }
 

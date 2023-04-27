@@ -44,6 +44,12 @@ namespace ZeroPrep.MineBuddies
 
         public void Update()
         {
+            if (_state == State.Destroy)
+            {
+                GameObject.Destroy(gameObject, 1f);
+                return;
+            }
+            
             if (_hazard != null)
             {
                 _slider.value = 1f - _hazard.Progress;
@@ -53,10 +59,7 @@ namespace ZeroPrep.MineBuddies
                 }
             }
 
-            if (_state == State.Destroy)
-            {
-                GameObject.Destroy(gameObject, 1f);
-            }
+
             
             
         }

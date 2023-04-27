@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5083856232491753062}
   - component: {fileID: 5083856232491753050}
+  - component: {fileID: 8116683282731516468}
   m_Layer: 0
   m_Name: HazardManager
   m_TagString: Untagged
@@ -46,6 +47,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimedSpawning: 1
   _isPaused: 0
-  hazardDistanceSliderContainer: {fileID: 0}
-  positionSliderPrefab: {fileID: 5045733068750884929, guid: deded62b4052a42c8b903dd48176bf1d,
-    type: 3}
+  NextHazardInteraction:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8116683282731516468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083856232491753057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2394e7ce7b70426683331a5139dc1160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeHazards: 
+  _expiredHazards: 
+  _clearedHazards: 
+  _removedHazards: 
+  _spawnedHazards: 
+  _spawnedHazardsCount: 0
+  _activeHazardsCount: 0
+  _expiredHazardsCount: 0
+  _clearedHazardsCount: 0
+  _removedHazardsCount: 0

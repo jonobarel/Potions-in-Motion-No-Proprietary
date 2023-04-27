@@ -65,7 +65,6 @@ namespace ZeroPrep.MineBuddies
         }
         public void Interact(float amount)
         {
-            Debug.Log($"{name} - activated");
             if (_engineFuel.RequestFuel(fuelConsumption * amount))
             {
                 _hazardManager.TreatHazardOfType(_hazardType, amount);
