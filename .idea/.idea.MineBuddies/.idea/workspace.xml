@@ -4,53 +4,61 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/_Internal/GameSystems/Backgrounds/ScrollingBackground.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MineBuddies/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/PlayerInput.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/PlayerInput.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesBackground.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/MineBuddiesBackground.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_00_sky.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_00_sky.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_100_mine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_100_mine.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_10_clouds.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_10_clouds.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_20_farmountain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_20_farmountain.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_30_farbushes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_30_farbushes.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_40_wizardtower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_40_wizardtower.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_60_trees.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_60_trees.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_70_roadside.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_70_roadside.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_80_road.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_80_road.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_90_ground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RawAssets/_backgrounds/screen_1/bg_90_ground.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/JoinSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/JoinSceneInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Internal/Bindings/CarriageSceneInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Internal/Bindings/CarriageSceneInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Internal/GameSystems/Backgrounds/BackgroundScrolling.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Internal/GameSystems/Backgrounds/BackgroundScrolling.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Internal/GameSystems/Backgrounds/ScrollingBackground.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/_Internal/GameSystems/Backgrounds/ScrollingSprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/_Internal/GameSystems/Backgrounds/ScrollingSprite.cs" afterDir="false" />
     </list>
-=======
-    <list default="true" id="b7a475de-ff76-478f-b9be-5ea8bce2aa48" name="Changes" comment="" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f61d5eefcc74dff84f661b4a4dc847980e800/3e/0a076b7d/EditorGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f61d5eefcc74dff84f661b4a4dc847980e800/9b/7d48b916/EditorApplication.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f61d5eefcc74dff84f661b4a4dc847980e800/ec/6f7aa7d6/Editor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/39/dc64e949/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/d3/51bd325d/Single.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8b27195d2ee14da7b6fd1e5435850f80157400/43/360b704f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/DamageOnHazardExpire.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MineBuddiesMultiplayerLevelManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/CarriageSceneInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/GameSettingsInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/Bindings/JoinSceneInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Carriage/VehicleDamageHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineFuel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Engine/EngineSpeed.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/GamePlayStartTrigger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/HazardManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Hazards/MonoBehaviours/HazardManagerGO.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Input/MineBuddiesInputSystemManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/CarriageMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/FuelCanister.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Carriage/WheelRotation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/MineBuddies v1/Characters/MineBuddiesCharacter.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/Hazards/HazardSliderUIManagerGameObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/MineBuddiesUI/UIFuelBar.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/MineBuddiesUI/UIOdometer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/MineBuddiesUI/UISpeedometer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/UIBaseClasses/UIDisplayBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Internal/UI/UIBaseClasses/UIProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Analytics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/SpritePostProcess.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.animation@7.0.5/Editor/Unity.2D.Animation.Editor.asmdef" root0="SKIP_HIGHLIGHTING" />
@@ -97,7 +105,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.35365853&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.3530303&quot;,
     &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Zero Prep Games/MineBuddies/Assets/Scripts/External/MoreMountainsLibraries/CorgiEngine/Common/Scripts&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -135,10 +143,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="6948">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="30400">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="6948" />
+      <option name="pid" value="30400" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -207,6 +215,8 @@
       <workItem from="1676368073222" duration="1403000" />
       <workItem from="1676369602321" duration="203000" />
       <workItem from="1676371800702" duration="1599000" />
+      <workItem from="1682853881700" duration="10871000" />
+      <workItem from="1682935124651" duration="9518000" />
     </task>
     <servers />
   </component>
@@ -315,14 +325,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Internal/GameSystems/Characters/MineBuddiesInput.cs</url>
           <line>43</line>
-          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="43" containingFunctionPresentation="method 'Awake'">
-            <startOffsets>
-              <option value="1484" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1504" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Zero Prep Games\MineBuddies\Assets\Scripts\Internal\GameSystems\Characters\MineBuddiesInput.cs" initialLine="43" containingFunctionPresentation="method 'Awake'" />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">

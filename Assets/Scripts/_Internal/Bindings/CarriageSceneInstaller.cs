@@ -11,7 +11,7 @@ namespace ZeroPrep.MineBuddies
         public HazardIcons hazardIconsPrefab;
         //public GameObject corgiCarriagePrefab;
         public PlayerConfigManagement PlayerConfigManagementPrefab;
-        public BackgroundScrolling BackgroundScrolling;
+        public ScrollingBackground scrollingBackground;
         
         public bool ignoreFuel = false;
         
@@ -73,7 +73,7 @@ namespace ZeroPrep.MineBuddies
         private void InstallBackground()
         {
 
-            Container.Bind<BackgroundScrolling>().FromInstance(BackgroundScrolling);
+            Container.Bind<ScrollingBackground>().FromInstance(scrollingBackground);
         }
     }
 }

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4216462012394170163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4216462012394170189}
+  - component: {fileID: 4216462012394170188}
+  m_Layer: 0
+  m_Name: MineBuddiesBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4216462012394170189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216462012394170163}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.89, y: -1.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4216462012394170188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216462012394170163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b269f6e2e59244c9c74d2eb3358e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteDepthMap:
+  - _depth: 0
+    _sprite: {fileID: 21300000, guid: cfd6e76575ec9a440b764d2c54ca8a42, type: 3}
+  - _depth: 10
+    _sprite: {fileID: 21300000, guid: 708fcefb6186e4247966a03d0c9ed08f, type: 3}
+  - _depth: 20
+    _sprite: {fileID: 21300000, guid: 96c5fecea3ad522448ce97331bb59341, type: 3}
+  - _depth: 30
+    _sprite: {fileID: 21300000, guid: a533f096bd3225a47ba3ff7ac9c99ed4, type: 3}
+  - _depth: 40
+    _sprite: {fileID: 21300000, guid: cf693820f28354240bdcb85fb587d938, type: 3}
+  - _depth: 50
+    _sprite: {fileID: 21300000, guid: 83d89b6d4292639409d98e00a9b998b1, type: 3}
+  - _depth: 60
+    _sprite: {fileID: 21300000, guid: 15c3e631a1e203c428c7ebee74d330d4, type: 3}
+  - _depth: 70
+    _sprite: {fileID: 21300000, guid: 9ec26ae073693744bbdd1e0ac20b430a, type: 3}
+  - _depth: 80
+    _sprite: {fileID: 21300000, guid: 95588be095270f049a0aa69610e6228a, type: 3}
+  - _depth: 90
+    _sprite: {fileID: 21300000, guid: ad8514daf2832c2409d8f6b67249773c, type: 3}
+  - _depth: 100
+    _sprite: {fileID: 21300000, guid: fff283b88ebfbbf418f66d37efa7d6ef, type: 3}
+  _gameplayDepth: 85
+  _actionLayer: Between
+  _backgroundLayer: Background
+  _foregroundLayer: Foreground
+  _scrollingSpritePrefab: {fileID: 2196421973983816712, guid: 0aec9bc7e1458b04783674c47ca3e0fa,
+    type: 3}
