@@ -305,8 +305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 1.0001221, y: -189.92}
-  m_SizeDelta: {x: 1987.6519, y: 46.863}
+  m_AnchoredPosition: {x: -1.4282, y: -41}
+  m_SizeDelta: {x: 430.4805, y: 46.863}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &227855558
 GameObject:
@@ -640,7 +640,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1245,7 +1245,7 @@ MonoBehaviour:
     type: 3}
   PlayerConfigManagementPrefab: {fileID: 7489435532225329695, guid: d7333d4e51e40cc4a9b30d88f4faafc4,
     type: 3}
-  BackgroundScrolling: {fileID: 0}
+  scrollingBackground: {fileID: 0}
   ignoreFuel: 0
 --- !u!114 &1743007668 stripped
 MonoBehaviour:

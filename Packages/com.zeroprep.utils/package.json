@@ -1,0 +1,25 @@
+{
+  "name": "com.zeroprep.utils",
+  "version": "0.1.0",
+  "displayName": "ZeroPrep Utilities",
+  "description": "Common utilities and libraries developed for ZeroPrep projects",
+  "unity": "2021.2",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.ugui": "1.0.0"
+  },
+  "author": {
+    "name": "Jono Barel",
+    "email": "zeroprep@jbarel.com",
+    "url": "https://zeroprep.itch.io/"
+  },
+  "type": "library",
+  
+  "samples": [
+    {
+      "displayName": "UI Object Queue",
+      "description": "script for making objects \"queue up\" in a UI container",
+      "path": "Samples~/UIQueue"
+    }
+  ]
+}
