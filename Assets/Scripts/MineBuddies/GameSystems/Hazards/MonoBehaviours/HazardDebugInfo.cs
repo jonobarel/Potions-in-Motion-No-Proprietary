@@ -8,21 +8,21 @@ namespace ZeroPrep.MineBuddies
     public class HazardDebugInfo : MonoBehaviour
     {
 
-        HazardSliderDisplay _hazardSliderDisplay;
+        HazardDisplay _hazardDisplay;
         TextMeshProUGUI _text;
         void Awake()
         {
-            _hazardSliderDisplay = GetComponentInParent<HazardSliderDisplay>();
+            _hazardDisplay = GetComponentInParent<HazardDisplay>();
             _text = GetComponent<TextMeshProUGUI>();
         }
         
         void Update()
         {
-            if (_hazardSliderDisplay != null)
+            if (_hazardDisplay != null)
             {
-                _text.text = "Type:" + _hazardSliderDisplay.Hazard.Type.ToString();
-                _text.text += $"\nID: {_hazardSliderDisplay.Hazard.ID}";
-                _text.text += $"\nTreatment: {_hazardSliderDisplay.Hazard.Health*100:00f}";
+                _text.text = "Type:" + _hazardDisplay.Hazard.Type.ToString();
+                _text.text += $"\nID: {_hazardDisplay.Hazard.ID}";
+                _text.text += $"\nTreatment: {_hazardDisplay.Hazard.Health*100:00f}";
             }
         }
     }

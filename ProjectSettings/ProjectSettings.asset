@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Zero Prep Games
-  productName: Trippin' Troll Trucker Tales
+  productName: Potions in Motion
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 1, g: 0.30879685, b: 0, a: 1}
@@ -136,7 +136,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: v7.4
+  bundleVersion: v2023.0.1
   preloadedAssets:
   - {fileID: 11400000, guid: 8194a8b87d72a3a49a052669c8be5c29, type: 2}
   metroInputSource: 0
@@ -155,7 +155,8 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.Zero-Prep-Games.Potions-in-Motion
   buildNumber:
     Standalone: 0
     iPhone: 0

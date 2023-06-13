@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZeroPrep.MineBuddies;
+using ZeroPrep.UI;
 using UnityEngine.UI;
 using Zenject;
 
@@ -13,32 +14,31 @@ namespace ZeroPrep.MineBuddies
     {
         /// <summary>
         /// This is the MonoBehaviour script attached to the HazardTimeline UI.
-        /// It handles creating the Slider manager which instantiating the Hazard sliders
+        /// It handles creating the Slider manager which instantiates the Hazard sliders
         /// and providing access to scene elements.
         /// </summary>
         // Start is called before the first frame update
 
-        [SerializeField] private Slider _hazardProgressDisplayPrefab;
+        [SerializeField] private GameObject _hazardQueueItemPrefab;
+        [SerializeField] private QueueContainer _queueContainer;
+        public GameObject HazardQueueItemPrefab => _hazardQueueItemPrefab;
 
-        public Slider ProgressSliderPrefab => _hazardProgressDisplayPrefab;
 
-        [SerializeField] private Transform _hazardSliderContainer;
-
-        public Transform Slidercontainer => _hazardSliderContainer;
-
-        //private HazardSliderUIManager _hazardSliderUIManager;
-        private Dictionary<HazardBase, HazardSliderDisplay> _sliders;
+        private Dictionary<HazardBase, HazardDisplay> _queueItems;
 
         [Inject] private HazardIcons _hazardIcons;
 
         void Start()
         {
-            _sliders = new Dictionary<HazardBase, HazardSliderDisplay>();
+            _queueItems = new Dictionary<HazardBase, HazardDisplay>();
             HazardBase.Spawn += OnSpawn;
             HazardBase.Clear += OnClear;
             HazardBase.Expire += OnExpire;
             HazardBase.Treat += OnTreat;
+            HazardBase.Advance += OnAdvance;
         }
+
+
 
         void OnDestroy()
         {
@@ -50,7 +50,11 @@ namespace ZeroPrep.MineBuddies
 
         void OnTreat(HazardBase h)
         {
-            _sliders[h].TreatmentAnimation();
+            if (_queueItems.ContainsKey(h))
+            {
+                _queueItems[h].Treat();
+            }
+            else throw new ArgumentOutOfRangeException("Could not find HazardDisplay object for HazardID " + h.ID);
         }
 
         private void OnSpawn(HazardBase h)
@@ -60,52 +64,60 @@ namespace ZeroPrep.MineBuddies
 
         private void AddHazardToTimeline(HazardBase h)
         {
-            //Instantiate the UI element and
-            //add it to the timeline
-
-            Transform sliderContainer = Slidercontainer;
-            Slider prefab = ProgressSliderPrefab;
-
-            Slider positionSlider = GameObject.Instantiate(prefab, sliderContainer);
-            _sliders.Add(h, positionSlider.GetComponent<HazardSliderDisplay>());
-            positionSlider.name = $"Hazard: {h.ID}";
-            positionSlider.GetComponent<HazardSliderDisplay>().Init(h, _hazardIcons.GetIconForHazardType(h.Type));
+            HazardDisplay queueItem = GameObject.Instantiate(HazardQueueItemPrefab, _queueContainer.transform)
+                .GetComponent<HazardDisplay>();
+            queueItem.Init(h, _hazardIcons.GetIconForHazardType(h.Type));
+            _queueContainer.AddObjectToQueue(queueItem.GetComponent<RectTransform>());
+            _queueItems.Add(h, queueItem);
+            queueItem.name = $"Hazard: {h.ID}";
         }
 
         private void OnExpire(HazardBase h)
         {
-            HazardExpired(h);
+            PlayExpiredAnimation(h);
+            RemoveQueueIcon(h);
+
         }
 
-        private void HazardExpired(HazardBase h)
+        private void PlayExpiredAnimation(HazardBase hazardBase)
         {
-            HardRemoveSliderFromTimeline(h);
+            throw new NotImplementedException();
         }
+
 
         private void OnClear(HazardBase h)
         {
-            _sliders[h].PlayClearAnimation();
-            HazardCleared(h);
+            PlayClearedAnimation(h);
+            RemoveQueueIcon(h);
         }
 
-        private void HazardCleared(HazardBase h)
+        
+        private void PlayClearedAnimation(HazardBase h)
         {
-            HardRemoveSliderFromTimeline(h);
-        }
-
-        private void HardRemoveSliderFromTimeline(HazardBase h)
-        {
-            HazardSliderDisplay positionSlider;
-            if (_sliders.Remove(h, out positionSlider) && positionSlider)
+            if (_queueItems.TryGetValue(h, out var item))
             {
-                positionSlider.GetComponent<HazardSliderDisplay>().MarkForRemoval();
+                item.Clear();
+            }
+            else throw new ArgumentOutOfRangeException("Could not find HazardDisplay object for HazardID " + h.ID);
+        }
+
+        private void RemoveQueueIcon(HazardBase h)
+        {
+            if (_queueItems.Remove(h, out var removedItem) && removedItem)
+            {
+                removedItem.MarkForRemoval();
+                Destroy(removedItem.gameObject, 1f);
             }
             else
             {
                 throw new ArgumentException($"Could not find slider for hazard {h.ID}");
             }
         }
-
+        
+        private void OnAdvance(HazardBase obj)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

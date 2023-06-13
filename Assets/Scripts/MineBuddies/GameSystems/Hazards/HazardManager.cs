@@ -53,6 +53,7 @@ namespace ZeroPrep.MineBuddies
 
         private void MarkForRemoval(HazardBase h)
         {
+            _hazards.Remove(h);
             _hazardsToRemove.Add(h);
         }
 
@@ -88,13 +89,6 @@ namespace ZeroPrep.MineBuddies
 
         private void ClearHazardsToRemove()
         {
-            foreach (HazardBase h in _hazardsToRemove)
-            {
-                if (!_hazards.Remove(h))
-                {
-                    throw new System.ArgumentOutOfRangeException($"Attempting to remove a Hazard object that's missing");
-                }
-            }
             _hazardsToRemove.Clear();
         }
     }
