@@ -72,4 +72,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Resources/GameAnalytics/Settings.asset
-.idea/.idea.MineBuddies/.idea/workspace.xml
+.idea/*
