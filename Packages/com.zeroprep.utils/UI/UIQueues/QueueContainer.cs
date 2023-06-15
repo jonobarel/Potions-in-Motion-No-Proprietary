@@ -36,7 +36,7 @@ namespace ZeroPrep.UI
         private float _slidingDistanceEpsilon = 0.1f;
         public float SlideRate => _slideRate;
 
-        public void AddObjectToQueue(RectTransform newObject)
+        public void AddObjectToQueue(RectTransform newObject, bool slideToPosition = true)
         {
 
             Vector2 startPosition = _rectTransform.anchoredPosition + startingOffset * Vector2.right;
@@ -44,9 +44,10 @@ namespace ZeroPrep.UI
             newObject.anchoredPosition = startPosition;
             QueuedItem item = SetupObjectForInsertion(newObject);
             _queuedObjects.Add(item);
-
-            
-            
+            if (slideToPosition)
+            {
+                item.SlideToPosition();
+            }
         }
 
         private void Awake()

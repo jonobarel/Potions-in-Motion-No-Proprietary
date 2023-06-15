@@ -67,7 +67,7 @@ namespace ZeroPrep.MineBuddies
             HazardDisplay queueItem = GameObject.Instantiate(HazardQueueItemPrefab, _queueContainer.transform)
                 .GetComponent<HazardDisplay>();
             queueItem.Init(h, _hazardIcons.GetIconForHazardType(h.Type));
-            _queueContainer.AddObjectToQueue(queueItem.GetComponent<RectTransform>());
+            _queueContainer.AddObjectToQueue(queueItem.GetComponent<RectTransform>(), false);
             _queueItems.Add(h, queueItem);
             queueItem.name = $"Hazard: {h.ID}";
         }

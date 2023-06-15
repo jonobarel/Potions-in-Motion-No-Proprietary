@@ -5,7 +5,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace ZeroPrep.MineBuddies
+namespace ZeroPrep.Utils
 {
     public static class MonoBehaviourExtensions
     {

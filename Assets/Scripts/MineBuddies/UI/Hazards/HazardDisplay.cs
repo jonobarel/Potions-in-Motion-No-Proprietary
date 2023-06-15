@@ -2,6 +2,7 @@ using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using ZeroPrep.UI;
 
 namespace ZeroPrep.MineBuddies
 {
@@ -19,7 +20,7 @@ namespace ZeroPrep.MineBuddies
         public float tweenDuration = 0.2f;
 
         [SerializeField]
-        private MMF_Player _treated_feedback, _expired_feedback, _cleared_feedback;
+        private MMF_Player _treated_feedback, _expired_feedback, _cleared_feedback, _start_feedback;
         
         private State _state;
         public Transform iconContainer;
@@ -34,7 +35,8 @@ namespace ZeroPrep.MineBuddies
         
         public void Start()
         {
-            _state = State.Active; 
+            _state = State.Active;
+            _start_feedback.PlayFeedbacks();
         }
 
         public void Init(HazardBase h, Sprite icon)
@@ -80,6 +82,15 @@ namespace ZeroPrep.MineBuddies
         private void SetTreatmentDisplay()
         {
             DOTween.To(() => treatmentProgressDisplay.fillAmount, x => treatmentProgressDisplay.fillAmount = x, 1 - _hazard.Health, tweenDuration);
+        }
+
+        public void QueueItemSlide()
+        {
+            QueuedItem item = GetComponent<QueuedItem>();
+            if (item != null)
+            {
+                item.SlideToPosition();
+            }
         }
 
     }

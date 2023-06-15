@@ -56,10 +56,9 @@ namespace ZeroPrep.UI
 
         public void SetNewTarget(QueuedItem newPrev) {
             Prev = newPrev;
-            SlideToPosition();
         }
 
-        private void SlideToPosition(float delay = 0f, float duration = 0.5f) 
+        public void SlideToPosition(float delay = 0f, float duration = 0.5f) 
         {
             targetPosition = (Prev != null) ? Prev.targetPosition + (Prev.SizeDelta.x + Container._queueSpacing*Prev.SizeDelta.x) * Vector2.right : Container.RectTransform.anchoredPosition;
             DOTween.To(() => rectTransform.anchoredPosition, x => rectTransform.anchoredPosition = x, targetPosition, duration);

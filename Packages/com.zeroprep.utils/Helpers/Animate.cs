@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ZeroPrep.MineBuddies
+namespace ZeroPrep.Utils
 {
     public class Animate : MonoBehaviour
     {
