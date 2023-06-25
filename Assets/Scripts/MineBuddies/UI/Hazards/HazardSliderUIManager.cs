@@ -10,7 +10,7 @@ using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
-    public class HazardSliderUIManagerGameObject : MonoBehaviour
+    public class HazardSliderUIManager : MonoBehaviour
     {
         /// <summary>
         /// This is the MonoBehaviour script attached to the HazardTimeline UI.

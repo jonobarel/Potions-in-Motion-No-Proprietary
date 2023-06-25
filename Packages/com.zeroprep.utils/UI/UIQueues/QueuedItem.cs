@@ -11,7 +11,7 @@ namespace ZeroPrep.UI
     [RequireComponent(typeof(RectTransform))]
     public class QueuedItem : MonoBehaviour
     {
-
+   
         [SerializeField] public Vector2 targetPosition;
         [SerializeField] public QueuedItem Prev  {get; private set;}
         
@@ -61,7 +61,7 @@ namespace ZeroPrep.UI
         public void SlideToPosition(float delay = 0f, float duration = 0.5f) 
         {
             targetPosition = (Prev != null) ? Prev.targetPosition + (Prev.SizeDelta.x + Container._queueSpacing*Prev.SizeDelta.x) * Vector2.right : Container.RectTransform.anchoredPosition;
-            DOTween.To(() => rectTransform.anchoredPosition, x => rectTransform.anchoredPosition = x, targetPosition, duration);
+            DOTween.To(() => rectTransform.anchoredPosition, x => rectTransform.anchoredPosition = x, targetPosition, duration).SetEase(Container.easingType, Container.easingParameter);
         }
 
     }

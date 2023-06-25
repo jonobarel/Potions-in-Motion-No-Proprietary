@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &121382312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1042,7 +1042,7 @@ MonoBehaviour:
     FadeMode: 0
     UnloadMethod: 2
   SetPlayerAsFeedbackRangeCenter: 0
-  AvailableInteractions: 02000000
+  AvailableInteractions: 01000000
 --- !u!65 &1230989360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1252,6 +1252,8 @@ MonoBehaviour:
   startingOffset: 500
   slideLatency: 0.1
   firstObjectOffset: 0.5
+  easingType: 17
+  easingParameter: 1
   allItemsIdenticalWidth: 1
 --- !u!1 &1742553024
 GameObject:

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using Vector2 = UnityEngine.Vector2;
@@ -18,6 +19,11 @@ namespace ZeroPrep.UI
         [SerializeField] private float startingOffset = 500;
         [SerializeField] private float slideLatency = 0.1f;
         [SerializeField] private float firstObjectOffset = 0.5f;
+        [Header("Easing parameters")]
+        [SerializeField] public Ease easingType = Ease.OutQuint;
+
+        [SerializeField] public float easingParameter = 1f;
+        [Space]
         public bool allItemsIdenticalWidth = true;
         private RectTransform _rectTransform;
 
@@ -68,6 +74,7 @@ namespace ZeroPrep.UI
             foreach (var t in itemsToSlide)
             {
                 t.SetNewTarget(prev);
+                t.SlideToPosition();
                 prev = t;
             }
           
