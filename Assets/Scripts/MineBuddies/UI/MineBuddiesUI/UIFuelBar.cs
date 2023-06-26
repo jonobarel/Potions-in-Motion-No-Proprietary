@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 using ZeroPrep.UI;
@@ -16,7 +17,7 @@ namespace ZeroPrep.MineBuddies
         {
             Displayable = engineFuel;
         }
-
+        
         protected override void OnValueChange(float newValue)
         {
             if (!Mathf.Approximately(newValue, 0f))

@@ -1,4 +1,6 @@
 using System;
+using DG.Tweening;
+using UnityEditor.UIElements;
 using UnityEngine;
 using Zenject;
 using ZeroPrep.UI;
@@ -8,8 +10,11 @@ namespace ZeroPrep.MineBuddies
     [Serializable]
     public class EngineFuel : IDisplayable
     {
+        [SerializeField] private float fuelReloadDuration = 0.5f; 
         private GameSettings _gameSettings;
         private bool _ignoreFuel = false;
+        private Tweener refuellingTweener;
+        
         public float FuelCapacity
         {
             get;
@@ -19,8 +24,12 @@ namespace ZeroPrep.MineBuddies
        public float CurrentFuel { get; private set; }
         
         public float FuelLevel => CurrentFuel / FuelCapacity;
-       
 
+        public void Refuel(float amount)
+        {
+            CurrentFuel = Mathf.Clamp(CurrentFuel + amount, 0, FuelCapacity);
+            ValueChanged?.Invoke(FuelLevel);
+        }
         public EngineFuel(GameSettings gameSettings, bool ignoreFuel = false)
         {
             _gameSettings = gameSettings;

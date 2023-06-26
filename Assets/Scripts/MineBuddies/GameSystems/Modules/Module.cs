@@ -18,7 +18,7 @@ namespace ZeroPrep.MineBuddies
 
         [SerializeField]
         // ReSharper disable once InconsistentNaming
-        private EngineFuel _engineFuel;
+        protected EngineFuel _engineFuel;
 
         public Managers.HazardType HazardType => _hazardType;
         [SerializeField]
@@ -63,7 +63,7 @@ namespace ZeroPrep.MineBuddies
         {
             _moduleActivations = GetComponents<IModuleActivation>();
         }
-        public void Interact(float amount)
+        public virtual void Interact(float amount)
         {
             if (_engineFuel.RequestFuel(fuelConsumption * amount))
             {
@@ -77,7 +77,7 @@ namespace ZeroPrep.MineBuddies
             
         }
 
-        private void ToggleHazardInteractions(Managers.HazardType type, HazardManagerGO.InteractionType interactions)
+        protected virtual void ToggleHazardInteractions(Managers.HazardType type, HazardManagerGO.InteractionType interactions)
         {
             if (HazardType == type)
             {

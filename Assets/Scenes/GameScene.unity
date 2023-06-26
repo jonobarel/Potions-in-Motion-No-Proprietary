@@ -669,7 +669,7 @@ MonoBehaviour:
   PlayerConfigManagementPrefab: {fileID: 7489435532225329695, guid: d7333d4e51e40cc4a9b30d88f4faafc4,
     type: 3}
   scrollingBackground: {fileID: 0}
-  ignoreFuel: 1
+  ignoreFuel: 0
 --- !u!1 &323182244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,6 +2632,50 @@ MonoBehaviour:
     UnloadMethod: 2
   SetPlayerAsFeedbackRangeCenter: 0
   AvailableInteractions: 0100000002000000
+--- !u!1 &1898517978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4574658841889980844, guid: 63962a0c0900496428fcc5f5ebd901aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 8836380476631803606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1898517982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898517978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc41931948d6964bb3487dbf5e502ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameSettings:
+    EngineCapacity: 0
+    EngineStartingFuel: 0
+    EngineBurnRate: 0
+    EngineAcceleration: 0
+    EngineDeceleration: 0
+    EngineMaxSpeed: 0
+    VehicleStartingHealth: 0
+    BaseDamageOnHazardExpire: 0
+    DamageFlickerDuration: 0
+    InvulnerabilityDuration: 0
+    FuelConsumption: 0
+    TreatmentEffect: 0
+    MinSpawnTime: 0
+    MaxSpawnTime: 0
+    HazardStartingHealth: 0
+    HazardMinSpeed: 0
+    HazardSpeedToEngineRatio: 0
+    HazardSlowdownFactor: 0
+    MaxHazardsForSlowdown: 0
+    PlayerReadyDelay: 0
+  _engineFuel:
+    fuelReloadDuration: 0
+  _hazardType: 0
+  fuelConsumption: 0
+  refuelFactor: 10
 --- !u!224 &1930068951 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2935101838160347885, guid: 91dbd5b2ad3188e4ca475c42a5618b90,

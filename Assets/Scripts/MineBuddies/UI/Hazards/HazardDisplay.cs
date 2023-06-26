@@ -36,7 +36,9 @@ namespace ZeroPrep.MineBuddies
         public void Start()
         {
             _state = State.Active;
+            _start_feedback.Initialization();
             _start_feedback.PlayFeedbacks();
+            
         }
 
         public void Init(HazardBase h, Sprite icon)
