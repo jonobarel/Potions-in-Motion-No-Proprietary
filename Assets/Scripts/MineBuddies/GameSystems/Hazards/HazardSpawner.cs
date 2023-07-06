@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using ZeroPrep.MineBuddies;
 using Random = UnityEngine.Random;
@@ -12,18 +13,19 @@ namespace ZeroPrep.MineBuddies
         public float MinTime { get; }
 
         public float MaxTime { get; }
+        protected float Speed => 0.5f;
 
         public bool IsPaused { get; }
 
         private bool _stopSpawning = false;
 
-        [Inject] private AvailableHazardTypes _validTypes;
+        private AvailableHazardTypes _validTypes;
 
         [Inject] private GameSettings _gameSettings;
 
-        private HazardManagerGO.InteractionType[] _interactions;
+        protected HazardManagerGO.InteractionType[] _interactions;
         
-        private Array _types => _validTypes.Types;
+        protected Array Types => _validTypes.Types;
 
         /*
         Array values = Enum.GetValues(typeof(Bar));
@@ -84,10 +86,11 @@ namespace ZeroPrep.MineBuddies
             caller.StartCoroutine(SpawnNextHazardCoRoutine());
         }
         
-        public void SpawnRandomTypeHazard()
+        public virtual HazardBase SpawnRandomTypeHazard()
         {
-            Managers.HazardType newType = (Managers.HazardType)_types.GetValue(Random.Range(0, _types.Length));
-            HazardExternal h = new HazardExternal(0.5f, newType, _interactions[HazardBase.HazardClassID % _interactions.Length ], _gameSettings.HazardStartingHealth);
+            Managers.HazardType newType = (Managers.HazardType)Types.GetValue(Random.Range(0, Types.Length));
+            HazardExternal h = new HazardExternal(Speed, newType, _interactions[HazardBase.HazardClassID % _interactions.Length ], _gameSettings.HazardStartingHealth);
+            return h;
         }
 
         public bool IsSpawning()

@@ -5,8 +5,7 @@ namespace ZeroPrep.MineBuddies
 {
     public abstract class HazardBase
     {
-        private Managers.HazardType _type;
-        public Managers.HazardType Type => _type;
+        public Managers.HazardType Type { get; protected set; }
 
         private static int id=0;
         public static int HazardClassID => id;
@@ -46,7 +45,7 @@ namespace ZeroPrep.MineBuddies
             InteractionType = interactionType;
             ID = id++;
             _health = startingHealth;
-            _type = type;
+            Type = type;
             Spawn?.Invoke(this);
         }
         public virtual void TreatAction(float treatment)

@@ -460,7 +460,6 @@ GameObject:
   - component: {fileID: 7236305925336268950}
   - component: {fileID: 1621584324611509954}
   - component: {fileID: 8281518231121116399}
-  - component: {fileID: -4926960713496764430}
   m_Layer: 29
   m_Name: CorgiModuleHittable
   m_TagString: Untagged
@@ -905,43 +904,6 @@ MonoBehaviour:
   OnStay:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-4926960713496764430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188668530597834665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d9d7d97a96897f4796f6840042341c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameSettings:
-    EngineCapacity: 0
-    EngineStartingFuel: 0
-    EngineBurnRate: 0
-    EngineAcceleration: 0
-    EngineDeceleration: 0
-    EngineMaxSpeed: 0
-    VehicleStartingHealth: 0
-    BaseDamageOnHazardExpire: 0
-    DamageFlickerDuration: 0
-    InvulnerabilityDuration: 0
-    FuelConsumption: 0
-    TreatmentEffect: 0
-    MinSpawnTime: 0
-    MaxSpawnTime: 0
-    HazardStartingHealth: 0
-    HazardMinSpeed: 0
-    HazardSpeedToEngineRatio: 0
-    HazardSlowdownFactor: 0
-    MaxHazardsForSlowdown: 0
-    PlayerReadyDelay: 0
-  _engineFuel:
-    fuelReloadDuration: 0
-  _hazardType: 0
-  fuelConsumption: 0
 --- !u!1 &7941817532555367231
 GameObject:
   m_ObjectHideFlags: 0
