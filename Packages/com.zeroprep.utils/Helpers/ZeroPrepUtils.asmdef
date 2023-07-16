@@ -1,6 +1,6 @@
 {
-    "name": "Utils",
-    "rootNamespace": "ZeroPrep",
+    "name": "ZeroPrep.Utils",
+    "rootNamespace": "ZeroPrep.Utils",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -38,7 +38,6 @@ namespace ZeroPrep.MineBuddies
         [Range(0f, 20f)] public float MaxSpawnTime;
         public float HazardStartingHealth;
 
-        public float HazardMinSpeed;
         public float HazardSpeedToEngineRatio;
 
         [Tooltip("This number is used to calculate how the number of hazards affects the speed of the vehicle")]

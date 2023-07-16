@@ -20,7 +20,12 @@ namespace ZeroPrep.MineBuddies
         // ReSharper disable once InconsistentNaming
         protected EngineFuel _engineFuel;
 
-        public Managers.HazardType HazardType => _hazardType;
+        public Managers.HazardType HazardType
+        {
+            get => _hazardType;
+            set => _hazardType = value;
+        }
+
         [SerializeField]
         private Managers.HazardType _hazardType;
         private HazardManagerGO _hazardManager;

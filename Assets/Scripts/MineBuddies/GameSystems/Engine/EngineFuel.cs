@@ -30,6 +30,7 @@ namespace ZeroPrep.MineBuddies
             CurrentFuel = Mathf.Clamp(CurrentFuel + amount, 0, FuelCapacity);
             ValueChanged?.Invoke(FuelLevel);
         }
+        [Inject]
         public EngineFuel(GameSettings gameSettings, bool ignoreFuel = false)
         {
             _gameSettings = gameSettings;
