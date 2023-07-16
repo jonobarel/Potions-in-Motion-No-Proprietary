@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,18 +17,11 @@ namespace ZeroPrep.MineBuddies
             
             if (modules.Length < 1)
             {
-                Types = new[] { Managers.HazardType.A, Managers.HazardType.B, Managers.HazardType.C };
+                Types = Enum.GetValues(typeof(Managers.HazardType)) as Managers.HazardType[];
             }
             else
             {
-                List<Managers.HazardType> hazardTypes = new List<Managers.HazardType>();
-
-                foreach (var module in modules.Where(m => m.gameObject.activeInHierarchy))
-                {
-                    hazardTypes.Add(module.HazardType);
-                }
-
-                Types = hazardTypes.ToArray();
+                Types = modules.Where(m => m.gameObject.activeInHierarchy).Select(module => module.HazardType).ToArray();
             }
         }
         

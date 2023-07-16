@@ -62,10 +62,13 @@ namespace ZeroPrep.MineBuddies
 
         private void NextHazardType()
         {
-            _index++;
-            Type = _types[IndexNormalized];
-            InteractionType = _interactionTypes[IndexNormalized];
-            OnFlip?.Invoke(this);
+            if (_index < _types.Length - 1)
+            {
+                _index++;
+                Type = _types[IndexNormalized];
+                InteractionType = _interactionTypes[IndexNormalized];
+                OnFlip?.Invoke(this);    
+            }
         }
     }
 }

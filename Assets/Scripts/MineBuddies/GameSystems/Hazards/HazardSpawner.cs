@@ -47,9 +47,7 @@ namespace ZeroPrep.MineBuddies
             }
             else
             {
-                _interactions = new HazardManagerGO.InteractionType[]{
-                    HazardManagerGO.InteractionType.Button, HazardManagerGO.InteractionType.Rotation
-                };
+                _interactions = Enum.GetValues(typeof(HazardManagerGO.InteractionType)) as HazardManagerGO.InteractionType[];
             }
         }
 

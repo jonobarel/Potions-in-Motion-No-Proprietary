@@ -1,23 +1,20 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using Zenject;
 
 namespace ZeroPrep.MineBuddies
 {
     /// <summary>
-    /// The <c>HazardSpawner</c> is a gameobject responsible for generating Hazards.
+    /// The <c>HazardSpawner</c> is a GameObject responsible for generating Hazards.
     /// It exists in UnityEngine because it needs to be integrated for Time, frames, and pauses (if and when they happen).
     /// </summary>
     public class HazardManagerGO : MonoBehaviour
     {
         public enum InteractionType
         {
-            None,
             Button,
             Rotation,
-            Multi
         }
         
         private GameSettings _gameSettings;
@@ -27,14 +24,12 @@ namespace ZeroPrep.MineBuddies
         [SerializeField]
         private bool _isPaused = false;
 
-        private bool _previousIsPaused = false;
-
         private HazardManager _hazardManager;
         private HazardSpawner _hazardSpawner;
 
         private EngineSpeed _engineSpeed;
 
-        private AvailableHazardTypes _availableHazardTypes;
+
 
         public UnityEvent<Managers.HazardType, InteractionType> NextHazardInteraction; 
         
@@ -54,7 +49,6 @@ namespace ZeroPrep.MineBuddies
             _hazardSpawner = hazardSpawner;
             _engineSpeed = engineSpeed;
             _gameSettings = gameSettings;
-            _availableHazardTypes = availableHazardTypes;
         }
 
         public void Awake()
@@ -85,10 +79,6 @@ namespace ZeroPrep.MineBuddies
             if (h != null)
             {
                 NextHazardInteraction?.Invoke(h.Type, h.InteractionType);
-            }
-            else
-            {
-                NextHazardInteraction?.Invoke(hazard.Type, InteractionType.None);
             }
         }
 

@@ -25,7 +25,7 @@ namespace ZeroPrep.MineBuddies.Tests
             (HazardManagerGO.InteractionType[])Enum.GetValues(typeof(HazardManagerGO.InteractionType));
 
         [SetUp]
-        public new void Setup()
+        public void Init()
         {
             InstantiateModules();
             BindInterfaces();

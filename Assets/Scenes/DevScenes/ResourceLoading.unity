@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1438792786}
   - component: {fileID: 1438792787}
+  - component: {fileID: 1438792788}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -286,3 +287,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourcePath: Installers/TestSettingsInstaller
+  resources: []
+--- !u!114 &1438792788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438792785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28946958dcea6840bfcf67ef726b034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceCode: {fileID: 0}
