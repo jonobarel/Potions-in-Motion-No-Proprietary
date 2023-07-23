@@ -24,9 +24,11 @@ namespace ZeroPrep.MineBuddies
 
         void Start()
         {
+            /*
             VehicleIntegrityCheck();
             GetComponent<PlatformPlacement>().PlaceObjects();
             GetComponent<ModulePlacement>().PlaceObjects();
+            */
         }
         
         private void VehicleIntegrityCheck()
