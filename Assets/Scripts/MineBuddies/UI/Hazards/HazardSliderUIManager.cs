@@ -26,8 +26,6 @@ namespace ZeroPrep.MineBuddies
 
         private Dictionary<HazardBase, HazardDisplay> _queueItems;
 
-        [Inject] private HazardIcons _hazardIcons;
-
         void Start()
         {
             _queueItems = new Dictionary<HazardBase, HazardDisplay>();
@@ -35,7 +33,6 @@ namespace ZeroPrep.MineBuddies
             HazardBase.Clear += OnClear;
             HazardBase.Expire += OnExpire;
             HazardBase.Treat += OnTreat;
-            HazardBase.Advance += OnAdvance;
         }
 
 
@@ -66,7 +63,7 @@ namespace ZeroPrep.MineBuddies
         {
             HazardDisplay queueItem = GameObject.Instantiate(HazardQueueItemPrefab, _queueContainer.transform)
                 .GetComponent<HazardDisplay>();
-            queueItem.Init(h, _hazardIcons.GetIconForHazardType(h.Type));
+            queueItem.Init(h, h.Type.Glyph);
             _queueContainer.AddObjectToQueue(queueItem.GetComponent<RectTransform>(), false);
             _queueItems.Add(h, queueItem);
             queueItem.name = $"Hazard: {h.ID}";
@@ -81,7 +78,7 @@ namespace ZeroPrep.MineBuddies
 
         private void PlayExpiredAnimation(HazardBase hazardBase)
         {
-            throw new NotImplementedException();
+            Debug.LogWarning("PlayExpiredAnimation");
         }
 
 
@@ -113,11 +110,5 @@ namespace ZeroPrep.MineBuddies
                 throw new ArgumentException($"Could not find slider for hazard {h.ID}");
             }
         }
-        
-        private void OnAdvance(HazardBase obj)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

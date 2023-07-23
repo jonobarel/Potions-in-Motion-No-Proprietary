@@ -12,7 +12,6 @@ namespace ZeroPrep.MineBuddies
 
         public void Start()
         {
-            Analytics.InitFile();
 #if !UNITY_WEBGL
         StartCoroutine(LoadTrailer());
 #endif

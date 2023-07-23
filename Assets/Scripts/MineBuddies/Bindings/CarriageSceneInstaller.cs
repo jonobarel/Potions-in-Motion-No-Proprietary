@@ -8,8 +8,6 @@ namespace ZeroPrep.MineBuddies
     public class CarriageSceneInstaller : MonoInstaller
     {
         public HazardManagerGO hazardManagerGameObjectPrefab;
-        public HazardIcons hazardIconsPrefab;
-        //public GameObject corgiCarriagePrefab;
         public PlayerConfigManagement PlayerConfigManagementPrefab;
         public ScrollingBackground scrollingBackground;
         
@@ -43,13 +41,11 @@ namespace ZeroPrep.MineBuddies
         private void InstallHazardComponents()
         {
             Container.Bind<HazardManager>().FromNew().AsSingle();
-            Container.Bind<AvailableHazardTypes>().FromNew().AsSingle();
+            Container.Bind<HazardTypesActiveInGame>().FromNew().AsSingle();
             
             Container.Bind<HazardSpawner>().FromNew().AsSingle()
                 .WithArguments(_gameSettings.MinSpawnTime, _gameSettings.MaxSpawnTime);
             Container.Bind<HazardManagerGO>().FromComponentInNewPrefab(hazardManagerGameObjectPrefab).AsSingle();
-            Container.Bind<HazardIcons>().FromComponentInNewPrefab(hazardIconsPrefab).AsSingle();
-
         }
 
         private void InstallPlayers()
@@ -73,7 +69,11 @@ namespace ZeroPrep.MineBuddies
         private void InstallBackground()
         {
 
-            Container.Bind<ScrollingBackground>().FromInstance(scrollingBackground);
+            if (scrollingBackground != null)
+            {
+                Container.Bind<ScrollingBackground>().FromInstance(scrollingBackground);    
+            }
+            
         }
     }
 }
