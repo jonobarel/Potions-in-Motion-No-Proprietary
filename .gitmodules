@@ -1,0 +1,6 @@
+[submodule "Assets/Plugins/Demigiant"]
+	path = Assets/Plugins/Demigiant
+	url = https://github.com/Zero-Prep-Games/Demigiant
+[submodule "Assets/Scripts/External/MoreMountainsLibraries"]
+	path = Assets/Scripts/External/MoreMountainsLibraries
+	url = https://github.com/Zero-Prep-Games/MoreMountainsLibraries
