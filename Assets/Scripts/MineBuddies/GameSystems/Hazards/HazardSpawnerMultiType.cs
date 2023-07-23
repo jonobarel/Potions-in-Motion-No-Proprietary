@@ -11,12 +11,12 @@ namespace ZeroPrep.MineBuddies
  /// </summary>
     public class HazardSpawnerMultiType : HazardSpawner
     {
-        private Managers.HazardType[] _shuffledTypes;
+        private HazardType[] _shuffledTypes;
         
         
-        public HazardSpawnerMultiType(float minTime, float maxTime, AvailableHazardTypes validTypes, MineBuddiesMultiplayerLevelManager levelManager) : base(minTime, maxTime, validTypes, levelManager)
+        public HazardSpawnerMultiType(float minTime, float maxTime, HazardTypesActiveInGame validTypesActiveInGame, MineBuddiesMultiplayerLevelManager levelManager) : base(minTime, maxTime, validTypesActiveInGame, levelManager)
         {
-            _shuffledTypes = new Managers.HazardType[Types.Length];
+            _shuffledTypes = new HazardType[Types.Length];
             Types.CopyTo(_shuffledTypes,0);
         }
 
@@ -25,23 +25,38 @@ namespace ZeroPrep.MineBuddies
         /// If complexity is 2 or less, it will spawn a regular hazard with 1 type.
         /// </summary>
         /// <param name="complexity">complexity level of spawned hazard. Default = 2 (Regular Hazard)</param>
+        /// <param name="numTypes">Force number of <see cref="HazardType"/> to be <c>numTypes</c>. If 0, random number of HazardTypes will be chosen</param>
+        /// <param name="numSegments">Force number of segments.</param>
         /// <returns>spawned hazard</returns>
-        public HazardBase SpawnRandomTypeHazard(int complexity = 2)
+        public HazardBase SpawnRandomTypeHazard(int complexity = 2, int numTypes = 0, int numSegments = 0)
         {
             Shuffle(_shuffledTypes);
             complexity = Math.Max(2, complexity);
-            int numSegments = Random.Range(1, complexity);
-            int numTypes = complexity - numSegments;
-            
+            if (numTypes > 0)
+            {
+                numSegments = complexity - numTypes;
+            }
+            else if (numSegments > 0)
+            {
+                numTypes = complexity - numSegments;
+            }
+            else
+            {
+                numTypes = Random.Range(1, complexity - 1);
+                numSegments = complexity - numTypes;
+            }
+
             var subset = _shuffledTypes.Take(numTypes);
-            Managers.HazardType[] hazardTypes = subset.ToArray();
-            HazardManagerGO.InteractionType[] interactionsForHazard = new HazardManagerGO.InteractionType[hazardTypes.Count()];
+            HazardType[] hazardTypes = subset.ToArray();
+            HazardManagerGO.InteractionType[] interactionsForHazard =
+                new HazardManagerGO.InteractionType[hazardTypes.Count()];
             for (int i = 0; i < interactionsForHazard.Length; i++)
             {
                 interactionsForHazard[i] = _interactions[Random.Range(0, _interactions.Length - 1)];
             }
-            
-            HazardMultiType hazardMultiType = new HazardMultiType(Speed, hazardTypes, interactionsForHazard, numSegments);
+
+            HazardMultiType hazardMultiType =
+                new HazardMultiType(Speed, hazardTypes, interactionsForHazard, numSegments);
 
             return hazardMultiType;
 

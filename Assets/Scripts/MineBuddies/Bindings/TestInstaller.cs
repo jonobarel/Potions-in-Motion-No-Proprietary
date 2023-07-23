@@ -19,7 +19,7 @@ namespace ZeroPrep.MineBuddies.Tests
         private void InstallHazardComponents()
         {
             Container.Bind<HazardManager>().FromNew().AsSingle();
-            Container.Bind<AvailableHazardTypes>().FromNew().AsSingle();
+            Container.Bind<HazardTypesActiveInGame>().FromNew().AsSingle();
 
             Container.Bind<HazardSpawnerMultiType>().FromNew().AsSingle();
 

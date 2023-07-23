@@ -6,7 +6,7 @@ namespace ZeroPrep.MineBuddies
         private float _speed;
         
         
-        public HazardExternal(float speed, Managers.HazardType type, HazardManagerGO.InteractionType interactionType, float startingHealth = 1f) : base(type, interactionType, startingHealth)
+        public HazardExternal(float speed, HazardType type, HazardManagerGO.InteractionType interactionType, float startingHealth = 1f) : base(type, interactionType, startingHealth)
         {
             _speed = speed;
         }

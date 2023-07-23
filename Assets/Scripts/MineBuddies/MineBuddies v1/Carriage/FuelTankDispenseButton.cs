@@ -11,7 +11,7 @@ namespace ZeroPrep.MineBuddies
         {
             base.TriggerButtonAction(instigator);
             
-            GameSystem.Instance.analytics.LogEvent(instigator.GetComponent<MineBuddiesCharacter>().PlayerLabel, Analytics.LogAction.DispenseFuel, Managers.HazardType.A, 1, "player dispensed fuel");
+
         }
     }
 }

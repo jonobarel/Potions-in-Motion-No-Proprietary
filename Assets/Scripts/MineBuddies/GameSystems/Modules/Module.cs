@@ -20,23 +20,37 @@ namespace ZeroPrep.MineBuddies
         // ReSharper disable once InconsistentNaming
         protected EngineFuel _engineFuel;
 
-        public Managers.HazardType HazardType
+        public HazardType HazardType
         {
             get => _hazardType;
-            set => _hazardType = value;
+            set
+            {
+                HazardType oldType = _hazardType;
+                _hazardType = value;
+                HazardTypeChanged?.Invoke(this, oldType, _hazardType);
+            }
         }
 
         [SerializeField]
-        private Managers.HazardType _hazardType;
+        private HazardType _hazardType;
         private HazardManagerGO _hazardManager;
+        
+        public event Action<Module, HazardType, HazardType> HazardTypeChanged;
+        /// <summary>
+        /// Array of available activatable components on the module (e.g. <see cref="MineBuddiesRotationActivated"/>, <see cref="MineBuddiesButtonActivated"/>, etc.)
+        /// </summary>
         private IModuleActivation[] _moduleActivations;
 
-        public IModuleActivation[] ModuleActivations
+        
+        /// <summary>
+        /// Array of available activatable components on the module (e.g. <see cref="MineBuddiesRotationActivated"/>, <see cref="MineBuddiesButtonActivated"/>, etc.)
+        /// </summary>
+        public IModuleActivation [] ModuleActivations
         {
             get => _moduleActivations;
         }
 
-        [SerializeField]
+            [SerializeField]
         private float fuelConsumption;
 
         public float TreatmentAmount { get; private set; }
@@ -54,7 +68,7 @@ namespace ZeroPrep.MineBuddies
             _hazardManager = hazardManager;
             _hazardManager.NextHazardInteraction.AddListener(ToggleHazardInteractions);
             TreatmentAmount = _gameSettings.TreatmentEffect;
-            
+
         }
 
         private void OnDestroy()
@@ -82,7 +96,7 @@ namespace ZeroPrep.MineBuddies
             
         }
 
-        protected virtual void ToggleHazardInteractions(Managers.HazardType type, HazardManagerGO.InteractionType interactions)
+        protected virtual void ToggleHazardInteractions(HazardType type, HazardManagerGO.InteractionType interactions)
         {
             if (HazardType == type)
             {
@@ -94,5 +108,9 @@ namespace ZeroPrep.MineBuddies
         }
 
 
+        protected virtual void OnHazardTypeChanged(Module module, HazardType oldType, HazardType newType)
+        {
+            HazardTypeChanged?.Invoke(module, oldType, newType);
+        }
     }
 }

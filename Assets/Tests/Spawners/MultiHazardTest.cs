@@ -19,7 +19,7 @@ namespace ZeroPrep.MineBuddies.Tests
         private int _numModules = 4;
         private Module[] modules;
         private HazardSpawnerMultiType spawner;
-        private AvailableHazardTypes availableHazardTypes;
+        private HazardTypesActiveInGame _hazardTypesActiveInGame;
 
         private HazardManagerGO.InteractionType[] _interactionTypes =
             (HazardManagerGO.InteractionType[])Enum.GetValues(typeof(HazardManagerGO.InteractionType));
@@ -35,8 +35,8 @@ namespace ZeroPrep.MineBuddies.Tests
 
         private void InitializeMembers()
         {
-            availableHazardTypes = Container.Resolve<AvailableHazardTypes>();
-            spawner = new HazardSpawnerMultiType(1, 1, availableHazardTypes, null);
+            _hazardTypesActiveInGame = Container.Resolve<HazardTypesActiveInGame>();
+            spawner = new HazardSpawnerMultiType(1, 1, _hazardTypesActiveInGame, null);
         }
 
         private void BindInterfaces()
@@ -49,7 +49,7 @@ namespace ZeroPrep.MineBuddies.Tests
 
         private void InstantiateModules()
         {
-            var hazardTypes = (Managers.HazardType[])Enum.GetValues(typeof(Managers.HazardType));
+            var hazardTypes = HazardType.AvailableTypes;
             modules = new Module[_numModules];
             for (int i = 0; i < _numModules; i++)
             {
@@ -63,17 +63,17 @@ namespace ZeroPrep.MineBuddies.Tests
         [Test]
         public void AvailableHazardsShouldMatchModules()
         {
-            Debug.Log(ArrayToString(availableHazardTypes.Types));
+            Debug.Log(ArrayToString(_hazardTypesActiveInGame.Types));
             //Check available hazards initialized correctly
-            Assert.NotNull(availableHazardTypes);
+            Assert.NotNull(_hazardTypesActiveInGame);
             
             //check number of distinct hazard types is equal to number of modules
-            Assert.True(availableHazardTypes.Types.Distinct().Count() == _numModules);
+            Assert.True(_hazardTypesActiveInGame.Types.Distinct().Count() == _numModules);
             
             //check each hazard type in modules is in the available types list
             foreach (var module in modules)
             {
-                Assert.True(availableHazardTypes.Types.Contains(module.HazardType));
+                Assert.True(_hazardTypesActiveInGame.Types.Contains(module.HazardType));
             }
         }
         
@@ -82,9 +82,9 @@ namespace ZeroPrep.MineBuddies.Tests
         /// Test that a multi-type hazard is created with two different types found in the AvailableHazardTypes list.
         /// </summary>
         [Test]
-        public void HazardTypes_ShouldHave2DistinctHazardTypes()
+        public void HazardTypes__Complexity4_ShouldHave2DistinctHazardTypes()
         {
-            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard() as HazardMultiType;
+            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard(5,2) as HazardMultiType;
             Debug.Log(ArrayToString(hazard.Types));
             Assert.True(hazard.Types.Distinct().Count() == 2);
         }
@@ -93,7 +93,7 @@ namespace ZeroPrep.MineBuddies.Tests
         [Test]
         public void TreatAction_lessThanSectionLength_shouldNotSwitchHazardType()
         {
-            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard() as HazardMultiType;
+            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard(5) as HazardMultiType;
 
             int currentIndex = 0;
             Assert.True(hazard.Type == hazard.Types[currentIndex]);
@@ -107,7 +107,7 @@ namespace ZeroPrep.MineBuddies.Tests
         public void TreatAction_sectionLength_shouldSwitchHazardType()
         {
             
-            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard() as HazardMultiType;
+            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard(5) as HazardMultiType;
 
             int currentIndex = 0;
 
@@ -134,9 +134,9 @@ namespace ZeroPrep.MineBuddies.Tests
         }
         
         [Test]
-        public void HazardTreatAction_ShouldInvokeOnFlip()
+        public void HazardTreatAction_HighComplexity_ShouldInvokeOnFlip()
         {
-            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard() as HazardMultiType;
+            HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard(5) as HazardMultiType;
             bool onFlipInvoked = false;
             hazard.OnFlip += (h) => onFlipInvoked = true;
             hazard.TreatAction(hazard.SectionLength);

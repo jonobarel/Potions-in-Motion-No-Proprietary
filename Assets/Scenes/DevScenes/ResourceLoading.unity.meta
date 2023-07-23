@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/DevScenes/ResourceLoading.unity.meta
 guid: 7ff2433f7061b2b439db3dc050632519
+========
+guid: 3841ed18aa06a264aad91dd177545936
+>>>>>>>> a903cad9b9b9d864ec7c5dd4465dbf10a19b291c:Assets/Scenes/DevScenes/VehicleConstruction.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

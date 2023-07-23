@@ -14,7 +14,6 @@ namespace ZeroPrep.MineBuddies
         private static GameManager _instance;
         public static GameManager Instance => _instance;
 
-        private AnalyticsManager _analytics;
 
         //private HazardManagerMono _hazardManager;
         //public HazardManagerMono HazardManager => _hazardManager;
