@@ -13,6 +13,7 @@ namespace ZeroPrep.MineBuddies
         [FormerlySerializedAs("hazardManager")] public HazardManagerGO hazardManagerGo;
 
         public ConfigManager configManager;
+        public AnalyticsManager analytics;
 
         public static Managers Managers { get {return GameSystem.Instance.managers;} }
         public static HazardManagerGO HazardManagerGo { 
@@ -54,6 +55,8 @@ namespace ZeroPrep.MineBuddies
         {
             if (scene.name == "CorgiCarriage")
             {
+                Debug.Log($"resetting analytics");
+                analytics.Initialize();
                 //gameManager.ResetLevel();
                 
                 foreach (ManagerBase manager in GetComponentsInChildren<ManagerBase>())

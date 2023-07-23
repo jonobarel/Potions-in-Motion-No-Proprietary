@@ -31,7 +31,7 @@ namespace ZeroPrep.MineBuddies
         private HazardBase _hazard;
         public HazardBase Hazard => _hazard;
         
-        [SerializeField] private HazardType _type;
+        [SerializeField] private Managers.HazardType _type;
         
         public void Start()
         {
@@ -94,7 +94,6 @@ namespace ZeroPrep.MineBuddies
                 item.SlideToPosition();
             }
         }
-
 
     }
     

@@ -11,6 +11,33 @@ namespace ZeroPrep.MineBuddies
 
         [SerializeField] TextMeshProUGUI TopPlayerName, HazardNumber, DistanceCovered, RefuelNumber;
 
+        AnalyticsManager analytics;
+        // Start is called before the first frame update
+        void Start()
+        {
+            analytics = FindObjectOfType<AnalyticsManager>();
+            if (analytics == null)
+                Debug.LogError($"{name}: Could not find analytics object.");
+            else
+            {
+                TopPlayerName.text = analytics.GetTopPlayer();
+                HazardNumber.text = $"{analytics.GetTotalHazards()}";
+                DistanceCovered.text = $"{analytics.GetDistanceCovered()}";
+                RefuelNumber.text = $"{analytics.GetTopRefueler()}";
+
+            }
+
+            if (CharacterSelection.Instance != null)
+            {
+                CharacterSelection.Instance.Reset();
+            }
+            
+
+            analytics.DumpToFile();
+            
+            
+            
+        }
 
         // Update is called once per frame
         void Update()

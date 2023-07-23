@@ -5,8 +5,6 @@ using Zenject;
 namespace ZeroPrep.MineBuddies
 {
     [RequireComponent(typeof(Health))]
-    [RequireComponent(typeof(ModulePlacement))]
-    [RequireComponent(typeof(PlatformPlacement))]
     public class Vehicle : MonoBehaviour
     {
         private EngineSpeed _engineSpeed;
@@ -25,8 +23,6 @@ namespace ZeroPrep.MineBuddies
         void Start()
         {
             VehicleIntegrityCheck();
-            GetComponent<PlatformPlacement>().PlaceObjects();
-            GetComponent<ModulePlacement>().PlaceObjects();
         }
         
         private void VehicleIntegrityCheck()

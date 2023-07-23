@@ -17,7 +17,7 @@ namespace ZeroPrep.MineBuddies
             _engineFuel.Refuel(amount*refuelFactor);
         }
 
-        protected override void ToggleHazardInteractions(HazardType type,
+        protected override void ToggleHazardInteractions(Managers.HazardType type,
             HazardManagerGO.InteractionType interactions)
         {
             return;

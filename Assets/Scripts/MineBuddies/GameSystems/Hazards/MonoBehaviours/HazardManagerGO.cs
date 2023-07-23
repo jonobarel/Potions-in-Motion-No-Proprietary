@@ -31,7 +31,7 @@ namespace ZeroPrep.MineBuddies
 
 
 
-        public UnityEvent<HazardType, InteractionType> NextHazardInteraction; 
+        public UnityEvent<Managers.HazardType, InteractionType> NextHazardInteraction; 
         
         public int ActiveHazardsCount()
         {
@@ -43,7 +43,7 @@ namespace ZeroPrep.MineBuddies
             HazardSpawner hazardSpawner,
             EngineSpeed engineSpeed,
             GameSettings gameSettings,
-            HazardTypesActiveInGame hazardTypesActiveInGame)
+            AvailableHazardTypes availableHazardTypes)
         {
             _hazardManager = hazardManager;
             _hazardSpawner = hazardSpawner;
@@ -113,12 +113,12 @@ namespace ZeroPrep.MineBuddies
             }
         }
         
-        public HazardBase GetClosestHazardOfType(HazardType type)
+        public HazardBase GetClosestHazardOfType(Managers.HazardType type)
         {
             return _hazardManager.GetClosestHazardOfType(type);
         }
 
-        public void TreatHazardOfType(HazardType type, float amount)
+        public void TreatHazardOfType(Managers.HazardType type, float amount)
         {
             HazardBase affectedHazard = GetClosestHazardOfType(type);
             if (affectedHazard != null)

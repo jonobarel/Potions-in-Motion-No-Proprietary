@@ -15,7 +15,7 @@ public class DamageOnHazardExpire : MonoBehaviour
     private GameSettings _gameSettings;
     private int _startingHealth;
     
-    void Start()
+    void Awake()
     {
         _health = GetComponent<Health>();
         HazardBase.Expire += OnHazardExpire;

@@ -22,6 +22,7 @@ namespace ZeroPrep.MineBuddies
             {
                 //_powerModule.DoRefuel();
                 MoreMountains.CorgiEngine.Pushable pushable = GetComponent<MoreMountains.CorgiEngine.Pushable>();
+                GameSystem.Instance.analytics.LogEvent(pushable.Pusher.GetComponent<MineBuddiesCharacter>().PlayerLabel, Analytics.LogAction.Refuel, Managers.HazardType.A, 1, "Player refueled");
                 pushable.Detach(pushable.Pusher);
                 GameObject.Destroy(gameObject);
             }
