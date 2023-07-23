@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ResourceLoad.cs.meta
 guid: 26fd4546482133f4b8a6d1c98e1426cb
+========
+guid: f2aed833a68f46dc896d15338e416969
+>>>>>>>> 3d98e268 (Muilti-type hazard support):Assets/Scripts/MineBuddies/GameSystems/Hazards/HazardSpawnerMultiType.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

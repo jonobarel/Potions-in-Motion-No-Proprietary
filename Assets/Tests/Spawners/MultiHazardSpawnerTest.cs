@@ -9,8 +9,8 @@ namespace ZeroPrep.MineBuddies.Tests
         [Test]
         public void SpawnRandomTypeHazard_NoArgs_ShouldSpawnPlainHazard()
         {
-            AvailableHazardTypes availableHazardTypes = new AvailableHazardTypes();
-            HazardSpawnerMultiType spawner = new HazardSpawnerMultiType(1f,1f, availableHazardTypes, null);
+            HazardTypesActiveInGame hazardTypesActiveInGame = new HazardTypesActiveInGame();
+            HazardSpawnerMultiType spawner = new HazardSpawnerMultiType(1f,1f, hazardTypesActiveInGame, null);
             
             HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard();
 
@@ -22,10 +22,10 @@ namespace ZeroPrep.MineBuddies.Tests
         [Test]
         public void SpawnRandomTypeHazard_WithNum_ShouldHaveTotalEqualToNum()
         {
-            AvailableHazardTypes availableHazardTypes = new AvailableHazardTypes();
-            HazardSpawnerMultiType spawner = new HazardSpawnerMultiType(1f,1f, availableHazardTypes, null);
+            HazardTypesActiveInGame hazardTypesActiveInGame = new HazardTypesActiveInGame();
+            HazardSpawnerMultiType spawner = new HazardSpawnerMultiType(1f,1f, hazardTypesActiveInGame, null);
 
-            for (int i = 2; i < availableHazardTypes.Types.Length; i++)
+            for (int i = 2; i < hazardTypesActiveInGame.Types.Length; i++)
             {
                 HazardMultiType hazard = (HazardMultiType)spawner.SpawnRandomTypeHazard(i);
                 

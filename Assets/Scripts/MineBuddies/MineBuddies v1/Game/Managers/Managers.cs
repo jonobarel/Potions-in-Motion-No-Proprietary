@@ -27,10 +27,6 @@ namespace ZeroPrep.MineBuddies
         public int SessionID;
         
 
-        public enum HazardType
-        {
-            A, B, C, D, E, F
-        }
         public List<HazardType> AvailableHazardTypes
         {
             get { if (_availableHazardTypes == null)
@@ -75,17 +71,12 @@ namespace ZeroPrep.MineBuddies
                     Debug.LogError("Error finding participating players");
                     //InstantiateDefaultPlayers();
                 }
-
-                FindObjectOfType<AnalyticsManager>().LogEvent("Game", Analytics.LogAction.GameStart, HazardType.A, 0, "Seed id=", RandomSeed);
-
             }
             
         }
 
         void Start()
         {
-            GameSystem.Instance.analytics.Initialize();
-
             Debug.Log($"{name}: available hazard types in this session - {_availableHazardTypes}");
 
 

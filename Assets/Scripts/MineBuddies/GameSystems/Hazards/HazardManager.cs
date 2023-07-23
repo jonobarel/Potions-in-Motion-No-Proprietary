@@ -63,7 +63,7 @@ namespace ZeroPrep.MineBuddies
             _hazards.Add(h);
         }
 
-        public HazardBase GetClosestHazardOfType(Managers.HazardType type)
+        public HazardBase GetClosestHazardOfType(HazardType type)
         {
             var results = _hazards.FindAll(h => h.Type == type);
             if (results.Count > 0)

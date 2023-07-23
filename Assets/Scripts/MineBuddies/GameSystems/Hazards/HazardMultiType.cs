@@ -7,8 +7,8 @@ namespace ZeroPrep.MineBuddies
     {
         public int Segments { get; }
 
-        private Managers.HazardType[] _types;
-        public Managers.HazardType[] Types => _types;
+        private HazardType[] _types;
+        public HazardType[] Types => _types;
         
         private HazardManagerGO.InteractionType[] _interactionTypes;
 
@@ -36,7 +36,7 @@ namespace ZeroPrep.MineBuddies
         public int Index => _index;
         public int IndexNormalized => _index % _types.Length;
         
-        public HazardMultiType(float speed, Managers.HazardType[] types, HazardManagerGO.InteractionType[] interactionTypes, int segments, float startingHealth = 1) 
+        public HazardMultiType(float speed, HazardType[] types, HazardManagerGO.InteractionType[] interactionTypes, int segments, float startingHealth = 1) 
         : base(speed, types[0], interactionTypes[0], startingHealth)
         {
             if (types.Length != interactionTypes.Length)
